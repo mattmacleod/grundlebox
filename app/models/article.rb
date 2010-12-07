@@ -37,13 +37,22 @@ class Article < ActiveRecord::Base
   after_save :build_authors
   attr_accessor :writer_string
 
+
+  # Library stuff
+  #grundlebox_has_tags
+  #grundlebox_has_comments
+  #grundlebox_has_assets
+  grundlebox_has_url   :url, :generated_from => :title
+  #grundlebox_has_lock
+  
   
   # Validations
-  validates_presence_of :title, :template, :word_count, :article_type, :user, :url
+  validates_presence_of :title, :template, :word_count, :article_type, :user
   validates_presence_of :section, :message => "must be specified"
   validates_presence_of :review_rating, :if => Proc.new{ review }
   
   validates :status, :presence => true, :inclusion => { :in => Article::Status::values }
+  
   
   # Accessiblity
   attr_accessible :title, :abstract, :standfirst, :pullquote, :content, 
@@ -118,10 +127,6 @@ class Article < ActiveRecord::Base
 
   # Instance methods
   ############################################################################
-
-  def to_param
-    "#{id}-#{url}"
-  end
   
   def queue
     case status

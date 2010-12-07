@@ -54,6 +54,10 @@ class UserTest < ActiveSupport::TestCase
     
     should validate_uniqueness_of :email
     
+    should "have a correct parameter value" do
+      assert_equal "1-test_user", @user.to_param
+    end
+    
     should "send a welcome email on creation" do
       assert !ActionMailer::Base.deliveries.empty?
       @sent = ActionMailer::Base.deliveries.last

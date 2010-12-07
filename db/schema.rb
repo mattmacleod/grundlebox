@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "articles", :force => true do |t|
     t.string   "title",                                              :null => false
@@ -71,12 +71,74 @@ ActiveRecord::Schema.define(:version => 7) do
   add_index "authors", ["article_id"], :name => "index_authors_on_article_id"
   add_index "authors", ["user_id"], :name => "index_authors_on_user_id"
 
+  create_table "cities", :force => true do |t|
+    t.string   "name",       :null => false
+    t.float    "lat"
+    t.float    "lng"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cities", ["name"], :name => "index_cities_on_name", :unique => true
+
+  create_table "events", :force => true do |t|
+    t.string   "title",                             :null => false
+    t.string   "abstract"
+    t.string   "short_content"
+    t.text     "content"
+    t.boolean  "featured",       :default => false, :null => false
+    t.integer  "review_id"
+    t.integer  "user_id",                           :null => false
+    t.boolean  "print",          :default => true,  :null => false
+    t.boolean  "enabled",        :default => true,  :null => false
+    t.string   "affiliate_type"
+    t.string   "affiliate_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "cached_times"
+    t.string   "cached_dates"
+    t.string   "cached_prices"
+    t.string   "cached_venues"
+    t.string   "url",                               :null => false
+  end
+
+  add_index "events", ["print", "enabled"], :name => "index_events_on_print_and_enabled"
+  add_index "events", ["review_id"], :name => "index_events_on_review_id"
+  add_index "events", ["url"], :name => "index_events_on_url"
+
   create_table "owners", :id => false, :force => true do |t|
     t.integer "section_id"
     t.integer "user_id"
   end
 
   add_index "owners", ["section_id", "user_id"], :name => "index_owners_on_section_id_and_user_id", :unique => true
+
+  create_table "performances", :force => true do |t|
+    t.integer  "event_id",                              :null => false
+    t.integer  "venue_id",                              :null => false
+    t.integer  "user_id",                               :null => false
+    t.string   "price"
+    t.string   "performer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "starts_at",                             :null => false
+    t.datetime "ends_at"
+    t.boolean  "drop_in",            :default => false
+    t.string   "ticket_type"
+    t.text     "notes"
+    t.string   "cached_venue_name"
+    t.string   "cached_venue_link"
+    t.string   "cached_city_name"
+    t.string   "cached_event_name"
+    t.string   "cached_event_link"
+    t.string   "cached_description"
+    t.string   "affiliate_type"
+    t.string   "affiliate_code"
+  end
+
+  add_index "performances", ["event_id"], :name => "index_performances_on_event_id"
+  add_index "performances", ["starts_at"], :name => "index_performances_on_starts_at"
+  add_index "performances", ["venue_id"], :name => "index_performances_on_venue_id"
 
   create_table "sections", :force => true do |t|
     t.string "name", :null => false
@@ -108,5 +170,31 @@ ActiveRecord::Schema.define(:version => 7) do
 
   add_index "users", ["email", "password_hash", "password_salt", "enabled", "verified", "mailing_list", "role"], :name => "index_users_main"
   add_index "users", ["email"], :name => "index_users_email", :unique => true
+
+  create_table "venues", :force => true do |t|
+    t.string   "title",                         :null => false
+    t.string   "address_1"
+    t.string   "address_2"
+    t.integer  "city_id"
+    t.string   "postcode"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "web"
+    t.string   "abstract"
+    t.text     "content"
+    t.integer  "user_id",                       :null => false
+    t.boolean  "featured",   :default => false, :null => false
+    t.boolean  "enabled",    :default => true,  :null => false
+    t.string   "url",                           :null => false
+    t.float    "lat"
+    t.float    "lng"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "venues", ["city_id"], :name => "index_venues_on_city_id"
+  add_index "venues", ["featured", "enabled"], :name => "index_venues_on_featured_and_enabled"
+  add_index "venues", ["lat", "lng"], :name => "index_venues_on_lat_and_lng"
+  add_index "venues", ["url"], :name => "index_venues_on_url"
 
 end

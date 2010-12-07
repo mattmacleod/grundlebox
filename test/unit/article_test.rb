@@ -25,6 +25,7 @@ class ArticleTest < ActiveSupport::TestCase
   #should_have_grundlebox_assets
   #should_have_grundlebox_lock
   #should_have_properties
+  should_have_grundlebox_url :url, :generated_from => :title
   
   # Attribute protection tests
   should_not allow_mass_assignment_of :status
@@ -50,7 +51,6 @@ class ArticleTest < ActiveSupport::TestCase
   should validate_presence_of :article_type
   should validate_presence_of(:section).with_message("must be specified")
   should validate_presence_of :user
-  should validate_presence_of :url
 
 
   # Cache updates

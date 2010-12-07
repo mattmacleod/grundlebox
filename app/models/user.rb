@@ -105,6 +105,10 @@ class User < ActiveRecord::Base
   # Instance methods
   ############################################################################
   
+  def to_param
+    id.to_s + "-" + Grundlebox::Util::pretty_url( name || "Anonymous user" )
+  end
+  
   def password=(pass)
     @password_changed      = true
     @password              = pass.downcase
