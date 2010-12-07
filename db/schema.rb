@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 21) do
+ActiveRecord::Schema.define(:version => 22) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "code",                            :null => false
@@ -192,6 +192,16 @@ ActiveRecord::Schema.define(:version => 21) do
 
   add_index "locks", ["lockable_type", "lockable_id", "user_id"], :name => "index_locks_on_lockable_type_and_lockable_id_and_user_id"
   add_index "locks", ["lockable_type", "lockable_id"], :name => "index_locks_on_lockable_type_and_lockable_id", :unique => true
+
+  create_table "menus", :force => true do |t|
+    t.string   "title",      :null => false
+    t.string   "domain",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "menus", ["domain"], :name => "index_menus_on_domain", :unique => true
+  add_index "menus", ["title"], :name => "index_menus_on_title", :unique => true
 
   create_table "owners", :id => false, :force => true do |t|
     t.integer "section_id"
