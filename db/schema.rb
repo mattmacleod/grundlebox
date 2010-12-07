@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 23) do
+ActiveRecord::Schema.define(:version => 25) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "code",                            :null => false
@@ -210,6 +210,18 @@ ActiveRecord::Schema.define(:version => 23) do
 
   add_index "owners", ["section_id", "user_id"], :name => "index_owners_on_section_id_and_user_id", :unique => true
 
+  create_table "page_widgets", :force => true do |t|
+    t.integer  "widget_id",                 :null => false
+    t.integer  "page_id",                   :null => false
+    t.integer  "sort_order", :default => 0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "page_widgets", ["page_id", "widget_id"], :name => "index_page_widgets_on_page_id_and_widget_id", :unique => true
+  add_index "page_widgets", ["page_id"], :name => "index_page_widgets_on_page_id"
+  add_index "page_widgets", ["widget_id"], :name => "index_page_widgets_on_widget_id"
+
   create_table "pages", :force => true do |t|
     t.string   "url",                            :null => false
     t.string   "page_type",  :default => "TEXT", :null => false
@@ -334,5 +346,13 @@ ActiveRecord::Schema.define(:version => 23) do
   add_index "venues", ["featured", "enabled"], :name => "index_venues_on_featured_and_enabled"
   add_index "venues", ["lat", "lng"], :name => "index_venues_on_lat_and_lng"
   add_index "venues", ["url"], :name => "index_venues_on_url"
+
+  create_table "widgets", :force => true do |t|
+    t.string   "title",       :null => false
+    t.string   "widget_type", :null => false
+    t.text     "properties",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
