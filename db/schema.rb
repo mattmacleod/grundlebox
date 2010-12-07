@@ -10,7 +10,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 11) do
+ActiveRecord::Schema.define(:version => 13) do
+
+  create_table "api_keys", :force => true do |t|
+    t.string   "code",                            :null => false
+    t.string   "name",                            :null => false
+    t.string   "permission", :default => "BASIC", :null => false
+    t.boolean  "enabled",    :default => true,    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "api_keys", ["code"], :name => "index_api_keys_on_code", :unique => true
+
+  create_table "api_requests", :force => true do |t|
+    t.integer  "api_key_id",                              :null => false
+    t.integer  "version",                  :default => 0, :null => false
+    t.string   "url",                                     :null => false
+    t.string   "status",                                  :null => false
+    t.string   "ip",         :limit => 15,                :null => false
+    t.datetime "created_at"
+  end
+
+  add_index "api_requests", ["api_key_id"], :name => "index_api_requests_on_api_key_id"
 
   create_table "articles", :force => true do |t|
     t.string   "title",                                              :null => false
