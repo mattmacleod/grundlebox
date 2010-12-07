@@ -26,6 +26,7 @@ class ArticleTest < ActiveSupport::TestCase
   should_have_grundlebox_lock
   should_have_grundlebox_properties
   should_have_grundlebox_url :url, :generated_from => :title
+  should_have_grundlebox_versions
   
   # Attribute protection tests
   should_not allow_mass_assignment_of :status

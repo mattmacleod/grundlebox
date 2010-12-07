@@ -23,6 +23,7 @@ class VenueTest < ActiveSupport::TestCase
   should_have_grundlebox_assets
   should_have_grundlebox_lock
   should_have_grundlebox_url :url, :generated_from => :title
+  should_have_grundlebox_versions
 
   # Validations
   ############################################################################

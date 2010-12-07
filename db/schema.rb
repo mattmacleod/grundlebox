@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 22) do
+ActiveRecord::Schema.define(:version => 23) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "code",                            :null => false
@@ -209,6 +209,27 @@ ActiveRecord::Schema.define(:version => 22) do
   end
 
   add_index "owners", ["section_id", "user_id"], :name => "index_owners_on_section_id_and_user_id", :unique => true
+
+  create_table "pages", :force => true do |t|
+    t.string   "url",                            :null => false
+    t.string   "page_type",  :default => "TEXT", :null => false
+    t.integer  "user_id",                        :null => false
+    t.string   "title",                          :null => false
+    t.text     "abstract"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.text     "properties"
+    t.integer  "parent_id"
+    t.integer  "menu_id",                        :null => false
+    t.integer  "sort_order", :default => 0,      :null => false
+    t.boolean  "enabled",    :default => true,   :null => false
+  end
+
+  add_index "pages", ["parent_id", "menu_id", "starts_at", "ends_at", "enabled"], :name => "page_index"
+  add_index "pages", ["url", "menu_id"], :name => "index_pages_on_url_and_menu_id", :unique => true
 
   create_table "performances", :force => true do |t|
     t.integer  "event_id",                              :null => false

@@ -181,6 +181,13 @@ class ActiveSupport::TestCase
     
     
     
+    def should_have_grundlebox_versions
+      
+    end
+    
+    
+    
+    
     
     def should_have_grundlebox_properties
       
