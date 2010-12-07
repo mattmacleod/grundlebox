@@ -92,6 +92,20 @@ class ActiveSupport::TestCase
     end
   
   
+    def should_have_grundlebox_comments
+      should have_many :comments
+      klass = self.name.gsub(/Test$/, '').underscore.to_sym
+      
+      context "an existing item with a comment" do
+        setup { @item = Factory(klass); @comment = Factory(:comment, :item => @item) }
+
+        should "have the correct comment count" do
+         assert_equal 1, @item.comment_count
+        end
+      end
+      
+    end
+    
   end
   
 end

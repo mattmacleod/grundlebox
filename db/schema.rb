@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 15) do
+ActiveRecord::Schema.define(:version => 17) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "code",                            :null => false
@@ -103,6 +103,25 @@ ActiveRecord::Schema.define(:version => 15) do
 
   add_index "cities", ["name"], :name => "index_cities_on_name", :unique => true
 
+  create_table "comments", :force => true do |t|
+    t.integer  "item_id",                       :null => false
+    t.string   "item_type",                     :null => false
+    t.integer  "user_id"
+    t.string   "name",                          :null => false
+    t.string   "email",                         :null => false
+    t.string   "ip",                            :null => false
+    t.text     "content",                       :null => false
+    t.integer  "rating",     :default => 0,     :null => false
+    t.boolean  "reported",   :default => false, :null => false
+    t.boolean  "approved",   :default => false, :null => false
+    t.boolean  "hidden",     :default => false, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["item_type", "item_id", "hidden", "reported", "approved"], :name => "comments_index_main"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
   create_table "events", :force => true do |t|
     t.string   "title",                             :null => false
     t.string   "abstract"
@@ -161,6 +180,12 @@ ActiveRecord::Schema.define(:version => 15) do
   add_index "performances", ["event_id"], :name => "index_performances_on_event_id"
   add_index "performances", ["starts_at"], :name => "index_performances_on_starts_at"
   add_index "performances", ["venue_id"], :name => "index_performances_on_venue_id"
+
+  create_table "publications", :force => true do |t|
+    t.string "name",          :null => false
+    t.date   "date_street",   :null => false
+    t.date   "date_deadline", :null => false
+  end
 
   create_table "sections", :force => true do |t|
     t.string "name", :null => false
