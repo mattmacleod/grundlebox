@@ -1,5 +1,5 @@
 module Grundlebox #:nodoc:
-  module Has #:nodoc:
+  module ModelExtensions #:nodoc:
     module Comments #:nodoc:
       
       def self.included(base)
@@ -11,7 +11,7 @@ module Grundlebox #:nodoc:
         
         def grundlebox_has_comments(options={})
           has_many :comments, :as => :item, :dependent => :destroy
-          include Grundlebox::Has::Comments::InstanceMethods
+          include Grundlebox::ModelExtensions::Comments::InstanceMethods
         end
 
       end
@@ -29,4 +29,4 @@ module Grundlebox #:nodoc:
   end
 end
  
-ActiveRecord::Base.send(:include, Grundlebox::Has::Comments)
+ActiveRecord::Base.send(:include, Grundlebox::ModelExtensions::Comments)

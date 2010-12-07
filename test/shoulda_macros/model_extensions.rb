@@ -179,6 +179,35 @@ class ActiveSupport::TestCase
       end
     end
     
+    
+    
+    
+    def should_have_grundlebox_properties
+      
+      klass = self.name.gsub(/Test$/, '').underscore.to_sym
+      
+      context "an item" do
+        setup { @item = Factory(klass) }
+        should "have a blank properties hash" do
+          assert_equal({}, @item.properties)
+        end
+        context "when properties are set" do
+          setup { @item.properties = {:test => "test" }; @item.save; @item.reload }
+          should "return the requested properties" do
+            assert @item.properties.is_a? Hash
+            assert_equal "test", @item.properties[:test]
+          end
+          context "and set again" do
+            setup { @item.properties = {:test => "new" }; @item.save; @item.reload }
+            should "be changed" do
+              assert_equal "new", @item.properties[:test]
+            end
+          end
+        end
+      end
+      
+    end
+      
   end
   
 end

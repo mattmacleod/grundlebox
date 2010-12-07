@@ -5,14 +5,8 @@ require "export"
 require "validators"
 require "util"
 
-require "url/model_extensions"
+Dir[ File.expand_path(File.dirname(__FILE__) + '/model_extensions/*.rb') ].each do |file| 
+  require file 
+end
 
-require "tags/model_extensions"
-require "tags/tag_list"
-
-require "comments/model_extensions"
-
-require "locks/model_extensions"
-
-require "assets/model_extensions"
-require "assets/cropper"
+require "cropper"

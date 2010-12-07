@@ -6,7 +6,7 @@ Kernel.class_eval do
   end
   
   def random_string(len)
-    (0..len).map{ rand(36).to_s(36) }.join
+    (0..(len-1)).map{ rand(36).to_s(36) }.join
   end
   
 end

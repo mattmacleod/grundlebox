@@ -1,7 +1,7 @@
 #Based on Jonathan Vine's acts_as_taggable_on_steroids
 
 module Grundlebox #:nodoc:
-  module Has #:nodoc:
+  module ModelExtensions #:nodoc:
     module Tags #:nodoc:
       
       # Get class methods set up
@@ -24,8 +24,8 @@ module Grundlebox #:nodoc:
 
           after_save :save_tags
           
-          include Grundlebox::Has::Tags::InstanceMethods
-          extend Grundlebox::Has::Tags::SingletonMethods
+          include Grundlebox::ModelExtensions::Tags::InstanceMethods
+          extend Grundlebox::ModelExtensions::Tags::SingletonMethods
           
         end
         
@@ -132,4 +132,4 @@ module Grundlebox #:nodoc:
   end
 end
  
-ActiveRecord::Base.send(:include, Grundlebox::Has::Tags)
+ActiveRecord::Base.send(:include, Grundlebox::ModelExtensions::Tags)

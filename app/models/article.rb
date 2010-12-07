@@ -44,6 +44,7 @@ class Article < ActiveRecord::Base
   grundlebox_has_assets
   grundlebox_has_url   :url, :generated_from => :title
   grundlebox_has_lock
+  grundlebox_has_properties
   
   
   # Validations
@@ -150,17 +151,6 @@ class Article < ActiveRecord::Base
   def live?
     return status == Status[:published] && starts_at && starts_at<=Time::now && 
            (!ends_at || ends_at>Time::now) && !print_only
-  end
-  
-  
-  # Handle properties
-  serialize :properties
-  def properties=( props )
-    self[:properties] ? self[:properties].merge!(props) : self[:properties] = props
-  end
-  
-  def properties
-    self[:properties] || {}
   end
   
   

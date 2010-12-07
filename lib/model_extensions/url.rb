@@ -1,5 +1,5 @@
 module Grundlebox #:nodoc:
-  module Has #:nodoc:
+  module ModelExtensions #:nodoc:
     module Url #:nodoc:
       
       def self.included(base)
@@ -19,7 +19,7 @@ module Grundlebox #:nodoc:
           
           validates attribute, :presence=>true, :format=>{ :with=>Grundlebox::Config::UrlRegexp }
           
-          include Grundlebox::Has::Url::InstanceMethods
+          include Grundlebox::ModelExtensions::Url::InstanceMethods
           
         end
                 
@@ -45,4 +45,4 @@ module Grundlebox #:nodoc:
   end
 end
  
-ActiveRecord::Base.send(:include, Grundlebox::Has::Url)
+ActiveRecord::Base.send(:include, Grundlebox::ModelExtensions::Url)

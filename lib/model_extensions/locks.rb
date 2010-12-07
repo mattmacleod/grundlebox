@@ -1,5 +1,5 @@
 module Grundlebox #:nodoc:
-  module Has #:nodoc:
+  module ModelExtensions #:nodoc:
     module Lock #:nodoc:
       
       def self.included(base)
@@ -10,7 +10,7 @@ module Grundlebox #:nodoc:
         
         def grundlebox_has_lock
           has_one :lock, :as => :lockable, :dependent => :destroy
-          include Grundlebox::Has::Lock::InstanceMethods
+          include Grundlebox::ModelExtensions::Lock::InstanceMethods
         end
         
       end
@@ -50,4 +50,4 @@ module Grundlebox #:nodoc:
   end
 end
  
-ActiveRecord::Base.send(:include, Grundlebox::Has::Lock)
+ActiveRecord::Base.send(:include, Grundlebox::ModelExtensions::Lock)

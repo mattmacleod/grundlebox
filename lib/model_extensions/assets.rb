@@ -1,5 +1,5 @@
 module Grundlebox #:nodoc:
-  module Has #:nodoc:
+  module ModelExtensions #:nodoc:
     module Assets #:nodoc:
       
       def self.included(base)
@@ -13,7 +13,7 @@ module Grundlebox #:nodoc:
           has_many :asset_links, :as => :item, :order => :sort_order, 
                    :include => :asset, :dependent => :destroy
           has_many :assets, :through => :asset_links
-          include Grundlebox::Has::Assets::InstanceMethods
+          include Grundlebox::ModelExtensions::Assets::InstanceMethods
         end
 
       end
@@ -32,4 +32,4 @@ module Grundlebox #:nodoc:
   end
 end
  
-ActiveRecord::Base.send(:include, Grundlebox::Has::Assets)
+ActiveRecord::Base.send(:include, Grundlebox::ModelExtensions::Assets)
