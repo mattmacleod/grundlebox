@@ -13,3 +13,6 @@ require "tags/tag_list"
 require "comments/model_extensions"
 
 require "locks/model_extensions"
+
+require "assets/model_extensions"
+require "assets/cropper"

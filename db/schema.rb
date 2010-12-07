@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 18) do
+ActiveRecord::Schema.define(:version => 21) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "code",                            :null => false
@@ -81,6 +81,41 @@ ActiveRecord::Schema.define(:version => 18) do
   end
 
   add_index "articles_venues", ["article_id", "venue_id"], :name => "index_articles_venues_on_article_id_and_venue_id", :unique => true
+
+  create_table "asset_folders", :force => true do |t|
+    t.string  "name",      :null => false
+    t.integer "parent_id"
+  end
+
+  add_index "asset_folders", ["name", "parent_id"], :name => "index_asset_folders_on_name_and_parent_id", :unique => true
+  add_index "asset_folders", ["parent_id"], :name => "index_asset_folders_on_parent_id"
+
+  create_table "asset_links", :force => true do |t|
+    t.integer "item_id",                   :null => false
+    t.string  "item_type",                 :null => false
+    t.integer "asset_id",                  :null => false
+    t.integer "sort_order", :default => 0, :null => false
+  end
+
+  add_index "asset_links", ["asset_id"], :name => "index_asset_links_on_asset_id"
+  add_index "asset_links", ["item_id", "item_type", "asset_id"], :name => "index_asset_links_on_item_id_and_item_type_and_asset_id", :unique => true
+  add_index "asset_links", ["item_id", "item_type"], :name => "index_asset_links_on_item_id_and_item_type"
+
+  create_table "assets", :force => true do |t|
+    t.integer  "asset_folder_id",    :null => false
+    t.integer  "user_id",            :null => false
+    t.string   "title",              :null => false
+    t.text     "caption"
+    t.string   "credit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "asset_file_name",    :null => false
+    t.string   "asset_content_type", :null => false
+    t.integer  "asset_file_size",    :null => false
+  end
+
+  add_index "assets", ["asset_folder_id"], :name => "index_assets_on_asset_folder_id"
+  add_index "assets", ["title"], :name => "index_assets_on_title"
 
   create_table "authors", :force => true do |t|
     t.integer "article_id",                :null => false

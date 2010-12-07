@@ -1,0 +1,22 @@
+class AssetLink < ActiveRecord::Base
+  
+  # Model definition
+  ############################################################################
+  
+  # Relationships
+  belongs_to :asset
+  belongs_to :item, :polymorphic => true
+  
+  # Validation
+  validates_presence_of :asset, :item, :sort_order
+  validates_uniqueness_of :asset_id, :scope => [:item_id, :item_type]
+  
+  # Sort by order attribute by default
+  default_scope :order => 'sort_order ASC'
+  
+  # Cache updates
+  after_save do
+    item.update_caches if item.respond_to? :update_caches
+  end
+  
+end

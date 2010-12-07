@@ -2,6 +2,8 @@ class ActiveSupport::TestCase
 
   class << self
     
+    
+    
     def should_have_grundlebox_url(target_attribute = :url, options = {})
       options[:generated_from] ? generated_from = options[:generated_from] : generated_from = "title"
       klass = self.name.gsub(/Test$/, '').underscore.to_sym
@@ -28,6 +30,9 @@ class ActiveSupport::TestCase
         
       end
     end
+  
+  
+  
   
   
     def should_have_grundlebox_tags
@@ -92,6 +97,8 @@ class ActiveSupport::TestCase
     end
   
   
+  
+  
     def should_have_grundlebox_comments
       should have_many :comments
       klass = self.name.gsub(/Test$/, '').underscore.to_sym
@@ -105,6 +112,8 @@ class ActiveSupport::TestCase
       end
       
     end
+    
+    
     
     
     def should_have_grundlebox_lock
@@ -143,6 +152,31 @@ class ActiveSupport::TestCase
         end
       end
       
+    end
+    
+    
+    
+    def should_have_grundlebox_assets
+      should have_many :asset_links
+      should have_many(:assets).through(:asset_links)
+            
+      klass = self.name.gsub(/Test$/, '').underscore.to_sym
+      
+      context "an existing item" do
+        setup { @item = Factory(klass) }
+        should "not have a main image" do
+          assert_nil @item.main_image
+        end
+        context "with two assets" do
+          setup do
+            Factory(:asset_link, :item => @item, :asset=>@a2=Factory(:asset), :sort_order => 1)
+            Factory(:asset_link, :item => @item, :asset=>@a1=Factory(:asset), :sort_order => 2)
+          end
+          should "return the correct main image" do
+            assert_equal @a2, @item.main_image
+          end
+        end
+      end
     end
     
   end

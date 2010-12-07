@@ -20,7 +20,7 @@ class VenueTest < ActiveSupport::TestCase
   # Custom bits
   should_have_grundlebox_tags
   should_have_grundlebox_comments
-  #should_have_grundlebox_assets
+  should_have_grundlebox_assets
   should_have_grundlebox_lock
   should_have_grundlebox_url :url, :generated_from => :title
 
