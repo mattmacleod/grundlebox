@@ -11,3 +11,5 @@ require "tags/model_extensions"
 require "tags/tag_list"
 
 require "comments/model_extensions"
+
+require "locks/model_extensions"

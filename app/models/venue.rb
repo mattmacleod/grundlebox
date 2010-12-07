@@ -27,7 +27,7 @@ class Venue < ActiveRecord::Base
   grundlebox_has_tags
   grundlebox_has_comments
   #grundlebox_has_assets
-  #grundlebox_has_lock
+  grundlebox_has_lock
   grundlebox_has_url   :url, :generated_from => :title
   
   

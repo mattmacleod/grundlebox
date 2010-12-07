@@ -106,6 +106,45 @@ class ActiveSupport::TestCase
       
     end
     
+    
+    def should_have_grundlebox_lock
+      should have_one :lock
+      klass = self.name.gsub(/Test$/, '').underscore.to_sym
+      
+      context "an unlocked item" do
+        setup { @item = Factory(klass) }
+        should "respond false to the locked? method" do
+          assert !@item.locked?
+          assert_nil @item.lock
+        end
+        should "be able to be locked" do
+          @lock = @item.lock! @user=Factory(:user)
+          assert_instance_of Lock, @lock
+          assert_equal @user, @lock.user
+          assert_equal @item, @lock.lockable
+        end
+        should "ignore unlock request" do
+          assert @item.unlock!
+        end
+      end
+      
+      context "a locked item" do
+        setup { @item = Factory(klass); @lock = Factory(:lock, :lockable => @item, :updated_at => 1.minute.ago ) }
+        should "respond true to the locked? method" do
+          assert @item.locked?
+          assert_equal @lock, @item.lock
+        end
+        should "not be able to be locked" do
+          @lock = @item.lock!( Factory(:user) )
+          assert_nil @lock
+        end
+        should "be able to be unlocked" do
+          assert @item.unlock!
+        end
+      end
+      
+    end
+    
   end
   
 end
