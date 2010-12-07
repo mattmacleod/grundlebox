@@ -17,9 +17,9 @@ class EventTest < ActiveSupport::TestCase
   should have_many :performances
   should have_many(:venues).through(:performances)
 
-  # Methods
+  # Library features
   should_have_grundlebox_url
-  #should_have_grundlebox_tags
+  should_have_grundlebox_tags
   #should_have_grundlebox_assets
   #should_have_grundlebox_lock
 

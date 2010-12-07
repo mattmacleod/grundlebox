@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 13) do
+ActiveRecord::Schema.define(:version => 15) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "code",                            :null => false
@@ -167,6 +167,20 @@ ActiveRecord::Schema.define(:version => 13) do
   end
 
   add_index "sections", ["name"], :name => "index_sections_on_name", :unique => true
+
+  create_table "taggings", :force => true do |t|
+    t.integer "taggable_id",   :null => false
+    t.integer "tag_id",        :null => false
+    t.string  "taggable_type", :null => false
+  end
+
+  add_index "taggings", ["tag_id", "taggable_type", "taggable_id"], :name => "tagging_index", :unique => true
+
+  create_table "tags", :force => true do |t|
+    t.string "name", :null => false
+  end
+
+  add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :null => false

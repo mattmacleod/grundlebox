@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
   
   # Library stuff
   grundlebox_has_url   :url, :generated_from => :title
-  #grundlebox_has_tags
+  grundlebox_has_tags
   #grundlebox_has_lock
   #grundlebox_has_assets
   

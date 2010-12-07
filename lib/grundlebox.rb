@@ -6,3 +6,6 @@ require "validators"
 require "util"
 
 require "url/model_extensions"
+
+require "tags/model_extensions"
+require "tags/tag_list"

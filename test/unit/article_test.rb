@@ -20,7 +20,7 @@ class ArticleTest < ActiveSupport::TestCase
   should have_and_belong_to_many :venues
   
   # Custom bits
-  #should_have_grundlebox_tags
+  should_have_grundlebox_tags
   #should_have_grundlebox_comments
   #should_have_grundlebox_assets
   #should_have_grundlebox_lock

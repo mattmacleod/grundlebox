@@ -24,7 +24,7 @@ class Venue < ActiveRecord::Base
   validates :url, :presence => true, :url => true
   
   # Library stuff
-  #grundlebox_has_tags
+  grundlebox_has_tags
   #grundlebox_has_comments
   #grundlebox_has_assets
   #grundlebox_has_lock
