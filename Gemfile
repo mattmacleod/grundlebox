@@ -9,6 +9,8 @@ gem "haml"
 gem "jammit"
 gem "fastercsv"
 gem "htmlentities"
+gem "paper_trail",
+    :git => "http://github.com/mattmacleod/paper_trail.git"
 gem "will_paginate", 
 		:git => "http://github.com/mislav/will_paginate.git",
 		:branch => "rails3"

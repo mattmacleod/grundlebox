@@ -45,7 +45,7 @@ class Article < ActiveRecord::Base
   grundlebox_has_url   :url, :generated_from => :title
   grundlebox_has_lock
   grundlebox_has_properties
-  
+  grundlebox_has_versions :title, :abstract, :standfirst, :pullquote, :content, :footnote
   
   # Validations
   validates_presence_of :title, :template, :word_count, :article_type, :user

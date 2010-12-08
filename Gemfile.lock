@@ -1,4 +1,12 @@
 GIT
+  remote: http://github.com/mattmacleod/paper_trail.git
+  revision: a2559172f15e721e87bd0a189cacb187fbe87077
+  specs:
+    paper_trail (1.6.4)
+      actionpack (>= 2.3)
+      activerecord (>= 2.3)
+
+GIT
   remote: http://github.com/mislav/will_paginate.git
   revision: b1a5beeec9f56ecbe3594fcdca76d92b6767ce50
   branch: rails3
@@ -132,6 +140,7 @@ DEPENDENCIES
   mongrel
   mongrel_experimental
   mysql
+  paper_trail!
   paperclip
   rails (= 3.0.3)
   rcov

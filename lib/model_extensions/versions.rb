@@ -9,15 +9,10 @@ module Grundlebox #:nodoc:
       
       module ClassMethods
         
-        def grundlebox_has_versions(options={})
-          include Grundlebox::ModelExtensions::Versions::InstanceMethods
+        def grundlebox_has_versions( *attributes )
+          has_paper_trail :only => attributes
         end
 
-      end
-
-
-      module InstanceMethods
-        
       end
       
     end

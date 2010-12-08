@@ -21,7 +21,7 @@ class ApiKey < ActiveRecord::Base
   
   def record!( url, status, ip, version=0 )
     return api_requests.create( 
-      :version=>version, :url=>url, :ip=>ip, :api_key => self, :status=>status
+      :api_version=>version, :url=>url, :ip=>ip, :api_key => self, :status=>status
     )
   end
   

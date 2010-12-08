@@ -14,7 +14,7 @@ class ApiRequestTest < ActiveSupport::TestCase
   # Validations
   ############################################################################
   should validate_presence_of :api_key
-  should validate_presence_of :version
+  should validate_presence_of :api_version
   should validate_presence_of :url
   should validate_presence_of :status  
   should validate_presence_of :ip  

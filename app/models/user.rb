@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :pages
   has_many :assets
-  has_many :versions
+  has_many :versions, :foreign_key => "whodunnit"
   has_many :events
   has_many :performances
   has_many :venues

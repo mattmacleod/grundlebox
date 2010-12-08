@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 25) do
+ActiveRecord::Schema.define(:version => 26) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "code",                            :null => false
@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(:version => 25) do
   add_index "api_keys", ["code"], :name => "index_api_keys_on_code", :unique => true
 
   create_table "api_requests", :force => true do |t|
-    t.integer  "api_key_id",                              :null => false
-    t.integer  "version",                  :default => 0, :null => false
-    t.string   "url",                                     :null => false
-    t.string   "status",                                  :null => false
-    t.string   "ip",         :limit => 15,                :null => false
+    t.integer  "api_key_id",                               :null => false
+    t.integer  "api_version",               :default => 0, :null => false
+    t.string   "url",                                      :null => false
+    t.string   "status",                                   :null => false
+    t.string   "ip",          :limit => 15,                :null => false
     t.datetime "created_at"
   end
 
@@ -346,6 +346,17 @@ ActiveRecord::Schema.define(:version => 25) do
   add_index "venues", ["featured", "enabled"], :name => "index_venues_on_featured_and_enabled"
   add_index "venues", ["lat", "lng"], :name => "index_venues_on_lat_and_lng"
   add_index "venues", ["url"], :name => "index_venues_on_url"
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
   create_table "widgets", :force => true do |t|
     t.string   "title",       :null => false
