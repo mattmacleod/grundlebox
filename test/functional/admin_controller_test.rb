@@ -10,6 +10,8 @@ class AdminControllerTest < ActionController::TestCase
     assert_routing "/admin",        { :controller=>"admin", :action=>"index" }
     assert_routing "/admin/login",  { :controller=>"admin", :action=>"login" }
     assert_routing "/admin/logout", { :controller=>"admin", :action=>"logout" }
+    assert_routing "/admin/help",   { :controller=>"admin", :action=>"help" }
+    assert_routing "/admin/denied", { :controller=>"admin", :action=>"denied" }
   end  
   
   # Tests for when not logged in
@@ -158,14 +160,12 @@ class AdminControllerTest < ActionController::TestCase
       setup { get :index } 
       should respond_with :redirect
       should redirect_to "/admin/denied"
-      should_not set_the_flash
     end
     
     context "a GET to :denied" do
       setup { get :denied }
       should respond_with :success
       should render_template :denied
-      should_not set_the_flash
     end
     
   end

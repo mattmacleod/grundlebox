@@ -459,11 +459,12 @@ div.flash_wrapper {
 div.flash {
   padding: 1em 2em 1em 1em;
   font-size: 0.9em;
+  line-height: 1.3em;
   font-weight: bold;
   color: white;
   background-image: url(/images/admin/icons/flash_close_inactive.png);
   background-repeat: no-repeat;
-  background-position: right center;
+  background-position: right 1em;
 }
 div.flash:hover {
   background-image: url(/images/admin/icons/flash_close_active.png);
@@ -505,6 +506,9 @@ body.notice #notice_wrapper {
 body.notice #notice_content {
   width: 300px;
   margin: 0 auto;
+}
+body.notice #notice_content a {
+  color: #889;
 }
 body.notice h1 {
   margin-bottom: 0;

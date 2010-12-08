@@ -20,6 +20,26 @@ Grundlebox::Application.routes.draw do
                  
     get   "help"    => "admin#help",   :as => :help
   
+    resources :articles do
+      collection do 
+        get :unsubmitted
+        get :editing
+        get :subediting
+        get :publishing
+        get :live
+        get :inactive
+        get "download/:id" => "articles#download"
+        get "download" => "articles#download"
+      end
+      member do
+        get "print" => "articles#show", :print => true, :as=>:print
+        get "check_lock" => "articles#check_lock", :as => :check_lock
+        post "unpublish" => "articles#unpublish", :as=>:unpublish
+        put "draft" => "articles#draft", :as => :draft
+      end
+    end
+    
+    
   end
   
 end

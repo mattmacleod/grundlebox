@@ -12,4 +12,12 @@ module ApplicationHelper
     end.join.html_safe
   end
   
+  def note(content, options={})
+    options.reverse_merge!( {:type=>:info} )
+    output = "<div class=\"note #{options[:type]}\">"+
+             "<span class=\"icon #{options[:type]}\"></span><span class=\"text\">#{h content}</span>"+
+             "</div>"
+    return output.html_safe
+  end
+  
 end

@@ -64,6 +64,7 @@ class AdminController < ApplicationController
   end
   
   def denied
+    flash[:error] = "You do not have permission to access that page"
     render :layout => "admin/notice"
   end
   
