@@ -31,7 +31,7 @@ class Admin::ArticlesController < AdminController
     @articles = @articles.includes(:assets).includes(:lock).paginate(:page => params[:page])
     
     if request.xhr?
-      render :partial => "list_items", :locals => {:articles => @articles}
+      render :partial => "list", :locals => {:articles => @articles}
       return
     end
     
@@ -60,7 +60,7 @@ class Admin::ArticlesController < AdminController
   end
   
   def live
-    @articles = Article.visible
+    @articles = Article.live
     index
   end
   
@@ -141,9 +141,9 @@ class Admin::ArticlesController < AdminController
 
   def update
 
-    if @article.update_attributes(params[:article])
-      @article.update_attribute(:section_id, params[:article][:section_id])
-      @article.unlock!(current_user)
+    if @article.update_attributes( params[:article] )
+      @article.update_attribute( :section_id, params[:article][:section_id] )
+      @article.unlock!( current_user )
       
       if params[:publish_now] && [:publisher, :admin].include?(current_user.role.downcase.to_sym)
          @article.publish_now! 

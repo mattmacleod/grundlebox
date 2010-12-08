@@ -117,7 +117,7 @@ class Article < ActiveRecord::Base
     
     def live
       where(
-        "status=? AND starts_at<=? AND "+
+        "status=? AND (starts_at IS NULL OR starts_at <= ?) AND "+
         "(ends_at IS NULL OR ends_at >= ?) AND print_only=?", 
         Status[:published], Time::now, Time::now, false
       )

@@ -1,13 +1,28 @@
 module AdminHelper
   
+  # General global admin helpers
+  ############################################################################
   def page_title
     [@page_title, Grundlebox::Config::SiteTitle].compact.join(" | ")
   end
   
   
+  # Ajax and pagination
+  ############################################################################
+  def ajax_spinner(base)
+    image_tag( "/images/admin/spinner.gif", :alt => "Loading...", :class => "spinner", :id => "#{base}_spinner" )
+  end
+  
+  def continuous_pagination(name)
+    out = "<div id=\"pagination_loading_wrapper\"><div id=\"pagination_loading\">Loading..."
+    out << image_tag("/images/admin/spinner.gif", :alt=>"Loading...", :id => "#{name}_spinner")
+    out << "</div></div>"
+    return out.html_safe
+  end
+  
+  
   # Menu helpers
   ############################################################################
-  
   def admin_main_menu
     "<li class=\"#{"in" unless controller_name=="admin"}active\">#{link_to "Dashboard", "/admin"}</li>".html_safe +
     Grundlebox::Config::AdminModules.collect do |mod|

@@ -1,0 +1,62 @@
+//****************************************************************************
+// Ajax functionality
+//****************************************************************************
+
+.spinner
+	display: none
+	
+.search_form
+	@extend .medium_rounded, .clearfix
+	border: 10px $grey_6 solid
+	padding: 10px
+	margin: 10px 0px 20px 0px
+	font-weight: bold
+	text-transform: uppercase
+	color: $grey_2
+	font-size: 0.9em
+	
+	input
+		width: 30%
+		float: left
+		
+	.spinner
+		float: none
+		position: absolute
+		
+	.summary
+		float: right
+		font-size: 1.4em
+		padding: 12px 0px
+		
+	.buttons
+		float: left
+		margin-left: 1em
+		
+		input, a
+			@extend .small_rounded
+			line-height: 1.2em
+			width: auto
+			padding: 0.2em 0.5em
+			margin-right: 1em
+			cursor: pointer
+			background: $grey_5
+			border: 1px $grey_4 solid
+			font-weight: bold
+			color: $grey_1
+			text-transform: uppercase
+			&:hover
+				@extend .form_glow
+				text-decoration: none
+			
+#pagination_loading_wrapper
+	height: 50px
+	margin: 20px
+	
+	#pagination_loading
+		display: none
+		margin: 0px auto
+		width: 100px
+		border: 10px $grey_5 solid
+		padding: 10px 20px
+		font-weight: bold
+		line-height: 2em

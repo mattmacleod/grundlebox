@@ -1,5 +1,12 @@
 grundlebox.admin.ui = {
 	
+	// Setup the UI elements across the admin
+	init_ui_elements: function(){
+		this.setup_flash();
+		this.pagination.init();
+	},
+	
+	// Handle effects etc for the flash message
 	setup_flash: function(){
 		
 		// Do the highlight effect

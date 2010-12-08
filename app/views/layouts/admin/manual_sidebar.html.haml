@@ -1,0 +1,7 @@
+= render :partial => "layouts/admin/parts/head"
+
+%body.default
+	- content_for :body do
+		=yield
+
+	= render "layouts/admin/parts/wrapper"

@@ -19,10 +19,10 @@ div
 			background-image: $icon_set_1
 				
 	&.flash_error
-		background-color: #f04
+		background-color: $color_red
 
 	&.flash_notice
-		background-color: #0a4
+		background-color: $color_green
 
 	&.flash span.icon, &.note span.icon
 		width: 16px
@@ -34,6 +34,26 @@ div
 		display: block
 		padding: 0 0 0 2.1em			
 
+	&.note
+		@extend .small_rounded
+		font-weight: bold
+		margin-bottom: 2em
+		padding: 1em
+		span.icon
+			background-image: $icon_set_2
+			
+		&.alert 
+			background: mix( $color_note_alert, white, 40 )
+			border: 1px $color_note_alert solid
+			span.icon
+				background-position: 0 -144px
+			
+		&.info 
+			background: mix( $color_note_info, white, 40 )
+			border: 1px $color_note_info solid
+			span.icon
+				background-position: -16px -144px
+				
 span.icon
 	&.notice
 		background-position: -16px -144px

@@ -2,19 +2,27 @@
 
 %h1= @page_title
 
--if controller.action_name=="index"
-	=note "Choose an article queue from the tabs above. The most recently-updated articles are shown below."
+-if controller.action_name == "index"
+	= note "Choose an article queue from the tabs above. The most recently-updated articles are shown below."
 	
-- elsif @articles.length>0
-	.article_search_form
-		.summary
-			= pluralize(@articles.total_entries, "Article found", "total articles found")
-		%form
-			=label_tag :q, "Search:"
-			=text_field_tag :q, "", :id=>:search_field
-			=image_tag "/images/admin/spinner.gif", :alt=>"Please wait...", :class=>:spinner, :id=>:article_search_spinner
-			
--if @articles.length > 0
-	= render :partial => "list", :locals => {:articles => @articles }
--else
-	= note "There are no articles in the #{controller.action_name} stage", :type=>:alert
+.search_form
+	.summary
+		= pluralize(@articles.total_entries, "article found", "total articles found")
+	%form{ :action => request.path }
+		= label_tag :q, "Search keywords:"
+		= text_field_tag :q, params[:q], :id => :search_field
+		.buttons
+			%input.button{ :type => :submit, :value => "Search" }
+			- unless params[:q].blank?
+				= link_to "Show all", request.path, :class => :button 
+			= ajax_spinner("search")
+
+= flash_message
+
+#pagination_wrapper
+	- if @articles.blank?
+		= note "No articles were found", :type => :alert
+	- else
+		= render :partial => "list", :locals => {:articles => @articles }
+		
+= continuous_pagination "articles"
