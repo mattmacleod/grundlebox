@@ -53,19 +53,25 @@
 			
 #content_sidebar, #right_pane
 	@extend .grid_3, .last
+	
 	.box
-		@extend .clearfix
+		@extend .clearfix, .small_rounded_top
 		margin-bottom: 2em
+		background: $grey_6
+		padding: 10px
+		
 		h2
+			@extend .small_rounded_top
 			padding: 0.3em 0.5em
-			margin-bottom: 1em
+			margin: -10px -10px 10px -10px
 			font-size: 1.2em
 			line-height: 1em
-			color: $grey_1
-			background: $grey_6
-			border-bottom: 3px $grey_5 solid
-			&:first-child
-				margin-top: 0
+			color: white
+			background: $grey_1
+			border-bottom: 3px $grey_2 solid
+			
+		input, select
+			margin-bottom: 1em
 
 	
 //****************************************************************************

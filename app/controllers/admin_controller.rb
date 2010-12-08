@@ -9,6 +9,9 @@ class AdminController < ApplicationController
   # All actions will require a valid admin login.
   before_filter :require_admin_login, :except => :login
   
+  # General prep work
+  before_filter :load_defaults
+  
   # Layout will be overriden for #login and #denied
   layout "admin/default"
   
@@ -101,6 +104,15 @@ class AdminController < ApplicationController
     
   end
    
+  
+  #
+  # Load some default variables that we'll need in most places
+  #
+  def load_defaults
+    
+  end
+  
+  
   
   #
   # Define the subsections for use in authentication and menus

@@ -7,13 +7,29 @@
 	
 .search_form
 	.summary
-		= pluralize(@articles.total_entries, "article found", "total articles found")
+		Found #{ pluralize(@articles.total_entries, "article") }
+		
+		- if @section
+			%br/
+			in section 
+			%strong= @section.name
+		- if @publication
+			%br/
+			for publication
+			%strong= @publication.name
+		- unless params[:q].blank?
+			%br/
+			matching keywords
+			%strong= params[:q]
+
 	%form{ :action => request.path }
 		= label_tag :q, "Search keywords:"
 		= text_field_tag :q, params[:q], :id => :search_field
+		= hidden_field_tag(:publication_id, params[:publication_id]) if params[:publication_id]
+		= hidden_field_tag(:section_id, params[:section_id]) if params[:section_id]
 		.buttons
 			%input.button{ :type => :submit, :value => "Search" }
-			- unless params[:q].blank?
+			- unless params[:q].blank? && params[:publication_id].blank? && params[:section_id].blank?
 				= link_to "Show all", request.path, :class => :button 
 			= ajax_spinner("search")
 

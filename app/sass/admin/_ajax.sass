@@ -11,26 +11,31 @@
 	padding: 10px
 	margin: 10px 0px 20px 0px
 	font-weight: bold
-	text-transform: uppercase
-	color: $grey_2
 	font-size: 0.9em
 	
 	input
-		width: 30%
+		width: 25%
 		float: left
 		
 	.spinner
-		float: none
 		position: absolute
+		right: -16px
+	
+	label
+		text-transform: uppercase
 		
 	.summary
 		float: right
-		font-size: 1.4em
-		padding: 12px 0px
+		color: $grey_2
+		font-weight: normal
+		width: 40%
+		text-align: right
+		font-size: 1.1em
 		
 	.buttons
 		float: left
 		margin-left: 1em
+		position: relative
 		
 		input, a
 			@extend .small_rounded

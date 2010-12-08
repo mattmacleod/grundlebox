@@ -24,8 +24,8 @@ class Admin::ArticlesController < AdminController
     @articles ||= current_user.role.downcase.to_sym==:writer ? Article.recently_updated.where(:user_id=>current_user.id) : Article.recently_updated
     
     # Filters
-    @articles = @articles.where(:publication_id => params[:publication_id]) if params[:publication_id]
-    @articles = @articles.where(:section_id => params[:section_id]) if params[:section_id]
+    @articles = @articles.where(:publication_id => params[:publication_id]) if ( params[:publication_id]  && @publication = Publication.find(params[:publication_id]) )
+    @articles = @articles.where(:section_id => params[:section_id]) if ( params[:section_id] && @section = Section.find(params[:section_id]) )
     @articles = @articles.where(["articles.title LIKE ? OR cached_authors LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%"]) if params[:q]
     
     @articles = @articles.includes(:assets).includes(:lock).paginate(:page => params[:page])
@@ -226,6 +226,13 @@ class Admin::ArticlesController < AdminController
   
   
   private
+  
+  
+  def load_defaults
+    @all_sections = Section.order(:name)
+    @all_publications = Publication.all.group_by(&:direction)
+  end
+  
   
   def get_article
     

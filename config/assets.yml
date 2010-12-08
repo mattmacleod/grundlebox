@@ -10,6 +10,7 @@ javascripts:
     - public/javascripts/admin/admin.js  
     - public/javascripts/admin/ui.js
     - public/javascripts/admin/ui.pagination.js
+    - public/javascripts/admin/articles.js
 stylesheets:
   default:
     - public/stylesheets/styles.css

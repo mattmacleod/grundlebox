@@ -1,0 +1,18 @@
+- if @article
+	.box
+		%h2 Article actions
+		%fieldset.buttons
+
+- if !@article
+	.box
+		%h2 Filter articles
+		=label_tag :publication_id, "Publication:"
+		=select_tag	:publication_id,	publication_options_for_list
+		
+		=label_tag :section_id, "Section:"
+		=select_tag	:section_id,	section_options_for_list
+		
+	.box
+		%h2 Tools
+		= link_to "New article", new_admin_article_path, :class => "button new"
+		

@@ -215,7 +215,7 @@ a:hover {
   text-decoration: underline;
 }
 
-.clipped_background, .small_rounded_top, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .small_rounded_bottom, .small_rounded, h1, input, textarea, select, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, .medium_rounded, #admin_tools, .search_form, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, body.notice #notice_body {
+.clipped_background, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .small_rounded_bottom, .small_rounded, h1, input, textarea, select, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, .medium_rounded, #admin_tools, .search_form, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, body.notice #notice_body {
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
   background-clip: padding-box;
@@ -227,7 +227,7 @@ a:hover {
   border-radius: 0;
 }
 
-.small_rounded_top, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a {
+.small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a {
   -webkit-border-top-left-radius: 4px;
   -webkit-border-top-right-radius: 4px;
   -moz-border-radius-topleft: 4px;
@@ -340,18 +340,20 @@ a:hover {
 
 #content_sidebar .box, #right_pane .box {
   margin-bottom: 2em;
+  background: #eeeeff;
+  padding: 10px;
 }
 #content_sidebar .box h2, #right_pane .box h2 {
   padding: 0.3em 0.5em;
-  margin-bottom: 1em;
+  margin: -10px -10px 10px -10px;
   font-size: 1.2em;
   line-height: 1em;
-  color: #333344;
-  background: #eeeeff;
-  border-bottom: 3px #ddddee solid;
+  color: white;
+  background: #333344;
+  border-bottom: 3px #555566 solid;
 }
-#content_sidebar .box h2:first-child, #right_pane .box h2:first-child {
-  margin-top: 0;
+#content_sidebar .box input, #content_sidebar .box select, #right_pane .box input, #right_pane .box select {
+  margin-bottom: 1em;
 }
 
 #footer_wrapper {
@@ -529,26 +531,31 @@ span.icon.error {
   padding: 10px;
   margin: 10px 0px 20px 0px;
   font-weight: bold;
-  text-transform: uppercase;
-  color: #555566;
   font-size: 0.9em;
 }
 .search_form input {
-  width: 30%;
+  width: 25%;
   float: left;
 }
 .search_form .spinner {
-  float: none;
   position: absolute;
+  right: -16px;
+}
+.search_form label {
+  text-transform: uppercase;
 }
 .search_form .summary {
   float: right;
-  font-size: 1.4em;
-  padding: 12px 0px;
+  color: #555566;
+  font-weight: normal;
+  width: 40%;
+  text-align: right;
+  font-size: 1.1em;
 }
 .search_form .buttons {
   float: left;
   margin-left: 1em;
+  position: relative;
 }
 .search_form .buttons input, .search_form .buttons a {
   line-height: 1.2em;
