@@ -65,10 +65,10 @@ th {
   clear: both;
 }
 
-.clearfix, #content_sidebar .box, #right_pane .box, ul#main_navigation, .search_form {
+.clearfix, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form {
   display: block;
 }
-.clearfix:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, .search_form:after {
+.clearfix:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after {
   content: ".";
   clear: both;
   display: block;
@@ -76,7 +76,7 @@ th {
   height: 0;
   font-size: 1px;
 }
-* html .clearfix, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html .search_form {
+* html .clearfix, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form {
   display: block;
   height: 1%;
 }
@@ -215,19 +215,19 @@ a:hover {
   text-decoration: underline;
 }
 
-.clipped_background, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .small_rounded_bottom, .small_rounded, h1, input, textarea, select, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, .medium_rounded, #admin_tools, .search_form, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
+.clipped_background, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .small_rounded_bottom, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, .medium_rounded, #admin_tools, .search_form, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
   background-clip: padding-box;
 }
 
-.not_rounded {
+.not_rounded, .tabbed_fieldsets.tabs_enabled fieldset {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
 }
 
-.small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a {
+.small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a {
   -webkit-border-top-left-radius: 4px;
   -webkit-border-top-right-radius: 4px;
   -moz-border-radius-topleft: 4px;
@@ -236,7 +236,7 @@ a:hover {
   border-top-right-radius: 4px;
 }
 
-.small_rounded_bottom {
+.small_rounded_bottom, .tabbed_fieldsets.tabs_enabled fieldset {
   -webkit-border-bottom-left-radius: 4px;
   -webkit-border-bottom-right-radius: 4px;
   -moz-border-radius-bottomleft: 4px;
@@ -245,7 +245,7 @@ a:hover {
   border-bottom-right-radius: 4px;
 }
 
-.small_rounded, h1, input, textarea, select, div.flash, div.note, .search_form .buttons input, .search_form .buttons a {
+.small_rounded, h1, input, textarea, select, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, div.flash, div.note, .search_form .buttons input, .search_form .buttons a {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -443,6 +443,7 @@ input, textarea, select {
 label {
   display: block;
   font-weight: bold;
+  line-height: 1.2em;
 }
 label span.required {
   color: red;
@@ -451,9 +452,10 @@ label span.required {
 
 .form_note {
   display: block;
-  color: #888888;
+  color: #888899;
   font-size: 0.9em;
   margin-top: 2px;
+  line-height: 1.3em;
 }
 
 .button {
@@ -528,6 +530,118 @@ a.approve:hover {
 
 a.destroy.loading, a.approve.loading {
   background: url(/images/admin/spinner_transparent.gif) center center no-repeat !important;
+}
+
+fieldset.half {
+  width: 45%;
+}
+fieldset.left {
+  float: left;
+}
+fieldset.right {
+  float: right;
+}
+fieldset.standard {
+  border: 1px #ddddee solid;
+  padding: 0 2% 2% 2%;
+}
+fieldset.standard legend {
+  padding: 3px 7px;
+  background: #333344;
+  color: #eeeeff;
+  font-weight: bold;
+}
+fieldset div.full {
+  width: 100%;
+  clear: both;
+  padding-bottom: 1em;
+}
+fieldset div.half {
+  width: 47%;
+  float: left;
+  margin-right: 2%;
+  padding-bottom: 1em;
+}
+fieldset div.third {
+  width: 30%;
+  float: left;
+  margin-right: 3%;
+  padding-bottom: 1em;
+}
+fieldset div.two_thirds {
+  width: 63%;
+  float: left;
+  margin-right: 3%;
+  padding-bottom: 1em;
+}
+fieldset div.bottom {
+  padding-bottom: 0 !important;
+}
+fieldset div div {
+  padding: 0;
+}
+fieldset div div.type_options div {
+  padding-bottom: 1em;
+}
+
+.tabbed_fieldsets h2 {
+  font-size: 1em;
+  margin: 1em 0;
+  padding: 0;
+}
+.tabbed_fieldsets fieldset {
+  border: 1px #ddddee solid;
+  padding: 2%;
+  margin-bottom: 2em;
+}
+.tabbed_fieldsets fieldset legend {
+  padding: 3px 7px;
+  background: #333344;
+  color: #eeeeff;
+  font-weight: bold;
+}
+.tabbed_fieldsets.tabs_enabled ul.tabs {
+  width: 100%;
+  overflow: auto;
+  margin-bottom: -1px;
+}
+.tabbed_fieldsets.tabs_enabled h2 {
+  float: left;
+  margin: 0;
+}
+.tabbed_fieldsets.tabs_enabled h2 a {
+  background: #ccccdd;
+  padding: 0.5em 1em;
+  margin-right: 1em;
+  color: #888899;
+}
+.tabbed_fieldsets.tabs_enabled h2 a.current {
+  color: #333344;
+  background: #eeeeff;
+}
+.tabbed_fieldsets.tabs_enabled h2 a.has_error {
+  padding-left: 2em;
+  background-image: url(/images/admin/icons/tab_error.png);
+  background-position: 0.5em center;
+  background-repeat: no-repeat;
+}
+.tabbed_fieldsets.tabs_enabled legend {
+  display: none;
+}
+.tabbed_fieldsets.tabs_enabled fieldset {
+  border: none;
+  background: #eeeeff;
+}
+.tabbed_fieldsets.tabs_enabled fieldset.article_type {
+  border: 1px #ddddee solid;
+  padding: 10px;
+}
+.tabbed_fieldsets.tabs_enabled fieldset.article_type legend {
+  display: block;
+  padding: 1px 7px;
+  background: #333344;
+  color: #eeeeff;
+  font-weight: bold;
 }
 
 #content_sidebar input.button {

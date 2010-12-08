@@ -15,6 +15,22 @@ class Grundlebox::Config
   EmailRegexp =  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
   UrlRegexp   =  /[a-zA-Z0-9_]+/i
   
+  # Article types
+  ArticleTemplates  = ["Normal"]  
+  ArticleTypes  = { 
+    :article       => "Generic article",
+    :album_review  => "Album review",
+    :single_review => "Single review",
+    :gig_review    => "Gig review",
+    :film_review   => "Film review",
+    :book_review   => "Book review",
+    :game_review   => "Game review",
+    :venue_review  => "Venue review",
+    :feature       => "Feature",
+    :review        => "Generic review",
+    :preview       => "Generic preview"
+  }  
+  
   # Magick geometry string
   ImageFileVersions = { 
     :large   => ["900x675",   :jpg],

@@ -7,6 +7,7 @@ javascripts:
   admin:
     - public/javascripts/admin/jquery-1.4.js  
     - public/javascripts/admin/jquery-ui.js
+    - public/javascripts/admin/jquery-tools.js
     - public/javascripts/admin/admin.js  
     - public/javascripts/admin/ui.js
     - public/javascripts/admin/ui.pagination.js

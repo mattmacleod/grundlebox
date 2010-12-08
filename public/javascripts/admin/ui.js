@@ -4,6 +4,7 @@ grundlebox.admin.ui = {
 	init_ui_elements: function(){
 		this.setup_flash();
 		this.pagination.init();
+		this.setup_tabbed_forms();
 	},
 	
 	// Handle effects etc for the flash message
@@ -22,6 +23,11 @@ grundlebox.admin.ui = {
 			}
 		);
 		
+	},
+	
+	setup_tabbed_forms: function(){
+		$(".tabbed_fieldsets").addClass("tabs_enabled")
+		$(".tabbed_fieldsets ul.tabs").tabs(".tabbed_fieldsets > fieldset")
 	}
 	
 }

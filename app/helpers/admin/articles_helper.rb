@@ -3,6 +3,24 @@ module Admin::ArticlesHelper
   # Form helpers
   ############################################################################
   
+  def article_type_options( selected = nil )
+    out = "<option></option>" +
+    Grundlebox::Config::ArticleTypes.map{|k,v| [v,k] }.sort{|a,b| a.first<=>b.first }.map do |type|
+      content_tag(:option, type.first, :value => type.last, :selected => ( type.first==selected ) )
+    end.join.html_safe
+  end
+  
+  
+  def publication_options(selected = nil)
+    out = "<option>Web-only</option>" +
+    @all_publications.map do |key, value|
+      options = value.map{|v|
+        content_tag(:option, v.name, :value => v.id, :selected => ( v==selected || (selected.nil? && key != :past && v==value.first) ) )
+      }.join.html_safe
+      content_tag(:optgroup, options, :label => ( key==:past ? "Past publications" : "Future publications") )
+    end.join.html_safe
+  end
+  
   def section_options_for_list(selected=nil)
     out = @all_sections.map do |section|
       content_tag( 

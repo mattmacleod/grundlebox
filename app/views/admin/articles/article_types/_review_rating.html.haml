@@ -1,0 +1,4 @@
+= f.hidden_field :review_rating, :value => 1
+
+.review_rating_input.bottom
+	= f.select :review_rating, ([""] + (1..5).to_a), :label => "Star rating", :required => true
