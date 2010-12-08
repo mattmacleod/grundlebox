@@ -1,0 +1,33 @@
+//****************************************************************************
+// Basic forms
+//***************************************************************************/
+
+legend
+	display: none
+	
+input, textarea, select
+	border: 1px $grey_2 solid
+	margin: 0
+	padding: 0.25em
+	@extend .small_rounded
+	@extend .fade
+	width: 97%
+	
+input:focus, textarea:focus
+	@extend .form_glow
+
+.check_box
+	width: auto
+
+label
+	display: block
+	font-weight: bold
+	span.required
+		color: red
+		margin-left: 0.2em
+
+.form_note
+	display: block
+	color: #888
+	font-size: 0.9em
+	margin-top: 2px

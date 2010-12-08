@@ -1,0 +1,84 @@
+//****************************************************************************
+// Main layout elements and styles for things in 'em
+//***************************************************************************/
+
+
+//****************************************************************************
+// Header
+//***************************************************************************/
+
+#header
+	height: 110px
+	background: $grey_1
+	position: relative
+
+#header_wrapper
+	@extend .container_12
+	padding: 20px 0px 0px 0px
+	position: relative
+	height: 90px
+	
+#header_title
+	font-size: 4em
+	font-weight: bold
+	color: $grey_2
+	
+#admin_tools
+	background: $grey_2
+	color: $grey_3
+	position: absolute
+	right: 20px
+	top: -10px
+	padding: 15px 10px 7px 10px
+	@extend .medium_rounded
+	a
+		color: white
+		padding: 0 0.25em
+	
+	
+//****************************************************************************
+// Main layout
+//***************************************************************************/
+
+#main_content
+	padding: 20px 0px 100px 0px
+	overflow: auto
+
+#content_body
+	@extend .grid_9, .first
+
+#content_body_wide
+	@extend .grid_12, .first, .last
+			
+#content_sidebar, #right_pane
+	@extend .grid_3, .last
+	.box
+		@extend .clearfix
+		margin-bottom: 2em
+		h2
+			padding: 0.3em 0.5em
+			margin-bottom: 1em
+			font-size: 1.2em
+			line-height: 1em
+			color: $grey_1
+			background: $grey_6
+			border-bottom: 3px $grey_5 solid
+			&:first-child
+				margin-top: 0
+
+	
+//****************************************************************************
+// Footer
+//***************************************************************************/
+
+#footer_wrapper
+	background: $grey_5
+	position: fixed
+	width: 100%
+	bottom: 0
+	
+#footer
+	@extend .container_12
+	padding: 1em
+	
+

@@ -5,7 +5,10 @@ javascripts:
   default:
     - public/javascripts/application.js
   admin:
-    - public/javascripts/admin/admin.js
+    - public/javascripts/admin/jquery-1.4.js  
+    - public/javascripts/admin/jquery-ui.js
+    - public/javascripts/admin/admin.js  
+    - public/javascripts/admin/ui.js
 stylesheets:
   default:
     - public/stylesheets/styles.css

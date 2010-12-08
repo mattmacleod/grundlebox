@@ -1,0 +1,47 @@
+body.notice
+	background: $grey_0
+	
+	#notice_wrapper
+		@extend .container_12
+		margin-top: 100px
+	
+	#notice_content
+		width: 300px
+		margin: 0 auto
+	
+	h1
+		margin-bottom: 0
+		color: $grey_1
+		background: none
+		padding: 0
+	
+	#notice_body
+		padding: 1.5em
+		background: $grey_1
+		@extend .large_rounded
+	
+	input.button
+		background: $grey_3
+		width: auto
+		padding: 0.5em 1em
+		border: none
+		@extend .border_small
+
+	input.button:hover, input.button:active
+		background: $grey_4
+		cursor: pointer
+		@extend .form_glow
+	
+	label
+		color: $grey_3
+		margin-top: 0.5em
+			
+	.buttons
+		margin-top: 1em
+		
+	.version
+		color: $grey_3
+		text-align: right
+		padding-right:  1.5em
+		font-size: 0.9em
+		margin-top: 0.5em
