@@ -18,20 +18,6 @@ class Grundlebox::Util
               join("_")
     end
     
-    def strip_html(content, allowed=[])
-      re = if allowed.any?
-        Regexp.new(
-          %(<(?!(\\s|\\/)*(#{
-            allowed.map {|tag| Regexp.escape( tag.to_s )}.join( "|" )
-          })( |>|\\/|'|"|<|\\s*\\z))[^>]*(>+|\\s*\\z)),
-          Regexp::IGNORECASE | Regexp::MULTILINE, 'u'
-        )
-      else
-        /<[^>]*(>+|\s*\z)/m
-      end
-      content.gsub(re,'').gsub(/\s\s+/, " ")
-    end
-    
   end
 
 end

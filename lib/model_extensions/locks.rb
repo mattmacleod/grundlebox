@@ -36,12 +36,8 @@ module Grundlebox #:nodoc:
         end
         
         def lock!(user)
-          begin
-            return nil if locked?
-            ::Lock::create!(:lockable => self, :user => user, :created_at => Time::now, :updated_at => Time::now)
-          rescue
-            return nil
-          end
+          return nil if locked?
+          ::Lock::create!(:lockable => self, :user => user, :created_at => Time::now, :updated_at => Time::now)
         end
         
       end
