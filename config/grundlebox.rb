@@ -32,5 +32,14 @@ class Grundlebox::Config
     "application/vnd.ms-powerpoint", "application/octet-stream"
   ]
   
+  # Admin menu system
+  AdminModules = [
+    { :title => :articles,    :controllers => [:articles],           :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
+    { :title => :pages,       :controllers => [:pages],              :roles => [:publisher, :admin] },
+    { :title => :media,       :controllers => [:assets, :galleries], :roles => [:editor, :subeditor, :publisher, :admin] },
+    { :title => :events,      :controllers => [:events, :venues],    :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
+    { :title => :users,       :controllers => [:users],              :roles => [:admin] },
+    { :title => :management,  :controllers => [:management, :tags],  :roles => [ :admin] }   
+  ]
   
 end

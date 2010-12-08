@@ -3,13 +3,7 @@
 %body.default
 	- content_for :body do
 
-		#content_body
+		#content_body_wide
 			= yield
-
-		#content_sidebar
-			-begin
-				= render :partial => "sidebar"
-			-rescue MissingTemplate
-				= yield :sidebar 
-
+			
 	= render :partial => "layouts/admin/parts/wrapper"

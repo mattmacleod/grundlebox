@@ -81,7 +81,7 @@ th {
   height: 1%;
 }
 
-.container_12, #header_wrapper, #footer, body.notice #notice_wrapper {
+.container_12, #header_wrapper, #main_content, #footer, #sub_navigation_wrapper ul#sub_navigation, body.notice #notice_wrapper {
   position: relative;
   margin: 0 auto;
   width: 960px;
@@ -215,7 +215,7 @@ a:hover {
   text-decoration: underline;
 }
 
-.clipped_background, .small_rounded_top, .small_rounded_bottom, .small_rounded, h1, input, textarea, select, div.flash, .medium_rounded, #admin_tools, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, body.notice #notice_body {
+.clipped_background, .small_rounded_top, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .small_rounded_bottom, .small_rounded, h1, input, textarea, select, div.flash, .medium_rounded, #admin_tools, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, body.notice #notice_body {
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
   background-clip: padding-box;
@@ -227,7 +227,7 @@ a:hover {
   border-radius: 0;
 }
 
-.small_rounded_top {
+.small_rounded_top, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a {
   -webkit-border-top-left-radius: 4px;
   -webkit-border-top-right-radius: 4px;
   -moz-border-radius-topleft: 4px;
@@ -281,7 +281,7 @@ a:hover {
   border-radius: 20px;
 }
 
-.fade, input, textarea, select {
+.fade, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, input, textarea, select {
   -webkit-transition: all 200ms ease-in-out !important;
 }
 
@@ -365,8 +365,63 @@ a:hover {
   padding: 1em;
 }
 
-@import url(nav.css);
-@import url(lists.css);
+ul#main_navigation {
+  position: absolute;
+  bottom: 0.4em;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+ul#main_navigation li {
+  float: left;
+}
+ul#main_navigation li a {
+  padding: 0.5em 1em;
+  background: #556;
+  margin-right: 1em;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+ul#main_navigation li a:hover {
+  background: #889;
+  color: white;
+}
+ul#main_navigation li.active a {
+  background: #dde;
+  color: #334;
+}
+
+#sub_navigation_wrapper {
+  background: #dde;
+  height: 1em;
+  padding: 0.8em 0;
+}
+#sub_navigation_wrapper ul#sub_navigation {
+  text-transform: uppercase;
+}
+#sub_navigation_wrapper ul#sub_navigation li {
+  float: left;
+}
+#sub_navigation_wrapper ul#sub_navigation li a {
+  padding: 0.5em 1em;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9em;
+  background: none;
+  margin-right: 1em;
+  color: #556;
+}
+#sub_navigation_wrapper ul#sub_navigation li a:hover {
+  background: #ccd;
+  z-index: 5;
+}
+#sub_navigation_wrapper ul#sub_navigation li.active a {
+  background: white;
+  color: #334;
+  z-index: 5;
+  position: relative;
+}
+
 legend {
   display: none;
 }

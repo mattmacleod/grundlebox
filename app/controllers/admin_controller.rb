@@ -24,13 +24,8 @@ class AdminController < ApplicationController
   end
   
   def help
-    # Do something helpful
+    render :layout => "admin/wide"
   end
-  
-  def denied
-    render :layout => "admin/notice"
-  end
-  
   
   
   # Login and logout actions
@@ -66,6 +61,10 @@ class AdminController < ApplicationController
     session[:user_id] = nil
     flash[:notice] = "You have logged out"
     redirect_to admin_login_path
+  end
+  
+  def denied
+    render :layout => "admin/notice"
   end
   
   
