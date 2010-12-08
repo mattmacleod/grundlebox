@@ -1,0 +1,9 @@
+!!! Strict
+%html{html_attrs("en-GB")}
+	
+	%head
+		%meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
+		%title= page_title
+		= include_stylesheets :default, :media => "all"
+		= include_javascripts :default
+		= csrf_meta_tag

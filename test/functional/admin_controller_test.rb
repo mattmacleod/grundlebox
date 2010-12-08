@@ -1,0 +1,173 @@
+require File.dirname(__FILE__) + '/../test_helper'
+
+class AdminControllerTest < ActionController::TestCase
+  
+  
+  # Test routes
+  ###########################################################################
+  
+  should "route to correct admin pages" do
+    assert_routing "/admin",        { :controller=>"admin", :action=>"index" }
+    assert_routing "/admin/login",  { :controller=>"admin", :action=>"login" }
+    assert_routing "/admin/logout", { :controller=>"admin", :action=>"logout" }
+  end  
+  
+  # Tests for when not logged in
+  ###########################################################################
+  
+  context "when not logged in" do
+    
+    setup do
+      @user = Factory(:user)
+    end
+    
+    # General
+    ##############################
+    
+    context "a GET to :index" do
+      setup { get :index } 
+      should_require_admin_login
+    end
+    
+    
+    # Logging in/out
+    ##############################
+    
+    context "a GET to :logout" do
+      setup { get :logout } 
+      should_require_admin_login
+    end
+        
+    context "a GET to :login" do 
+      setup { get :login } 
+      should respond_with :success 
+      should render_template :login 
+      should_not set_the_flash
+      
+      should "respond with the login form" do
+        assert_select "#email"
+        assert_select "#password"
+      end
+      
+    end
+        
+    context "a POST to :login with incorrect details" do
+      setup do
+        post :login, { :email => "notvalid@example.com", 
+                       :password => "thisisafakepassword" }
+      end
+      should respond_with :success 
+      should render_template :login
+      should set_the_flash do /wrong/i end
+    end
+    
+    context "a POST to :login with correct details" do
+      
+      setup do
+        post :login, { :email => @user.email, 
+                       :password => "password" }
+      end
+      
+      should respond_with :redirect 
+      should redirect_to "/admin"
+      should set_the_flash do /logged in/i end
+      should set_session(:user_id) { @user.id }
+      
+      should "assign the user to the user object" do
+        assert_equal @user, assigns(:user)
+      end
+      
+      should "update the user's access timestamp" do
+        @user.reload
+        assert @user.accessed_at > 1.minute.ago
+      end
+    end
+   
+  end
+
+
+  # Tests for when logged in
+  ###########################################################################
+  
+  context "when logged in as an admin user" do
+    
+    setup do
+      @user = Factory(:admin_user)
+      login_as @user
+    end
+    
+    # General
+    ##############################
+    
+    context "a GET to :index" do
+      setup { get :index } 
+      should respond_with :success
+      should render_template :index
+      should_not set_the_flash
+    end
+    
+    context "a GET to :login" do 
+      setup { get :login } 
+      should respond_with :redirect 
+      should redirect_to "/admin"
+      should_not set_the_flash
+    end
+    
+    context "a POST to :login" do 
+      setup { post :login } 
+      should respond_with :redirect 
+      should redirect_to "/admin"
+      should_not set_the_flash
+    end
+    
+    context "a GET to :logout" do
+      setup { get :logout }
+      should respond_with :redirect
+      should redirect_to "/admin/login"
+      should set_the_flash do /logged out/i end
+      should_not set_session(:user_id)
+    end
+    
+    
+    # When logins expire
+    ##############################
+    
+    context "and login expires" do
+      setup { @user.update_attribute(:accessed_at, 100.years.ago) }
+      context "a GET to :index" do
+        setup { get :index }
+        should respond_with :redirect
+        should redirect_to "/admin/login"
+        should set_the_flash do /timed out/i end
+      end
+    end
+        
+  end
+
+  context "when logged in as a non-admin user" do
+    
+    setup do
+      @user = Factory(:user)
+      login_as @user
+    end
+    
+    # General
+    ##############################
+    
+    context "a GET to :index" do
+      setup { get :index } 
+      should respond_with :redirect
+      should redirect_to "/admin/denied"
+      should_not set_the_flash
+    end
+    
+    context "a GET to :denied" do
+      setup { get :denied }
+      should respond_with :success
+      should render_template :denied
+      should_not set_the_flash
+    end
+    
+  end
+  
+end

@@ -1,0 +1,20 @@
+#header
+	#header_wrapper
+		#header_title= Grundlebox::Config::SiteTitle
+		#admin_tools
+			#{ current_user.email } | #{link_to "Log out", admin_logout_path } | #{ link_to "Site home", "/" } | #{ link_to "Help", admin_help_path }
+
+#wrapper
+	
+	#main_content
+		= yield :body
+
+#footer_wrapper
+	#footer
+		%strong #{ Grundlebox::Config::SiteTitle } 
+		==// 
+		Powered by GrundleBox v#{ Grundlebox::Internal::Version }
+		==// 
+		<a href="http://www.grundlebox.co.uk" rel="external">www.grundlebox.co.uk</a>
+
+%iframe{ :name => "print_frame", :style => "display:none" }

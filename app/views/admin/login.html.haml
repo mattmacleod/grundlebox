@@ -1,0 +1,9 @@
+= form_tag admin_login_path do 
+	%fieldset
+		%legend Log in
+		= label_tag "email"
+		= text_field_tag :email, params[:email]
+		= label_tag "password"
+		= password_field_tag :password, params[:password]
+		.buttons
+			= submit_tag "Login"

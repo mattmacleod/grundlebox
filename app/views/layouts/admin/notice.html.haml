@@ -1,0 +1,13 @@
+= render :partial => "layouts/admin/parts/head"
+
+%body.notice
+	#notice_wrapper
+		#notice_content
+
+			%h1= Grundlebox::Config::SiteTitle
+
+			= flash_message
+			= yield
+
+			.version
+				Grundlebox v#{Grundlebox::Internal::Version} // <a href="http://www.grundlebox.co.uk" target="_blank">www.grundlebox.co.uk</a>

@@ -1,0 +1,13 @@
+embed_assets: on
+package_path: packages
+
+javascripts:
+  default:
+    - public/javascripts/application.js
+  admin:
+    - public/javascripts/admin/admin.js
+stylesheets:
+  default:
+    - public/stylesheets/styles.css
+  admin:
+    - public/stylesheets/admin/styles.css
