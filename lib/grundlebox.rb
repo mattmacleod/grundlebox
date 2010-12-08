@@ -4,6 +4,8 @@ require "core_extensions"
 require "export"
 require "validators"
 require "util"
+require "labelled_form_builder"
+require "cropper"
 
 # Load model extensions
 Dir[ File.expand_path(File.dirname(__FILE__) + '/model_extensions/*.rb') ].each do |file| 
@@ -15,11 +17,7 @@ Dir[ File.expand_path(File.dirname(__FILE__) + '/controller_extensions/*.rb') ].
   require file 
 end
 
-require "cropper"
 
-
-class Grundlebox::Internal
-  
+class Grundlebox::Internal  
   Version = "1.0"
-  
 end

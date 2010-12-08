@@ -65,10 +65,10 @@ th {
   clear: both;
 }
 
-.clearfix, #content_sidebar .box, #right_pane .box, .search_form {
+.clearfix, #content_sidebar .box, #right_pane .box, ul#main_navigation, .search_form {
   display: block;
 }
-.clearfix:after, #content_sidebar .box:after, #right_pane .box:after, .search_form:after {
+.clearfix:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, .search_form:after {
   content: ".";
   clear: both;
   display: block;
@@ -76,7 +76,7 @@ th {
   height: 0;
   font-size: 1px;
 }
-* html .clearfix, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html .search_form {
+* html .clearfix, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html .search_form {
   display: block;
   height: 1%;
 }
@@ -215,7 +215,7 @@ a:hover {
   text-decoration: underline;
 }
 
-.clipped_background, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .small_rounded_bottom, .small_rounded, h1, input, textarea, select, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, .medium_rounded, #admin_tools, .search_form, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, body.notice #notice_body {
+.clipped_background, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .small_rounded_bottom, .small_rounded, h1, input, textarea, select, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, .medium_rounded, #admin_tools, .search_form, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
   background-clip: padding-box;
@@ -275,17 +275,17 @@ a:hover {
   border-bottom-right-radius: 10px;
 }
 
-.large_rounded, body.notice #notice_body {
+.large_rounded, .button, body.notice #notice_body {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
 }
 
-.fade, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, input, textarea, select {
+.fade, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, input, textarea, select, .button {
   -webkit-transition: all 200ms ease-in-out !important;
 }
 
-.form_glow, input:focus, textarea:focus, .search_form .buttons input:hover, .search_form .buttons a:hover, body.notice input.button:hover, body.notice input.button:active {
+.form_glow, input:focus, textarea:focus, .button:hover, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .search_form .buttons input:hover, .search_form .buttons a:hover, body.notice input.button:hover, body.notice input.button:active {
   border-color: #0099dd !important;
   -moz-box-shadow: 0px 0px 5px #0099dd !important;
   -webkit-box-shadow: 0px 0px 5px #0099dd !important;
@@ -369,7 +369,7 @@ a:hover {
 
 ul#main_navigation {
   position: absolute;
-  bottom: 0.4em;
+  bottom: 4px;
   text-transform: uppercase;
   font-size: 1em;
 }
@@ -454,6 +454,92 @@ label span.required {
   color: #888888;
   font-size: 0.9em;
   margin-top: 2px;
+}
+
+.button {
+  width: auto;
+  padding: 9px 12px 9px 32px;
+  font-size: 1em;
+  line-height: 1em;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #ddddee;
+  border: 1px #ccccdd solid;
+  color: #111122;
+}
+.button:hover {
+  background-color: #eeeeff !important;
+  text-decoration: none;
+}
+.button.cancel {
+  background: #ddddee url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat;
+}
+.button.cancel:hover {
+  background-color: #eeeeff !important;
+}
+.button.save {
+  background: #ddddee url(/images/admin/icons/button_save.png) 0.6em center no-repeat;
+}
+.button.save:hover {
+  background-color: #eeeeff !important;
+}
+.button.new {
+  background: #ddddee url(/images/admin/icons/button_new.png) 0.6em center no-repeat;
+}
+.button.new:hover {
+  background-color: #eeeeff !important;
+}
+.button.delete {
+  background: #ddddee url(/images/admin/icons/button_delete.png) 0.6em center no-repeat;
+}
+.button.delete:hover {
+  background-color: #eeeeff !important;
+}
+.button.edit {
+  background: #ddddee url(/images/admin/icons/button_edit.png) 0.6em center no-repeat;
+}
+.button.edit:hover {
+  background-color: #eeeeff !important;
+}
+
+a.destroy {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url(/images/admin/icons/link_destroy.png) center center no-repeat;
+  text-indent: -999em;
+  opacity: 0.2;
+}
+a.destroy:hover {
+  opacity: 1;
+}
+
+a.approve {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url(/images/admin/icons/link_approve.png) center center no-repeat;
+  text-indent: -999em;
+  opacity: 0.2;
+}
+a.approve:hover {
+  opacity: 1;
+}
+
+a.destroy.loading, a.approve.loading {
+  background: url(/images/admin/spinner_transparent.gif) center center no-repeat !important;
+}
+
+#content_sidebar input.button {
+  width: 100%;
+  text-align: left;
+}
+#content_sidebar .button {
+  display: block;
+  margin-bottom: 1em;
+}
+#content_sidebar .button.last, #content_sidebar .button#content_body_wide, #content_sidebar .button#content_sidebar, #content_sidebar .button#right_pane {
+  margin-bottom: 0;
 }
 
 div.flash_wrapper {

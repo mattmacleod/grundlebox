@@ -28,8 +28,7 @@ Grundlebox::Application.routes.draw do
         get :publishing
         get :live
         get :inactive
-        get "download/:id" => "articles#download"
-        get "download" => "articles#download"
+        get :download
       end
       member do
         get "print" => "articles#show", :print => true, :as=>:print

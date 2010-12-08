@@ -32,3 +32,101 @@ label
 	color: #888
 	font-size: 0.9em
 	margin-top: 2px
+	
+	
+	
+//****************************************************************************
+// Buttons
+//***************************************************************************/
+.button
+	@extend .large_rounded, .fade
+	
+	width: auto
+	padding: 9px 12px 9px 32px
+	
+	font-size: 1em
+	line-height: 1em
+	
+	cursor: pointer
+	font-weight: bold
+	
+	background-color: $grey_5
+	border: 1px $grey_4 solid
+	color: $grey_0
+	
+	&:hover
+		background-color: $grey_6 !important
+		@extend .form_glow
+		text-decoration: none
+		
+	&.cancel
+		background: $grey_5 url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat
+		&:hover
+			background-color: $grey_6 !important
+			@extend .form_glow
+			
+	&.save
+		background: $grey_5 url(/images/admin/icons/button_save.png) 0.6em center no-repeat
+		&:hover
+			background-color: $grey_6 !important
+			@extend .form_glow
+			
+	&.new
+		background: $grey_5 url(/images/admin/icons/button_new.png) 0.6em center no-repeat
+		&:hover
+			background-color: $grey_6 !important
+			@extend .form_glow
+			
+	&.delete
+		background: $grey_5 url(/images/admin/icons/button_delete.png) 0.6em center no-repeat
+		&:hover
+			background-color: $grey_6 !important
+			@extend .form_glow
+			
+	&.edit
+		background: $grey_5 url(/images/admin/icons/button_edit.png) 0.6em center no-repeat
+		&:hover
+			background-color: $grey_6 !important
+			@extend .form_glow
+
+// Button for destroying things
+a.destroy
+	display: block
+	width: 20px
+	height: 20px
+	background: url(/images/admin/icons/link_destroy.png) center center no-repeat
+	text-indent: -999em
+	opacity: 0.2
+	&:hover
+		opacity: 1
+
+// Button for approving things
+a.approve
+	display: block
+	width: 20px
+	height: 20px
+	background: url(/images/admin/icons/link_approve.png) center center no-repeat
+	text-indent: -999em
+	opacity: 0.2
+	&:hover
+		opacity: 1
+
+a.destroy, a.approve
+	&.loading
+		background: url(/images/admin/spinner_transparent.gif) center center no-repeat !important
+
+
+
+//****************************************************************************
+// Form buttons in sidebar
+//***************************************************************************/
+
+#content_sidebar
+	input.button
+		width: 100%
+		text-align: left
+	.button
+		display: block
+		margin-bottom: 1em
+		&.last
+			margin-bottom: 0

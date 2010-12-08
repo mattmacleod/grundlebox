@@ -21,6 +21,17 @@ module AdminHelper
   end
   
   
+  # Form helpers
+  ############################################################################
+  
+  def labelled_form_for(*args, &block)
+    raise ArgumentError, "Missing block" unless block_given?
+    options = args.extract_options!.merge( :builder => Grundlebox::Forms::LabelledFormBuilder )
+    options[:html] ||= {}
+    form_for(*(args << options), &block)
+  end
+  
+  
   # Menu helpers
   ############################################################################
   def admin_main_menu

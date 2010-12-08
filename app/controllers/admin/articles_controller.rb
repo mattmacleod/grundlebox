@@ -165,8 +165,9 @@ class Admin::ArticlesController < AdminController
   
   def new
     force_subsection :unsubmitted
-    @article = Article.new()
+    @article = Article.new
     @article.writer_string = current_user.name
+    render :layout => "admin/manual_sidebar"
   end
   
   
