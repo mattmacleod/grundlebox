@@ -18,7 +18,7 @@ Grundlebox::Application.routes.draw do
       end
     end
                  
-    get   "help"    => "admin#help",   :as => :help
+    get   "admin/help"    => "admin#help",   :as => :help
   
     resources :articles do
       collection do 

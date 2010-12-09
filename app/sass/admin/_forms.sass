@@ -168,6 +168,9 @@ fieldset
 		div.type_options div
 			padding-bottom: 1em
 		
+		
+		
+		
 //****************************************************************************
 // Tabbed fieldsets
 //***************************************************************************/
@@ -238,7 +241,38 @@ fieldset
 
 
 
+//****************************************************************************
+// Errors
+//***************************************************************************/
+form .errors
+	@extend .small_rounded
+	border: 1px solid $color_flash_error
+	background: lighten($color_flash_error, 20%)
+	color: #ffffff
+	padding: 10px
+	margin-bottom: 20px
+	h2
+		font-size: 1.3em
+		font-weight: bold
+		margin: -10px -10px 10px -10px
+		padding: 5px
+		background: $color_flash_error
+	ul
+		list-style-type: square
+		margin-left: 20px
 
+fieldset 
+	.field_with_errors 
+		input, textarea, select
+			@extend .fade
+			background: lighten($color_flash_error, 45%) !important
+			border: 1px $color_flash_error solid !important
+			&:focus
+				-moz-box-shadow: 0px 0px 5px $color_flash_error !important
+				-webkit-box-shadow: 0px 0px 5px $color_flash_error !important
+				box-shadow: 0px 0px 5px $color_flash_error !important
+				
+									
 
 //****************************************************************************
 // Form buttons in sidebar

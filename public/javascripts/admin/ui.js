@@ -26,8 +26,14 @@ grundlebox.admin.ui = {
 	},
 	
 	setup_tabbed_forms: function(){
+		if($(".tabbed_fieldsets").length==0){ return; }
 		$(".tabbed_fieldsets").addClass("tabs_enabled")
 		$(".tabbed_fieldsets ul.tabs").tabs(".tabbed_fieldsets > fieldset")
+		$(".tabbed_fieldsets > fieldset").each(function(){
+			if($(this).find(".field_with_errors").length>0){
+				$(this).parent().find("a[href=#"+$(this).attr("id")+"]").addClass("has_error");
+			}
+		});
 	}
 	
 }

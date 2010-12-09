@@ -164,33 +164,45 @@ class Admin::ArticlesController < AdminController
   
   
   def new
+    
+    # All new articles should force the unsubmitted section to be active
     force_subsection :unsubmitted
+    
+    # Create the article and set initial attributes
     @article = Article.new
     @article.writer_string = current_user.name
+    
+    # Render the with manual sidebar for the form
     render :layout => "admin/manual_sidebar"
+    
   end
   
   
   
   def create
     
+    # Create the new article
     @article = Article.new( params[:article] )
     
     # Set protected parameters
-    @article.user = current_user
-    @article.created_at = @article.updated_at = Time::now
-    @article.section_id = params[:article][:section_id]
+    @article.user       = current_user
 
+    # Save the article
     if @article.save
       
-      @article.stage_complete! if params[:stage_complete]
+      @article.stage_complete!
       @article.reload
       
+      # Return to the index
       flash[:notice] = "Article has been saved"
       redirect_to :action => :index
+      
     else
+      
+      # Render the new article form again, we couldn't save
       force_subsection :unsubmitted
-      render :action => :new
+      render :action => :new, :layout => "admin/manual_sidebar"
+      
     end
     
   end

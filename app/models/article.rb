@@ -48,8 +48,8 @@ class Article < ActiveRecord::Base
   grundlebox_has_versions :title, :abstract, :standfirst, :pullquote, :content, :footnote
   
   # Validations
-  validates_presence_of :title, :template, :word_count, :article_type, :user
-  validates_presence_of :section, :message => "must be specified"
+  validates_presence_of :title, :template, :word_count, :user
+  validates_presence_of :section, :article_type, :message => "must be specified"
   validates_presence_of :review_rating, :if => Proc.new{ review }
   
   validates :status, :presence => true, :inclusion => { :in => Article::Status::values }
