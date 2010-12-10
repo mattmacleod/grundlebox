@@ -34,25 +34,6 @@ class ApplicationController < ActionController::Base
     logged_in? && Grundlebox::Config::AdminRoles.include?( current_user.role )
   end
   
-  
-  # Filters to help with logins
-  def require_login
-    
-    # Check the user's timeout
-    if current_user && (current_user.accessed_at > (Time::now - Grundlebox::Config::SessionTimeout))
-      return true
-    elsif current_user
-      flash[:error] = "Your session has timed out"
-      session[:user_id] = nil
-      redirect_to login_path and return false
-    else
-      flash[:error] = "You need to login to access that page"
-      session[:user_id] = nil
-      redirect_to login_path and return false
-    end
-    
-  end
-  
   # Put together a nice export filename
   def export_filename_for( type = :export, extension = :csv )
     return "#{ type }_#{ Time::now.strftime("%Y%m%d%H%M%S") }.#{extension}"

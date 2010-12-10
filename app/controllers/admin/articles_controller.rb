@@ -18,18 +18,22 @@ class Admin::ArticlesController < AdminController
   
   build_permissions
     
-  # Article queues
+    
+    
+    
+  # Article listings
   ############################################################################
   def index
-    @articles ||= current_user.role.downcase.to_sym==:writer ? Article.recently_updated.where(:user_id=>current_user.id) : Article.recently_updated
     
+    @articles ||= current_user.role.downcase.to_sym==:writer ? Article.where(:user_id=>current_user.id).recently_updated : Article.recently_updated
+
     # Filters
     @articles = @articles.where(:publication_id => params[:publication_id]) if ( params[:publication_id]  && @publication = Publication.find(params[:publication_id]) )
     @articles = @articles.where(:section_id => params[:section_id]) if ( params[:section_id] && @section = Section.find(params[:section_id]) )
     @articles = @articles.where(["articles.title LIKE ? OR cached_authors LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%"]) if params[:q]
-    
+  
     @articles = @articles.includes(:assets).includes(:lock).paginate(:page => params[:page])
-    
+        
     if request.xhr?
       render :partial => "list", :locals => {:articles => @articles}
       return
@@ -75,6 +79,8 @@ class Admin::ArticlesController < AdminController
   end
   
   
+  
+  
   # Main article pages
   ############################################################################
   
@@ -113,54 +119,75 @@ class Admin::ArticlesController < AdminController
   
   
   
+  
+  
   def edit
     
-    unless @article.locked? && !(@article.lock.user==current_user)
+    # Check if the article is locked, and which user has locked it
+    unless @article.locked? && !(@article.lock.user == current_user)
+      
       if @article.locked?
+        # The article is locked by the current user - update the timestamp
         @article.lock.update_attribute(:updated_at, Time::now)
       else
+        # The article is not lockedm so lock it, doy
         @article.lock!(current_user)
         @article.reload
       end
+      
     end
-    
-    allowed = user_can_edit( @article )
-    
-    unless allowed
-      flash[:error] = "You do not have permission to edit that article"
-      redirect_to admin_articles_path and return
-    end
-    
-    # Force the highlighted subsection tab to be the queue that the article
-    # is currently in
+
+    # Set the subsection to the queue of the article
     force_subsection @article.queue
     
+    # Use the sidebar
+    render :layout => "admin/manual_sidebar"
+    
   end
+
+
 
 
 
   def update
-
+    
+    # Try to update the article
     if @article.update_attributes( params[:article] )
-      @article.update_attribute( :section_id, params[:article][:section_id] )
-      @article.unlock!( current_user )
-      
-      if params[:publish_now] && [:publisher, :admin].include?(current_user.role.downcase.to_sym)
+
+      # Update worked, so we should check what to do next
+      if params[:publish_now] && [:publisher, :admin].include?( current_user.role.downcase.to_sym )
          @article.publish_now! 
+         @article.reload
       elsif params[:stage_complete]
         @article.stage_complete!
+        @article.reload
       end
-      @article.reload
       
-      render :nothing => true and return if request.xhr?
-      flash[:notice] = "Article has been saved"
-      user_can_edit( @article ) ? redirect_to(:action => @article.queue) : redirect_to(:action => :index)
+      # Now find out what we should render
+      if request.xhr?
+        # We don't unlock, because we're probably still editing
+        render :nothing => true and return 
+      else
+        # Unlock the article (if we have the lock)
+        @article.unlock!( current_user )
+        flash[:notice] = "Article has been saved"
+        
+        # Decide if we are redirecting to the list (if we have permission)
+        # or back to the index (if we don't)
+        user_can_edit( @article ) ? redirect_to(:action => @article.queue) : redirect_to(:action => :index)
+      end
       
     else
-      request.xhr? ? render(:nothing => true, :status => 403) : render(:action => :edit)
+      
+      # Failed to update the article. Render XHR or full as required.
+      request.xhr? ? render(:nothing => true, :status => 403) : render(:action => :edit, :layout => "admin/manual_sidebar")
+    
     end
     
   end
+  
+  
+  
   
   
   def new
@@ -178,6 +205,7 @@ class Admin::ArticlesController < AdminController
   end
   
   
+    
   
   def create
     
@@ -185,16 +213,21 @@ class Admin::ArticlesController < AdminController
     @article = Article.new( params[:article] )
     
     # Set protected parameters
-    @article.user       = current_user
+    @article.user = current_user
 
     # Save the article
     if @article.save
       
-      @article.stage_complete!
-      @article.reload
-      
+      # Move to editing queue if submission checkbox ticked
+      if params[:stage_complete]
+        @article.stage_complete!
+        @article.reload
+        flash[:notice] = "Article has been submitted"
+      else
+        flash[:notice] = "Article has been saved"
+      end
+
       # Return to the index
-      flash[:notice] = "Article has been saved"
       redirect_to :action => :index
       
     else
@@ -208,11 +241,15 @@ class Admin::ArticlesController < AdminController
   end
   
   
+  
+  
   def destroy
     @article.update_attribute(:status, Article::Status[:removed])
     flash[:notice] = "Article has been obliterated"
     redirect_to :action => :index
   end
+  
+  
   
   
   def unpublish
@@ -222,31 +259,53 @@ class Admin::ArticlesController < AdminController
   end
   
   
+  
+  
   def check_lock
-    unless @article.locked? && !(@article.lock.user==current_user)
-      if @article.locked?
-        @article.lock.update_attribute(:updated_at, Time::now)
-      else
-        @article.lock!(current_user)
-        @article.reload
-      end
+    
+    # Check if the article is locked
+    if @article.locked? && (@article.lock.user == current_user)
+      
+      # Locked by current user
+      @article.lock.update_attribute(:updated_at, Time::now)
+      type = :good
+      
+    elsif @article.locked?
+      
+      # Locked by other user!
+      type = :bad
+      
+    else
+
+      # It is not locked - lock it
+      @article.lock!( current_user )
+      type = :good
+      
     end
+    
     @article.reload
-    render :partial => "lock_info", :locals => {:article => @article}
+    render :partial => "lock_info", :locals => {:article => @article, :type => type}
+    
   end
   
   
   
   
+  
+  # Private
+  ############################################################################
+  
   private
   
   
+  # Get the sections and publictions - needed pretty much all over
   def load_defaults
     @all_sections = Section.order(:name)
     @all_publications = Publication.all.group_by(&:direction)
   end
   
   
+  # Load the article - anc check if the user can edit it
   def get_article
     
     @article = Article.find(params[:id])

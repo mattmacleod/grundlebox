@@ -10,7 +10,6 @@ class ActiveSupport::TestCase
       
       context "an existing item" do
         setup { @item = Factory(klass) }
-        should validate_presence_of target_attribute
 
         should "update url field when source attribute is changed" do
           @item[generated_from] = "This is å néw nåmê ø!"
@@ -182,7 +181,7 @@ class ActiveSupport::TestCase
     
     
     def should_have_grundlebox_versions
-      
+      should have_many :versions
     end
     
     
@@ -208,6 +207,12 @@ class ActiveSupport::TestCase
             setup { @item.properties = {:test => "new" }; @item.save; @item.reload }
             should "be changed" do
               assert_equal "new", @item.properties[:test]
+            end
+          end
+          context "and set again with different properties" do
+            setup { @item.properties = {:another => "another" }; @item.save; @item.reload }
+            should "remove old properties" do
+              assert_nil @item.properties[:test]
             end
           end
         end

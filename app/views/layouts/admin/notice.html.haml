@@ -1,14 +1,17 @@
+- content_for :wrapper do
+
+	%body.notice
+		#notice_wrapper
+			#notice_content
+
+				%h1= Grundlebox::Config::SiteTitle
+
+				#notice_body
+					= flash_message
+					= yield
+
+				.version
+					Grundlebox v#{Grundlebox::Internal::Version} // <a href="http://www.grundlebox.co.uk" target="_blank">www.grundlebox.co.uk</a>
+	
+				
 = render :partial => "layouts/admin/parts/head"
-
-%body.notice
-	#notice_wrapper
-		#notice_content
-
-			%h1= Grundlebox::Config::SiteTitle
-
-			#notice_body
-				= flash_message
-				= yield
-
-			.version
-				Grundlebox v#{Grundlebox::Internal::Version} // <a href="http://www.grundlebox.co.uk" target="_blank">www.grundlebox.co.uk</a>

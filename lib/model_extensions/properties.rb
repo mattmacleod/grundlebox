@@ -21,7 +21,7 @@ module Grundlebox #:nodoc:
         
         def properties=( props )
           return nil unless props.is_a? Hash
-          self[:properties] ? self[:properties].merge!(props) : self[:properties] = props
+          self[:properties] = props
         end
         
         def properties

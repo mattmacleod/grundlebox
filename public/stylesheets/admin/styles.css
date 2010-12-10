@@ -215,6 +215,45 @@ a:hover {
   text-decoration: underline;
 }
 
+a {
+  color: #0099dd;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline !important;
+}
+
+.action_icons a {
+  display: block;
+  float: left;
+  text-indent: -999em;
+  width: 14px;
+  height: 14px;
+  background-image: url(/images/admin/icons/icons_222.png);
+  margin-right: 3px;
+}
+.action_icons .article_edit {
+  background-position: -64px -112px;
+}
+.action_icons .article_edit.locked {
+  background-position: -112px -128px;
+}
+.action_icons .article_show {
+  background-position: -32px -96px;
+}
+.action_icons .article_print {
+  background-position: -160px -96px;
+}
+.action_icons .article_unpublish {
+  background-position: -16px -160px;
+}
+.action_icons .article_indesign {
+  background-position: -64px -96px;
+}
+.action_icons .article_destroy {
+  background-position: -80px -128px;
+}
+
 .clipped_background, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .small_rounded_bottom, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, .medium_rounded, #admin_tools, .search_form, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
@@ -281,7 +320,7 @@ a:hover {
   border-radius: 20px;
 }
 
-.fade, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, input, textarea, select, .button, fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select {
+.fade, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, input, textarea, select, .button, fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select, table.list td {
   -webkit-transition: all 200ms ease-in-out !important;
 }
 
@@ -709,7 +748,7 @@ div.flash_error {
   background-color: #ff0066;
 }
 div.flash_notice {
-  background-color: #66ff00;
+  background-color: #33aa00;
 }
 div.flash span.icon, div.note span.icon {
   width: 16px;
@@ -737,8 +776,8 @@ div.note.alert span.icon {
   background-position: 0 -144px;
 }
 div.note.info {
-  background: #99d6f1;
-  border: 1px #0099dd solid;
+  background: #fff899;
+  border: 1px #ffee00 solid;
 }
 div.note.info span.icon {
   background-position: -16px -144px;
@@ -763,7 +802,7 @@ span.icon.error {
   font-size: 0.9em;
 }
 .search_form input {
-  width: 25%;
+  width: 50%;
   float: left;
 }
 .search_form .spinner {
@@ -814,6 +853,56 @@ span.icon.error {
   padding: 10px 20px;
   font-weight: bold;
   line-height: 2em;
+}
+
+table.list {
+  padding: 0;
+  width: 100%;
+}
+table.list td {
+  padding: 0.3em 0.4em;
+}
+table.list td a {
+  font-weight: bold;
+}
+table.list td.center {
+  text-align: center;
+}
+table.list td span.extra {
+  display: block;
+  font-size: 0.9em;
+  color: #666666;
+  text-transform: uppercase;
+}
+table.list td.empty {
+  font-weight: bold;
+  padding: 2em;
+  background: #ddddee;
+  text-align: center;
+}
+table.list td.nowrap {
+  white-space: nowrap;
+}
+table.list td.destroy, table.list td.approve {
+  width: 20px;
+}
+table.list th {
+  font-weight: bold;
+  background: #333344;
+  border-bottom: 1px #888899 solid;
+  color: #eeeeff;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  padding: 0.2em 0.4em;
+  white-space: nowrap;
+}
+table.list tr.odd td {
+  background: #eeeeff;
+  border-top: 1px #dddddd solid;
+  border-bottom: 1px #dddddd solid;
+}
+table.list tr:hover td {
+  background: #ffffcc;
 }
 
 body.notice {

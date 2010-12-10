@@ -5,6 +5,7 @@ Grundlebox::Application.routes.draw do
   match "admin/login"   => "admin#login",  :as => :admin_login
   get   "admin/logout"  => "admin#logout", :as => :admin_logout
   get   "admin/denied"  => "admin#denied", :as => :admin_denied
+  get   "admin/help"    => "admin#help",   :as => :admin_help
   
   namespace :admin do
     
@@ -17,8 +18,6 @@ Grundlebox::Application.routes.draw do
         get :administrators
       end
     end
-                 
-    get   "admin/help"    => "admin#help",   :as => :help
   
     resources :articles do
       collection do 
@@ -28,7 +27,7 @@ Grundlebox::Application.routes.draw do
         get :publishing
         get :live
         get :inactive
-        get :download
+        get "download/(:id)" => "articles#download", :as => :download
       end
       member do
         get "print" => "articles#show", :print => true, :as=>:print

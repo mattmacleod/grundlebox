@@ -17,3 +17,7 @@ stylesheets:
     - public/stylesheets/styles.css
   admin:
     - public/stylesheets/admin/styles.css
+  show_article:
+    - public/stylesheets/admin/show_article.css
+  print_article:
+    - public/stylesheets/admin/print_article.css

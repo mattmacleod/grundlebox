@@ -1,0 +1,9 @@
+= labelled_form_for @article, :url => admin_articles_path do |f|
+
+	#content_body
+		- @page_title = "Edit article | Article manager"
+		%h1= @article.title
+		= render :partial => "form", :locals => { :f => f }
+	
+	#content_sidebar
+		= render :partial => "sidebar", :locals=>{ :f => f }

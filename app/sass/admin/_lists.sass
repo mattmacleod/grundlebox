@@ -1,0 +1,51 @@
+//****************************************************************************
+// List styles
+//***************************************************************************/
+
+table.list
+	padding: 0
+	width: 100%
+
+	td
+		@extend .fade
+		padding: 0.3em 0.4em
+		a
+			font-weight: bold
+		&.center
+			text-align: center
+		span.extra
+			display: block
+			font-size: 0.9em
+			color: #666
+			text-transform: uppercase
+			
+		&.empty
+			font-weight: bold
+			padding: 2em
+			background: $grey_5
+			text-align: center
+			
+		&.nowrap
+			white-space: nowrap
+		
+		&.destroy,&.approve
+			width: 20px
+		
+					
+	th
+		font-weight: bold
+		background: $grey_1
+		border-bottom: 1px $grey_3 solid
+		color: $grey_6
+		font-size: 0.9em
+		text-transform: uppercase
+		padding: 0.2em 0.4em
+		white-space: nowrap
+				
+	tr.odd td
+		background: #eef
+		border-top: 1px #ddd solid
+		border-bottom: 1px #ddd solid
+
+	tr:hover td
+		background: $color_highlight

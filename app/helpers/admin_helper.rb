@@ -22,6 +22,29 @@ module AdminHelper
   
   
   
+  # Formatting
+  ############################################################################
+  
+  def print_time( value, options={} )
+    options.reverse_merge!( { :if_empty => "unknown", :long => false} )
+    return options[:if_empty] unless value && value.is_a?(Time)
+    unless options[:long]
+      if value > 6.days.ago
+        return value.strftime("%I:%M%p on %A")
+      end
+      return value.strftime("%I:%M%p on %d %b %Y")
+    else
+      return value.strftime("%I:%M%p on %A %d %B %Y")
+    end
+  end
+  
+  def print_bool( value )
+    value ? "Yes" : "No"
+  end
+  
+  
+  
+  
   # Form helpers
   ############################################################################
   

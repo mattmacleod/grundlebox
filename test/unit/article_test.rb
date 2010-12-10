@@ -37,6 +37,7 @@ class ArticleTest < ActiveSupport::TestCase
   should_not allow_mass_assignment_of :properties
   should_not allow_mass_assignment_of :created_at
   should_not allow_mass_assignment_of :updated_at
+  should allow_mass_assignment_of :section
   
   # Indexes
   should have_db_index [:status, :starts_at, :ends_at, :print_only, :featured]
@@ -126,7 +127,7 @@ class ArticleTest < ActiveSupport::TestCase
         @deleted     = Factory(:article, :status => Article::Status[:removed],      :updated_at => 2.days.ago )
       ]
     end
-    
+  
     should "be correctly found by calls to #recently_updated" do
       assert_equal 4, Article::recently_updated(4).length
       assert_same_elements [@inactive, @live, @publishing2, @publishing], Article::recently_updated(4).all

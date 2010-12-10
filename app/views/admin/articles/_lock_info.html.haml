@@ -1,0 +1,8 @@
+- if type == :good
+	#lock_notice You are the only user editing this article
+	
+- elsif type == :bad
+	#lock_warning
+		This article is also being edited by
+		= article.lock.user.email
+		and your changes may be overwritten

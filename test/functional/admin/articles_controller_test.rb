@@ -16,6 +16,7 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
     assert_routing "/admin/articles/publishing",   { :controller=>"admin/articles", :action=>"publishing" }
     assert_routing "/admin/articles/live",         { :controller=>"admin/articles", :action=>"live" }
     assert_routing "/admin/articles/inactive",     { :controller=>"admin/articles", :action=>"inactive" }
+    assert_routing "/admin/articles/download",     { :controller=>"admin/articles", :action=>"download" }
 
     # Article pages
     assert_routing "/admin/articles/1",          { :controller=>"admin/articles", :action=>"show", :id=>"1" }
@@ -25,7 +26,6 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
     
     # Additional
     assert_routing "/admin/articles/download/test-edition",     { :controller=>"admin/articles", :action=>"download", :id=>"test-edition" }
-    assert_routing "/admin/articles/search",                    { :controller=>"admin/articles", :action=>"search" }
 
   end
   
@@ -41,7 +41,7 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
       @articles = [
         @unsubmitted = Factory(:article, :status => Article::Status[:unsubmitted],  :updated_at => 9.days.ago ),
         @editing     = Factory(:article, :status => Article::Status[:editing],      :updated_at => 8.days.ago ),
-        @subediting  = Factory(:article, :status => Article::Status[:subediting],   :updated_at => 7.days.ago ),
+        @subediting  = Factory(:article, :title => "Find me", :status => Article::Status[:subediting],   :updated_at => 7.days.ago ),
         @publishing  = Factory(:article, :status => Article::Status[:published],    :updated_at => 6.days.ago, :starts_at => (Time::now + 1.year) ),
         @publishing2 = Factory(:article, :status => Article::Status[:ready],        :updated_at => 5.days.ago ),
         @live        = Factory(:article, :status => Article::Status[:published],    :updated_at => 4.days.ago ),
@@ -72,12 +72,8 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         should_not set_the_flash
         should render_template :index
         should respond_with :success
-        should "show the unsubmitted articles" do
-          assert_same_elements [@unsubmitted], assigns(:articles)
-        end
-        should "show correct links" do
-          assert_select "a", "Edit article"
-          assert_select "a.article_destroy", false
+        should "show no unsubmitted articles" do
+          assert_equal [], assigns(:articles)
         end
       end
     end
@@ -137,8 +133,18 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         should_not set_the_flash
         should render_template :index
         should respond_with :success
-        should "include the most recently-updated five articles" do
-          assert_same_elements [@inactive, @live, @publishing2, @publishing, @subediting], assigns(:articles)
+        should "include the most recently-updated articles" do
+          assert_equal [@inactive, @live, @publishing2, @publishing, @subediting, @editing, @unsubmitted], assigns(:articles)
+        end
+      end
+      
+      context "ax xhr GET to :index with a query" do
+        setup { xhr :get, :index, :q => "Find me" }
+        should_not set_the_flash
+        should render_template :list
+        should respond_with :success
+        should "include matching recently-updated articles" do
+          assert_equal [@subediting], assigns(:articles)
         end
       end
       
@@ -155,6 +161,7 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
           assert_select "a", "Obliterate article"
         end
       end
+      
       
       context "a GET to :editing" do
         setup { get :editing }
@@ -246,7 +253,7 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         should render_template :index
         should respond_with :success
         should "show all downloadable articles" do
-          assert_same_elements [@inactive, @live, @publishing2, @publishing, @subediting, @editing, @unsubmitted], assigns(:articles)
+          assert_same_elements [@inactive, @live, @publishing2, @publishing], assigns(:articles)
         end
         should "include links to edit the articles" do
           assert_select "a", "Edit article"
@@ -310,11 +317,43 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         should redirect_to "/admin/articles"
       end
       
+      # Check that we can create articles
+      context "a POST to :create with valid article details and the stage_complete parameter" do
+        setup { post :create, :article => @valid_article_details, :stage_complete => true }
+        should set_the_flash do /submitted/i end
+        should respond_with :redirect
+        should redirect_to "/admin/articles"
+        should "mark the article as submitted" do
+          assert_equal :editing, assigns(:article).queue
+        end
+      end
+      
       context "a POST to :create with invalid article details" do
         setup { post :create, :article => @invalid_article_details }
         should_not set_the_flash
         should respond_with :success
         should render_template :new
+      end
+      
+      
+      
+      # Locks
+      ###########################################################################
+      context "an xhr GET to :check_lock for an article locked by the current user" do
+        setup { @lock = @unsubmitted.lock!(@user); xhr :get, :check_lock, { :id => @unsubmitted.to_param } }
+        should render_template :lock_info
+        should "not unlock article" do assert assigns(:article).locked? end
+      end
+      context "an xhr GET to :check_lock for an article locked by another" do
+        setup { @lock = @unsubmitted.lock!(@user2 = Factory(:user)); xhr :get, :check_lock, { :id => @unsubmitted.to_param } }
+        should render_template :lock_info
+        should "not unlock article" do assert assigns(:article).locked? end
+        should "not leave lock with other user" do assert_equal @user2, assigns(:article).lock.user end
+      end
+      context "an xhr GET to :check_lock for an unlocked article" do
+        setup { xhr :get, :check_lock, { :id => @unsubmitted.to_param } }
+        should render_template :lock_info
+        should "not unlock article" do assert assigns(:article).locked? end
       end
       
       
@@ -330,6 +369,9 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         should "load the requested article" do
           assert_equal @unsubmitted, assigns(:article)
         end
+        should "lock the requested article" do
+          assert assigns(:article).locked?
+        end
         should "display the article editing form" do
           assert_select "input#article_title"
           assert_select "textarea#article_content"
@@ -337,6 +379,17 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         should "highlight the unsubmitted subnavigation tab" do
           assert_select "#sub_navigation li.active a", "Unsubmitted"
         end
+      end
+      
+      context "a GET to :edit for an unsubmitted article locked by the active user" do
+        setup { @lock = @unsubmitted.lock!(@user); get :edit, { :id => @unsubmitted.to_param } }
+        should_not set_the_flash
+        should render_template :edit
+      end
+      context "a GET to :edit for an unsubmitted article locked by another user" do
+        setup { @lock = @unsubmitted.lock!(Factory(:user)); get :edit, { :id => @unsubmitted.to_param } }
+        should_not set_the_flash
+        should render_template :edit
       end
       
       context "a GET to :edit for an editing article" do
@@ -438,6 +491,16 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         should set_the_flash do /saved/i end
         should redirect_to "/admin/articles/unsubmitted"
       end
+      
+      # Check posting an edit - valid and invalid
+      context "an XHR PUT to :update for an locked, unsubmitted article with valid details" do
+        setup { @unsubmitted.lock!( @user ); xhr :put, :update, { :id => @unsubmitted.to_param, :article => @valid_article_details } }
+        should_not set_the_flash
+        should "not unlock article" do
+          assert assigns(:article).locked?
+        end
+      end
+
       context "a PUT to :update for an unsubmitted article with invalid details" do
         setup { put :update, { :id => @unsubmitted.to_param, :article => @invalid_article_details } }
         should_not set_the_flash
@@ -452,7 +515,7 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         should set_the_flash do /obliterated/i end
         should redirect_to "/admin/articles"
         should "update the status of the article to be obliterated" do
-          assert_equal Article::Status[:deleted], assigns(:article).status
+          assert_equal Article::Status[:removed], assigns(:article).status
         end
       end
       
@@ -462,6 +525,15 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         should redirect_to "/admin/articles/editing"
         should "update the status of the article to the editing stage" do
           assert_equal :editing, assigns(:article).queue
+        end
+      end
+      
+      context "a PUT to :update for an unsubmitted article with publish_now checked" do
+        setup { put :update, { :id => @unsubmitted.to_param, :article => @valid_article_details, :publish_now => true } }
+        should set_the_flash do /saved/i end
+        should redirect_to "/admin/articles/live"
+        should "set article to live state" do
+          assert_equal :live, assigns(:article).queue
         end
       end
       

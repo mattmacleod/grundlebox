@@ -8,7 +8,7 @@
 .search_form
 	.summary
 		Found #{ pluralize(@articles.total_entries, "article") }
-		
+
 		- if @section
 			%br/
 			in section 
@@ -23,15 +23,16 @@
 			%strong= params[:q]
 
 	%form{ :action => request.path }
-		= label_tag :q, "Search keywords:"
-		= text_field_tag :q, params[:q], :id => :search_field
-		= hidden_field_tag(:publication_id, params[:publication_id]) if params[:publication_id]
-		= hidden_field_tag(:section_id, params[:section_id]) if params[:section_id]
-		.buttons
-			%input.button{ :type => :submit, :value => "Search" }
-			- unless params[:q].blank? && params[:publication_id].blank? && params[:section_id].blank?
-				= link_to "Show all", request.path, :class => :button 
-			= ajax_spinner("search")
+		%fieldset
+			= label_tag :search_field, "Search keywords:"
+			= text_field_tag :q, params[:q], :id => :search_field
+			= hidden_field_tag(:publication_id, params[:publication_id]) if params[:publication_id]
+			= hidden_field_tag(:section_id, params[:section_id]) if params[:section_id]
+			.buttons
+				%input.button{ :type => :submit, :value => "Search" }
+				- unless params[:q].blank? && params[:publication_id].blank? && params[:section_id].blank?
+					= link_to "Show all", request.path, :class => :button 
+				= ajax_spinner("search")
 
 = flash_message
 
@@ -39,6 +40,6 @@
 	- if @articles.blank?
 		= note "No articles were found", :type => :alert
 	- else
-		= render :partial => "list", :locals => {:articles => @articles }
+		= render :partial => "table", :locals => {:articles => @articles }
 		
 = continuous_pagination "articles"

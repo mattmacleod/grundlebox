@@ -56,7 +56,7 @@ class Article < ActiveRecord::Base
   
   
   # Accessiblity
-  attr_accessible :title, :abstract, :standfirst, :pullquote, :content, 
+  attr_accessible :title, :abstract, :standfirst, :pullquote, :content, :section_id,
                   :footnote, :web_address, :featured, :print_only, :template,
                   :article_type, :section, :private_notes, :publication, 
                   :review, :review_rating, :starts_at, :ends_at, :writer_string, 
@@ -71,9 +71,9 @@ class Article < ActiveRecord::Base
 
   class << self
   
-    # Returns relation for +number+ recently-updated, active articles
-    def recently_updated( number = 1 )
-      active.order("articles.updated_at DESC").limit(number)
+    def recently_updated( number = nil )
+      a = active.order("articles.updated_at DESC")
+      number ? a.limit(number) : a
     end
     
     def unsubmitted
@@ -106,7 +106,7 @@ class Article < ActiveRecord::Base
     
     def downloadable
       a = where( 
-        "status='#{Status[:ready]}' OR (status='#{Status[:published]}')"
+        "status='#{Status[:ready]}' OR status='#{Status[:published]}'"
       )
       a.order("articles.updated_at DESC")
     end
@@ -149,8 +149,7 @@ class Article < ActiveRecord::Base
   
   
   def live?
-    return status == Status[:published] && starts_at && starts_at<=Time::now && 
-           (!ends_at || ends_at>Time::now) && !print_only
+    return queue == :live
   end
   
   

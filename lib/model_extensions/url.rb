@@ -17,7 +17,7 @@ module Grundlebox #:nodoc:
           self.url_source_attribute = options[:generated_from] || "title"
           self.url_attribute = attribute
           
-          validates attribute, :presence=>true, :format=>{ :with=>Grundlebox::Config::UrlRegexp }
+          validates attribute, :presence=>true, :format=>{ :with=>Grundlebox::Config::UrlRegexp }, :unless => Proc.new { self[self.class.url_source_attribute].blank?  }
           
           include Grundlebox::ModelExtensions::Url::InstanceMethods
           
