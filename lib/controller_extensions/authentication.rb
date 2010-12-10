@@ -21,17 +21,5 @@ ActionController::Base.class_eval do
     end
     
   end
-  
-  # Does the user have permission to access the requested action?
-  def self.has_permission(subsection)
-    
-    # Get the subsection we're requesting
-    subsection = subsections.select{|s| s[:actions].include?(subsection.to_sym) }.first
-    
-    # Yes if it exists and is in the list. No if it doesn't or isn't.
-    return false unless subsection
-    return subsection[:roles].include?( current_user.role.downcase.to_sym )
-    
-  end
-  
+
 end

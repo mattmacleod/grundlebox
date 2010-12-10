@@ -39,7 +39,7 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
   context "with articles" do
     setup do
       @articles = [
-        @unsubmitted = Factory(:article, :status => Article::Status[:unsubmitted],  :updated_at => 9.days.ago ),
+        @unsubmitted = Factory(:article, :user => (@writer = Factory(:user, :role => "WRITER")), :status => Article::Status[:unsubmitted],  :updated_at => 9.days.ago ),
         @editing     = Factory(:article, :status => Article::Status[:editing],      :updated_at => 8.days.ago ),
         @subediting  = Factory(:article, :title => "Find me", :status => Article::Status[:subediting],   :updated_at => 7.days.ago ),
         @publishing  = Factory(:article, :status => Article::Status[:published],    :updated_at => 6.days.ago, :starts_at => (Time::now + 1.year) ),
@@ -64,16 +64,16 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
     
     context "when logged in as a writer" do
       setup do
-        @user = Factory(:user, :role=>"WRITER")
+        @user = @writer
         login_as @user
       end
-      context "a GET to :unsubmitted" do
-        setup { get :unsubmitted }
+      context "a GET to :index" do
+        setup { get :index }
         should_not set_the_flash
         should render_template :index
         should respond_with :success
-        should "show no unsubmitted articles" do
-          assert_equal [], assigns(:articles)
+        should "only show user's articles" do
+          assert_equal [@unsubmitted], assigns(:articles)
         end
       end
     end
@@ -195,8 +195,11 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
       end
       
       
-      context "a GET to :publishing" do
-        setup { get :publishing }
+      context "a GET to :publishing when one article is locked by another user" do
+        setup do
+          @publishing.lock!( Factory(:user) )
+          get :publishing
+        end
         should_not set_the_flash
         should render_template :index
         should respond_with :success
@@ -209,6 +212,9 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
           assert_select "a", "Show article"
           assert_select "a", "Print article"
           assert_select "a", "Download for InDesign"
+        end
+        should "show one of the articles as locked" do
+          assert_select "a.locked", 1
         end
       end
       

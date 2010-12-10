@@ -70,7 +70,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
           @editor = Factory(:user, :role=>"EDITOR"),
           @subeditor = Factory(:user, :role=>"SUBEDITOR"),
           @publisher = Factory(:user, :role=>"PUBLISHER"),
-          @administrator = Factory(:user, :role=>"ADMIN")
+          @administrator = Factory(:user, :role=>"ADMIN", :mailing_list => false)
         ]
       end
       
@@ -116,6 +116,13 @@ class Admin::UsersControllerTest < ActionController::TestCase
         end
       end
       
+      context "a GET to :mailing_list_subscribers" do
+        setup { get :mailing_list_subscribers }
+        should "return only mailing_list_subscribers" do
+          assert_same_elements [@user, @writer, @editor, @subeditor, @publisher], assigns(:users)
+        end
+      end
+      
       context "a GET to :index for a CSV type" do
         setup { get :index, {:format=>:csv} }
         should respond_with :success
@@ -126,6 +133,24 @@ class Admin::UsersControllerTest < ActionController::TestCase
         end
       end
       
+      context "a GET to :index for an XML type" do
+        setup { get :index, {:format=>:xml} }
+        should respond_with :success
+        should respond_with_content_type :xml
+        should_not render_with_layout
+        should "return all users" do
+          assert_same_elements @users, assigns(:users)
+        end
+      end
+      
+      context "an XHR GET to :index" do
+        setup { xhr :get, :index }
+        should "return all users" do
+          assert_same_elements @users, assigns(:users)
+        end
+        should render_template "list"
+        should_not render_template "index"
+      end
       
       context "a GET to the user edit page" do
         setup { get :edit, :id=>@writer.id }

@@ -23,14 +23,10 @@ module Grundlebox #:nodoc:
       module InstanceMethods
       
         def save_draft( user, data )
-          begin
-            transaction do
-              drafts.first.destroy if drafts.first
-              drafts.create!( :user => user, :user_name => user.name, :item_data => data )
-              return drafts.first
-            end
-          rescue
-            return nil
+          transaction do
+            drafts.destroy_all
+            drafts.create!( :user => user, :user_name => user.name, :item_data => data ) rescue nil
+            return drafts.first
           end
         end
         
