@@ -6,7 +6,7 @@
 
 	%form{ :action => request.path }
 		%fieldset
-			= label_tag :search_field, "Search keywords:"
+			= label_tag :search_field, "Search users:"
 			= text_field_tag :q, params[:q], :id => :search_field
 			.buttons
 				%input.button{ :type => :submit, :value => "Search" }

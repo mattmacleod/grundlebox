@@ -861,6 +861,7 @@ span.icon.error {
   position: relative;
 }
 .search_form .buttons input, .search_form .buttons a {
+  float: left;
   line-height: 1.2em;
   width: auto;
   padding: 0.2em 0.5em;
