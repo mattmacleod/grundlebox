@@ -254,7 +254,7 @@ a:hover {
   background-position: -80px -128px;
 }
 
-.clipped_background, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .small_rounded_bottom, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, .medium_rounded, #admin_tools, .search_form, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
+.clipped_background, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .small_rounded_bottom, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, .medium_rounded, #admin_tools, .search_form, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
   background-clip: padding-box;
@@ -284,7 +284,7 @@ a:hover {
   border-bottom-right-radius: 4px;
 }
 
-.small_rounded, h1, input, textarea, select, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning {
+.small_rounded, h1, input, textarea, select, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -541,6 +541,9 @@ label span.required {
 }
 .button.edit:hover {
   background-color: #eeeeff !important;
+}
+.button.loading {
+  background: #ddddee url(/images/admin/spinner_transparent.gif) 0.6em center no-repeat;
 }
 
 a.destroy {
@@ -928,6 +931,15 @@ table.list td.nowrap {
 }
 table.list td.destroy, table.list td.approve {
   width: 20px;
+}
+table.list td span.label {
+  color: white;
+  background: #555566;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  padding: 2px 4px;
+  position: relative;
+  top: -2px;
 }
 table.list th {
   font-weight: bold;

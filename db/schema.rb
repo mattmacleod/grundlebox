@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 26) do
+ActiveRecord::Schema.define(:version => 27) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "code",                            :null => false
@@ -156,6 +156,18 @@ ActiveRecord::Schema.define(:version => 26) do
 
   add_index "comments", ["item_type", "item_id", "hidden", "reported", "approved"], :name => "comments_index_main"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "drafts", :force => true do |t|
+    t.integer  "item_id",    :null => false
+    t.string   "item_type",  :null => false
+    t.integer  "user_id",    :null => false
+    t.integer  "user_name",  :null => false
+    t.text     "item_data",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "drafts", ["item_id", "item_type"], :name => "index_drafts_on_item_id_and_item_type", :unique => true
 
   create_table "events", :force => true do |t|
     t.string   "title",                             :null => false

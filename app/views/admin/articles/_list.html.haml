@@ -8,6 +8,8 @@
 		%td
 			%strong
 				= article.title
+				- if article.has_draft?
+					%span.label draft
 				= review_stars(article)
 			%span.extra
 				= article.cached_authors

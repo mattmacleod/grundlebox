@@ -1,6 +1,6 @@
 class Admin::ArticlesController < AdminController
     
-  before_filter :get_article, :only => [:edit, :update, :destroy, :unpublish, :check_lock]
+  before_filter :get_article, :only => [:edit, :update, :destroy, :unpublish, :check_lock, :revert_draft]
   
   # Define controller subsections
   def self.subsections
@@ -144,6 +144,7 @@ class Admin::ArticlesController < AdminController
     end
 
     @article.reload
+    @article.load_draft
     
     # Set the subsection to the queue of the article
     force_subsection @article.queue
@@ -159,9 +160,34 @@ class Admin::ArticlesController < AdminController
 
   def update
     
+    # Is this a draft, or a realie?
+    if params[:commit] == "Save draft"
+    
+      success = @article.save_draft( current_user, params[:article] )
+      
+      # Now find out what we should render
+      if request.xhr?
+        # We don't unlock, because we're probably still editing
+        render :nothing => true and return 
+      else
+        # Unlock the article (if we have the lock)
+        @article.unlock!( current_user )
+        flash[:notice] = "Article has been saved as a draft"
+        
+        # Decide if we are redirecting to the list (if we have permission)
+        # or back to the index (if we don't)
+        user_can_edit( @article ) ? redirect_to(:action => @article.queue) : redirect_to(:action => :index)
+        return
+      end
+    
+    end
+    
     # Try to update the article
     if @article.update_attributes( params[:article] )
 
+      # Destroy drafts
+      @article.drafts.destroy_all
+      
       # Update worked, so we should check what to do next
       if params[:publish_now] && [:publisher, :admin].include?( current_user.role.downcase.to_sym )
          @article.publish_now! 
@@ -234,7 +260,7 @@ class Admin::ArticlesController < AdminController
       else
         flash[:notice] = "Article has been saved"
       end
-
+    
       # Return to the index
       redirect_to :action => :index
       
@@ -248,6 +274,14 @@ class Admin::ArticlesController < AdminController
     
   end
   
+  
+  
+  
+  def revert_draft
+    @article.drafts.destroy_all
+    flash[:notice] = "Draft have been reverted"
+    redirect_to edit_admin_article_path( @article )
+  end
   
   
   

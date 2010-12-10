@@ -7,6 +7,7 @@ grundlebox.admin.articles = {
 		this.setup_title_updater();
 		this.setup_show_links();
 		this.lock_checker.init();
+		this.drafts.init();
 	},
 	
 	setup_publication_filter: function(){
@@ -76,7 +77,7 @@ grundlebox.admin.articles = {
 		count_words: function(){
 			if( this.word_count_timer==null ){
 				_this = this;
-				this.word_count_timer = setTimeout(_this.execute_count, 1000);
+				this.word_count_timer = setTimeout(_this.execute_count, 30000);
 			} else {
 				return
 			}
@@ -105,9 +106,47 @@ grundlebox.admin.articles = {
 			
 			$.get( "/admin/articles/" + $("#current_article_id").val() + "/check_lock", function(html){
 				$("#article_lock_info").html( html );
-				this.autosave_enabled = ($("#lock_warning").length == 0);
+				grundlebox.admin.articles.drafts.autosave_enabled = ($("#lock_warning").length == 0);
 			});
 		}
+	},
+	
+	drafts: {
+		
+		autosave_enabled: false,
+		
+		init: function(){
+			$("input.save_draft").click( this.save_draft );
+			setInterval("if(grundlebox.admin.articles.drafts.autosave_enabled){grundlebox.admin.articles.drafts.save_draft();}", (10000))
+		},
+		
+		save_draft: function(){
+
+			// Need to copy tinyMCE content into text area
+			$("#article_content").val( tinyMCE.get('article_content').getContent() );
+
+			$("input.save_draft").addClass("loading");
+
+			$(".edit_article").ajaxSubmit({
+				data: { commit: "Save draft" },
+				complete: function(){
+					$("input.save_draft").removeClass("loading");
+					setTimeout("$(\"input.save_draft\").attr('value', 'Save draft')", 2000)
+				},
+				
+				success: function(){
+					$("input.save_draft").attr("value", "Saved!");
+				},
+				
+				error: function(){
+					$("input.save_draft").attr("value", "Failed!");
+				}
+				
+			}); 
+
+			return false;
+		}
+		
 	}
 
 }

@@ -381,6 +381,36 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         end
       end
       
+      context "a GET to :edit for an unsubmitted article with a draft" do
+        setup do
+           @unsubmitted.save_draft( @user, {:title => "This is a draft"})
+           get :edit, { :id => @unsubmitted.to_param }
+        end
+        should_not set_the_flash
+        should render_template :edit
+        should "load the requested article" do
+          assert_equal @unsubmitted, assigns(:article)
+        end
+        should "display the draft information" do
+          assert_select "input#article_title[value=This is a draft]"
+        end
+      end
+      
+      context "a POST to :revert_draft for an unsubmitted article with a draft" do
+        setup do
+           @unsubmitted.save_draft( @user, {:title => "This is a draft"})
+           post :revert_draft, { :id => @unsubmitted.to_param }
+        end
+        should set_the_flash do /reverted/i end
+        should respond_with :redirect
+        should "load the requested article" do
+          assert_equal @unsubmitted, assigns(:article)
+        end
+        should "not display the draft information" do
+          assert_select "input#article_title[value=This is a draft]", 0
+        end
+      end
+      
       context "a GET to :edit for an unsubmitted article locked by the active user" do
         setup { @lock = @unsubmitted.lock!(@user); get :edit, { :id => @unsubmitted.to_param } }
         should_not set_the_flash
@@ -483,7 +513,6 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         should redirect_to "/admin/articles"
       end
       
-
       
       # Check posting an edit - valid and invalid
       context "a PUT to :update for an unsubmitted article with valid details" do
@@ -492,8 +521,14 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         should redirect_to "/admin/articles/unsubmitted"
       end
       
+      context "a PUT to :update for an unsubmitted article with valid details with save_draft set" do
+        setup { put :update, { :id => @unsubmitted.to_param, :article => @valid_article_details, :commit => "Save draft" } }
+        should set_the_flash do /saved as a draft/i end
+        should redirect_to "/admin/articles/unsubmitted"
+      end
+      
       # Check posting an edit - valid and invalid
-      context "an XHR PUT to :update for an locked, unsubmitted article with valid details" do
+      context "an XHR PUT to :update for a locked, unsubmitted article with valid details" do
         setup { @unsubmitted.lock!( @user ); xhr :put, :update, { :id => @unsubmitted.to_param, :article => @valid_article_details } }
         should_not set_the_flash
         should "not unlock article" do
@@ -501,6 +536,17 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         end
       end
 
+      context "an XHR PUT to :update for a locked, unsubmitted article with valid details with save_draft set" do
+        setup { @unsubmitted.lock!( @user ); xhr :put, :update, { :id => @unsubmitted.to_param, :article => @valid_article_details, :commit => "Save draft" } }
+        should_not set_the_flash
+        should "not unlock article" do
+          assert assigns(:article).locked?
+        end
+        should "save a draft" do
+          assert assigns(:article).has_draft?
+        end
+      end
+      
       context "a PUT to :update for an unsubmitted article with invalid details" do
         setup { put :update, { :id => @unsubmitted.to_param, :article => @invalid_article_details } }
         should_not set_the_flash

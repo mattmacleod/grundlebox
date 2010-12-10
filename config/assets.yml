@@ -9,6 +9,7 @@ javascripts:
     - public/javascripts/admin/jquery-ui.js
     - public/javascripts/admin/jquery-tools.js
     - public/javascripts/admin/jquery-rails.js
+    - public/javascripts/admin/jquery-form.js
     - public/javascripts/tiny_mce/jquery.tinymce.js
     - public/javascripts/admin/admin.js  
     - public/javascripts/admin/ui.js
