@@ -9,8 +9,8 @@ module Admin::ArticlesHelper
     content_tag(
       :span,
       (1..article.review_rating).map{|n| 
-        image_tag("admin/icons/inline_star.png", :alt=> pluralize(article.review_rating, "star") )
-      },
+        image_tag("admin/icons/inline_star.png", :title => pluralize(article.review_rating, "star"), :alt=> pluralize(article.review_rating, "star") )
+      }.join.html_safe,
       :class=>"review_rating"
     )
   end
@@ -117,7 +117,7 @@ module Admin::ArticlesHelper
   def article_type_options( selected = nil )
     out = "<option></option>" +
     Grundlebox::Config::ArticleTypes.map{|k,v| [v,k] }.sort{|a,b| a.first<=>b.first }.map do |type|
-      content_tag(:option, type.first, :value => type.last, :selected => ( type.first==selected ) )
+      content_tag(:option, type.first, :value => type.last, :selected => ("selected" if !selected.blank? && type.last==selected.to_sym) )
     end.join.html_safe
   end
   

@@ -51,7 +51,7 @@ class ArticleTest < ActiveSupport::TestCase
   should validate_presence_of :status
   should validate_presence_of :template
   should validate_presence_of(:article_type).with_message("must be specified")
-  should validate_presence_of(:section).with_message("must be specified")
+  should validate_presence_of(:section_id).with_message("must be specified")
   should validate_presence_of :user
 
 

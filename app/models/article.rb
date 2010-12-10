@@ -49,7 +49,7 @@ class Article < ActiveRecord::Base
   
   # Validations
   validates_presence_of :title, :template, :word_count, :user
-  validates_presence_of :section, :article_type, :message => "must be specified"
+  validates_presence_of :section_id, :article_type, :message => "must be specified"
   validates_presence_of :review_rating, :if => Proc.new{ review }
   
   validates :status, :presence => true, :inclusion => { :in => Article::Status::values }
@@ -64,8 +64,21 @@ class Article < ActiveRecord::Base
     
   # Callbacks
   before_save :save_word_count
+  before_validation :update_rating_from_article_type
   
-
+  # Special method generation for ratings
+  Grundlebox::Config::ArticleTypes.each_pair do |k,v|
+    attr_accessor "review_#{k}", "review_rating_#{k}"
+    define_method "review_rating_#{k}" do
+      review_rating
+    end
+    define_method "review_#{k}" do
+      review
+    end
+    attr_accessible "review_#{k}", "review_rating_#{k}"
+  end
+  
+  
   # Class methods
   ############################################################################
 
@@ -208,6 +221,13 @@ class Article < ActiveRecord::Base
   # Word count
   def save_word_count
     self[:word_count] = content.to_s.strip_html.split(/\s/).length
+  end
+  
+  def update_rating_from_article_type
+    if article_type && self.respond_to?( "review_#{article_type}" )
+      self[:review] = self.send("review_#{article_type}") 
+      self[:review_rating] = self.send("review_rating_#{article_type}")
+    end
   end
   
 end
