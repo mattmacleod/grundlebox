@@ -57,6 +57,37 @@ grundlebox.admin.articles = {
 				);
     });
 		
+	},
+	
+	
+	// This is inited through the tinymce loader
+	word_counter: {
+		
+		word_count_timer: null,
+
+		init: function( editor ){
+			_this = this;
+			editor.onKeyUp.add(function(ed, e) {
+		        _this.count_words();
+		    });
+		},
+
+		count_words: function(){
+			if( this.word_count_timer==null ){
+				_this = this;
+				this.word_count_timer = setTimeout(_this.execute_count, 1000);
+			} else {
+				return
+			}
+		},
+
+		execute_count: function(){
+			grundlebox.admin.articles.word_counter.word_count_timer = null;
+			total_words = tinyMCE.get( 'article_content' ).getContent().split(/[\s\?]+/).length;
+			$('.word_counter span.word_count').html(total_words);
+			$('.word_counter').effect("highlight", {color: "#778"}, 1000);
+		}
+		
 	}
 
 }

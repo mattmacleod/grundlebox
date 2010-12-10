@@ -100,7 +100,7 @@ module Admin::ArticlesHelper
     output << link_to("Obliterate article",     
       admin_article_path(article), 
       :method=>:delete,  
-      :confirm => "Are you sure? Obliterating this article will remove it forever and it cannot be retrieved.",
+      :confirm => "Are you sure? If you obliterate this article, it will be removed and will not be recoverable.",
       :title=>"Obliterate article",     
       :class=>:article_destroy)   if available_actions.include? :destroy
     

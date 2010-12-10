@@ -1,4 +1,4 @@
-= labelled_form_for @article, :url => admin_articles_path do |f|
+= labelled_form_for @article, :url => admin_article_path( @article ) do |f|
 
 	#content_body
 		- @page_title = "Edit article | Article manager"

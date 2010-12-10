@@ -36,7 +36,9 @@ class Article < ActiveRecord::Base
            :class_name => "User", :foreign_key => "user_id"
   after_save :build_authors
   attr_accessor :writer_string
-
+  def writer_string
+    cached_authors
+  end
 
   # Library stuff
   grundlebox_has_tags
