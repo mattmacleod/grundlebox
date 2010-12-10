@@ -11,4 +11,15 @@ class ActiveSupport::TestCase
     should allow_value("!#\$%&'*+-/=?^_\`\{|\}~@example.com").for(attribute)
   end
   
+  def self.should_show_errors(count=nil)
+    should "display error notification" do
+      assert_select "div.errors" do |elements|
+        assert_select "h2"
+        assert_select "ul", 1 do |items| 
+          count.blank? ? assert_select("li") : assert_select("li", count)
+        end
+      end
+    end
+  end
+  
 end

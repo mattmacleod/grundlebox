@@ -16,6 +16,7 @@ Grundlebox::Application.routes.draw do
         get :subeditors
         get :publishers
         get :administrators
+        get :mailing_list_subscribers
       end
     end
   

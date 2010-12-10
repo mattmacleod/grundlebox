@@ -75,6 +75,7 @@ class User < ActiveRecord::Base
   scope :subeditors, :conditions => { :role=>"SUBEDITOR" }
   scope :publishers, :conditions => { :role=>"PUBLISHER" }
   scope :administrators, :conditions => { :role=>"ADMIN" }
+  scope :mailing_list_subscribers, :conditions => { :mailing_list => true }
   
   class << self
   

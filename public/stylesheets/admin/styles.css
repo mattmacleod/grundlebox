@@ -324,7 +324,7 @@ a:hover {
   -webkit-transition: all 200ms ease-in-out !important;
 }
 
-.form_glow, input:focus, textarea:focus, .button:hover, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .search_form .buttons input:hover, .search_form .buttons a:hover, body.notice input.button:hover, body.notice input.button:active {
+.form_glow, input:focus, textarea:focus, .button:hover, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .button.export:hover, .search_form .buttons input:hover, .search_form .buttons a:hover, body.notice input.button:hover, body.notice input.button:active {
   border-color: #0099dd !important;
   -moz-box-shadow: 0px 0px 5px #0099dd !important;
   -webkit-box-shadow: 0px 0px 5px #0099dd !important;
@@ -540,6 +540,12 @@ label span.required {
   background: #ddddee url(/images/admin/icons/button_edit.png) 0.6em center no-repeat;
 }
 .button.edit:hover {
+  background-color: #eeeeff !important;
+}
+.button.export {
+  background: #ddddee url(/images/admin/icons/button_export.png) 0.6em center no-repeat;
+}
+.button.export:hover {
   background-color: #eeeeff !important;
 }
 .button.loading {
@@ -964,6 +970,13 @@ table.list tr.odd td {
 }
 table.list tr:hover td {
   background: #ffffcc;
+}
+table.list tr.disabled td {
+  color: #888899;
+  text-decoration: line-through;
+}
+table.list tr.disabled td a {
+  color: #888899;
 }
 
 body.notice {
