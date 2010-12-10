@@ -123,17 +123,23 @@ class Admin::ArticlesController < AdminController
   
   def edit
     
-    # Check if the article is locked, and which user has locked it
-    unless @article.locked? && !(@article.lock.user == current_user)
+    # Check if the article is locked
+    if @article.locked? && (@article.lock.user == current_user)
       
-      if @article.locked?
-        # The article is locked by the current user - update the timestamp
-        @article.lock.update_attribute(:updated_at, Time::now)
-      else
-        # The article is not lockedm so lock it, doy
-        @article.lock!(current_user)
-        @article.reload
-      end
+      # Locked by current user
+      @article.lock.update_attribute(:updated_at, Time::now)
+      @lock_status = :good
+      
+    elsif @article.locked?
+      
+      # Locked by other user!
+      @lock_status = :bad
+      
+    else
+
+      # It is not locked - lock it
+      @article.lock!( current_user )
+      @lock_status = :good
       
     end
 
@@ -284,7 +290,7 @@ class Admin::ArticlesController < AdminController
     end
     
     @article.reload
-    render :partial => "lock_info", :locals => {:article => @article, :type => type}
+    render :partial => "lock_info", :locals => {:article => @article, :lock_status => type}
     
   end
   

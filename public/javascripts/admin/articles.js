@@ -6,6 +6,7 @@ grundlebox.admin.articles = {
 		this.setup_article_type_chooser();
 		this.setup_title_updater();
 		this.setup_show_links();
+		this.lock_checker.init();
 	},
 	
 	setup_publication_filter: function(){
@@ -88,6 +89,25 @@ grundlebox.admin.articles = {
 			$('.word_counter').effect("highlight", {color: "#778"}, 1000);
 		}
 		
+	},
+	
+	
+	lock_checker: {
+		
+		init: function(){
+			if( $("#current_article_id").length > 0 ){
+				_this = this;
+				setInterval(_this.execute, (5000))
+			}
+		},
+	
+		execute: function(){
+			
+			$.get( "/admin/articles/" + $("#current_article_id").val() + "/check_lock", function(html){
+				$("#article_lock_info").html( html );
+				this.autosave_enabled = ($("#lock_warning").length == 0);
+			});
+		}
 	}
 
 }

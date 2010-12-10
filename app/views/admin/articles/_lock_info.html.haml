@@ -1,7 +1,7 @@
-- if type == :good
-	#lock_notice You are the only user editing this article
+- if lock_status == :good
+	#lock_notice You have a lock on this article
 	
-- elsif type == :bad
+- if lock_status == :bad
 	#lock_warning
 		This article is also being edited by
 		= article.lock.user.email

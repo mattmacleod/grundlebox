@@ -881,6 +881,23 @@ span.icon.error {
   line-height: 2em;
 }
 
+#lock_notice, #lock_warning {
+  margin: 0px 0px 1em 0;
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+  font-size: 0.9em;
+  line-height: 1.3em;
+}
+
+#lock_notice {
+  background: #33aa00;
+}
+
+#lock_warning {
+  background: #ff0066;
+}
+
 table.list {
   padding: 0;
   width: 100%;

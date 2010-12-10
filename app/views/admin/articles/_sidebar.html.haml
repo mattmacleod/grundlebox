@@ -1,4 +1,7 @@
 - if @article
+	#article_lock_info
+		= render :partial => "admin/articles/lock_info", :locals => { :lock_status => @lock_status, :article => @article }
+		
 	.box
 		%h2 Article actions
 		%fieldset.buttons
