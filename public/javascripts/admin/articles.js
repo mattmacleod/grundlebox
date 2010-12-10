@@ -40,15 +40,15 @@ grundlebox.admin.articles = {
 	
 	setup_show_links: function(){
 		
-		if( $("a.article_print,a.article_show").length==0 ){ return; }
+		if( $(".search_form.articles").length==0 ){ return; }
 		
 		$("body").append("<iframe id='print_frame' name='print_frame' style='width: 0; height: 0;'></iframe>")
 		
-		$("a.article_show").click( function() {
+		$("a.article_show").live( "click", function() {
         $(this).attr("target", "_blank");
     });
 		
-		$("a.article_print").click( function() {
+		$("a.article_print").live( "click", function() {
         $(this).attr("target", "print_frame");
 				$("#print_frame").load( 
 					function() {
