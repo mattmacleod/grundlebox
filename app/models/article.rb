@@ -182,7 +182,6 @@ class Article < ActiveRecord::Base
       else
         new_status = status
     end
-    update_attribute(:starts_at, Time::now) if new_status==Status[:published] && !starts_at
     update_attribute(:status, new_status)
   end
   

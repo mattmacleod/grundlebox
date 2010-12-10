@@ -108,6 +108,23 @@ module Admin::ArticlesHelper
   end
   
   
+  def article_next_stage_name( article )
+    case article.status
+    when Article::Status[:unsubmitted]
+      text = "Submit to editors"
+    when Article::Status[:editing]
+      text = "Submit to subeditors"
+    when Article::Status[:subediting]
+      text = "Submit to publishing"
+    when Article::Status[:publishing], Article::Status[:ready]
+      text = "Publish now"
+    else
+      return nil
+    end
+    return text
+  end
+  
+  
   
   
   

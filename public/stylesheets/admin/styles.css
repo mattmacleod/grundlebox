@@ -723,6 +723,21 @@ fieldset .field_with_errors input:focus, fieldset .field_with_errors textarea:fo
 #content_sidebar .button.last, #content_sidebar .button#content_body_wide, #content_sidebar .button#content_sidebar, #content_sidebar .button#right_pane {
   margin-bottom: 0;
 }
+#content_sidebar .additional {
+  margin: 1em 0;
+}
+#content_sidebar .additional h3 {
+  font-size: 1.1em;
+  text-transform: uppercase;
+  border-bottom: 1px #ccccdd solid;
+  margin-bottom: 1em;
+}
+#content_sidebar .additional p {
+  font-size: 0.8em;
+  line-height: 1.3em;
+  color: #555566;
+  margin: 1em 0;
+}
 
 .word_counter {
   float: right;
