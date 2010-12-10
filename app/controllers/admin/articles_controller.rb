@@ -143,6 +143,8 @@ class Admin::ArticlesController < AdminController
       
     end
 
+    @article.reload
+    
     # Set the subsection to the queue of the article
     force_subsection @article.queue
     
