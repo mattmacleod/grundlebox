@@ -821,8 +821,8 @@ fieldset div div.type_options div {
 }
 
 form .errors {
-  border: 1px solid #ff0066;
-  background: #ff66a3;
+  border: 1px solid #ee0033;
+  background: #ff5579;
   color: white;
   padding: 10px;
   margin-bottom: 20px;
@@ -832,7 +832,7 @@ form .errors h2 {
   font-weight: bold;
   margin: -10px -10px 10px -10px;
   padding: 5px;
-  background: #ff0066;
+  background: #ee0033;
 }
 form .errors ul {
   list-style-type: square;
@@ -840,13 +840,13 @@ form .errors ul {
 }
 
 fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select {
-  background: #ffe5f0 !important;
-  border: 1px #ff0066 solid !important;
+  background: #ffd4de !important;
+  border: 1px #ee0033 solid !important;
 }
 fieldset .field_with_errors input:focus, fieldset .field_with_errors textarea:focus, fieldset .field_with_errors select:focus {
-  -moz-box-shadow: 0px 0px 5px #ff0066 !important;
-  -webkit-box-shadow: 0px 0px 5px #ff0066 !important;
-  box-shadow: 0px 0px 5px #ff0066 !important;
+  -moz-box-shadow: 0px 0px 5px #ee0033 !important;
+  -webkit-box-shadow: 0px 0px 5px #ee0033 !important;
+  box-shadow: 0px 0px 5px #ee0033 !important;
 }
 
 #content_sidebar input.button {
@@ -908,7 +908,7 @@ div.flash span.icon {
   background-image: url(/images/admin/icons/icons_fff.png);
 }
 div.flash_error {
-  background-color: #ff0066;
+  background-color: #ee0033;
 }
 div.flash_notice {
   background-color: #33aa00;
@@ -1033,7 +1033,7 @@ span.icon.error {
 }
 
 #lock_warning {
-  background: #ff0066;
+  background: #ee0033;
 }
 
 table.list {
@@ -1288,24 +1288,24 @@ body.notice .version {
  *
  * http://docs.jquery.com/UI/Theming/API
  *
- * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Verdana,%20Arial,%20sans-serif&fwDefault=normal&fsDefault=1.1em&cornerRadius=6px&bgColorHeader=444444&bgTextureHeader=03_highlight_soft.png&bgImgOpacityHeader=44&borderColorHeader=333333&fcHeader=ffffff&iconColorHeader=ffffff&bgColorContent=000000&bgTextureContent=14_loop.png&bgImgOpacityContent=25&borderColorContent=555555&fcContent=ffffff&iconColorContent=cccccc&bgColorDefault=222222&bgTextureDefault=03_highlight_soft.png&bgImgOpacityDefault=35&borderColorDefault=444444&fcDefault=eeeeee&iconColorDefault=cccccc&bgColorHover=003147&bgTextureHover=03_highlight_soft.png&bgImgOpacityHover=33&borderColorHover=0b93d5&fcHover=ffffff&iconColorHover=ffffff&bgColorActive=0972a5&bgTextureActive=04_highlight_hard.png&bgImgOpacityActive=20&borderColorActive=26b3f7&fcActive=ffffff&iconColorActive=222222&bgColorHighlight=eeeeee&bgTextureHighlight=03_highlight_soft.png&bgImgOpacityHighlight=80&borderColorHighlight=cccccc&fcHighlight=2e7db2&iconColorHighlight=4b8e0b&bgColorError=ffc73d&bgTextureError=02_glass.png&bgImgOpacityError=40&borderColorError=ffb73d&fcError=111111&iconColorError=a83300&bgColorOverlay=5c5c5c&bgTextureOverlay=01_flat.png&bgImgOpacityOverlay=50&opacityOverlay=80&bgColorShadow=cccccc&bgTextureShadow=01_flat.png&bgImgOpacityShadow=30&opacityShadow=60&thicknessShadow=7px&offsetTopShadow=-7px&offsetLeftShadow=-7px&cornerRadiusShadow=8px */
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Lucida%20Grande,%20Lucida%20Sans,%20Arial,%20sans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=4px&bgColorHeader=333344&bgTextureHeader=01_flat.png&bgImgOpacityHeader=25&borderColorHeader=222233&fcHeader=ffffff&iconColorHeader=aaaabb&bgColorContent=333344&bgTextureContent=01_flat.png&bgImgOpacityContent=30&borderColorContent=777788&fcContent=ffffff&iconColorContent=ffffff&bgColorDefault=ddddee&bgTextureDefault=03_highlight_soft.png&bgImgOpacityDefault=100&borderColorDefault=ddddee&fcDefault=666677&iconColorDefault=888899&bgColorHover=eeeeff&bgTextureHover=03_highlight_soft.png&bgImgOpacityHover=100&borderColorHover=ddddee&fcHover=777788&iconColorHover=777788&bgColorActive=555566&bgTextureActive=03_highlight_soft.png&bgImgOpacityActive=45&borderColorActive=777788&fcActive=ffffff&iconColorActive=888899&bgColorHighlight=ffffaa&bgTextureHighlight=01_flat.png&bgImgOpacityHighlight=55&borderColorHighlight=ffdb1f&fcHighlight=333333&iconColorHighlight=333333&bgColorError=ff2255&bgTextureError=01_flat.png&bgImgOpacityError=55&borderColorError=ee0033&fcError=ffffff&iconColorError=ffffff&bgColorOverlay=ddddee&bgTextureOverlay=08_diagonals_thick.png&bgImgOpacityOverlay=70&opacityOverlay=90&bgColorShadow=aaaabb&bgTextureShadow=01_flat.png&bgImgOpacityShadow=0&opacityShadow=60&thicknessShadow=4px&offsetTopShadow=-4px&offsetLeftShadow=-4px&cornerRadiusShadow=4px */
 /* Component containers
  *---------------------------------- */
 .ui-widget {
-  font-family: Verdana, Arial, sans-serif;
+  font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
   font-size: 1.1em;
 }
 .ui-widget .ui-widget {
   font-size: 1em;
 }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
-  font-family: Verdana, Arial, sans-serif;
+  font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
   font-size: 1em;
 }
 
 .ui-widget-content {
-  border: 1px solid #555555;
-  background: black url(/images/admin/jquery-ui/ui-bg_loop_25_000000_21x21.png) 50% 50% repeat;
+  border: 1px solid #777788;
+  background: #333344 url(/images/admin/jquery-ui/ui-bg_flat_30_333344_40x100.png) 50% 50% repeat-x;
   color: white;
 }
 .ui-widget-content a {
@@ -1313,8 +1313,8 @@ body.notice .version {
 }
 
 .ui-widget-header {
-  border: 1px solid #333333;
-  background: #444444 url(/images/admin/jquery-ui/ui-bg_highlight-soft_44_444444_1x100.png) 50% 50% repeat-x;
+  border: 1px solid #222233;
+  background: #333344 url(/images/admin/jquery-ui/ui-bg_flat_25_333344_40x100.png) 50% 50% repeat-x;
   color: white;
   font-weight: bold;
 }
@@ -1325,41 +1325,41 @@ body.notice .version {
 /* Interaction states
  *---------------------------------- */
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-  border: 1px solid #444444;
-  background: #222222 url(/images/admin/jquery-ui/ui-bg_highlight-soft_35_222222_1x100.png) 50% 50% repeat-x;
-  font-weight: normal;
-  color: #eeeeee;
+  border: 1px solid #ddddee;
+  background: #ddddee url(/images/admin/jquery-ui/ui-bg_highlight-soft_100_ddddee_1x100.png) 50% 50% repeat-x;
+  font-weight: bold;
+  color: #666677;
 }
 
 .ui-state-default a {
-  color: #eeeeee;
+  color: #666677;
   text-decoration: none;
 }
 .ui-state-default a:link, .ui-state-default a:visited {
-  color: #eeeeee;
+  color: #666677;
   text-decoration: none;
 }
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
-  border: 1px solid #0b93d5;
-  background: #003147 url(/images/admin/jquery-ui/ui-bg_highlight-soft_33_003147_1x100.png) 50% 50% repeat-x;
-  font-weight: normal;
-  color: white;
+  border: 1px solid #ddddee;
+  background: #eeeeff url(/images/admin/jquery-ui/ui-bg_highlight-soft_100_eeeeff_1x100.png) 50% 50% repeat-x;
+  font-weight: bold;
+  color: #777788;
 }
 
 .ui-state-hover a {
-  color: white;
+  color: #777788;
   text-decoration: none;
 }
 .ui-state-hover a:hover {
-  color: white;
+  color: #777788;
   text-decoration: none;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-  border: 1px solid #26b3f7;
-  background: #0972a5 url(/images/admin/jquery-ui/ui-bg_highlight-hard_20_0972a5_1x100.png) 50% 50% repeat-x;
-  font-weight: normal;
+  border: 1px solid #777788;
+  background: #555566 url(/images/admin/jquery-ui/ui-bg_highlight-soft_45_555566_1x100.png) 50% 50% repeat-x;
+  font-weight: bold;
   color: white;
 }
 
@@ -1379,23 +1379,23 @@ body.notice .version {
 /* Interaction Cues
  *---------------------------------- */
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
-  border: 1px solid #cccccc;
-  background: #eeeeee url(/images/admin/jquery-ui/ui-bg_highlight-soft_80_eeeeee_1x100.png) 50% top repeat-x;
-  color: #2e7db2;
+  border: 1px solid #ffdb1f;
+  background: #ffffaa url(/images/admin/jquery-ui/ui-bg_flat_55_ffffaa_40x100.png) 50% 50% repeat-x;
+  color: #333333;
 }
 
 .ui-state-highlight a, .ui-widget-content .ui-state-highlight a, .ui-widget-header .ui-state-highlight a {
-  color: #2e7db2;
+  color: #333333;
 }
 
 .ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {
-  border: 1px solid #ffb73d;
-  background: #ffc73d url(/images/admin/jquery-ui/ui-bg_glass_40_ffc73d_1x400.png) 50% 50% repeat-x;
-  color: #111111;
+  border: 1px solid #ee0033;
+  background: #ff2255 url(/images/admin/jquery-ui/ui-bg_flat_55_ff2255_40x100.png) 50% 50% repeat-x;
+  color: white;
 }
 
 .ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a, .ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text {
-  color: #111111;
+  color: white;
 }
 
 .ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary {
@@ -1420,35 +1420,35 @@ body.notice .version {
 .ui-icon {
   width: 16px;
   height: 16px;
-  background-image: url(/images/admin/jquery-ui/ui-icons_cccccc_256x240.png);
+  background-image: url(/images/admin/jquery-ui/ui-icons_ffffff_256x240.png);
 }
 
 .ui-widget-content .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_cccccc_256x240.png);
+  background-image: url(/images/admin/jquery-ui/ui-icons_ffffff_256x240.png);
 }
 
 .ui-widget-header .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_ffffff_256x240.png);
+  background-image: url(/images/admin/jquery-ui/ui-icons_aaaabb_256x240.png);
 }
 
 .ui-state-default .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_cccccc_256x240.png);
+  background-image: url(/images/admin/jquery-ui/ui-icons_888899_256x240.png);
 }
 
 .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_ffffff_256x240.png);
+  background-image: url(/images/admin/jquery-ui/ui-icons_777788_256x240.png);
 }
 
 .ui-state-active .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_222222_256x240.png);
+  background-image: url(/images/admin/jquery-ui/ui-icons_888899_256x240.png);
 }
 
 .ui-state-highlight .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_4b8e0b_256x240.png);
+  background-image: url(/images/admin/jquery-ui/ui-icons_333333_256x240.png);
 }
 
 .ui-state-error .ui-icon, .ui-state-error-text .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_a83300_256x240.png);
+  background-image: url(/images/admin/jquery-ui/ui-icons_ffffff_256x240.png);
 }
 
 /* positioning */
@@ -2153,87 +2153,87 @@ body.notice .version {
  *---------------------------------- */
 /* Corner radius */
 .ui-corner-tl {
-  -moz-border-radius-topleft: 6px;
-  -webkit-border-top-left-radius: 6px;
-  border-top-left-radius: 6px;
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
 }
 
 .ui-corner-tr {
-  -moz-border-radius-topright: 6px;
-  -webkit-border-top-right-radius: 6px;
-  border-top-right-radius: 6px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .ui-corner-bl {
-  -moz-border-radius-bottomleft: 6px;
-  -webkit-border-bottom-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 .ui-corner-br {
-  -moz-border-radius-bottomright: 6px;
-  -webkit-border-bottom-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .ui-corner-top {
-  -moz-border-radius-topleft: 6px;
-  -webkit-border-top-left-radius: 6px;
-  border-top-left-radius: 6px;
-  -moz-border-radius-topright: 6px;
-  -webkit-border-top-right-radius: 6px;
-  border-top-right-radius: 6px;
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .ui-corner-bottom {
-  -moz-border-radius-bottomleft: 6px;
-  -webkit-border-bottom-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  -moz-border-radius-bottomright: 6px;
-  -webkit-border-bottom-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .ui-corner-right {
-  -moz-border-radius-topright: 6px;
-  -webkit-border-top-right-radius: 6px;
-  border-top-right-radius: 6px;
-  -moz-border-radius-bottomright: 6px;
-  -webkit-border-bottom-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .ui-corner-left {
-  -moz-border-radius-topleft: 6px;
-  -webkit-border-top-left-radius: 6px;
-  border-top-left-radius: 6px;
-  -moz-border-radius-bottomleft: 6px;
-  -webkit-border-bottom-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 .ui-corner-all {
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
 }
 
 /* Overlays */
 .ui-widget-overlay {
-  background: #5c5c5c url(/images/admin/jquery-ui/ui-bg_flat_50_5c5c5c_40x100.png) 50% 50% repeat-x;
-  opacity: 0.8;
-  filter: Alpha(Opacity=80);
+  background: #ddddee url(/images/admin/jquery-ui/ui-bg_diagonals-thick_70_ddddee_40x40.png) 50% 50% repeat;
+  opacity: 0.9;
+  filter: Alpha(Opacity=90);
 }
 
 .ui-widget-shadow {
-  margin: -7px 0 0 -7px;
-  padding: 7px;
-  background: #cccccc url(/images/admin/jquery-ui/ui-bg_flat_30_cccccc_40x100.png) 50% 50% repeat-x;
+  margin: -4px 0 0 -4px;
+  padding: 4px;
+  background: #aaaabb url(/images/admin/jquery-ui/ui-bg_flat_0_aaaabb_40x100.png) 50% 50% repeat-x;
   opacity: 0.6;
   filter: Alpha(Opacity=60);
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
 }
 
 /* * jQuery UI Resizable 1.8.7
