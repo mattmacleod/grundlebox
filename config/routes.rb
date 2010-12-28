@@ -35,10 +35,10 @@ Grundlebox::Application.routes.draw do
         get "check_lock" => "articles#check_lock", :as => :check_lock
         post "unpublish" => "articles#unpublish", :as=>:unpublish
         post "revert_draft" => "articles#revert_draft", :as=>:revert_draft
-        
       end
     end
-    
+
+    resources :tags
     
   end
   

@@ -41,7 +41,7 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
       @articles = [
         @unsubmitted = Factory(:article, :user => (@writer = Factory(:user, :role => "WRITER")), :status => Article::Status[:unsubmitted],  :updated_at => 9.days.ago ),
         @editing     = Factory(:article, :status => Article::Status[:editing],      :updated_at => 8.days.ago ),
-        @subediting  = Factory(:article, :title => "Find me", :status => Article::Status[:subediting],   :updated_at => 7.days.ago ),
+        @subediting  = Factory(:article, :title => "Find me", :status => Article::Status[:subediting],   :updated_at => 7.days.ago, :review => true, :review_rating => 3 ),
         @publishing  = Factory(:article, :status => Article::Status[:published],    :updated_at => 6.days.ago, :starts_at => (Time::now + 1.year) ),
         @publishing2 = Factory(:article, :status => Article::Status[:ready],        :updated_at => 5.days.ago ),
         @live        = Factory(:article, :status => Article::Status[:published],    :updated_at => 4.days.ago ),
@@ -135,6 +135,11 @@ class Admin::ArticlesControllerTest < ActionController::TestCase
         should respond_with :success
         should "include the most recently-updated articles" do
           assert_equal [@inactive, @live, @publishing2, @publishing, @subediting, @editing, @unsubmitted], assigns(:articles)
+        end
+        should "include review stars for reviews" do
+          assert_select "span.review_rating" do
+            assert_select "img", 3
+          end
         end
       end
       

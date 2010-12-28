@@ -55,7 +55,7 @@ class Grundlebox::Config
     { :title => :media,       :controllers => [:assets, :galleries], :roles => [:editor, :subeditor, :publisher, :admin] },
     { :title => :events,      :controllers => [:events, :venues],    :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
     { :title => :users,       :controllers => [:users],              :roles => [:admin] },
-    { :title => :management,  :controllers => [:management, :tags],  :roles => [ :admin] }   
+    { :title => :management,  :controllers => [:management, :tags],  :roles => [:publisher, :admin] }   
   ]
   
 end

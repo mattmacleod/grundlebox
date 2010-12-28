@@ -10,7 +10,6 @@ class TagTest < ActiveSupport::TestCase
   # Relationships
   ############################################################################
   should have_many :taggings
-  should have_many :tagged_items
 
 
   # General

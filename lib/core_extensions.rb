@@ -18,6 +18,14 @@ String.class_eval do
     gsub(/<\/?[^>]*>/, "")
   end
 
+  def tagify
+    return self.downcase.gsub(/\s/, "+")
+  end
+  
+  def untagify
+    return self.gsub("+", " ")
+  end
+  
 end
 
 Array.class_eval do

@@ -162,6 +162,9 @@ class Article < ActiveRecord::Base
     return nil
   end
   
+  def removed?
+    status==Article::Status[:removed]
+  end
   
   def live?
     return queue == :live

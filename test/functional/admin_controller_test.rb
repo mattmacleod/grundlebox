@@ -130,6 +130,12 @@ class AdminControllerTest < ActionController::TestCase
       should_not set_session(:user_id)
     end
     
+    context "a GET to :help" do
+      setup { get :help }
+      should respond_with :success
+      should render_template :help
+    end
+    
     
     # When logins expire
     ##############################

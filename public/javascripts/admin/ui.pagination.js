@@ -28,31 +28,42 @@ grundlebox.admin.ui.pagination = {
 	submit_search: function(){
 		
 		$.get( location.href, { q:$("#search_field").val() }, function(html){
-			$("#pagination_wrapper tbody").html( html );
+			if ($("#pagination_wrapper tbody").length==1){
+				$("#pagination_wrapper tbody").html( html );
+			} else {
+				$("#pagination_wrapper").html( html );
+			}
+			
 			$("#search_spinner").hide();
 		});	
 		
 	},
 
 	checkScroll:function() {
-
-	  if ( this.enabled && this.nearBottomOfPage() && !this.loading) {
 		
-			this.loading = true;
+		_this = grundlebox.admin.ui.pagination;
+		
+	  if ( _this.enabled && _this.nearBottomOfPage() && !_this.loading) {
+		
+			_this.loading = true;
 			
 			$("#pagination_loading").show();
-			this.currentPage++;
+			_this.currentPage++;
 	
-			$.get( location.href, { page:this.currentPage, q:$("#search_field").val() }, function(html){
+			$.get( location.href, { page:_this.currentPage, q:$("#search_field").val() }, function(html){
 				
 				// Disable pagination if there were no results
 				if( html.length==0 ){
-					this.enabled = false;
+					_this.enabled = false;
 				} else {
-					$("#pagination_wrapper table").append(html);
+					if ($("#pagination_wrapper table").length==1){
+						$("#pagination_wrapper table").append( html );
+					} else {
+						$("#pagination_wrapper").append( html );
+					}
 				}
 				
-				this.loading = false;
+				_this.loading = false;
 				$("#pagination_loading").hide();
 				
 			});

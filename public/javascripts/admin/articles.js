@@ -98,7 +98,7 @@ grundlebox.admin.articles = {
 		init: function(){
 			if( $("#current_article_id").length > 0 ){
 				_this = this;
-				setInterval(_this.execute, (5000))
+				setInterval(_this.execute, (15000))
 			}
 		},
 	
@@ -117,7 +117,7 @@ grundlebox.admin.articles = {
 		
 		init: function(){
 			$("input.save_draft").click( this.save_draft );
-			setInterval("if(grundlebox.admin.articles.drafts.autosave_enabled){grundlebox.admin.articles.drafts.save_draft();}", (10000))
+			setInterval("if(grundlebox.admin.articles.drafts.autosave_enabled){grundlebox.admin.articles.drafts.save_draft();}", (60000))
 		},
 		
 		save_draft: function(){

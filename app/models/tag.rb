@@ -4,7 +4,6 @@ class Tag < ActiveRecord::Base
   ############################################################################
   
   has_many :taggings
-  has_many :tagged_items, :through=>:taggings, :class_name=>( Proc.new{ taggings.taggable_type } )
   
   validates :name, :presence=>true
   
@@ -26,4 +25,12 @@ class Tag < ActiveRecord::Base
     
   end
 
+  # Instance methods
+  ############################################################################
+  
+  # Finds the items tagged with this tag
+  def taggables
+    taggings.map(&:taggable)
+  end
+  
 end

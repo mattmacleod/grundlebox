@@ -29,6 +29,10 @@ module Grundlebox
         create_tagged_field(name.to_sym, false)
       end
     
+      def tag_select(method, options = {})
+        labeled_field(method, ActionView::Helpers::InstanceTag.new(@object_name, method, self, options[:object] || @object).to_tag).html_safe
+      end
+      
       def input(method, options = {})
         labeled_field(method, ActionView::Helpers::InstanceTag.new(@object_name, method, self, options[:object] || @object).to_tag).html_safe
       end

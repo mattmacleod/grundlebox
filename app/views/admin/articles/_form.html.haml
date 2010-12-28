@@ -63,7 +63,8 @@
 
 	%fieldset#tagging{:style=>"max-width:900px"}
 		%legend Tagging
-
+		.full
+			= f.tag_select :tag_list, :label => "Article tags"
 								
 	%fieldset#assets
 		%legend Image
