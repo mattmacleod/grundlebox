@@ -15,6 +15,7 @@ javascripts:
     - public/javascripts/admin/ui.js
     - public/javascripts/admin/ui.pagination.js
     - public/javascripts/admin/articles.js
+    - public/javascripts/admin/tagging.js
     - public/javascripts/admin/tinymce.js
 stylesheets:
   default:

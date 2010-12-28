@@ -1,5 +1,4 @@
 # Include required Grundlebox libraries
-
 require "core_extensions"
 require "export"
 require "validators"
@@ -17,6 +16,8 @@ Dir[ File.expand_path(File.dirname(__FILE__) + '/controller_extensions/*.rb') ].
   require file 
 end
 
+# Setup JSON
+ActiveRecord::Base.include_root_in_json = false
 
 class Grundlebox::Internal  
   Version = "1.0"

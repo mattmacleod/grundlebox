@@ -53,7 +53,7 @@ module Grundlebox #:nodoc:
             string.gsub!(/"(.*?)"\s*,?\s*/) { tag_list << $1; "" }
             string.gsub!(/'(.*?)'\s*,?\s*/) { tag_list << $1; "" }
         
-            tag_list.add(string.split(","))
+            tag_list.add(string.split(",").uniq)
           end
         end
     

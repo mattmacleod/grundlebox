@@ -1,9 +1,18 @@
 module Grundlebox
   module Forms
     class LabelledFormBuilder < ActionView::Helpers::FormBuilder
+      
+      # Include helpers for tagging
+      include Admin::TagsHelper
+      include ActionView::Helpers::UrlHelper
+      
       LABELED_OPTIONS = [:label, :wrap, :wrap_class, :label_position, :note, :required, :for]
   
+      # Private method - defined first so we can call it from public constructor
+      ############################################################################
+  
       private
+      
       def self.create_tagged_field(method_name, label = true)
         define_method(method_name) do |method, *args|
           options = args.extract_options!
@@ -12,7 +21,6 @@ module Grundlebox
           options[:class] = "#{options[:class]} required".strip if labeled_options[:required]
           options[:class] = [method_name, options[:class]].compact.join(" ")
           args << options
-      
           field = super(method, *args)
           field = labeled_field(method, field, labeled_options) if label
           field += add_note(labeled_options[:note]) unless labeled_options[:note].blank?
@@ -20,7 +28,13 @@ module Grundlebox
         end
       end
   
+  
+  
+      # Define the handled method types in public
+      ############################################################################
+  
       public
+      
       %w(text_field password_field file_field text_area check_box radio_button select collection_select date_select datetime_select time_select).each do |name|
         create_tagged_field(name.to_sym)
       end
@@ -28,17 +42,40 @@ module Grundlebox
       %w(submit).each do |name|
         create_tagged_field(name.to_sym, false)
       end
-    
-      def tag_select(method, options = {})
-        labeled_field(method, ActionView::Helpers::InstanceTag.new(@object_name, method, self, options[:object] || @object).to_tag).html_safe
-      end
       
-      def input(method, options = {})
-        labeled_field(method, ActionView::Helpers::InstanceTag.new(@object_name, method, self, options[:object] || @object).to_tag).html_safe
+      def tag_select(method, *args)
+        
+        # First, generate a standard text field
+        options = args.extract_options!
+        labeled_options = extract_labeled_options(options)
+        options[:class] = "#{options[:class]} required".strip if labeled_options[:required]
+        options[:class] = ["tag_select", options[:class]].compact.join(" ")
+        options.reverse_merge!({ :rows => 3})
+        args << options
+        field = ActionView::Helpers::FormBuilder.instance_method(:text_area).bind(self).call(method, *args)
+        field = labeled_field(method, field, labeled_options)
+        field += add_note(labeled_options[:note]) unless labeled_options[:note].blank?
+        
+        output = tagged_field(field, labeled_options[:wrap], labeled_options[:wrap_class])  
+                
+        # Then generate a tag list to go with it
+        tag_list = "<h3>Most popular tags</h3>"
+        tag_list << "<div class=\"tag_attachment_list\">"
+        tag_list << Tag::popular.limit(20).map do |tag|
+          tag_attachment_link( tag )
+        end.compact.join
+        tag_list << "</div>"
+        
+        output += tag_list.html_safe
+        
       end
+  
+  
+      # Internal stuff
+      ############################################################################
   
       protected
-  
+      
       def tagged_field(field, tag = false, css_class = nil)
         tag.blank? ? field : content_tag(tag, field, :class => css_class)
       end
@@ -87,6 +124,7 @@ module Grundlebox
         end
         o
       end
+      
     end
   end
 end

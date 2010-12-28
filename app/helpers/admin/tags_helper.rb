@@ -9,4 +9,8 @@ module Admin::TagsHelper
     )
   end
   
+  def tag_attachment_link( tag )
+    link_to( tag.name + " (#{tag.taggings.length})", "#", :class => "tag", :title => tag.name )
+  end
+  
 end

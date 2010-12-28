@@ -57,13 +57,22 @@ class Admin::TagsControllerTest < ActionController::TestCase
           assert_same_elements @tags, assigns(:tags)
         end
       end
-       
+
       context "an XHR GET to :index" do
         setup { xhr :get, :index }
-        should "return all users" do
+        should "return all tags" do
           assert_same_elements @tags, assigns(:tags)
         end
         should render_template "list"
+        should_not render_template "index"
+      end
+
+      context "a JSON GET to :index" do
+        setup { get :index, :format => :json }
+        should "return all tags" do
+          assert_same_elements @tags, assigns(:tags)
+        end
+        should_not render_template "list"
         should_not render_template "index"
       end
 
@@ -75,7 +84,17 @@ class Admin::TagsControllerTest < ActionController::TestCase
         should render_template "list"
         should_not render_template "index"
       end
-            
+          
+      context "a JSON GET to :index with a query" do
+        setup { get :index, :q => "tag b", :format => :json }
+        should "return only tags matching the query" do
+          assert_same_elements [@tag1], assigns(:tags)
+        end
+        should_not render_template "index"
+        should_not render_template "list"
+        should respond_with_content_type :json
+      end
+        
       context "a GET to the tag edit page" do
         setup { get :edit, :id => @tag1.id }
         should respond_with :redirect

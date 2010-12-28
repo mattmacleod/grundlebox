@@ -1,7 +1,7 @@
 grundlebox.admin.ui = {
 	
 	// Setup the UI elements across the admin
-	init_ui_elements: function(){
+	init: function(){
 		this.setup_flash();
 		this.pagination.init();
 		this.setup_tabbed_forms();

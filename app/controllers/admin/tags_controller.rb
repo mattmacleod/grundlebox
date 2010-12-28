@@ -20,14 +20,24 @@ class Admin::TagsController < AdminController
 
     # Filters
     @tags = @tags.where(["tags.name LIKE ?", "%#{params[:q]}%"]) if params[:q]
-    @tags = @tags.includes(:taggings).paginate(:page => params[:page])
         
-    if request.xhr?
-      render :partial => "list", :locals => {:tags => @tags}
-      return
+    respond_to do |format|
+      format.js do
+        @tags = @tags.includes(:taggings).paginate(:page => params[:page])
+        render :partial => "list", :locals => {:tags => @tags}
+        return
+      end
+      format.html do
+        @tags = @tags.includes(:taggings).paginate(:page => params[:page])
+        render :action => "index"
+        return
+      end
+      format.json do
+        @tags = @tags.limit(10).all
+        render :json => @tags.to_json
+        return
+      end
     end
-    
-    render :action => "index"
     
   end
 

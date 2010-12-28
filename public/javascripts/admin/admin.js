@@ -1,10 +1,19 @@
-grundlebox = { }
-grundlebox.admin = { }
+grundlebox = { 
+	admin: {
+		
+		// Main init function for Grundlebox admin interface
+		init: function(){
+			this.ui.init();				// User interface elements
+			this.tinymce.init();	// Rich text editor
+			this.articles.init();	// Article editor tools
+			this.tagging.init();	// Tagging 
+		}
+		
+	}
+}
 
 $(document).ready(function(){
 
-	grundlebox.admin.ui.init_ui_elements();
-	grundlebox.admin.tinymce.init();
-	grundlebox.admin.articles.init();
+	grundlebox.admin.init();
 	
 });

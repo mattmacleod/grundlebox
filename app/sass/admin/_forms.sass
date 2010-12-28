@@ -34,8 +34,120 @@ label
 	font-size: 0.9em
 	margin-top: 2px
 	line-height: 1.3em
+
+
+
+//****************************************************************************
+// Tag selector
+//***************************************************************************/
+
+.tag_attachment_list
+	a
+		@extend .medium_rounded
+		font-size: 0.9em
+		display: block
+		float: left
+		margin: 0 1em 1em 0
+		background: lighten($color_blue, 47%)
+		border: 1px lighten($color_blue, 35%) solid
+		padding: 0.1em 0.5em 0.1em 0.7em 
+		&:hover
+			background: lighten($color_blue, 42%)
+		font-weight: bold
+		color: $grey_1
+		text-transform: uppercase
+		&:hover
+			text-decoration: none !important
 	
-	
+ul.token-input-list
+	@extend .small_rounded
+	overflow: hidden
+	height: auto !important
+	width: 100%
+	border: 1px $grey_2 solid
+	cursor: text
+	z-index: 999
+	margin: 0
+	padding: 0
+	background-color: #fff
+	list-style-type: none
+	li input
+		@extend .no_glow
+		border: 0
+		width: 100px
+		padding: 3px 8px
+		margin: 4px 0
+
+li
+	&.token-input-token
+		overflow: hidden
+		height: auto !important
+		height: 1%
+		margin: 2px
+		cursor: default
+		float: left
+		@extend .medium_rounded
+		font-size: 0.9em
+		background: lighten($color_blue, 47%)
+		border: 1px lighten($color_blue, 35%) solid
+		padding: 0.1em 0.5em 0.1em 0.7em 		
+		font-weight: bold
+		color: $grey_1
+		text-transform: uppercase
+		p
+			display: block
+			float: left
+			padding: 0
+			margin: 0
+		span
+			width: 16px
+			height: 16px
+			margin-left: 0.5em
+			display: block
+			float: right
+			text-indent: -999em
+			background: url(/images/admin/icons/tag_delete.png) no-repeat center center
+			cursor: pointer
+			
+	&.token-input-selected-token
+		background-color: #5670a6
+		border: 1px solid #3b5998
+		color: #fff
+	&.token-input-input-token
+		float: left
+
+div.token-input-dropdown
+	@extend .small_rounded_bottom
+	position: absolute
+	width: 96%
+	overflow: hidden
+	background-color: white
+	border: 1px $grey_2 solid
+	border-top: none
+	margin-top: -$radius_small
+	cursor: default
+	z-index: 1
+	p
+		margin: 0
+		padding: 5px
+		font-weight: bold
+		color: $grey_3
+	ul
+		margin: 0
+		padding: 0
+		li
+			background-color: transparent
+			padding: 3px
+			&.token-input-dropdown-item, &.token-input-dropdown-item2
+				background-color: transparent
+			em
+				font-weight: bold
+				font-style: none
+			&.token-input-selected-dropdown-item
+				background-color: $color_blue
+				color: white
+
+
 	
 //****************************************************************************
 // Buttons
@@ -190,7 +302,7 @@ fieldset
 		font-size: 1em
 		margin: 1em 0
 		padding: 0
-		
+			
 	fieldset
 		@extend .small_rounded
 		border: 1px $grey_5 solid
@@ -203,6 +315,14 @@ fieldset
 			background: $grey_1
 			color: $grey_6
 			font-weight: bold
+		
+		h3
+			@extend .small_rounded
+			background: $grey_2
+			color: $grey_6
+			padding: 0.2em 0.5em
+			margin-top: 1em
+			margin-bottom: 0.5em 
 			
 	&.tabs_enabled
 	
