@@ -9,6 +9,8 @@
 		%li
 			%h2= link_to "Location", "#location"
 		%li
+			%h2= link_to "Content", "#content"
+		%li
 			%h2= link_to "Images", "#images"
 		%li
 			%h2= link_to "Tagging", "#tagging"
@@ -32,15 +34,25 @@
 	%fieldset#location
 		%legend Location
 		= note "Choose the location for this venue. You can try to auto-locate the venue from the postcode, click on the map to place the marker, drag to move the marker, or enter a custom latitude and longitude."
-		.half
-			.half= f.text_field :lat, :label => "Latitude"
-			.half= f.text_field :lng, :label => "Longitude"
+		.third
+			.full= f.text_field :lat, :label => "Latitude"
+			.full= f.text_field :lng, :label => "Longitude"
 			.full.button_area= link_to "Auto-locate venue", "#", :class => "button edit", :id => "venue_auto_locate_button"
-		.half
+		.two_thirds
 			#grundlebox_default_map_location= Grundlebox::Config::DefaultAdminMapLocation
 			#venue_map_area
 				.loading Loading map...
-				
+	
+	%fieldset#content
+		%legend Content
+		.full= f.text_area :abstract, :label => "Short description", :note => "This will appear on listings across the site.", :rows => 3
+		
+		.word_counter
+			%span.label Word count:
+			%span.word_count= @venue.content.to_s.word_count
+		.full
+			= f.text_area :content, :rows => 30, :class=>"text_editor"
+					
 	%fieldset#images
 		%legend Images
 	%fieldset#tagging

@@ -2,6 +2,6 @@
 	%tr{ :class => cycle(:even, :odd) }
 		%td
 			= link_to venue.title, edit_admin_venue_path( venue )
-			%span.additional= venue.address_elements.join(", ")
+			%span.extra= venue.address_elements.join(", ")
 		%td= print_bool(venue.enabled)
 		%td.destroy= delete_link "Delete venue", admin_venue_path(venue.id)

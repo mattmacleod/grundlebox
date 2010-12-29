@@ -26,6 +26,10 @@ String.class_eval do
     return self.gsub("+", " ")
   end
   
+  def word_count
+    strip_html.split(/\s/).length
+  end
+  
 end
 
 Array.class_eval do

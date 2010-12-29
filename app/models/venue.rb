@@ -68,7 +68,7 @@ class Venue < ActiveRecord::Base
   end
   
   def address_elements
-    [address_1, address_2, city, postcode].select{|e| !e.blank? }
+    [address_1, address_2, (city.name if city), postcode].select{|e| !e.blank? }
   end
   
   private
