@@ -14,7 +14,7 @@ class Admin::AssetFoldersController < AdminController
     if( params[:path].to_s.split("/") == @current_folder.path )
       @assets = @current_folder.assets
       @assets = @assets.where(["assets.title LIKE ?", "%#{params[:q]}%"]) if params[:q]
-      @assets = @assets.paginate( :page => params[:page], :per_page => 18 )
+      @assets = @assets.paginate( :page => params[:page], :per_page => 20 )
       if request.xhr?
         render(:partial => "folder", :locals => {:assets => @assets})
         return

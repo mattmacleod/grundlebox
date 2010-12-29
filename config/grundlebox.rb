@@ -33,9 +33,9 @@ class Grundlebox::Config
   
   # Magick geometry string
   ImageFileVersions = { 
-    :large   => ["900x675",   :jpg],
-    :wide    => ["540x",      :jpg],
-    :article => ["220x",      :jpg],
+    :large   => ["900x675>",   :jpg],
+    :wide    => ["540x>",      :jpg],
+    :article => ["220x>",      :jpg],
     :thumb   => ["125x100#",  :jpg],
     :tiny    => ["60x40#",    :jpg]
   }
