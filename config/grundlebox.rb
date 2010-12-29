@@ -50,12 +50,18 @@ class Grundlebox::Config
   
   # Admin menu system
   AdminModules = [
-    { :title => :articles,    :controllers => [:articles],           :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
-    { :title => :pages,       :controllers => [:pages],              :roles => [:publisher, :admin] },
-    { :title => :media,       :controllers => [:assets, :galleries], :roles => [:editor, :subeditor, :publisher, :admin] },
-    { :title => :events,      :controllers => [:events, :venues],    :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
-    { :title => :users,       :controllers => [:users],              :roles => [:admin] },
-    { :title => :management,  :controllers => [:management, :tags],  :roles => [:publisher, :admin] }   
+    { :title => :articles,    :controllers => [:articles],                            :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
+    { :title => :pages,       :controllers => [:pages],                               :roles => [:publisher, :admin] },
+    { :title => :media,       :controllers => [:assets, :asset_folders, :galleries],  :roles => [:editor, :subeditor, :publisher, :admin] },
+    { :title => :events,      :controllers => [:events, :venues],                     :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
+    { :title => :users,       :controllers => [:users],                               :roles => [:admin] },
+    { :title => :management,  :controllers => [:management, :tags],                   :roles => [:publisher, :admin] }   
   ]
+  
+  # API keys
+  GoogleApiKey = "ABQIAAAA_a2Y8YnvGdeGgoGFUyYotBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQDT74lJaTBe_PAvumnRp3_dubVrg"
+  
+  # Mapping
+  DefaultAdminMapLocation = "53.800651,-4.042969"
   
 end

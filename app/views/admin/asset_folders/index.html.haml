@@ -1,0 +1,26 @@
+-@page_title = "Asset manager"
+%h1 Asset manager
+
+= asset_breadcrumbs
+
+.search_form
+	.summary
+		= pluralize(@assets.total_entries, "asset found", "total assets found")
+	%form
+		=label_tag :q, "Search:"
+		=text_field_tag :q, "", :id=>:search_field
+		=ajax_spinner("asset_search")
+= flash_message
+
+- if (@assets).length>0	
+	#folder_browser
+		%h2= @current_folder.name
+		#main_folder_wrapper
+			=render :partial => "folder"
+			
+- else
+	#folder_browser
+		%h2= @current_folder.name
+		=note "No assets found"
+
+=continuous_pagination "asset_manager"

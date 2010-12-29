@@ -1,0 +1,18 @@
+-@page_title = "Venue manager"
+%h1 Venues
+.search_form
+	.summary
+		= pluralize(@venues.total_entries, "venue found", "total venues found")
+	%form
+		=label_tag :q, "Search:"
+		=text_field_tag :q, "", :id=>:search_field
+		=ajax_spinner("search")
+=flash_message
+
+#pagination_wrapper
+	- unless @venues.blank?
+		= render :partial => "table", :locals=>{:venues => @venues}
+	-else
+		= note "There are no venues", :type=>:alert
+
+=continuous_pagination "venues"

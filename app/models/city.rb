@@ -7,4 +7,12 @@ class City < ActiveRecord::Base
   
   validates :name, :presence => true, :uniqueness => true
   
+  class << self
+    
+    def options_for_select
+      all.map{|c| [c.name, c.id]}
+    end
+    
+  end
+  
 end

@@ -21,6 +21,14 @@ module AdminHelper
   end
   
   
+  # Action links
+  ############################################################################
+  
+  def delete_link(content, url)
+    link_to content, url, :method => :delete, :class => :destroy, :confirm => "Are you sure you want to delete this item?"
+  end
+  
+  
   
   # Formatting
   ############################################################################

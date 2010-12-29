@@ -4,6 +4,7 @@ div
 
 	&.flash
 		@extend .small_rounded
+		position: relative
 		padding: 1em 2em 1em 1em
 		font-size: 0.9em
 		line-height: 1.3em
@@ -29,6 +30,8 @@ div
 		height: 16px
 		display: block
 		position: absolute
+		top: 50%
+		margin-top: -8px
 
 	&.flash span.text, &.note span.text
 		display: block
@@ -36,6 +39,7 @@ div
 
 	&.note
 		@extend .small_rounded
+		position: relative
 		font-weight: bold
 		margin-bottom: 2em
 		padding: 1em

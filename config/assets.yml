@@ -10,11 +10,13 @@ javascripts:
     - public/javascripts/admin/jquery-tools.js
     - public/javascripts/admin/jquery-rails.js
     - public/javascripts/admin/jquery-form.js
+    - public/javascripts/admin/jquery-googlemaps.js
     - public/javascripts/tiny_mce/jquery.tinymce.js
     - public/javascripts/admin/admin.js  
     - public/javascripts/admin/ui.js
     - public/javascripts/admin/ui.pagination.js
     - public/javascripts/admin/articles.js
+    - public/javascripts/admin/venues.js
     - public/javascripts/admin/tagging.js
     - public/javascripts/admin/tinymce.js
 stylesheets:

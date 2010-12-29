@@ -67,6 +67,9 @@ class Venue < ActiveRecord::Base
       where("venues.id=#{other_venue.id}").where("NOT lat IS NULL").first.distance
   end
   
+  def address_elements
+    [address_1, address_2, city, postcode].select{|e| !e.blank? }
+  end
   
   private
   

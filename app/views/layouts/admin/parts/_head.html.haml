@@ -6,6 +6,7 @@
 		%title= page_title
 		= include_stylesheets :admin, :media => "all"
 		= include_javascripts :admin
+		= javascript_include_tag "http://www.google.com/jsapi?key=#{Grundlebox::Config::GoogleApiKey}"
 		= csrf_meta_tag
 		
 	= yield :wrapper

@@ -42,7 +42,7 @@ grundlebox.admin.tagging = {
 		$(".tag_select").blur(function(){
 			$(this).val( $(this).val().replace(/,\s$/g, ""));
 		}).focus( function(){
-			if( !$(this).val().match(/,\s$/g) ){
+			if( !$(this).val().match(/,\s$/g) && !$(this).val()=="" ){
 				$(this).val( $(this).val() + ", ");
 			}
 		})

@@ -1,0 +1,50 @@
+=form_errors @venue
+-@main_form = f
+
+.tabbed_fieldsets
+
+	%ul.tabs
+		%li
+			%h2= link_to "Basic information", "#basic"
+		%li
+			%h2= link_to "Location", "#location"
+		%li
+			%h2= link_to "Images", "#images"
+		%li
+			%h2= link_to "Tagging", "#tagging"
+		%li
+			%h2= link_to "Events", "#events"
+	
+	%fieldset#basic
+		%legend Basic information
+		.full= f.text_field :title, :required => true, :note => "Main title for the venue. This will be displayed across the site."
+		.half
+			.full= f.text_field :address_1, :label => "Address 1"
+			.full= f.text_field :address_2, :label => "Address 2"
+			.full= f.select :city_id, City::options_for_select, :label => "City", :note => "Contact an administrator if you need to add a new city."
+			.full= f.text_field :postcode, :label => "Post code"
+			
+		.half
+			.full= f.text_field :phone, :note => "This will be displayed to site users, so use a public phone number."
+			.full= f.text_field :email, :note => "This will be displayed to site users, so use a public email."
+			.full= f.text_field :web, :label => "Web address", :note => "Enter the full web address including http://"
+
+	%fieldset#location
+		%legend Location
+		= note "Choose the location for this venue. You can try to auto-locate the venue from the postcode, click on the map to place the marker, drag to move the marker, or enter a custom latitude and longitude."
+		.half
+			.half= f.text_field :lat, :label => "Latitude"
+			.half= f.text_field :lng, :label => "Longitude"
+			.full.button_area= link_to "Auto-locate venue", "#", :class => "button edit"
+		.half
+			#grundlebox_default_map_location= Grundlebox::Config::DefaultAdminMapLocation
+			#venue_map_area
+				.loading Loading map...
+				
+	%fieldset#images
+		%legend Images
+	%fieldset#tagging
+		%legend Tagging
+		.full= f.tag_select :tag_list, :label => "venue tags"
+	%fieldset#events
+		

@@ -6,7 +6,8 @@ grundlebox = {
 			this.ui.init();				// User interface elements
 			this.tinymce.init();	// Rich text editor
 			this.articles.init();	// Article editor tools
-			this.tagging.init();	// Tagging 
+			this.venues.init();		// Venue manager bits 
+			this.tagging.init();	// Tagging
 		}
 		
 	}
