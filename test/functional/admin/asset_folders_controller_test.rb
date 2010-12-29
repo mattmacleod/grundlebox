@@ -19,7 +19,7 @@ class Admin::AssetFoldersControllerTest < ActionController::TestCase
   
   context "when logged in as an admin user with a root asset folder" do
     setup do
-      @user = Factory(:user)
+      @user = Factory(:admin_user)
       login_as @user
       @root_folder = Factory(:asset_folder, :name => "root", :parent => nil)
     end

@@ -19,7 +19,7 @@ class Admin::AssetsControllerTest < ActionController::TestCase
   
   context "when logged in as an admin user with a root asset folder" do
     setup do
-      @user = Factory(:user)
+      @user = Factory(:admin_user)
       login_as @user
       @root_folder = Factory(:asset_folder, :name => "root", :parent => nil)
     end
@@ -51,7 +51,7 @@ class Admin::AssetsControllerTest < ActionController::TestCase
     context "a post to :create with valid details" do
       setup { post :create, :asset=>{
         :title => "test asset", :asset_folder_id => @root_folder.id, 
-        :attachment => fixture_file_upload("files/images/test_image_small_rgb.jpg", "image/jpeg" )
+        :asset => fixture_file_upload("files/images/test_image_small_rgb.jpg", "image/jpeg" )
         } 
       }
       should redirect_to "/admin/asset_folders/1-root"
@@ -93,7 +93,7 @@ class Admin::AssetsControllerTest < ActionController::TestCase
       context "a POST to the asset update page with valid details" do
         setup { post :update, {:id=>@asset2.id, :asset=>{
           :title => "test asset", :asset_folder_id => @root_folder.id, 
-          :attachment => fixture_file_upload("files/images/test_image_small_rgb.jpg", "image/jpeg" )
+          :asset => fixture_file_upload("files/images/test_image_small_rgb.jpg", "image/jpeg" )
           }
         }}
         should respond_with :redirect

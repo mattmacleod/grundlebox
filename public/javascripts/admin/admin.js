@@ -9,11 +9,12 @@ grundlebox = {
 		
 		// Main init function for Grundlebox admin interface
 		init: function(){
-			this.ui.init();				// User interface elements
-			this.tinymce.init();	// Rich text editor
-			this.articles.init();	// Article editor tools
-			this.venues.init();		// Venue manager bits 
-			this.tagging.init();	// Tagging
+			this.ui.init();							// User interface elements
+			this.tinymce.init();				// Rich text editor
+			this.articles.init();				// Article editor tools
+			this.venues.init();					// Venue manager bits 
+			this.tagging.init();				// Tagging
+			this.asset_manager.init();	// Asset manager
 		},
 
 		// Set some config variables here

@@ -1,0 +1,18 @@
+=labelled_form_for [:admin, @asset], :html=>{:multipart => true} do |f|
+
+	#content_body.content_body
+
+		- @page_title = "Upload asset | Asset Manager"
+		%h1= @asset.title.blank? ? "New asset" : @asset.title
+
+		=note "Maximum file upload size is #{Grundlebox::Config::AssetMaxUploadSize/1024/1024} megabytes. Larger uploads will be rejected."
+		=form_errors @asset
+
+		%fieldset.standard
+			%legend Upload details
+			.full= f.text_field :title, :required => true
+			.full= f.select :asset_folder_id, asset_folder_options(AssetFolder.root, f.object.asset_folder), :required => true, :label => "Folder to upload into"
+			.full= f.file_field :asset, :required => true, :label => "File to upload", :note=>"#{" Leave blank to keep the current image." unless @asset.new_record?}"
+	
+	#content_sidebar
+		=render :partial => "sidebar", :locals=>{:f=>f}

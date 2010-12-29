@@ -5,12 +5,17 @@
 
 .search_form
 	.summary
-		= pluralize(@assets.total_entries, "asset found", "total assets found")
-	%form
-		=label_tag :q, "Search:"
-		=text_field_tag :q, "", :id=>:search_field
-		=ajax_spinner("asset_search")
-= flash_message
+		Found #{ pluralize(@assets.total_entries, "asset") }
+
+	%form{ :action => request.path }
+		%fieldset
+			= label_tag :search_field, "Search assets:"
+			= text_field_tag :q, params[:q], :id => :search_field
+			.buttons
+				%input.button{ :type => :submit, :value => "Search" }
+				- unless params[:q].blank?
+					= link_to "Show all", request.path, :class => :button 
+				= ajax_spinner("search")
 
 - if (@assets).length>0	
 	#folder_browser

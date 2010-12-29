@@ -3,7 +3,7 @@ class Admin::AssetFoldersController < AdminController
   # Define controller subsections
   def self.subsections
     [
-      { :title => :browse, :actions => [:index, :show, :new, :create, :edit, :destroy, :update, :browse], :roles => [:admin, :publisher] }
+      { :title => :browse, :actions => [:index, :show, :new, :create, :edit, :destroy, :update, :browse], :roles => [:admin, :publisher, :subeditor] }
     ]
   end
   build_permissions

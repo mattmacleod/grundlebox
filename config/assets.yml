@@ -11,6 +11,8 @@ javascripts:
     - public/javascripts/admin/jquery-rails.js
     - public/javascripts/admin/jquery-form.js
     - public/javascripts/admin/jquery-googlemaps.js
+    - public/javascripts/admin/jquery-treeview.js
+    - public/javascripts/admin/jquery-prettyphoto.js
     - public/javascripts/tiny_mce/jquery.tinymce.js
     - public/javascripts/admin/admin.js  
     - public/javascripts/admin/ui.js
@@ -19,6 +21,7 @@ javascripts:
     - public/javascripts/admin/venues.js
     - public/javascripts/admin/tagging.js
     - public/javascripts/admin/tinymce.js
+    - public/javascripts/admin/asset_manager.js
 stylesheets:
   default:
     - public/stylesheets/styles.css

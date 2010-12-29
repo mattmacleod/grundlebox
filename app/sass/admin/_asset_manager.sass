@@ -1,0 +1,134 @@
+//****************************************************************************
+// Styles for asset manager
+//***************************************************************************/
+
+.asset_folder_list
+	li
+		padding: 2px 0
+		whitespace: nobreak
+		ul
+			margin-left: 0px
+	a
+		color: $grey_1
+		padding: 18px
+		background: url(/images/admin/icons/folder_closed.png) no-repeat left center
+		&.collapsable
+			background: url(/images/admin/icons/folder.png) no-repeat left center
+		&.current
+			@extend .small_rounded
+			background: url(/images/admin/icons/folder_white.png) no-repeat left center
+			background-color: $grey_1
+			color: white
+			font-weight: bold
+			padding: 3px 5px 3px 21px
+			margin-bottom: 2px
+			background-position: 3px center
+
+/* Browser
+
+#folder_browser h2
+	font-size: 2em
+	font-weight: bold
+	margin-top: 1em
+	margin-bottom: 1em
+
+.asset_breadcrumbs
+	padding: 2px 0px
+	border-bottom: 1px #dde solid
+	margin-top: -1em
+	a
+		margin-left: 5px
+		margin-right: 5px
+
+#main_folder_wrapper
+	border: 3px #eef solid
+	overflow: auto
+	padding: 13px
+
+/* Icons
+
+#folder_browser
+	h2
+		padding: 0
+		margin: 0 0 10px 0
+	div
+	
+		&.icon
+			@extend .fade
+			width: 100px
+			min-height: 100px
+			float: left
+			margin-right: 13px
+			margin-bottom: 13px
+			img
+				width: 100px
+				height: 100px
+			&:hover
+				@extend .hover_glow
+			&.last
+				margin-right: 0px
+			&.first
+				clear: left
+			.label
+				padding: 5px
+				background: #eef
+				margin-top: -5px
+				strong
+					display: block
+				em
+					display: block
+					float: right
+					background: $grey_1
+					padding: 0px 3px 2px 3px
+					margin: 3px -5px -5px 3px
+					.asset_edit
+						background-position: -64px -112px
+					.asset_show
+						background-position: -160px -112px
+					.asset_delete
+						background-position: -80px -128px
+					.image_use
+						background-position: -64px -144px
+					
+		&.label a
+			display: block
+			float: left
+			text-indent: -999em
+			width: 14px
+			height: 14px
+			background-image: $icon_set_1
+			margin-right: 3px
+			&:hover
+				width: 14px
+				height: 14px
+				background-image: $icon_set_3
+
+/* Cropper
+
+fieldset.preview 
+	max-width: 672px
+	overflow: auto
+	
+	img.preview
+		margin-top: 20px
+		max-width: 900px
+		border: 1px $grey_2 solid
+
+
+
+/* Attachment
+
+.image_attachment_area
+	padding-top: 15px
+	h3
+		background: $grey_2
+		color: white
+		padding: 0.3em 0.6em
+	.button
+		display: block
+		float: left
+		margin-right: 15px
+		margin-bottom: 10px
+	.attached_image
+		clear: left
+		padding-top: 15px
