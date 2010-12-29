@@ -1,3 +1,9 @@
+//////////////////////////////////////////////////////////////////////////////
+// Grundlebox: admin.js
+// 
+// This javascript file handles the main admin startup
+//////////////////////////////////////////////////////////////////////////////
+
 grundlebox = { 
 	admin: {
 		
@@ -8,13 +14,19 @@ grundlebox = {
 			this.articles.init();	// Article editor tools
 			this.venues.init();		// Venue manager bits 
 			this.tagging.init();	// Tagging
+		},
+
+		// Set some config variables here
+		jsconfig: {
+			lock_checker_frequency: 15000,
+			autosave_frequency: 60000,
+			word_counter_timeout: 2000,
+			paginated_search_timeout: 400
 		}
 		
 	}
 }
 
 $(document).ready(function(){
-
-	grundlebox.admin.init();
-	
+	grundlebox.admin.init();	
 });

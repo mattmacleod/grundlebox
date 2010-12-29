@@ -1,13 +1,19 @@
+//////////////////////////////////////////////////////////////////////////////
+// Grundlebox: ui.js
+// 
+// Setup general-use UI elements on the admin
+//////////////////////////////////////////////////////////////////////////////
+
 grundlebox.admin.ui = {
 	
 	// Setup the UI elements across the admin
 	init: function(){
-		this.setup_flash();
-		this.pagination.init();
-		this.setup_tabbed_forms();
+		this.setup_flash();					// Setup the flash clear handler
+		this.pagination.init();			// Setup any pagination
+		this.setup_tabbed_forms();	// Setup any tabbed forms
 	},
 	
-	// Handle effects etc for the flash message
+	// Handle effects for the flash message
 	setup_flash: function(){
 		
 		// Do the highlight effect
@@ -25,15 +31,24 @@ grundlebox.admin.ui = {
 		
 	},
 	
+	// Setup the tab JS on any tabbed fieldsets
 	setup_tabbed_forms: function(){
-		if($(".tabbed_fieldsets").length==0){ return; }
+		
+		// Return unless there are tabbed fieldsets to process
+		if( $(".tabbed_fieldsets").length==0 ){ return; }
+		
+		// Enable the tabs
 		$(".tabbed_fieldsets").addClass("tabs_enabled")
 		$(".tabbed_fieldsets ul.tabs").tabs(".tabbed_fieldsets > fieldset")
+		
+		// If any tabs have errors, update the corresponding link to include
+		// an error notification on it.
 		$(".tabbed_fieldsets > fieldset").each(function(){
-			if($(this).find(".field_with_errors").length>0){
+			if( $(this).find(".field_with_errors").length>0 ){
 				$(this).parent().find("a[href=#"+$(this).attr("id")+"]").addClass("has_error");
 			}
 		});
+		
 	}
 	
 }

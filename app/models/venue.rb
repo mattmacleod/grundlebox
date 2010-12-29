@@ -20,7 +20,7 @@ class Venue < ActiveRecord::Base
   validates :title, :presence => true
   validates :user, :presence => true
   validates :user, :presence => true
-  validates :email, :format => { :with => Grundlebox::Config::EmailRegexp }, :if => :email
+  validates :email, :format => { :with => Grundlebox::Config::EmailRegexp }, :if => Proc.new{ !email.blank? }
   validates :url, :presence => true, :url => true
   
   # Library stuff

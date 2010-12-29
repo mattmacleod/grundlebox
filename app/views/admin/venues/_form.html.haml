@@ -35,7 +35,7 @@
 		.half
 			.half= f.text_field :lat, :label => "Latitude"
 			.half= f.text_field :lng, :label => "Longitude"
-			.full.button_area= link_to "Auto-locate venue", "#", :class => "button edit"
+			.full.button_area= link_to "Auto-locate venue", "#", :class => "button edit", :id => "venue_auto_locate_button"
 		.half
 			#grundlebox_default_map_location= Grundlebox::Config::DefaultAdminMapLocation
 			#venue_map_area
@@ -45,6 +45,6 @@
 		%legend Images
 	%fieldset#tagging
 		%legend Tagging
-		.full= f.tag_select :tag_list, :label => "venue tags"
+		.full= f.tag_select :tag_list, :label => "Venue tags"
 	%fieldset#events
 		

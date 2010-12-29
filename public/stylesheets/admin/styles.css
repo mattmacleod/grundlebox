@@ -1159,6 +1159,10 @@ span.tag a.delete {
   background: url(/images/admin/icons/tag_delete.png) no-repeat center center;
 }
 
+#grundlebox_default_map_location {
+  display: none;
+}
+
 #venue_map_area {
   height: 400px;
   width: 340px;

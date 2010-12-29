@@ -1,3 +1,9 @@
+//////////////////////////////////////////////////////////////////////////////
+// Grundlebox: tinymce.js
+// 
+// Handle the tinyMCE editor setup - relies on the jQuery plugin
+//////////////////////////////////////////////////////////////////////////////
+
 grundlebox.admin.tinymce = {
 	
 	init: function(){
@@ -21,8 +27,51 @@ grundlebox.admin.tinymce = {
 
 					content_css : "/stylesheets/content.css",
 
-					init_instance_callback: 'grundlebox.admin.articles.word_counter.init'
+					init_instance_callback: 'grundlebox.admin.tinymce.word_counter.init'
 
 			});
+	},
+	
+	word_counter: {
+		
+		// Only check the counter periodically - hold a timer
+		word_count_timer: null,
+		counted_editor: null,
+		
+		// Add the callback to the tinyMCE editor instance
+		init: function( editor ){
+			this.counted_editor = editor;
+			_this = this;
+			editor.onKeyUp.add(function(ed, e) {
+				_this.count_words();
+			});
+		},
+
+		// Handles the tinyMCE update event by checking to see if there's already 
+		// a timer set to run. If there isn't, set one now.
+		count_words: function(){
+			if( this.word_count_timer == null ){
+				_this = this;
+				this.word_count_timer = setTimeout(_this.execute_count, grundlebox.admin.jsconfig.word_counter_timeout);
+			}
+		},
+
+		// Actually execute the word count - clear the times, get the content from
+		// the tinyMCE instance, and count the words. Then update the word count
+		// widget to inform the user.
+		execute_count: function(){
+			
+			// Clear the timer
+			grundlebox.admin.tinymce.word_counter.word_count_timer = null;
+			
+			// Get the word count from the tinyMCE instance
+			total_words = grundlebox.admin.tinymce.word_counter.counted_editor.getContent().split(/[\s\?]+/).length;
+			
+			// Update the widget
+			$('.word_counter span.word_count').html( total_words );
+			$('.word_counter').effect("highlight", {color: "#778"}, 1000);
+		}
+		
 	}
+	
 }
