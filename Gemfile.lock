@@ -7,6 +7,14 @@ GIT
       activerecord (>= 2.3)
 
 GIT
+  remote: http://github.com/mattmacleod/paperclip.git
+  revision: ae53c4d935977b443df7dea7eb6632c824fa7a9c
+  specs:
+    paperclip (2.3.8)
+      activerecord
+      activesupport
+
+GIT
   remote: http://github.com/mislav/will_paginate.git
   revision: b1a5beeec9f56ecbe3594fcdca76d92b6767ce50
   branch: rails3
@@ -16,7 +24,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.4.1)
+    ZenTest (4.4.2)
     abstract (1.0.0)
     actionmailer (3.0.3)
       actionpack (= 3.0.3)
@@ -64,14 +72,14 @@ GEM
     fastercsv (1.5.3)
     fastthread (1.0.7)
     gem_plugin (0.2.3)
-    haml (3.0.24)
+    haml (3.0.25)
     htmlentities (4.2.2)
     i18n (0.5.0)
     jammit (0.5.4)
       closure-compiler (>= 0.1.0)
       yui-compressor (>= 0.9.1)
     linecache (0.43)
-    mail (2.2.12)
+    mail (2.2.13)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -85,9 +93,6 @@ GEM
     mongrel_experimental (1.1)
       mongrel (= 1.1)
     mysql (2.8.1)
-    paperclip (2.3.6)
-      activerecord
-      activesupport
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -141,7 +146,7 @@ DEPENDENCIES
   mongrel_experimental
   mysql
   paper_trail!
-  paperclip
+  paperclip!
   rails (= 3.0.3)
   rcov
   rmagick

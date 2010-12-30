@@ -11,6 +11,7 @@ grundlebox.admin.asset_manager = {
 		this.setup_folder_browser();		// Setup the treeview on the browser
 		this.setup_pp();								// Setup the image preview box
 		this.pagination.init();					// Setup the special-case pagination
+		this.cropper.init();						// Setup the cropper
 	},
 	
 	// Sets up the treeview for the folder browser using the jQuery treeview
@@ -107,5 +108,72 @@ grundlebox.admin.asset_manager = {
 		pageHeight: function() {
 		  return Math.max(document.body.scrollHeight, document.body.offsetHeight);
 		}
+	},
+	
+	// Setup the jQuery cropper for asset detail pages
+	cropper: {
+		
+		init: function(){
+
+			// Return if there are no previews to crop
+			if( $("fieldset.preview").length==0 ){ return; }
+
+			// When the crop button is clicked, set up the cropper
+			$(".tabbed_fieldsets .preview .current_crop a").click(function(){
+				
+				pane = $(this).parents(".preview");
+				pane.find(".recrop").show();
+				pane.find(".current_crop").hide();
+				
+				// Get the image to crop and the geometry string
+				var _this = pane.find(".crop_source");
+				
+				var geom = pane.find(".geometry").html();
+				
+				if( geom[geom.length-1]=="#" ){
+					aspect_ratio = geom.split("x")[0] / geom.split("x")[1].replace("#", "");
+				} else {
+				 aspect_ratio = null
+				}
+
+				var api = $.Jcrop(_this, {
+
+					// Handle completion of the select
+					onSelect: function( coords ){
+						$(pane).find(".crop_x").val(coords.x);
+						$(pane).find(".crop_y").val(coords.y);
+						$(pane).find(".crop_w").val(coords.w);
+						$(pane).find(".crop_h").val(coords.h);
+					},
+
+					aspectRatio: aspect_ratio,
+					
+					boxWidth: 672
+
+				});
+				
+				_this.data("jcrop", api);
+				
+				return false;
+				
+			});
+			
+			// Close the cropper
+			$(".tabbed_fieldsets .preview .recrop a").click(function(){
+				pane = $(this).parents(".preview");
+				pane.find(".crop_source").data("jcrop").destroy();
+			
+				pane.find(".recrop").hide();
+				pane.find(".current_crop").show();
+				
+				$(pane).find(".crop_x").val("");
+				$(pane).find(".crop_y").val("");
+				$(pane).find(".crop_w").val("");
+				$(pane).find(".crop_h").val("");
+				
+				return false;
+			});
+			
+		}					
 	}
 };

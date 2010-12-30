@@ -4,7 +4,6 @@ gem 'rails', '3.0.3'
 
 # Essentials
 gem "mysql", :require => "mysql"
-gem 'paperclip'
 gem "haml"
 gem "jammit"
 gem "fastercsv"
@@ -14,7 +13,10 @@ gem "paper_trail",
 gem "will_paginate", 
 		:git => "http://github.com/mislav/will_paginate.git",
 		:branch => "rails3"
-
+gem 'paperclip', 
+    :git => "http://github.com/mattmacleod/paperclip.git"
+        
+        
 # Development
 group :development do
   gem "mongrel"

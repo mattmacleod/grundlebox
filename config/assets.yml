@@ -13,6 +13,7 @@ javascripts:
     - public/javascripts/admin/jquery-googlemaps.js
     - public/javascripts/admin/jquery-treeview.js
     - public/javascripts/admin/jquery-prettyphoto.js
+    - public/javascripts/admin/jquery-jcrop.js
     - public/javascripts/tiny_mce/jquery.tinymce.js
     - public/javascripts/admin/admin.js  
     - public/javascripts/admin/ui.js

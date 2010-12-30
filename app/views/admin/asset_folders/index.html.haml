@@ -16,6 +16,7 @@
 				- unless params[:q].blank?
 					= link_to "Show all", request.path, :class => :button 
 				= ajax_spinner("search")
+=flash_message
 
 - if (@assets).length>0	
 	#folder_browser

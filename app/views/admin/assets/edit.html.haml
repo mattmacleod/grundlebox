@@ -14,7 +14,7 @@
 					%h2= link_to "Asset information", "#info"
 				- if @asset.image?
 					%li
-						%h2= link_to "Original", "#original"
+						%h2= link_to "Original image", "#original"
 					- Grundlebox::Config::ImageFileVersions.each_pair do |k,v|
 						%li
 							%h2= link_to k.to_s.capitalize, "##{k}"
@@ -26,15 +26,31 @@
 				.full= f.file_field :asset, :label => "Replace file", :note=>"#{" Leave blank to keep the current asset." unless @asset.new_record?}"
 
 			- if @asset.image?
+			
 				%fieldset.preview#original
 					%legend Original
-					=image_tag( @asset.asset.url(:original), :class=>"preview", :id=>"image_for_version_original" )
+					=note "This is the original image that was uploaded. To modify this image, upload a new file."
+					=image_tag( @asset.asset.url(:original), :class=>"original", :id=>"image_for_version_original" )
 			
 				- Grundlebox::Config::ImageFileVersions.each_pair do |k,v|
 					%fieldset.preview{:id => k}
-						%legend=k.to_s.capitalize
-		
-						=image_tag( @asset.asset.url(k), :class=>"preview", :id=>"image_for_version_#{k}" )
+						%legend= k.to_s.capitalize
+						
+						.current_crop
+							=image_tag( @asset.asset.url(k), :id=>"image_for_version_#{k}" )
+							.button_area= link_to "Recrop this image", "#", :class => "button edit"
+						
+						.recrop
+							= note "Draw a rectangle on the image to choose the cropped area."
+							= image_tag( @asset.asset.url(:original), :class=>"crop_source" )
+							.button_area= link_to "Cancel crop", "#", :class => "button cancel"
+						
+						.geometry= v[0]
+						= f.hidden_field "crop_x_#{k}", :class => :crop_x
+						= f.hidden_field "crop_y_#{k}", :class => :crop_y
+						= f.hidden_field "crop_w_#{k}", :class => :crop_w
+						= f.hidden_field "crop_h_#{k}", :class => :crop_h
+						
 
 	#content_sidebar
 		=render :partial => "sidebar", :locals=>{:f=>f}
