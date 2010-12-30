@@ -176,4 +176,5 @@ grundlebox.admin.asset_manager = {
 			
 		}					
 	}
+	
 };
