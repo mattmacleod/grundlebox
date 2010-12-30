@@ -6,11 +6,12 @@ Grundlebox::Application.routes.draw do
   get   "admin/logout"        => "admin#logout",        :as => :admin_logout
   get   "admin/denied"        => "admin#denied",        :as => :admin_denied
   get   "admin/help"          => "admin#help",          :as => :admin_help
-  
-  get   "admin/management"      => "admin/mangement#index",    :as => :admin_management
-  
+    
   namespace :admin do
-      
+  
+    # Simple routes
+    get   "management"      => "management#index",    :as => :admin_management
+    
     # Simple resourceful routes
     resources :tags
     resources :events

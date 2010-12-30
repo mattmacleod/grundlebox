@@ -101,6 +101,18 @@ class Admin::AssetsControllerTest < ActionController::TestCase
         should set_the_flash do /saved/i end
       end
       
+      context "a POST to the asset update page with valid details and a crop for the thumbnail" do
+        setup { post :update, {:id=>@asset2.id, :asset=>{
+          :title => "test asset", :asset_folder_id => @root_folder.id,
+          :crop_x_thumb => "0", :crop_y_thumb => "0", :crop_w_thumb => "1", :crop_h_thumb => "1"
+          }
+        }}
+        should respond_with :redirect
+        should redirect_to "/admin/asset_folders/1-root"
+        should set_the_flash do /saved/i end
+      end
+      
+      
       context "a POST to the asset update page with invalid details" do
         setup { post :update, {:id=>@asset2.id, :asset=>{:title => ""}}}
         should respond_with :success
