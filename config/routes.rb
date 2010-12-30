@@ -16,7 +16,6 @@ Grundlebox::Application.routes.draw do
     resources :tags
     resources :events
     resources :venues
-    resources :assets
     
     # More complex...
     resources :users do
@@ -60,6 +59,14 @@ Grundlebox::Application.routes.draw do
         get "/*path"              => "asset_folders#index", :as => :browse
       end
     end
+    
+    resources :assets do
+      collection do
+        get  "zip_upload"           => "assets#zip_upload", :as => :zip_upload
+        post "create_from_zip"      => "assets#create_from_zip", :as => :create_from_zip
+      end
+    end
+    
     
   end
   

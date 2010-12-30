@@ -9,6 +9,7 @@ class Admin::AssetsControllerTest < ActionController::TestCase
   should "route to correct asset management pages" do
     assert_routing "/admin/assets",                { :controller=>"admin/assets", :action=>"index" }
     assert_routing "/admin/assets/new",            { :controller=>"admin/assets", :action=>"new" }
+    assert_routing "/admin/assets/zip_upload",     { :controller=>"admin/assets", :action=>"zip_upload" }
     assert_routing "/admin/assets/1",              { :controller=>"admin/assets", :action=>"show", :id => "1" }
     assert_routing "/admin/assets/1/edit",         { :controller=>"admin/assets", :action=>"edit", :id=> "1" }
   end
@@ -57,6 +58,35 @@ class Admin::AssetsControllerTest < ActionController::TestCase
       should redirect_to "/admin/asset_folders/1-root"
       should set_the_flash do /saved/i end
     end
+    
+    # Bulk uploader
+    ###########################################################################
+    
+    context "a get to :zip_upload" do
+      setup { get :zip_upload }
+      should render_template :zip_upload
+      should respond_with :success
+      should_not set_the_flash
+      should "display the new zip upload form" do
+        assert assigns(:zip_upload)
+        assert assigns(:zip_upload).is_a? ZipUpload
+        assert_select "input#zip_upload_title"
+      end
+    end
+    
+    context "a post to :create_from_zip" do
+      setup { post :create_from_zip, :zip_upload=>{
+        :title => "Test zip upload", :asset_folder_id => @root_folder.id, 
+        :upload => fixture_file_upload("files/zips/assets.zip", "application/zip" )
+        } 
+      }
+      should respond_with :redirect
+      should set_the_flash do /saved/i end
+    end
+    
+    
+    # Edit
+    ###########################################################################
     
     context "containing multiple assets," do
       setup do
@@ -111,7 +141,6 @@ class Admin::AssetsControllerTest < ActionController::TestCase
         should redirect_to "/admin/asset_folders/1-root"
         should set_the_flash do /saved/i end
       end
-      
       
       context "a POST to the asset update page with invalid details" do
         setup { post :update, {:id=>@asset2.id, :asset=>{:title => ""}}}

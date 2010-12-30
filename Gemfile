@@ -8,6 +8,10 @@ gem "haml"
 gem "jammit"
 gem "fastercsv"
 gem "htmlentities"
+gem "zip"
+gem "mime-types", :require => "mime/types"
+
+
 gem "paper_trail",
     :git => "http://github.com/mattmacleod/paper_trail.git"
 gem "will_paginate", 

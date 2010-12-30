@@ -62,6 +62,28 @@ class Admin::AssetsController < AdminController
   
   
   ############################################################################
+  # ZIP uploads
+  ############################################################################
+  
+  def zip_upload
+    @zip_upload = ZipUpload.new( :asset_folder_id => @current_folder.id )
+    render :layout => "admin/manual_sidebar"
+  end
+  
+  def create_from_zip
+    @zip_upload = ZipUpload.new( params[:zip_upload] )
+    @zip_upload.user = current_user
+    if @zip_upload.valid? && @zip_upload.convert!
+      new_folder = AssetFolder.order(:id).last
+      flash[:notice] = "Bulk upload saved - found #{new_folder.assets.length} assets"
+      redirect_to browse_admin_asset_folders_path( new_folder.path )
+    else
+      render :action => :zip_upload, :layout => "admin/manual_sidebar" and return
+    end
+  end
+  
+  
+  ############################################################################
   # Private helper methods
   ############################################################################
   

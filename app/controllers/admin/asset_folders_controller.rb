@@ -128,7 +128,7 @@ class Admin::AssetFoldersController < AdminController
   private
   
   def load_folder
-    @current_folder = AssetFolder.where(:id => params[:path].to_s.split("/").last.to_s.split("-")).first
+    @current_folder = AssetFolder.where(:id => params[:path].to_s.split("/").last.to_s.split("-").first).first
     @current_folder ||= AssetFolder.where(:id => session[:current_folder]).first
     @current_folder ||= AssetFolder.root
     session[:current_folder] = @current_folder.id

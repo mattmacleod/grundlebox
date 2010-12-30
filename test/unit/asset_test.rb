@@ -115,51 +115,6 @@ class AssetTest < ActiveSupport::TestCase
     
   end
   
-  # Other uploading issues
-  ###########################################################################
-  
-  context "An asset upload which is bigger than the configured limit" do
-    
-    setup do
-      
-      # Create a temp file which is larget than the limit
-      require 'tempfile'
-      tmpfile = Tempfile.new( 'large-upload-test' )
-      file    = File.new(tmpfile.path,'w')
-      ((Grundlebox::Config::AssetMaxUploadSize/10)+1).times {|n| file.print "XXXXXXXXXX" }
-      file.close
-      
-      @uploaded_file = Rack::Test::UploadedFile.new( tmpfile.path, "application/octet-stream" )
-      @asset = Factory.build( :asset, :asset => @uploaded_file )
-    end
-    
-    should "not be valid" do
-      assert !@asset.save
-    end
-    
-  end
-  
-  context "An asset upload which is within the configured limit" do
-    
-    setup do
-      
-      # Create a temp file which is larget than the limit
-      require 'tempfile'
-      tmpfile = Tempfile.new( 'large-upload-test' )
-      file    = File.new(tmpfile.path,'w')
-      ((Grundlebox::Config::AssetMaxUploadSize/10)-10).times {|n| file.print "XXXXXXXXXX" }
-      file.close
-      
-      @uploaded_file = Rack::Test::UploadedFile.new( tmpfile.path, "application/octet-stream" )
-      @asset = Factory.build( :asset, :asset => @uploaded_file )
-    end
-    
-    should "be valid" do
-      @asset.valid?
-      assert @asset.save
-    end
-    
-  end
   
   # PDFs should create first-page thumbnails
   ###########################################################################

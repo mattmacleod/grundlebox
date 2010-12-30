@@ -45,7 +45,7 @@ class Grundlebox::Config
   AssetContentTypes = [
     "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/gif",
     "application/pdf", "application/msword", "application/vnd.ms-excel",
-    "application/vnd.ms-powerpoint", "application/octet-stream"
+    "application/vnd.ms-powerpoint"
   ]
   
   # Admin menu system
