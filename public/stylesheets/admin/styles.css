@@ -1445,8 +1445,8 @@ body.notice .version {
   float: left;
 }
 #iframe #right_pane {
-  width: 190px;
-  float: left;
+  width: 185px;
+  float: right;
 }
 #iframe #right_pane .box {
   padding: 0;
@@ -1454,6 +1454,11 @@ body.notice .version {
 #iframe #right_pane .box h2 {
   float: none;
   margin: 0 0 10px 0;
+}
+#iframe #right_pane .box input {
+  display: block;
+  width: 100%;
+  text-align: left;
 }
 #iframe #pagination_loading {
   background: white;
@@ -1474,6 +1479,10 @@ body.notice .version {
 #iframe #main_folder_wrapper {
   border-color: #ddddee;
   background: white;
+}
+#iframe .tabbed_fieldsets .errors h2 {
+  float: none;
+  margin: -10px -10px 10px -10px;
 }
 
 /* jQuery UI CSS Framework 1.8.7

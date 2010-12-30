@@ -10,8 +10,7 @@ class Asset < ActiveRecord::Base
   has_many :items, :through => :asset_links
   
   # Validation
-  validates_presence_of :title, :user, :asset_folder, :asset_file_name, 
-                        :asset_content_type, :asset_file_size
+  validates_presence_of :title, :user, :asset_folder, :asset
   
   # Sort by title by default
   default_scope :order => 'title ASC'

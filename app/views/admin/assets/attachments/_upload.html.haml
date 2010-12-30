@@ -1,0 +1,19 @@
+=labelled_form_for [:admin, @asset], :url => attach_admin_asset_folders_path( :anchor => :upload ), :html=>{:multipart => true} do |f|
+
+	#left_pane
+		=note "Maximum file upload size is #{Grundlebox::Config::AssetMaxUploadSize/1024/1024} megabytes. Larger uploads will be rejected."
+		=form_errors @asset
+	
+		.half
+			.full= f.text_field :title, :required => true
+			.full= f.select :asset_folder_id, asset_folder_options(AssetFolder.root, f.object.asset_folder), :required => true, :label => "Folder for asset"
+			.full= f.file_field :asset, :label => "Asset file", :note => "Choose the file to upload"
+		.half
+			.full= f.text_area :caption, :rows => 4
+			.full= f.text_area :credit, :rows => 3
+	
+	#right_pane	
+		.box
+			%h2 Actions
+			= hidden_field_tag :attachment, :value => 1
+			= submit_tag "Upload asset", :class => "button new"

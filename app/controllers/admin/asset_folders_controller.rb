@@ -104,9 +104,28 @@ class Admin::AssetFoldersController < AdminController
   ############################################################################
   
   def attach
+    
+    # Handle uploads
+    if request.post?
+      @asset = Asset.new( params[:asset] )
+      @asset.asset = params[:asset][:asset]
+      @asset.user = current_user
+      if @asset.save
+        flash[:notice] = "Your upload has been saved"
+        redirect_to use_attach_admin_asset_folders_path( @asset )
+        return
+      end
+    else
+      # For uploads
+      @asset = Asset.new( :asset_folder_id => @current_folder.id )
+    end
+    
     @assets = @current_folder.assets
     @assets = @assets.where(["assets.title LIKE ?", "%#{params[:q]}%"]) if params[:q]
     @assets = @assets.paginate( :page => params[:page], :per_page => 20 )
+    
+
+    
     if request.xhr?
       render :partial => "/admin/assets/attachments/folder", :locals => {:assets => @assets}
       return
@@ -114,6 +133,10 @@ class Admin::AssetFoldersController < AdminController
     render :layout => "admin/iframe"
   end
 
+  def use_attach
+    @asset = Asset.find( params[:id] )
+    render :layout => "admin/iframe"
+  end
   
   
   ############################################################################

@@ -30,7 +30,7 @@ class Admin::AssetsController < AdminController
     if @asset.save
       flash[:notice] = "Your upload has been saved"
       redirect_to browse_admin_asset_folders_path( @asset.asset_folder.path )
-    else
+    else      
       render :action => :new, :layout => "admin/manual_sidebar" and return
     end
   end
