@@ -1,7 +1,7 @@
 module Admin::AssetsHelper
   
   def get_folder_url(folder)
-    controller.action_name=="browse_for_attach" ? attach_admin_asset_folders_path(folder.path) : browse_admin_asset_folders_path(folder.path)
+    controller.action_name == "attach" ? attach_admin_asset_folders_path(folder.path) : browse_admin_asset_folders_path(folder.path)
   end
   
   def asset_breadcrumbs
@@ -30,6 +30,18 @@ module Admin::AssetsHelper
     else
       content_tag :option, "#{prefix} #{folder.name}".strip, :value => folder.id, :selected => (selected==folder)
     end
+  end
+  
+  ############################################################################
+  # Image attachment
+  ############################################################################
+  
+  def image_attachments( f )
+    render :partial => "/admin/assets/attachments/form", :locals => { :f => f, :image_only => true }
+  end
+  
+  def new_asset_attachment_form( form )
+    javascript_tag "var global_asset_link_string = \"#{ escape_javascript render(:partial => '/admin/assets/attachments/asset_link', :locals => { :f => form, :asset_link => AssetLink.new }) }\""     
   end
   
 end

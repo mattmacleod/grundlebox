@@ -65,10 +65,10 @@ th {
   clear: both;
 }
 
-.clearfix, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper {
+.clearfix, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset {
   display: block;
 }
-.clearfix:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after, #pagination_wrapper:after {
+.clearfix:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after, #pagination_wrapper:after, .asset_attachment_items ul.asset_attachment_list li.asset:after {
   content: ".";
   clear: both;
   display: block;
@@ -76,7 +76,7 @@ th {
   height: 0;
   font-size: 1px;
 }
-* html .clearfix, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form, * html #pagination_wrapper {
+* html .clearfix, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form, * html #pagination_wrapper, * html .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list * html li.asset {
   display: block;
   height: 1%;
 }
@@ -254,7 +254,7 @@ a:hover {
   background-position: -80px -128px;
 }
 
-.clipped_background, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .medium_rounded, #admin_tools, .tag_attachment_list a, li.token-input-token, .search_form, span.tag, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
+.clipped_background, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, .medium_rounded, #admin_tools, .tag_attachment_list a, li.token-input-token, .search_form, span.tag, .asset_attachment_items ul.asset_attachment_list li.asset h4 a, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
   -moz-background-clip: padding;
   -webkit-background-clip: border-box;
   background-clip: border-box;
@@ -266,7 +266,7 @@ a:hover {
   border-radius: 0;
 }
 
-.small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter {
+.small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4 {
   -webkit-border-top-left-radius: 4px;
   -webkit-border-top-right-radius: 4px;
   -moz-border-radius-topleft: 4px;
@@ -284,34 +284,34 @@ a:hover {
   border-bottom-right-radius: 4px;
 }
 
-.small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current {
+.small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
 
-.medium_rounded, #admin_tools, .tag_attachment_list a, li.token-input-token, .search_form, span.tag {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
+.medium_rounded, #admin_tools, .tag_attachment_list a, li.token-input-token, .search_form, span.tag, .asset_attachment_items ul.asset_attachment_list li.asset h4 a {
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
 }
 
 .medium_rounded_top {
-  -webkit-border-top-left-radius: 10px;
-  -webkit-border-top-right-radius: 10px;
-  -moz-border-radius-topleft: 10px;
-  -moz-border-radius-topright: 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  -webkit-border-top-left-radius: 12px;
+  -webkit-border-top-right-radius: 12px;
+  -moz-border-radius-topleft: 12px;
+  -moz-border-radius-topright: 12px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .medium_rounded_bottom {
-  -webkit-border-bottom-left-radius: 10px;
-  -webkit-border-bottom-right-radius: 10px;
-  -moz-border-radius-bottomleft: 10px;
-  -moz-border-radius-bottomright: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 12px;
+  -webkit-border-bottom-right-radius: 12px;
+  -moz-border-radius-bottomleft: 12px;
+  -moz-border-radius-bottomright: 12px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .large_rounded, .button, body.notice #notice_body {
@@ -779,6 +779,9 @@ fieldset div.button_area {
   padding: 0.2em 0.5em;
   margin-top: 1em;
   margin-bottom: 0.5em;
+}
+.tabbed_fieldsets fieldset h3.top {
+  margin-top: 0;
 }
 .tabbed_fieldsets.tabs_enabled ul.tabs {
   width: 100%;
@@ -1281,7 +1284,7 @@ span.tag a.delete {
 #folder_browser div.icon .label em .asset_delete {
   background-position: -80px -128px;
 }
-#folder_browser div.icon .label em .image_use {
+#folder_browser div.icon .label em .asset_use {
   background-position: -64px -144px;
 }
 #folder_browser div.label a {
@@ -1314,24 +1317,71 @@ fieldset.preview .geometry {
   display: none;
 }
 
-/* Attachment */
-.image_attachment_area {
-  padding-top: 15px;
-}
-.image_attachment_area h3 {
-  background: #555566;
-  color: white;
-  padding: 0.3em 0.6em;
-}
-.image_attachment_area .button {
-  display: block;
+/* Attachments */
+.asset_attachment_tools {
   float: left;
-  margin-right: 15px;
-  margin-bottom: 10px;
+  width: 150px;
+  margin-right: 20px;
 }
-.image_attachment_area .attached_image {
-  clear: left;
-  padding-top: 15px;
+.asset_attachment_tools .button {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.asset_attachment_items {
+  float: left;
+  width: 500px;
+}
+.asset_attachment_items .empty {
+  margin: 0 auto;
+  background: #ddddee;
+  padding: 1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #555566;
+  font-size: 0.9em;
+}
+.asset_attachment_items ul.asset_attachment_list li.placeholder {
+  background: #eeeeff;
+  margin-bottom: 1em;
+  padding: 7px;
+  border: 3px #ccccdd dotted;
+}
+.asset_attachment_items ul.asset_attachment_list li.asset {
+  background: #ddddee;
+  padding: 10px;
+  margin-bottom: 1em;
+}
+.asset_attachment_items ul.asset_attachment_list li.asset h4 {
+  background: #555566 url(/images/admin/icons/move.png) 5px center no-repeat;
+  color: #888899;
+  font-size: 1em;
+  padding: 3px 10px 3px 30px;
+  margin: -10px -10px 10px -10px;
+  cursor: move;
+}
+.asset_attachment_items ul.asset_attachment_list li.asset h4 a {
+  float: right;
+  color: white;
+  padding: 3px 7px 3px 25px;
+  margin: 1px -5px 1px 10px;
+  line-height: 1em;
+  background: #888899 url(/images/admin/icons/button_delete.png) 0 center no-repeat;
+}
+.asset_attachment_items ul.asset_attachment_list li.asset .thumbnail {
+  width: 126px;
+  float: left;
+  margin-right: 10px;
+  padding: 4px;
+  background: #555566;
+  line-height: 0;
+}
+.asset_attachment_items ul.asset_attachment_list li.asset .thumbnail img {
+  border: 1px #888899 solid;
+}
+.asset_attachment_items ul.asset_attachment_list li.asset .caption {
+  width: 335px;
+  float: left;
 }
 
 body.notice {
@@ -1380,6 +1430,50 @@ body.notice .version {
   padding-right: 1.5em;
   font-size: 0.9em;
   margin-top: 0.5em;
+}
+
+#iframe_wrapper {
+  padding: 15px;
+}
+
+#iframe {
+  background: white;
+  width: 830px;
+}
+#iframe #left_pane {
+  width: 565px;
+  float: left;
+}
+#iframe #right_pane {
+  width: 190px;
+  float: left;
+}
+#iframe #right_pane .box {
+  padding: 0;
+}
+#iframe #right_pane .box h2 {
+  float: none;
+  margin: 0 0 10px 0;
+}
+#iframe #pagination_loading {
+  background: white;
+}
+#iframe .search_form {
+  border-color: #ddddee;
+  background: white;
+}
+#iframe .search_form fieldset {
+  margin: 0;
+  padding: 0;
+  background: white;
+}
+#iframe #folder_browser h2 {
+  display: block;
+  float: none;
+}
+#iframe #main_folder_wrapper {
+  border-color: #ddddee;
+  background: white;
 }
 
 /* jQuery UI CSS Framework 1.8.7
@@ -3904,10 +3998,10 @@ div.ppt {
   z-index: 9999;
 }
 
-.clearfix, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper {
+.clearfix, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset {
   display: inline-block;
 }
-.clearfix:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after, #pagination_wrapper:after {
+.clearfix:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after, #pagination_wrapper:after, .asset_attachment_items ul.asset_attachment_list li.asset:after {
   content: ".";
   display: block;
   height: 0;
@@ -3916,11 +4010,11 @@ div.ppt {
 }
 
 /* Hides from IE-mac \ */
-* html .clearfix, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form, * html #pagination_wrapper {
+* html .clearfix, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form, * html #pagination_wrapper, * html .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list * html li.asset {
   height: 1%;
 }
 
-.clearfix, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper {
+.clearfix, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset {
   display: block;
 }
 

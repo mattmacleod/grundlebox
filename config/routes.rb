@@ -54,8 +54,7 @@ Grundlebox::Application.routes.draw do
         delete "/:id"             => "asset_folders#destroy", :as => :destroy
         get "/new"                => "asset_folders#new", :as => :new
         put "/"                   => "asset_folders#create", :as => :update
-        get "attach(/*path)"      => "asset_folders#browse_for_attach", :as => :attach
-        get "attachment_form/:id" => "asset_folders#attachment_form", :as => :attachment_form
+        get "attach(/*path)"      => "asset_folders#attach", :as => :attach
         get "/*path"              => "asset_folders#index", :as => :browse
       end
     end

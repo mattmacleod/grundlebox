@@ -1,0 +1,12 @@
+- if @assets.blank? && params[:page].blank? && !params[:q].blank?
+	=note "No images found"
+	
+- @assets.each do |asset|
+	.icon{:class=>cycle(:first, "", "", :last)}
+		=image_tag( asset.asset.url(:thumb) )
+		.label
+			%strong= asset.title
+			%em
+				=link_to "Show", asset.asset.url(:original), :class => :asset_show, :rel => "prettyPhoto", :title => asset.title
+				=link_to "Use", asset.asset.url(:thumb), :id => "#{asset.id}", :class => :asset_use
+			.clear

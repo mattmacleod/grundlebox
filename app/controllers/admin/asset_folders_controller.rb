@@ -103,22 +103,17 @@ class Admin::AssetFoldersController < AdminController
   # Attachments
   ############################################################################
   
-  def browse_for_attach
+  def attach
     @assets = @current_folder.assets
     @assets = @assets.where(["assets.title LIKE ?", "%#{params[:q]}%"]) if params[:q]
-    @assets = @assets.paginate(:page => params[:page])
+    @assets = @assets.paginate( :page => params[:page], :per_page => 20 )
     if request.xhr?
-      render :partial => "folder_for_attach", :locals => {:assets => @assets}
+      render :partial => "/admin/assets/attachments/folder", :locals => {:assets => @assets}
       return
     end
     render :layout => "admin/iframe"
   end
-  
-  def attachment_form
-    @asset = Asset.find( params[:id] )
-    render :partial => "attachment_form", :locals => {:asset => @asset, :field_name => params[:field_name]}
-  end
-  
+
   
   
   ############################################################################

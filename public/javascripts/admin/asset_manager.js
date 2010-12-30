@@ -12,6 +12,7 @@ grundlebox.admin.asset_manager = {
 		this.setup_pp();								// Setup the image preview box
 		this.pagination.init();					// Setup the special-case pagination
 		this.cropper.init();						// Setup the cropper
+		this.attachment.init();					// Setup image attachment manager
 	},
 	
 	// Sets up the treeview for the folder browser using the jQuery treeview
@@ -175,6 +176,109 @@ grundlebox.admin.asset_manager = {
 			});
 			
 		}					
+	},
+	
+	attachment: {
+		
+		init: function(){
+
+			// Quit if there are no attachment forms here
+			if($(".asset_attachment_items,.asset_use").length==0){ return; }
+
+			var _this = this;
+			
+			// Setup ordering
+			this.setup_ordering();
+			
+			// Setup clear button
+			$(".asset_attachment_tools a.delete").click( this.clear_attachments );
+			
+			// Setup add button
+			$(".asset_attachment_tools a.new").click( this.open_attachment_browser );
+			
+			// Setup delete buttons
+			$(".asset_attachment_items .delete_asset").live("click", function(){ _this.remove_attachment( $(this).parents(".asset") ); return false; })
+			
+			// Setup use buttons
+			$(".asset_use").live("click", this.select_attachment )
+			
+		},
+		
+		setup_ordering: function(){
+			
+			// Create the sortable
+			$(".asset_attachment_list").sortable({
+				axis: "y", 
+				opacity: 0.5,
+				placeholder: "placeholder",
+				forcePlaceholderSize: true,
+				stop: function(event,ui){
+					grundlebox.admin.asset_manager.attachment.set_sort_order();
+				}
+			});
+
+			// Setup initial sort order fields
+			this.set_sort_order();
+			
+		},
+		
+		clear_attachments: function(){
+			if( $(".asset_attachment_items .asset:visible").length>0 ){
+				$(".asset_attachment_items .delete_asset").click();
+				$(".asset_attachment_items .empty").show("blind");
+			}
+			return false;
+		},
+		
+		open_attachment_browser: function(){
+			$.prettyPhoto.open("/admin/asset_folders/attach?iframe=true&width=850&height=450")
+			return false;			
+		},
+		
+		remove_attachment: function( element ){
+			
+			// If this is an existing element, we have to set the destroy field.
+			// Otherwise, we can just remove the whole thing and it'll be fine.
+			if( element.hasClass("existing") ){
+				element.find(".destroy_field").val(1);
+				element.hide("blind");
+			} else {
+				element.hide("blind");
+				element.remove();
+			}
+			
+			// Are there any attachments left?
+			if( $(".asset_attachment_items .asset:visible").length==1 ){
+				$(".asset_attachment_items .empty").show("blind");
+			}
+			
+			return false;
+			
+		},
+		
+		set_sort_order: function(){
+			var idx = 0;
+			$(".asset_attachment_list").find("input.sort_order").each(function(){
+				$(this).val( idx++ );
+			});
+		},
+		
+		add_attachment: function( thumbnail_path, asset_id ){
+			
+			$(".asset_attachment_items .empty").hide();
+			
+			code = global_asset_link_string.replace(/REPLACE_WITH_THUMBNAIL_PATH/g, thumbnail_path ).replace(/REPLACE_WITH_ASSET_ID/g, asset_id );
+			var new_asset_link_id = "new_" + new Date().getTime();
+			$('.asset_attachment_list').append(code.replace(/new_\\d+/g, new_asset_link_id) );
+			this.set_sort_order();
+		},
+		
+		select_attachment: function(){
+			parent.grundlebox.admin.asset_manager.attachment.add_attachment( $(this).attr("href"), $(this).attr("id") );
+			parent.$.prettyPhoto.close();
+			return false;
+		}
+				
 	}
 	
 };

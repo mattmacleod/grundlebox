@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 27) do
     t.integer "item_id",                   :null => false
     t.string  "item_type",                 :null => false
     t.integer "asset_id",                  :null => false
+    t.string  "caption"
     t.integer "sort_order", :default => 0, :null => false
   end
 

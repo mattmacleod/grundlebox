@@ -10,10 +10,17 @@ module Grundlebox #:nodoc:
       module ClassMethods
         
         def grundlebox_has_assets(options={})
+          
           has_many :asset_links, :as => :item, :order => :sort_order, 
                    :include => :asset, :dependent => :destroy
+          
           has_many :assets, :through => :asset_links
+          
+          accepts_nested_attributes_for :asset_links, :allow_destroy => true
+          attr_accessible :asset_links_attributes
+          
           include Grundlebox::ModelExtensions::Assets::InstanceMethods
+        
         end
 
       end

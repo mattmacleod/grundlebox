@@ -55,6 +55,8 @@
 					
 	%fieldset#images
 		%legend Images
+		= image_attachments( f )
+		
 	%fieldset#tagging
 		%legend Tagging
 		.full= f.tag_select :tag_list, :label => "Venue tags"

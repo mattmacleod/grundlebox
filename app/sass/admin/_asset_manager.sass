@@ -87,7 +87,7 @@
 						background-position: -160px -112px
 					.asset_delete
 						background-position: -80px -128px
-					.image_use
+					.asset_use
 						background-position: -64px -144px
 					
 		&.label a
@@ -119,19 +119,81 @@ fieldset.preview
 		display: none
 
 
-/* Attachment
 
-.image_attachment_area
-	padding-top: 15px
-	h3
-		background: $grey_2
-		color: white
-		padding: 0.3em 0.6em
+/* Attachments
+
+.asset_attachment_tools
+	float: left
+	width: 150px
+	margin-right: 20px
+	
 	.button
 		display: block
-		float: left
-		margin-right: 15px
-		margin-bottom: 10px
-	.attached_image
-		clear: left
-		padding-top: 15px
+		margin-bottom: 1em
+		
+	
+.asset_attachment_items
+	float: left
+	width: 500px
+
+	.empty
+		@extend .small_rounded
+		margin: 0 auto
+		background: $grey_5
+		padding: 1em
+		text-align: center
+		text-transform: uppercase
+		color: $grey_2
+		font-size: 0.9em
+		
+	ul.asset_attachment_list
+	
+		li.placeholder
+			@extend .small_rounded
+			background: $grey_6
+			margin-bottom: 1em
+			padding: 7px
+			border: 3px $grey_4 dotted
+		
+		li.asset
+			@extend .small_rounded
+			background: $grey_5
+			padding: 10px
+			@extend .clearfix
+			margin-bottom: 1em
+			
+			h4
+				@extend .small_rounded_top
+				background: $grey_2 url(/images/admin/icons/move.png) 5px center no-repeat
+				color: $grey_3
+				font-size: 1em
+				padding: 3px 10px 3px 30px
+				margin: -10px -10px 10px -10px
+				cursor: move
+				a
+					@extend .medium_rounded
+					float: right
+					color: white
+					padding: 3px 7px 3px 25px
+					margin: 1px -5px 1px 10px
+					line-height: 1em
+					background: $grey_3 url(/images/admin/icons/button_delete.png) 0 center no-repeat
+
+			.thumbnail
+				@extend .small_rounded
+				width: 126px
+				float: left
+				margin-right: 10px
+				padding: 4px
+				background: $grey_2
+				line-height: 0				
+				img
+					border: 1px $grey_3 solid
+					
+			.caption
+				width: 335px
+				float: left
+					
+
+
+
