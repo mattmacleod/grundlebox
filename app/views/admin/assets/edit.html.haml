@@ -42,13 +42,12 @@
 						%legend= k.to_s.capitalize
 						
 						.current_crop
+							=note "This is the current crop for the #{k} image style. #{link_to "Recrop this image", "#", :class => "button edit"}"
 							=image_tag( @asset.asset.url(k), :id=>"image_for_version_#{k}" )
-							.button_area= link_to "Recrop this image", "#", :class => "button edit"
 						
 						.recrop
-							= note "Draw a rectangle on the image to choose the cropped area."
+							= note "Draw a rectangle on the image to choose the cropped area. #{link_to "Cancel crop", "#", :class => "button cancel"}"
 							= image_tag( @asset.asset.url(:original), :class=>"crop_source" )
-							.button_area= link_to "Cancel crop", "#", :class => "button cancel"
 						
 						.geometry= v[0]
 						= f.hidden_field "crop_x_#{k}", :class => :crop_x
