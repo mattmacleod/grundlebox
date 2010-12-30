@@ -21,10 +21,15 @@
 
 			%fieldset#info
 				%legend Asset information
-				.full= f.text_field :title, :required => true
-				.full= f.select :asset_folder_id, asset_folder_options(AssetFolder.root, f.object.asset_folder), :required => true, :label => "Folder for asset"
-				.full= f.file_field :asset, :label => "Replace file", :note=>"#{" Leave blank to keep the current asset." unless @asset.new_record?}"
-
+				.half
+					.full= f.text_field :title, :required => true
+					.full= f.select :asset_folder_id, asset_folder_options(AssetFolder.root, f.object.asset_folder), :required => true, :label => "Folder for asset"
+					.full= f.file_field :asset, :label => "Replace file", :note=>"#{" Leave blank to keep the current asset." unless @asset.new_record?}"
+				.half
+					.full= f.text_area :caption, :rows => 4
+					.full= f.text_area :credit, :rows => 3
+					
+					
 			- if @asset.image?
 			
 				%fieldset.preview#original
