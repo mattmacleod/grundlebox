@@ -105,13 +105,17 @@ class Admin::AssetFoldersController < AdminController
   
   def attach
     
+    @search_suggestion = params[:suggestion]
+    
     # Handle uploads
+    @asset = Asset.new( :asset_folder_id => @current_folder.id )
+    @url_upload = UrlUpload.new( :asset_folder_id => @current_folder.id )
+    @google_url_upload = UrlUpload.new( :asset_folder_id => @current_folder.id )
+    
     if request.post?
-      
+          
       if params[:asset]
-        
-        @url_upload = UrlUpload.new( :asset_folder_id => @current_folder.id )
-        
+                
         @asset = Asset.new( params[:asset] )
         @asset.asset = params[:asset][:asset]
         @asset.user = current_user
@@ -122,9 +126,7 @@ class Admin::AssetFoldersController < AdminController
         end
         
       elsif params[:url_upload]
-      
-        @asset = Asset.new( :asset_folder_id => @current_folder.id )
-      
+              
         @url_upload = UrlUpload.new( params[:url_upload] )
         @url_upload.user = current_user
         if @url_upload.valid? && @url_upload.convert!
@@ -133,12 +135,14 @@ class Admin::AssetFoldersController < AdminController
           return
         end
       
+        # Google or normal?
+        if params[:google]
+          @google_url_upload = @url_upload
+          @url_upload = UrlUpload.new( :asset_folder_id => @current_folder.id )
+        end
+        
       end
       
-    else
-      # For uploads
-      @asset = Asset.new( :asset_folder_id => @current_folder.id )
-      @url_upload = UrlUpload.new( :asset_folder_id => @current_folder.id )
     end
     
     @assets = @current_folder.assets

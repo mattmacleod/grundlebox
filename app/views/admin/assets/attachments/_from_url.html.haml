@@ -1,6 +1,7 @@
 =labelled_form_for [:admin, @url_upload], :url => attach_admin_asset_folders_path( :anchor => :url ), :html=>{:multipart => true} do |f|
 
 	#left_pane
+		=note "Enter a URL in the box to download and use an asset from another website. The asset will be saved in the asset library in the folder you specify."
 		=form_errors @url_upload
 	
 		.full

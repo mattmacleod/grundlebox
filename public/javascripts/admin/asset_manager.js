@@ -183,7 +183,7 @@ grundlebox.admin.asset_manager = {
 		init: function(){
 
 			// Quit if there are no attachment forms here
-			if($(".asset_attachment_items,.asset_use").length==0){ return; }
+			if($(".asset_attachment_items,.asset_attachment_window").length==0){ return; }
 
 			var _this = this;
 			
@@ -201,6 +201,9 @@ grundlebox.admin.asset_manager = {
 			
 			// Setup use buttons
 			$(".asset_use").live("click", this.select_attachment )
+			
+			// Setup google search
+			this.google.init();
 			
 		},
 		
@@ -231,7 +234,7 @@ grundlebox.admin.asset_manager = {
 		},
 		
 		open_attachment_browser: function(){
-			$.prettyPhoto.open("/admin/asset_folders/attach?iframe=true&width=850&height=450")
+			$.prettyPhoto.open("/admin/asset_folders/attach?suggestion=" + encodeURI($(".asset_search_suggestion").html() + "&iframe=true&width=850&height=450") )
 			return false;			
 		},
 		
@@ -248,7 +251,7 @@ grundlebox.admin.asset_manager = {
 			}
 			
 			// Are there any attachments left?
-			if( $(".asset_attachment_items .asset:visible").length==1 ){
+			if( $(".asset_attachment_items input.destroy_field[value=false]").length==0 ){
 				$(".asset_attachment_items .empty").show("blind");
 			}
 			
@@ -277,6 +280,77 @@ grundlebox.admin.asset_manager = {
 			parent.grundlebox.admin.asset_manager.attachment.add_attachment( $(this).attr("href"), $(this).attr("id") );
 			parent.$.prettyPhoto.close();
 			return false;
+		},
+
+		google: {
+			
+			init: function(){
+
+				console.log("Google search: init")
+				
+				// Return unless there's a search area
+				if($(".google_image_search").length==0){ return; }
+
+				// Load from the Google API
+				google.load('search', '1', {"callback" : grundlebox.admin.asset_manager.attachment.google.load_search});
+				
+				// Hook into the download links
+				$(".google_image_search .asset_download").live("click", function(){
+					$("#google_url_upload_url").val( $(this).attr("href") );
+					$("#new_google_url_upload").submit();
+					return false;
+				})
+				
+				// Auto search on tab click if field populated
+				$("a[href=#google]").click( function(){
+					if($("#google_search_query input").val().length>0){
+						$("#google_search_query a").click();
+					}
+				});
+				
+			},
+			
+			load_search: function(){
+								
+				// Setup search
+				var search_object = new google.search.ImageSearch();
+
+				search_object.setSearchCompleteCallback(this, grundlebox.admin.asset_manager.attachment.google.display_results, [search_object]);
+				search_object.setResultSetSize(google.search.Search.LARGE_RESULTSET);
+				
+				// Include the required Google branding
+				google.search.Search.getBranding('google_branding');
+				
+				// Hook into the search button
+				$("#google_search_query a").click(function(){
+					search_object.execute($(this).siblings("input").val());
+					return false;
+				});
+				
+			},
+
+			
+			display_results: function(a){
+				
+				results = a.results;
+				
+				$(".google_image_search").html("");
+				
+				// Loop through our results, printing them to the page.				
+				for (var i = 0; i < results.length; i++) {
+										
+					var result = results[i];
+					str = "<div class='result'><div class='thumb'><img src='" + result.tbUrl + "'/></div><div class='label'><strong>" + result.titleNoFormatting + "</strong><span class='source'>" + result.visibleUrl + "</span><em><a href='" + result.url + "' class='asset_show' rel='prettyPhoto'>Show</a><a href='" + result.url + "' class='asset_download'>Download</a></em><div class='clear'></div></div>"
+					$(".google_image_search").append(str);
+
+				}
+				
+				// Setup PP links
+				grundlebox.admin.asset_manager.setup_pp();
+				
+			}
+			
+
 		}
 				
 	}
