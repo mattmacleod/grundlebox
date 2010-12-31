@@ -107,17 +107,38 @@ class Admin::AssetFoldersController < AdminController
     
     # Handle uploads
     if request.post?
-      @asset = Asset.new( params[:asset] )
-      @asset.asset = params[:asset][:asset]
-      @asset.user = current_user
-      if @asset.save
-        flash[:notice] = "Your upload has been saved"
-        redirect_to use_attach_admin_asset_folders_path( @asset )
-        return
+      
+      if params[:asset]
+        
+        @url_upload = UrlUpload.new( :asset_folder_id => @current_folder.id )
+        
+        @asset = Asset.new( params[:asset] )
+        @asset.asset = params[:asset][:asset]
+        @asset.user = current_user
+        if @asset.save
+          flash[:notice] = "Your upload has been saved"
+          redirect_to use_attach_admin_asset_folders_path( @asset )
+          return
+        end
+        
+      elsif params[:url_upload]
+      
+        @asset = Asset.new( :asset_folder_id => @current_folder.id )
+      
+        @url_upload = UrlUpload.new( params[:url_upload] )
+        @url_upload.user = current_user
+        if @url_upload.valid? && @url_upload.convert!
+          flash[:notice] = "Upload saved"
+          redirect_to use_attach_admin_asset_folders_path( @url_upload.asset )
+          return
+        end
+      
       end
+      
     else
       # For uploads
       @asset = Asset.new( :asset_folder_id => @current_folder.id )
+      @url_upload = UrlUpload.new( :asset_folder_id => @current_folder.id )
     end
     
     @assets = @current_folder.assets
