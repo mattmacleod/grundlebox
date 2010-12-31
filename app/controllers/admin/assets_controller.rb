@@ -74,7 +74,7 @@ class Admin::AssetsController < AdminController
     @zip_upload = ZipUpload.new( params[:zip_upload] )
     @zip_upload.user = current_user
     if @zip_upload.valid? && @zip_upload.convert!
-      new_folder = AssetFolder.order(:id).last
+      new_folder = AssetFolder.nodes.last
       flash[:notice] = "Bulk upload saved - found #{new_folder.assets.length} assets"
       redirect_to browse_admin_asset_folders_path( new_folder.path )
     else
@@ -90,8 +90,8 @@ class Admin::AssetsController < AdminController
   private
   
   def load_folder
-    @current_folder = AssetFolder.where(:id => params[:path].to_s.split("/").last.to_s.split("-")).first
-    @current_folder ||= AssetFolder.where(:id => session[:current_folder]).first
+    @current_folder = AssetFolder.with_id( params[:path].to_s.split("/").last.to_s.split("-").first.to_i ) rescue nil
+    @current_folder ||= AssetFolder.with_id( session[:current_folder].to_i ) rescue nil
     @current_folder ||= AssetFolder.root
     session[:current_folder] = @current_folder.id
   end

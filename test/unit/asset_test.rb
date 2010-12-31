@@ -18,9 +18,6 @@ class AssetTest < ActiveSupport::TestCase
   should validate_presence_of :title
   should validate_presence_of :user
   should validate_presence_of :asset_folder
-  should validate_presence_of :asset_file_name
-  should validate_presence_of :asset_content_type
-  should validate_presence_of :asset_file_size
   
   should have_db_index :asset_folder_id
   

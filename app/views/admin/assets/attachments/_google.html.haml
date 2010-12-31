@@ -8,7 +8,7 @@
 		.full= f.text_field :title, :required => true, :id => "google_url_upload_title"
 		.full{:style => "display: none"}= f.text_field :url, :required => true, :note => "This is the URL of the image you have selected", :id => "google_url_upload_url"
 		
-		.full= f.select :asset_folder_id, asset_folder_options(AssetFolder.root, f.object.asset_folder), :required => true, :label => "Folder to save file into", :id => "google_url_upload_asset_folder_id"
+		.full= f.select :asset_folder_id, asset_folder_options(AssetFolder.root, f.object.asset_folder_id), :required => true, :label => "Folder to save file into", :id => "google_url_upload_asset_folder_id"
 	
 		.full= f.text_area :caption, :rows => 4, :id => "google_url_upload_caption"
 		.full= f.text_area :credit, :rows => 3, :id => "google_url_upload_credit"

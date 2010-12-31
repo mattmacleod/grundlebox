@@ -10,6 +10,7 @@ gem "fastercsv"
 gem "htmlentities"
 gem "zip"
 gem "mime-types", :require => "mime/types"
+gem "newrelic_rpm",           "2.13.4"
 
 
 gem "paper_trail",

@@ -23,12 +23,12 @@ module Admin::AssetsHelper
     end
   end
   
-  def asset_folder_options(folder, selected, prefix="")
+  def asset_folder_options(folder, selected_id, prefix="")
     if folder.children.length > 0
-      content_tag(:option, "#{prefix} #{folder.name}".strip, :value => folder.id, :selected => (selected==folder)) +
-      folder.children.map{|f| asset_folder_options(f, selected, "#{prefix}--") }.join.html_safe
+      content_tag(:option, "#{prefix} #{folder.name}".strip, :value => folder.id, :selected => (selected_id==folder.id)) +
+      folder.children.map{|f| asset_folder_options(f, selected_id, "#{prefix}--") }.join.html_safe
     else
-      content_tag :option, "#{prefix} #{folder.name}".strip, :value => folder.id, :selected => (selected==folder)
+      content_tag :option, "#{prefix} #{folder.name}".strip, :value => folder.id, :selected => (selected_id==folder.id)
     end
   end
   

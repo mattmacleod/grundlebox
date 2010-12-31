@@ -24,6 +24,8 @@ module Grundlebox #:nodoc:
 
           after_save :save_tags
           
+          attr_accessible :tag_list
+          
           include Grundlebox::ModelExtensions::Tags::InstanceMethods
           extend Grundlebox::ModelExtensions::Tags::SingletonMethods
           

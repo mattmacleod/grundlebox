@@ -234,7 +234,7 @@ grundlebox.admin.asset_manager = {
 		},
 		
 		open_attachment_browser: function(){
-			$.prettyPhoto.open("/admin/asset_folders/attach?suggestion=" + encodeURI($(".asset_search_suggestion").html() + "&iframe=true&width=850&height=450") )
+			$.prettyPhoto.open("/admin/asset_folders/attach?suggestion=" + encodeURI($(".asset_search_suggestion").html() + "&iframe=true&width=850&height=" + (document.documentElement.clientHeight - 100)) )
 			return false;			
 		},
 		
@@ -285,8 +285,6 @@ grundlebox.admin.asset_manager = {
 		google: {
 			
 			init: function(){
-
-				console.log("Google search: init")
 				
 				// Return unless there's a search area
 				if($(".google_image_search").length==0){ return; }

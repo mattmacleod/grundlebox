@@ -20,6 +20,7 @@ class Admin::AssetFoldersController < AdminController
         return
       end
     else
+      logger.info "REDIRECT BECAUSE #{params[:path].to_s.split("/")} != #{@current_folder.path }"
       redirect_to browse_admin_asset_folders_path( @current_folder.path )
     end
   end
@@ -70,12 +71,12 @@ class Admin::AssetFoldersController < AdminController
   end
   
   def edit
-    @asset_folder = AssetFolder.find( params[:id] )
+    @asset_folder = AssetFolder.with_id( params[:id] )
     render :layout => "admin/manual_sidebar"
   end
   
   def update
-    @asset_folder = AssetFolder.find( params[:id] )
+    @asset_folder = AssetFolder.with_id( params[:id] )
     @asset_folder.attributes = params[:asset_folder]
     @asset_folder.parent_id = params[:asset_folder][:parent_id]
     if @asset_folder.save
@@ -87,7 +88,7 @@ class Admin::AssetFoldersController < AdminController
   end
   
   def destroy
-    @asset_folder = AssetFolder.find(params[:id])
+    @asset_folder = AssetFolder.with_id( params[:id] )
     if @asset_folder.parent && @asset_folder.destroy
       flash[:notice] = "Asset folder removed"
       redirect_to browse_admin_asset_folders_path( @asset_folder.parent.path ) and return
@@ -171,8 +172,8 @@ class Admin::AssetFoldersController < AdminController
   private
   
   def load_folder
-    @current_folder = AssetFolder.where(:id => params[:path].to_s.split("/").last.to_s.split("-").first).first
-    @current_folder ||= AssetFolder.where(:id => session[:current_folder]).first
+    @current_folder = AssetFolder.with_id( params[:path].to_s.split("/").last.to_s.split("-").first.to_i ) rescue nil
+    @current_folder ||= AssetFolder.with_id( session[:current_folder].to_i ) rescue nil
     @current_folder ||= AssetFolder.root
     session[:current_folder] = @current_folder.id
   end

@@ -31,6 +31,10 @@ class Venue < ActiveRecord::Base
   grundlebox_has_url   :url, :generated_from => :title
   grundlebox_has_versions :title, :abstract, :content
   
+  # Accessible - most
+  attr_accessible :title, :address_1, :address_2, :city_id, :postcode, :phone,
+                  :email, :web, :abstract, :content, :featured, :enabled, 
+                  :lat, :lng
   
   # Class methods
   ############################################################################

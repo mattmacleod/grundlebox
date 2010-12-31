@@ -16,12 +16,21 @@ class AssetFolder < ActiveRecord::Base
   validates_associated :parent
   validates :parent_id, :tree => true
   
+  after_save :clear_node_cache
+  after_destroy :clear_node_cache
+  
+  # Class methods
+  ############################################################################
+  
   def self.root
-    where(:parent_id=>nil).first
+    return @nodes.select{|n| n && !n.parent_id }.first
   end
   
+  # Instance methods
+  ############################################################################
+  
   def ancestors
-    return parent ? parent.ancestors+[self] : [self]
+    return @ancestors ||= parent ? (parent.ancestors + [self]) : [self]
   end
   
   def to_param
@@ -30,6 +39,37 @@ class AssetFolder < ActiveRecord::Base
   
   def path
     ancestors.map{|a| a.to_param }
+  end
+  
+  
+  # Node caching to reduce queries
+  ############################################################################
+  
+  cattr_accessor :nodes
+  def self.nodes
+    return @nodes if (@nodes && !(Rails.env=="test")) # Disable caching in test mode    
+    @nodes = []
+    order(:id).each{|n| @nodes[n.id] = n }
+    return @nodes
+  end
+  
+  def self.with_id(id)
+    return nodes[id] if nodes[id]
+    raise ActiveRecord::RecordNotFound
+  end
+  
+  def parent
+    AssetFolder::nodes[self.parent_id] rescue nil
+  end
+  
+  def children
+    return AssetFolder::nodes.select{|n| n && n.parent_id == self.id }.sort_by(&:name)
+  end
+  
+  private
+  
+  def clear_node_cache
+    self.class.nodes = nil
   end
   
 end
