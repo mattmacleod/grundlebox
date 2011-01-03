@@ -93,7 +93,7 @@ grundlebox.admin.tagging = {
 				
 				// Add this tag to the list
 				$(this).parent().siblings(".tag_select").val( 
-					$(this).parent().siblings(".tag_select").val() + ", " + $(this).attr("title") 
+					$(this).parent().siblings(".tag_select").val() ?  $(this).parent().siblings(".tag_select").val() + ", " + $(this).attr("title") : $(this).attr("title")
 				);
 				
 				// Hide the tag once it's been clicked

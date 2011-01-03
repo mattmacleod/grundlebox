@@ -21,6 +21,9 @@ class Event < ActiveRecord::Base
   grundlebox_has_assets
   grundlebox_has_versions :title, :abstract, :short_content, :content
   
+  # Need to set accessible attributes
+  attr_accessible :title, :abstract, :short_content, :content, :featured, :review_id,
+                  :enabled, :print, :afiliate_type, :affiliate_code
     
   # Class methods
   ############################################################################

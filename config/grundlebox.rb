@@ -64,4 +64,9 @@ class Grundlebox::Config
   # Mapping
   DefaultAdminMapLocation = "53.800651,-4.042969"
   
+  # Affiliates
+  AffiliateCodes = {
+    "Ticket Master" => "ticketmaster"
+  }
+  
 end
