@@ -84,6 +84,12 @@ class Admin::AssetsControllerTest < ActionController::TestCase
       should set_the_flash do /saved/i end
     end
     
+    context "a post to :create_from_zip with invalid details" do
+      setup { post :create_from_zip, :zip_upload=>{ :title => "Test zip upload" } }
+      should respond_with :success
+      should_show_errors
+    end
+    
     
     # Edit
     ###########################################################################

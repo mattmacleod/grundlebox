@@ -177,6 +177,60 @@ class Admin::AssetFoldersControllerTest < ActionController::TestCase
         end
       end
       
+      context "a get to :attach" do
+        setup { get :attach }
+        should "return a list of assets" do
+          assert_same_elements @assets, assigns(:assets)
+        end
+        should "generate a new asset" do
+          assert assigns(:asset)
+          assert assigns(:asset).is_a?( Asset )
+        end
+        should "generate a new URL upload request" do
+          assert assigns(:url_upload)
+          assert assigns(:url_upload).is_a?( UrlUpload )
+        end
+        should "generate a new Google upload request" do
+          assert assigns(:google_url_upload)
+          assert assigns(:google_url_upload).is_a?( UrlUpload )
+        end
+      end
+      
+      context "a post to :attach with valid asset details" do
+        setup { post :attach, :asset=>{
+          :title => "test asset", :asset_folder_id => @root_folder.id, 
+          :asset => fixture_file_upload("files/images/test_image_small_rgb.jpg", "image/jpeg" )
+          } 
+        }
+        should respond_with :redirect
+      end
+      
+      context "a post to :attach with invalid asset details" do
+        setup { post :attach, :asset=>{ :title => "" } }
+        should respond_with :success
+      end
+      
+      context "a post to :attach with valid URL upload details" do
+        setup { post :attach, :url_upload => { :title => "test", :asset_folder_id => @root_folder.id, :url=>"http://test.host" } }
+        should respond_with :redirect
+      end
+      
+      context "a post to :attach with invalid URL upload details" do
+        setup { post :attach, :url_upload=>{ :title => "" } }
+        should respond_with :success
+      end
+      
+      context "a post to :attach with valid URL upload details and a google flag" do
+        setup { post :attach, {:google => 1, :url_upload => { :title => "test", :asset_folder_id => @root_folder.id, :url=>"http://test.host" }} }
+        should respond_with :redirect
+      end
+      
+      context "a post to :attach with invalid URL upload details and a google flag" do
+        setup { post :attach, :google => 1, :url_upload=>{ :title => "" } }
+        should respond_with :success
+      end
+      
+      
     end
   end
   
