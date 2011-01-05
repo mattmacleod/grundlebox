@@ -21,6 +21,13 @@ GIT
   specs:
     will_paginate (3.0.pre3)
 
+GIT
+  remote: https://github.com/lapluviosilla/tickle.git
+  revision: 3aedacc797f809f85f0bb6f13ec10d4b63a6eec5
+  specs:
+    lapluviosilla-tickle (0.1.9)
+      chronic (>= 0.2.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -59,6 +66,7 @@ GEM
       ZenTest
     builder (2.1.2)
     cgi_multipart_eof_fix (2.5.0)
+    chronic (0.3.0)
     closure-compiler (0.3.3)
     columnize (0.3.2)
     daemons (1.1.0)
@@ -137,6 +145,7 @@ DEPENDENCIES
   autotest
   autotest-rails
   cgi_multipart_eof_fix
+  chronic
   dr_dre
   factory_girl_rails
   fastercsv
@@ -144,6 +153,7 @@ DEPENDENCIES
   haml
   htmlentities
   jammit
+  lapluviosilla-tickle!
   mime-types
   mongrel
   mongrel_experimental

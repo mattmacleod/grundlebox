@@ -46,4 +46,31 @@
 	%fieldset#tagging
 		%legend Tagging
 		.full= f.tag_select :tag_list, :label => "Event tags"
-	%fieldset#events
+		
+	%fieldset#performances
+		%legend Performances
+		=note "Create performances for this event. Performances are times when the event runs."
+		
+		.event_performance_tools
+			= link_to "New performance", "#", :class => "button new"
+			= link_to "Clear all", "#", :class => "button delete delete_all"
+			= link_to "Clear expired", "#", :class => "button delete delete_old"
+
+		.event_performance_items
+
+			.performance_code
+				=# new_asset_attachment_form( f )
+
+			.empty{ :style => ("display: none" unless f.object.performances.empty?)}
+				There are no performances on record
+
+			%table.performance_list
+				%thead
+					%tr
+						%th.first Time
+						%th Venue
+						%th.icons.last
+				%tbody.performance_list_contents
+					- f.object.performances.each do |performance|
+						= render :partial => "performance", :locals => { :f => f, :performance => performance }
+		

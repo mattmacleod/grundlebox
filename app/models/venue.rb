@@ -75,6 +75,10 @@ class Venue < ActiveRecord::Base
     [address_1, address_2, (city.name if city), postcode].select{|e| !e.blank? }
   end
   
+  def admin_summary
+    [ title, address_1, (city.name if city)].select{|e| !e.blank? }.join(", ")
+  end
+  
   private
   
   # Get the distance query string

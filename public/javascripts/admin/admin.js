@@ -15,6 +15,7 @@ grundlebox = {
 			this.venues.init();					// Venue manager bits 
 			this.tagging.init();				// Tagging
 			this.asset_manager.init();	// Asset manager
+			this.events.init();					// Event manager
 		},
 
 		// Set some config variables here

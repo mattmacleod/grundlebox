@@ -14,7 +14,6 @@ Grundlebox::Application.routes.draw do
     
     # Simple resourceful routes
     resources :tags
-    resources :events
     resources :venues
     
     # More complex...
@@ -64,6 +63,12 @@ Grundlebox::Application.routes.draw do
       collection do
         get  "zip_upload"           => "assets#zip_upload", :as => :zip_upload
         post "create_from_zip"      => "assets#create_from_zip", :as => :create_from_zip
+      end
+    end
+    
+    resources :events do
+      collection do
+        match "build_performances"    => "events#build_performances", :as => :build_performances
       end
     end
     

@@ -11,6 +11,8 @@ gem "htmlentities"
 gem "zip"
 gem "mime-types", :require => "mime/types"
 gem "newrelic_rpm",           "2.13.4"
+gem "chronic"
+gem "lapluviosilla-tickle", :git => "https://github.com/lapluviosilla/tickle.git", :require => "tickle"
 
 
 gem "paper_trail",

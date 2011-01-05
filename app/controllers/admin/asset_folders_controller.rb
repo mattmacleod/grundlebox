@@ -137,8 +137,13 @@ class Admin::AssetFoldersController < AdminController
     @assets = @assets.where(["assets.title LIKE ?", "%#{params[:q]}%"]) if params[:q]
     @assets = @assets.paginate( :page => params[:page], :per_page => 20 )
     
-    render :layout => "admin/iframe"
+
     
+    if request.xhr?
+      render :partial => "/admin/assets/attachments/folder", :locals => {:assets => @assets}
+      return
+    end
+    render :layout => "admin/iframe"
   end
 
   def use_attach

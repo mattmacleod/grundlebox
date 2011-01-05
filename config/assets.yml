@@ -23,6 +23,7 @@ javascripts:
     - public/javascripts/admin/tagging.js
     - public/javascripts/admin/tinymce.js
     - public/javascripts/admin/asset_manager.js
+    - public/javascripts/admin/events.js
 stylesheets:
   default:
     - public/stylesheets/styles.css

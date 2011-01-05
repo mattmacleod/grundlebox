@@ -65,10 +65,10 @@ th {
   clear: both;
 }
 
-.clearfix, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset, .google_image_search .result .label em {
+.clearfix, #main_content, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset, .google_image_search .result .label em {
   display: block;
 }
-.clearfix:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after, #pagination_wrapper:after, .asset_attachment_items ul.asset_attachment_list li.asset:after, .google_image_search .result .label em:after {
+.clearfix:after, #main_content:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after, #pagination_wrapper:after, .asset_attachment_items ul.asset_attachment_list li.asset:after, .google_image_search .result .label em:after {
   content: ".";
   clear: both;
   display: block;
@@ -76,7 +76,7 @@ th {
   height: 0;
   font-size: 1px;
 }
-* html .clearfix, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form, * html #pagination_wrapper, * html .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list * html li.asset, * html .google_image_search .result .label em, .google_image_search .result .label * html em {
+* html .clearfix, * html #main_content, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form, * html #pagination_wrapper, * html .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list * html li.asset, * html .google_image_search .result .label em, .google_image_search .result .label * html em {
   display: block;
   height: 1%;
 }
@@ -254,10 +254,10 @@ a:hover {
   background-position: -80px -128px;
 }
 
-.clipped_background, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2, .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .medium_rounded, #admin_tools, .tag_attachment_list a, li.token-input-token, .search_form, span.tag, .asset_attachment_items ul.asset_attachment_list li.asset h4 a, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
+.clipped_background, .rounded, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2, .small_rounded_top_left, .event_performance_items table th.first, .event_performance_items table th#content_body, .event_performance_items table th#content_body_wide, .small_rounded_top_right, .event_performance_items table th.last, .event_performance_items table th#content_sidebar, .event_performance_items table th#right_pane, .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, .medium_rounded, #admin_tools, .tag_attachment_list a, li.token-input-token, .search_form, span.tag, .asset_attachment_items ul.asset_attachment_list li.asset h4 a, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
   -moz-background-clip: padding;
-  -webkit-background-clip: border-box;
-  background-clip: border-box;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
 }
 
 .not_rounded, .tabbed_fieldsets.tabs_enabled fieldset {
@@ -267,24 +267,30 @@ a:hover {
 }
 
 .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2 {
-  -webkit-border-top-left-radius: 4px;
-  -webkit-border-top-right-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  -moz-border-radius-topright: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+}
+
+.small_rounded_top_left, .event_performance_items table th.first, .event_performance_items table th#content_body, .event_performance_items table th#content_body_wide {
+  -webkit-border-radius: 4px 0 0 0;
+  -moz-border-radius: 4px 0 0 0;
+  border-radius: 4px 0 0 0;
+}
+
+.small_rounded_top_right, .event_performance_items table th.last, .event_performance_items table th#content_body_wide, .event_performance_items table th#content_sidebar, .event_performance_items table th#right_pane {
+  -webkit-border-radius: 0 4px 0 0;
+  -moz-border-radius: 0 4px 0 0;
+  border-radius: 0 4px 0 0;
 }
 
 .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset {
-  -webkit-border-bottom-left-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  -moz-border-radius-bottomright: 4px;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
 }
 
-.small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a {
+.small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -297,21 +303,15 @@ a:hover {
 }
 
 .medium_rounded_top {
-  -webkit-border-top-left-radius: 12px;
-  -webkit-border-top-right-radius: 12px;
-  -moz-border-radius-topleft: 12px;
-  -moz-border-radius-topright: 12px;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  -webkit-border-radius: 12px 12px 0 0;
+  -moz-border-radius: 12px 12px 0 0;
+  border-radius: 12px 12px 0 0;
 }
 
 .medium_rounded_bottom {
-  -webkit-border-bottom-left-radius: 12px;
-  -webkit-border-bottom-right-radius: 12px;
-  -moz-border-radius-bottomleft: 12px;
-  -moz-border-radius-bottomright: 12px;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  -webkit-border-radius: 0 0 12px 12px;
+  -moz-border-radius: 0 0 12px 12px;
+  border-radius: 0 0 12px 12px;
 }
 
 .large_rounded, .button, body.notice #notice_body {
@@ -380,7 +380,7 @@ a:hover {
 }
 
 #main_content {
-  padding: 20px 0px 100px 0px;
+  padding: 20px 0px 30px 0px;
 }
 
 #content_sidebar .box, #right_pane .box {
@@ -403,7 +403,6 @@ a:hover {
 
 #footer_wrapper {
   background: #ddddee;
-  position: fixed;
   width: 100%;
   bottom: 0;
 }
@@ -482,6 +481,10 @@ input, textarea, select {
 }
 
 .check_box {
+  width: auto;
+}
+
+.radio_button {
   width: auto;
 }
 
@@ -854,6 +857,10 @@ form .errors ul {
   margin-left: 20px;
 }
 
+fieldset .field_with_errors {
+  width: auto;
+  display: inline;
+}
 fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select {
   background: #ffd4de !important;
   border: 1px #ee0033 solid !important;
@@ -1476,6 +1483,117 @@ fieldset.preview .geometry {
 }
 .google_image_search .result .label em a.asset_download {
   background-position: -64px -144px;
+}
+
+.event_performance_tools {
+  float: left;
+  width: 150px;
+  margin-right: 20px;
+}
+.event_performance_tools .button {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.event_performance_items {
+  float: left;
+  width: 500px;
+}
+.event_performance_items .empty {
+  margin: 0 auto;
+  background: #ddddee;
+  padding: 1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #555566;
+  font-size: 0.9em;
+}
+.event_performance_items table {
+  width: 100%;
+  border-bottom: 1px #ccccdd solid;
+}
+.event_performance_items table th {
+  background: #555566;
+  font-weight: bold;
+  color: #eeeeff;
+  padding: 0 5px;
+}
+.event_performance_items table th.icons {
+  width: 34px;
+}
+.event_performance_items table td {
+  font-size: 0.9em;
+  padding: 5px;
+  border-top: 1px #ccccdd solid;
+}
+.event_performance_items table td.first, .event_performance_items table td#content_body, .event_performance_items table td#content_body_wide {
+  border-left: 1px #ccccdd solid;
+}
+.event_performance_items table td.last, .event_performance_items table td#content_body_wide, .event_performance_items table td#content_sidebar, .event_performance_items table td#right_pane {
+  border-right: 1px #ccccdd solid;
+}
+.event_performance_items table td.icons a {
+  display: block;
+  float: right;
+  text-indent: -999em;
+  width: 14px;
+  height: 14px;
+  background-image: url(/images/admin/icons/icons_222.png);
+  margin-right: 3px;
+}
+.event_performance_items table td.icons .edit {
+  background-position: -64px -112px;
+}
+.event_performance_items table td.icons .remove {
+  background-position: -80px -128px;
+}
+.event_performance_items table tr.details {
+  display: none;
+}
+.event_performance_items table tr.details td {
+  border-top: none;
+  border-left: 1px #ccccdd solid;
+  border-right: 1px #ccccdd solid;
+}
+.event_performance_items table tr.details td h3 {
+  margin: 0 0 5px 0;
+  padding: 0px 5px;
+  font-size: 1em;
+  color: #ccccdd;
+}
+.event_performance_items table tr.details td h3 a {
+  float: right;
+}
+.event_performance_items table tr.odd td {
+  background: #ccccdd;
+}
+
+.performance_previews {
+  width: 100%;
+}
+.performance_previews th {
+  background: #555566;
+  color: #eeeeff;
+  padding: 0 5px;
+  font-weight: bold;
+}
+.performance_previews th.checkbox {
+  text-align: center;
+  width: 40px;
+}
+.performance_previews td {
+  padding: 5px 5px;
+  border-bottom: 1px #ccccdd solid;
+}
+.performance_previews td.checkbox {
+  text-align: center;
+}
+
+.build_performances_window .button_area {
+  padding: 2em 0 0 0;
+}
+.build_performances_window .button_area input {
+  float: right;
 }
 
 body.notice {
@@ -4101,10 +4219,10 @@ div.ppt {
   z-index: 9999;
 }
 
-.clearfix, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset, .google_image_search .result .label em {
+.clearfix, #main_content, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset, .google_image_search .result .label em {
   display: inline-block;
 }
-.clearfix:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after, #pagination_wrapper:after, .asset_attachment_items ul.asset_attachment_list li.asset:after, .google_image_search .result .label em:after {
+.clearfix:after, #main_content:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after, #pagination_wrapper:after, .asset_attachment_items ul.asset_attachment_list li.asset:after, .google_image_search .result .label em:after {
   content: ".";
   display: block;
   height: 0;
@@ -4113,11 +4231,11 @@ div.ppt {
 }
 
 /* Hides from IE-mac \ */
-* html .clearfix, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form, * html #pagination_wrapper, * html .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list * html li.asset, * html .google_image_search .result .label em, .google_image_search .result .label * html em {
+* html .clearfix, * html #main_content, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form, * html #pagination_wrapper, * html .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list * html li.asset, * html .google_image_search .result .label em, .google_image_search .result .label * html em {
   height: 1%;
 }
 
-.clearfix, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset, .google_image_search .result .label em {
+.clearfix, #main_content, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset, .google_image_search .result .label em {
   display: block;
 }
 

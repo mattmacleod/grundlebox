@@ -23,7 +23,11 @@ class Event < ActiveRecord::Base
   
   # Need to set accessible attributes
   attr_accessible :title, :abstract, :short_content, :content, :featured, :review_id,
-                  :enabled, :print, :afiliate_type, :affiliate_code
+                  :enabled, :print, :afiliate_type, :affiliate_code, :performances_attributes
+                  
+  # Handle performances
+  accepts_nested_attributes_for :performances, :allow_destroy => true
+  
     
   # Class methods
   ############################################################################

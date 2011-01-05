@@ -22,7 +22,7 @@ class Admin::EventsController < AdminController
   end
  
    
-  # Individual users
+  # Individual events
   ############################################################################
   
   def new
@@ -33,6 +33,7 @@ class Admin::EventsController < AdminController
   def create
     @event = Event.new( params[:event] )
     @event.user = current_user
+    @event.performances.each{|p| p.user = current_user unless p.user }
     if @event.save
       flash[:notice] = "Event has been created"
       redirect_to( :action=>:index )
@@ -53,6 +54,7 @@ class Admin::EventsController < AdminController
   def update
     @event = Event.find( params[:id] )
     @event.attributes = params[:event]
+    @event.performances.each{|p| p.user = current_user unless p.user }
     if @event.save
       flash[:notice] = "Event has been saved"
       redirect_to( :action => :index )
@@ -67,6 +69,39 @@ class Admin::EventsController < AdminController
       flash[:notice] = "Event deleted"
     end
     redirect_to :action => :index
+  end
+  
+  
+  # Performance builder
+  ############################################################################
+  
+  def build_performances
+    @venues = Venue.find(:all)
+    
+    # Try to generate performances
+    if request.post?
+      @performance_run = PerformanceRun.new( params[:performance_run] )
+      
+      # Do some stuffing
+      @performance_run.performance.user = User.new
+      @performance_run.performance.event = Event.new
+      @performance_run.performance.starts_at = Time::now
+
+      @performances = @performance_run.get_performances
+      
+      # If this is a save, remove any that aren't to be saved
+      if params[:commit] == "Create performances"
+        @performances.select{|p| params[:performances].values.include?( p.starts_at.to_i.to_s ) }
+        render :template => "/admin/events/save_performances", :layout => "admin/iframe"
+        return
+      end
+                 
+    else
+      @performance_run = PerformanceRun.new( :performance => Performance.new )
+    end
+    
+    render :layout => "admin/iframe"
+    
   end
   
 end

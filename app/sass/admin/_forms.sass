@@ -20,6 +20,9 @@ input:focus, textarea:focus
 .check_box
 	width: auto
 
+.radio_button
+	width: auto
+
 label
 	display: block
 	font-weight: bold
@@ -400,7 +403,9 @@ form .errors
 		margin-left: 20px
 
 fieldset 
-	.field_with_errors 
+	.field_with_errors
+		width: auto
+		display: inline
 		input, textarea, select
 			@extend .fade
 			background: lighten($color_flash_error, 45%) !important

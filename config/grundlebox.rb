@@ -69,4 +69,11 @@ class Grundlebox::Config
     "Ticket Master" => "ticketmaster"
   }
   
+  TicketTypes = {
+    "Unticketed" => "unticketed",
+    "Sold out" => "sold_out",
+    "On the door" => "on_door",
+    "Advance purchase" => "advance"
+  }
+  
 end

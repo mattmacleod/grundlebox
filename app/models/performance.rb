@@ -20,6 +20,11 @@ class Performance < ActiveRecord::Base
   after_save :update_event_caches
   after_destroy :update_event_caches
   
+  # Attribute protection
+  attr_accessible :price, :performer, :starts_at, :ends_at, :drop_in, 
+                  :ticket_type, :notes, :affiliate_type, :affiliate_code,
+                  :venue_id, :event_id, :venue, :event
+  
   # Class methods
   ############################################################################
   
@@ -40,11 +45,11 @@ class Performance < ActiveRecord::Base
   end
 
   def affiliate_type
-    return read_attribute(:affiliate_type) || event.affiliate_type
+    return read_attribute(:affiliate_type) || (event.affiliate_type if event)
   end
   
   def affiliate_code
-    return read_attribute(:affiliate_code) || event.affiliate_code
+    return read_attribute(:affiliate_code) || (event.affiliate_code if event)
   end
   
   
