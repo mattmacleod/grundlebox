@@ -1076,7 +1076,7 @@ table.list {
 table.list td {
   padding: 0.3em 0.4em;
 }
-table.list td.center, table.list td.category {
+table.list td.center {
   text-align: center;
 }
 table.list td.empty {
@@ -1095,7 +1095,6 @@ table.list td.category {
   font-weight: bold;
   text-transform: uppercase;
   color: #555566;
-  background: #ccccdd;
 }
 table.list td span.extra {
   display: block;

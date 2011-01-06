@@ -29,13 +29,13 @@
 									=taggable.title
 						- when "Event"
 							%td.category Event
-							%td= taggable.title
+							%td= link_to taggable.title, edit_admin_event_path( taggable )
 						- when "Venue"
-							%td.category Event
-							%td= taggable.title
+							%td.category Venue
+							%td= link_to taggable.title, edit_admin_venue_path( taggable )
 						- else
 							%td.category= taggable.class.name
-							%td Unknown title
+							%td= responds_to(:title) ? taggable.title : "Unknown title"
 	
 #content_sidebar
 	=render :partial => "sidebar"
