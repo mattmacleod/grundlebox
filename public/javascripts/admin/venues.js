@@ -100,9 +100,12 @@ grundlebox.admin.venues = {
 			
 			// Check that the postcode has been filled out
 			if( $("#venue_postcode").val().length==0 ){
-				alert("You need to enter a postcode on the information page to auto-locate the venue.");
+				alert("You need to enter a postcode on the information page to auto-locate the venue.");				
 				return false;
 			}
+			
+			// Add a loading gif
+			$(this).addClass("loading");
 			
 			// Geocode the supplied postcode and pass the result to a callback
 			// to either update the location or error out.
@@ -110,7 +113,8 @@ grundlebox.admin.venues = {
 			geocoder.getLocations( 
 				($("#venue_postcode").val() + ", UK"), 
 				function(response){ 
-					grundlebox.admin.venues.update_from_geocode( response ) 
+					grundlebox.admin.venues.update_from_geocode( response );
+					$(this).removeClass("loading");
 				}
 			);
 			return false;
