@@ -673,7 +673,7 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
   background-color: #eeeeff !important;
 }
 .button.loading {
-  background: #ddddee url(/images/admin/spinner_transparent.gif) 0.6em center no-repeat;
+  background: #ddddee url(/images/admin/spinner_d0d0d0.gif) 0.6em center no-repeat;
 }
 
 a.destroy {
