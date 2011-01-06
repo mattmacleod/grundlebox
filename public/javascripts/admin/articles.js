@@ -111,7 +111,7 @@ grundlebox.admin.articles = {
 			
 			$.get(lock_check_url, function( html ){
 				$("#article_lock_info").html( html );
-				grundlebox.admin.articles.drafts.autosave_enabled = ( $("#lock_warning").length == 0 );
+				grundlebox.admin.articles.drafts.enable_autosave_if_locked();
 			});
 			
 		}
@@ -122,20 +122,44 @@ grundlebox.admin.articles = {
 		
 		// Flag to indicate if we should autosave
 		autosave_enabled: false,
+		changed_since_last_draft: false,
 		
 		// Start the draft manager - attach the click event to the draft button
 		// and set up a timer to automatically save drafts.
 		init: function(){
 			$("input.save_draft").click( this.save_draft );
+			
+			// Monitor all form fields in main body for change.
+			_this = this;
+			$("form.edit_article input, form.edit_article textarea, form.edit_article select").bind("change keyup", function(){
+				grundlebox.admin.articles.drafts.changed_since_last_draft = true;
+			});
+			
+			// Enable autosave
+			this.enable_autosave_if_locked();
+			
+			// Set the timer for drafts
 			setInterval( 
-				"if(grundlebox.admin.articles.drafts.autosave_enabled){grundlebox.admin.articles.drafts.save_draft();}",
+				this.save_draft_if_changed,
 				grundlebox.admin.jsconfig.autosave_frequency
-			)
+			);
+			
+		},
+		
+		// Save a draft only if this article has changed since the last draft
+		save_draft_if_changed: function(){
+			_this = grundlebox.admin.articles.drafts;
+			if( _this.autosave_enabled && _this.changed_since_last_draft ){
+				_this.save_draft();
+			}
 		},
 		
 		// Actually save a draft
 		save_draft: function(){
 
+			// Mark unchanged
+			this.changed_since_last_draft = false;
+			
 			// Need to copy tinyMCE content into text area before we submit the form
 			$("#article_content").val( tinyMCE.get('article_content').getContent() );
 
@@ -167,6 +191,10 @@ grundlebox.admin.articles = {
 			}); 
 
 			return false;
+		},
+		
+		enable_autosave_if_locked: function(){
+			this.autosave_enabled = ( $("#lock_warning").length == 0 );
 		}
 		
 	}

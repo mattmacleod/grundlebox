@@ -52,8 +52,8 @@
 			
 				.full.one_off
 					%h3 Choose dates
-					.half= f.text_field 	:one_off_start_time, 		:value => (f.object.one_off_start_time.to_s(:parseable) if f.object.one_off_start_time), :required => true, 	:note => "Start date and time of event.", :class=>:time, :label => "Start at"
-					.half= f.text_field 	:one_off_end_time, 			:value => (f.object.one_off_end_time.to_s(:parseable) if f.object.one_off_end_time), :required => false, 	:note => "End date and time if available", :class=>:time, :label => "End at"
+					.half= f.text_field 	:one_off_start_time, 		:value => (f.object.one_off_start_time.to_s(:parseable) if f.object.one_off_start_time), :required => true, 	:note => "Start date and time of event.", :class=>:datetime, :label => "Start at"
+					.half= f.text_field 	:one_off_end_time, 			:value => (f.object.one_off_end_time.to_s(:parseable) if f.object.one_off_end_time), :required => false, 	:note => "End date and time if available", :class=>:datetime, :label => "End at"
 					
 				.full.periodic_opening_times
 					%h3 Choose dates
@@ -63,8 +63,8 @@
 					
 					.full.periodic
 						.full= f.text_field 	:nl_string, :required => true, :label => "Date information", :note => "Enter a description of the days the event runs. Examples: <strong>the 12th</strong>, <strong>every Saturday</strong>, <strong>the first Monday of the month</strong>"
-						.half= f.text_field 	:periodic_start_time, 		:value => (f.object.periodic_start_time.to_s(:parseable_time_only) if f.object.periodic_start_time), :required => true, 	:note => "Start time of event on these days", :class=>:time_only, :label => "Start time"
-						.half= f.text_field 	:periodic_end_time, 		:value => (f.object.periodic_end_time.to_s(:parseable_time_only) if f.object.periodic_end_time), :required => false, 	:note => "End time of event on these days.", :class=>:time_only, :label => "End time"
+						.half= f.text_field 	:periodic_start_time, 		:value => (f.object.periodic_start_time.to_s(:parseable_time_only) if f.object.periodic_start_time), :required => true, 	:note => "Start time of event on these days", :class=>:time, :label => "Start time"
+						.half= f.text_field 	:periodic_end_time, 		:value => (f.object.periodic_end_time.to_s(:parseable_time_only) if f.object.periodic_end_time), :required => false, 	:note => "End time of event on these days.", :class=>:time, :label => "End time"
 										
 					.full.opening_times
 						.full To be implemented

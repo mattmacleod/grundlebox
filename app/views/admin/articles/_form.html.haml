@@ -73,8 +73,8 @@
 
 	%fieldset#publishing
 		%legend Publishing settings
-		.half=f.text_field 	:starts_at, 			:value => (f.object.starts_at.to_s(:parseable) if f.object.starts_at), :required => true, 	:note => "When will this article start showing online?", :class=>:time, :label => "Publishing date"
-		.half=f.text_field 	:ends_at, 				:value => (f.object.ends_at.to_s(:parseable) if f.object.ends_at), :required => false, 	:note => "When will this article stop showing online?", :class=>:time, :label => "End date"
+		.half=f.text_field 	:starts_at, 			:value => (f.object.starts_at.to_s(:parseable) if f.object.starts_at), :required => true, 	:note => "When will this article start showing online?", :class=>:datetime, :label => "Publishing date"
+		.half=f.text_field 	:ends_at, 				:value => (f.object.ends_at.to_s(:parseable) if f.object.ends_at), :required => false, 	:note => "When will this article stop showing online?", :class=>:datetime, :label => "End date"
 		
 		.half=f.check_box 	:featured, 				:required => true, 				:label => "Include in featured article list", :note => "Check this to allow this article to appear on the front page and in other featured areas"
 		.half=f.check_box 	:print_only, 			:required => true, 				:label => "Print-only article", :note => "Check this box to hide this article from the website completely"

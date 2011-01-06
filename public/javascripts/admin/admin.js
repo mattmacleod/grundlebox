@@ -20,10 +20,10 @@ grundlebox = {
 
 		// Set some config variables here
 		jsconfig: {
-			lock_checker_frequency: 15000,
-			autosave_frequency: 60000,
-			word_counter_timeout: 2000,
-			paginated_search_timeout: 400
+			lock_checker_frequency: 15000,	// 15 seconds
+			autosave_frequency: 30000,			// 30 seconds
+			word_counter_timeout: 2000,			// 2 seconds
+			paginated_search_timeout: 400		// 0.4 seconds
 		}
 		
 	}

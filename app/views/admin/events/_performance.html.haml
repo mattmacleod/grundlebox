@@ -33,8 +33,8 @@
 				.half= ff.select :venue_id, ([""] + Venue.all.map{|v| [v.admin_summary, v.id] }), :note => "Choose from list or add a new venue first"
 
 			.half
-				.half=ff.text_field 	:starts_at, 			:value => (ff.object.starts_at.to_s(:parseable) if ff.object.starts_at), :required => true, 	:note => "Start date and time. Must be supplied.", :class=>:time, :label => "Starts at"
-				.half=ff.text_field 	:ends_at, 				:value => (ff.object.ends_at.to_s(:parseable) if ff.object.ends_at), :required => false, 	:note => "End date and time. Can be left blank.", :class=>:time, :label => "Ends at"
+				.half=ff.text_field 	:starts_at, 			:value => (ff.object.starts_at.to_s(:parseable) if ff.object.starts_at), :required => true, 	:note => "Start date and time. Must be supplied.", :class=>:datetime, :label => "Starts at"
+				.half=ff.text_field 	:ends_at, 				:value => (ff.object.ends_at.to_s(:parseable) if ff.object.ends_at), :required => false, 	:note => "End date and time. Can be left blank.", :class=>:datetime, :label => "Ends at"
 
 			.half= ff.check_box :drop_in, :label => "Drop-in event?", :note => "Check if this performance is an all-day event that can be visited at different times"
 		

@@ -11,6 +11,7 @@ grundlebox.admin.ui = {
 		this.setup_flash();					// Setup the flash clear handler
 		this.pagination.init();			// Setup any pagination
 		this.setup_tabbed_forms();	// Setup any tabbed forms
+		this.setup_date_pickers();	// Setup date and time picker inputs
 	},
 	
 	// Handle effects for the flash message
@@ -47,6 +48,25 @@ grundlebox.admin.ui = {
 			if( $(this).find(".field_with_errors").length>0 ){
 				$(this).parent().find("a[href=#"+$(this).attr("id")+"]").addClass("has_error");
 			}
+		});
+		
+	},
+	
+	setup_date_pickers: function(){
+		
+		// Date-only fields
+		$("input.date").datepicker({
+			dateFormat: "yy-mm-dd",
+			showButtonPanel: true
+		});
+		
+		// Datetime fields
+		$("input.datetime").datepicker({
+			showTime: true,
+			dateFormat: "yy-mm-dd",
+			showAnim:"",
+			time24h: true,
+			showButtonPanel: true
 		});
 		
 	}
