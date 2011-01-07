@@ -39,7 +39,7 @@ class AdminController < ApplicationController
     redirect_to admin_path and return if logged_in?
     
     # Find out what page we're trying to reach
-    @next_page = params[:next_page] || admin_path
+    @next_page = params[:next_page] || session[:next_page] || admin_path
 
     render :layout => "admin/notice" and return if request.get?
 
@@ -113,10 +113,12 @@ class AdminController < ApplicationController
     elsif current_user
       flash[:error] = "Your session has timed out"
       session[:user_id] = nil
+      session[:next_page] = request.path
       redirect_to admin_login_path and return false
     else
       flash[:error] = "Login to access that page"
       session[:user_id] = nil
+      session[:next_page] = request.path
       redirect_to admin_login_path and return false
     end
     

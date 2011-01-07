@@ -6,4 +6,5 @@
 		= label_tag "password"
 		= password_field_tag :password, params[:password]
 		.buttons
+			= hidden_field_tag :next_page, @next_page
 			= submit_tag "Login", :class => :button

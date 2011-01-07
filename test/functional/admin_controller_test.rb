@@ -87,6 +87,28 @@ class AdminControllerTest < ActionController::TestCase
       end
     end
    
+    context "a POST to :login with correct details and next page specified" do
+      
+      setup do
+        post :login, { :email => @user.email, 
+                       :password => "password", :next_page => "/admin/test" }
+      end
+      
+      should respond_with :redirect 
+      should redirect_to "/admin/test"
+      should set_the_flash do /logged in/i end
+      should set_session(:user_id) { @user.id }
+      
+      should "assign the user to the user object" do
+        assert_equal @user, assigns(:user)
+      end
+      
+      should "update the user's access timestamp" do
+        @user.reload
+        assert @user.accessed_at > 1.minute.ago
+      end
+    end
+    
   end
 
 
