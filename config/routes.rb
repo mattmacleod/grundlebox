@@ -4,9 +4,14 @@ Grundlebox::Application.routes.draw do
   match "admin"               => "admin#index",         :as => :admin
   match "admin/login"         => "admin#login",         :as => :admin_login
   get   "admin/logout"        => "admin#logout",        :as => :admin_logout
-  get   "admin/denied"        => "admin#denied",        :as => :admin_denied
   get   "admin/help"          => "admin#help",          :as => :admin_help
-    
+  
+  # Admin errors
+  match "admin/404"           => "admin#display_404",   :as => :admin_error_404
+  match "admin/403"           => "admin#display_403",   :as => :admin_error_403
+  match "admin/500"           => "admin#display_500",   :as => :admin_error_500
+  
+  
   namespace :admin do
   
     # Simple routes

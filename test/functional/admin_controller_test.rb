@@ -11,7 +11,9 @@ class AdminControllerTest < ActionController::TestCase
     assert_routing "/admin/login",  { :controller=>"admin", :action=>"login" }
     assert_routing "/admin/logout", { :controller=>"admin", :action=>"logout" }
     assert_routing "/admin/help",   { :controller=>"admin", :action=>"help" }
-    assert_routing "/admin/denied", { :controller=>"admin", :action=>"denied" }
+    assert_routing "/admin/403",    { :controller=>"admin", :action=>"error_403" }
+    assert_routing "/admin/404",    { :controller=>"admin", :action=>"error_404" }
+    assert_routing "/admin/500",    { :controller=>"admin", :action=>"error_500" }
   end  
   
   # Tests for when not logged in
@@ -165,13 +167,13 @@ class AdminControllerTest < ActionController::TestCase
     context "a GET to :index" do
       setup { get :index } 
       should respond_with :redirect
-      should redirect_to "/admin/denied"
+      should redirect_to "/admin/403"
     end
     
-    context "a GET to :denied" do
-      setup { get :denied }
+    context "a GET to :error_403" do
+      setup { get :error_403 }
       should respond_with :success
-      should render_template :denied
+      should render_template :error_403
     end
     
   end

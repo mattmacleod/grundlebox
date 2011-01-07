@@ -39,7 +39,7 @@ class ActiveSupport::TestCase
         end
         context "on GET of :index on #{klass}" do
           setup { get :index }
-          should redirect_to "/admin/denied"
+          should redirect_to "/admin/403"
         end
       end
 
@@ -56,7 +56,7 @@ class ActiveSupport::TestCase
               should render_template :index 
               should_not set_the_flash
             else
-              should redirect_to "/admin/denied"
+              should redirect_to "/admin/403"
             end
           end
         end

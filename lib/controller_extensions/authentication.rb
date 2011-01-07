@@ -14,7 +14,7 @@ ActionController::Base.class_eval do
           if subsection[:roles].include? current_user.role.downcase.to_sym
             return true
           else
-            redirect_to admin_denied_path and return false
+            redirect_to admin_error_403_path and return false
           end
         }, :only => action
       end

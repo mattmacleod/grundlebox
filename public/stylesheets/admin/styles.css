@@ -254,7 +254,7 @@ a:hover {
   background-position: -80px -128px;
 }
 
-.clipped_background, .rounded, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2, .small_rounded_top_left, .event_performance_items table th.first, .event_performance_items table th#content_body, .event_performance_items table th#content_body_wide, .small_rounded_top_right, .event_performance_items table th.last, .event_performance_items table th#content_sidebar, .event_performance_items table th#right_pane, .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, .medium_rounded, #admin_tools, .tag_attachment_list a, li.token-input-token, .search_form, span.tag, .asset_attachment_items ul.asset_attachment_list li.asset h4 a, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
+.clipped_background, .rounded, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2, .small_rounded_top_left, .event_performance_items table th.first, .event_performance_items table th#content_body, .event_performance_items table th#content_body_wide, .small_rounded_top_right, .event_performance_items table th.last, .event_performance_items table th#content_sidebar, .event_performance_items table th#right_pane, .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, #error #error_wrapper, .medium_rounded, #admin_tools, .tag_attachment_list a, li.token-input-token, .search_form, span.tag, .asset_attachment_items ul.asset_attachment_list li.asset h4 a, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
   background-clip: padding-box;
@@ -290,7 +290,7 @@ a:hover {
   border-radius: 0 0 4px 4px;
 }
 
-.small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty {
+.small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, #error #error_wrapper {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -324,7 +324,7 @@ a:hover {
   -webkit-transition: all 200ms ease-in-out !important;
 }
 
-.form_glow, input:focus, textarea:focus, .button:hover, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .button.export:hover, .search_form .buttons input:hover, .search_form .buttons a:hover, body.notice input.button:hover, body.notice input.button:active {
+.form_glow, input:focus, textarea:focus, .button:hover, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .button.export:hover, .button.back:hover, .search_form .buttons input:hover, .search_form .buttons a:hover, body.notice input.button:hover, body.notice input.button:active {
   border-color: #0099dd !important;
   -moz-box-shadow: 0px 0px 5px #0099dd !important;
   -webkit-box-shadow: 0px 0px 5px #0099dd !important;
@@ -670,6 +670,12 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
   background: #ddddee url(/images/admin/icons/button_export.png) 0.6em center no-repeat;
 }
 .button.export:hover {
+  background-color: #eeeeff !important;
+}
+.button.back {
+  background: #ddddee url(/images/admin/icons/button_back.png) 0.6em center no-repeat;
+}
+.button.back:hover {
   background-color: #eeeeff !important;
 }
 .button.loading {
@@ -1694,6 +1700,32 @@ body.notice .version {
 #iframe .tabbed_fieldsets .errors h2 {
   float: none;
   margin: -10px -10px 10px -10px;
+}
+
+#error {
+  background: #eeeeff;
+}
+#error #error_wrapper {
+  background: white;
+  width: 600px;
+  margin: 100px auto;
+  padding: 20px;
+}
+#error p {
+  margin: 1em 0;
+}
+#error p.explanation {
+  font-size: 1.5em;
+  color: #333344;
+  font-weight: bold;
+}
+#error p.additional {
+  font-size: 1.2em;
+  color: #333344;
+  font-weight: bold;
+}
+#error .buttons {
+  margin: 30px 0 10px 0;
 }
 
 /* jQuery UI CSS Framework 1.8.7

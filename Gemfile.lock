@@ -100,7 +100,6 @@ GEM
       gem_plugin (>= 0.2.3)
     mongrel_experimental (1.1)
       mongrel (= 1.1)
-    mysql (2.8.1)
     newrelic_rpm (2.13.4)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -145,19 +144,18 @@ DEPENDENCIES
   autotest
   autotest-rails
   cgi_multipart_eof_fix
-  chronic
+  chronic (= 0.3.0)
   dr_dre
   factory_girl_rails
-  fastercsv
+  fastercsv (= 1.5.3)
   fastthread
-  haml
-  htmlentities
-  jammit
+  haml (= 3.0.25)
+  htmlentities (= 4.2.2)
+  jammit (= 0.5.4)
   lapluviosilla-tickle!
-  mime-types
+  mime-types (= 1.16)
   mongrel
   mongrel_experimental
-  mysql
   newrelic_rpm (= 2.13.4)
   paper_trail!
   paperclip!
@@ -168,4 +166,4 @@ DEPENDENCIES
   shoulda
   sqlite3-ruby
   will_paginate!
-  zip
+  zip (= 2.0.2)

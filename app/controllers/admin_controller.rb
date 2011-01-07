@@ -7,16 +7,12 @@ class AdminController < ApplicationController
   ############################################################################
   
   # All actions will require a valid admin login.
-  before_filter :require_admin_login, :except => :login
+  before_filter :require_admin_login, :except => [:login, :display_404, :display_403, :display_500]
   
   # General prep work
   before_filter :load_defaults
-  
-  # Layout will be overriden for #login and #denied
   layout "admin/default"
   
-  # Handle 404 errors
-  rescue_from ActiveRecord::RecordNotFound, :with => :display_404
   
   
   # General controller actions
@@ -27,8 +23,10 @@ class AdminController < ApplicationController
   end
   
   def help
+    oaisnobra
     render :layout => "admin/wide"
   end
+  
   
   
   # Login and logout actions
@@ -66,13 +64,34 @@ class AdminController < ApplicationController
     redirect_to admin_login_path
   end
   
-  def denied
-    flash[:error] = "You do not have permission to access that page"
-    render :layout => "admin/notice"
+  
+  
+  
+  # Errors
+  ############################################################################
+  
+  # Handle 500 (other) errors, then 404s.
+  rescue_from Exception, :with => :display_500
+  rescue_from ActiveRecord::RecordNotFound, :with => :display_404
+  
+  # Custom 404 for admin
+  def display_404
+    render :template => "admin/error_404", :status => 404, :layout => "admin/error"
+  end
+  
+  # Custom 403 for admin
+  def display_403
+    render :template => "admin/error_403", :status => 403, :layout => "admin/error"
+  end
+  
+  # Custom 500 for admin
+  def display_500( e )
+    render :template => "admin/error_500", :status => 500, :layout => "admin/error"
+    raise e if Rails.env=="development"
   end
   
   
-  # Other admin tools
+  # Tools, filters etc.
   ############################################################################
   
   protected 
