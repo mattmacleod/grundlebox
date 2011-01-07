@@ -77,7 +77,10 @@ Grundlebox::Application.routes.draw do
       end
     end
     
-    
   end
   
+  # Default admin error page for nonexistent routes
+  match "admin/*path" => "admin#display_404"
+   
+   
 end

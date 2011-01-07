@@ -324,7 +324,7 @@ a:hover {
   -webkit-transition: all 200ms ease-in-out !important;
 }
 
-.form_glow, input:focus, textarea:focus, .button:hover, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .button.export:hover, .button.back:hover, .search_form .buttons input:hover, .search_form .buttons a:hover, body.notice input.button:hover, body.notice input.button:active {
+.form_glow, input:focus, textarea:focus, .button:hover, .search_form .buttons input:hover, .search_form .buttons a:hover, body.notice input.button:hover, body.notice input.button:active {
   border-color: #0099dd !important;
   -moz-box-shadow: 0px 0px 5px #0099dd !important;
   -webkit-box-shadow: 0px 0px 5px #0099dd !important;
@@ -632,54 +632,89 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
   border: 1px #ccccdd solid;
   color: #111122;
 }
+.button.cancel {
+  background: #ddddee;
+  background: url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+}
+.button.cancel:hover {
+  background: #eeeeff;
+  background: url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+}
+.button.save {
+  background: #ddddee;
+  background: url(/images/admin/icons/button_save.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/icons/button_save.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+}
+.button.save:hover {
+  background: #eeeeff;
+  background: url(/images/admin/icons/button_save.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/icons/button_save.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+}
+.button.new {
+  background: #ddddee;
+  background: url(/images/admin/icons/button_new.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/icons/button_new.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+}
+.button.new:hover {
+  background: #eeeeff;
+  background: url(/images/admin/icons/button_new.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/icons/button_new.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+}
+.button.delete {
+  background: #ddddee;
+  background: url(/images/admin/icons/button_delete.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/icons/button_delete.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+}
+.button.delete:hover {
+  background: #eeeeff;
+  background: url(/images/admin/icons/button_delete.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/icons/button_delete.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+}
+.button.edit {
+  background: #ddddee;
+  background: url(/images/admin/icons/button_edit.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/icons/button_edit.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+}
+.button.edit:hover {
+  background: #eeeeff;
+  background: url(/images/admin/icons/button_edit.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/icons/button_edit.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+}
+.button.export {
+  background: #ddddee;
+  background: url(/images/admin/icons/button_export.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/icons/button_export.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+}
+.button.export:hover {
+  background: #eeeeff;
+  background: url(/images/admin/icons/button_export.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/icons/button_export.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+}
+.button.back {
+  background: #ddddee;
+  background: url(/images/admin/icons/button_back.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/icons/button_back.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+}
+.button.back:hover {
+  background: #eeeeff;
+  background: url(/images/admin/icons/button_back.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/icons/button_back.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+}
+.button.loading {
+  background: #ddddee;
+  background: url(/images/admin/icons/button_loader.gif) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/icons/button_loader.gif) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+}
+.button.loading:hover {
+  background: #eeeeff;
+  background: url(/images/admin/icons/button_loader.gif) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/icons/button_loader.gif) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+}
 .button:hover {
   background-color: #eeeeff !important;
   text-decoration: none;
-}
-.button.cancel {
-  background: #ddddee url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat;
-}
-.button.cancel:hover {
-  background-color: #eeeeff !important;
-}
-.button.save {
-  background: #ddddee url(/images/admin/icons/button_save.png) 0.6em center no-repeat;
-}
-.button.save:hover {
-  background-color: #eeeeff !important;
-}
-.button.new {
-  background: #ddddee url(/images/admin/icons/button_new.png) 0.6em center no-repeat;
-}
-.button.new:hover {
-  background-color: #eeeeff !important;
-}
-.button.delete {
-  background: #ddddee url(/images/admin/icons/button_delete.png) 0.6em center no-repeat;
-}
-.button.delete:hover {
-  background-color: #eeeeff !important;
-}
-.button.edit {
-  background: #ddddee url(/images/admin/icons/button_edit.png) 0.6em center no-repeat;
-}
-.button.edit:hover {
-  background-color: #eeeeff !important;
-}
-.button.export {
-  background: #ddddee url(/images/admin/icons/button_export.png) 0.6em center no-repeat;
-}
-.button.export:hover {
-  background-color: #eeeeff !important;
-}
-.button.back {
-  background: #ddddee url(/images/admin/icons/button_back.png) 0.6em center no-repeat;
-}
-.button.back:hover {
-  background-color: #eeeeff !important;
-}
-.button.loading {
-  background: #ddddee url(/images/admin/spinner_d0d0d0.gif) 0.6em center no-repeat;
 }
 
 a.destroy {

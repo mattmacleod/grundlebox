@@ -155,6 +155,17 @@ div.token-input-dropdown
 //****************************************************************************
 // Buttons
 //***************************************************************************/
+
+@mixin button_background($icon)
+	background: $grey_5
+	background: url(/images/admin/icons/button_#{ $icon }) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, $grey_4), color-stop(1, $grey_5))
+	background: url(/images/admin/icons/button_#{ $icon }) 0.6em center no-repeat, -moz-linear-gradient(center bottom, $grey_4 0%, $grey_5 100%)
+	&:hover
+		background: $grey_6
+		background: url(/images/admin/icons/button_#{ $icon }) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, $grey_5), color-stop(1, $grey_6))
+		background: url(/images/admin/icons/button_#{ $icon }) 0.6em center no-repeat, -moz-linear-gradient(center bottom, $grey_5 0%, $grey_6 100%)
+	
+	
 .button
 	@extend .large_rounded, .fade
 	
@@ -170,57 +181,38 @@ div.token-input-dropdown
 	background-color: $grey_5
 	border: 1px $grey_4 solid
 	color: $grey_0
-	
+		
+	&.cancel
+		@include button_background( "cancel.png" )
+			
+	&.save
+		@include button_background( "save.png" )
+			
+	&.new
+		@include button_background( "new.png" )
+			
+	&.delete
+		@include button_background( "delete.png" )
+			
+	&.edit
+		@include button_background( "edit.png" )
+
+	&.export
+		@include button_background( "export.png" )
+		
+	&.back
+		@include button_background( "back.png" )
+						
+	&.loading
+		@include button_background( "loader.gif" )
+		
 	&:hover
 		background-color: $grey_6 !important
 		@extend .form_glow
 		text-decoration: none
-		
-	&.cancel
-		background: $grey_5 url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat
-		&:hover
-			background-color: $grey_6 !important
-			@extend .form_glow
 			
-	&.save
-		background: $grey_5 url(/images/admin/icons/button_save.png) 0.6em center no-repeat
-		&:hover
-			background-color: $grey_6 !important
-			@extend .form_glow
 			
-	&.new
-		background: $grey_5 url(/images/admin/icons/button_new.png) 0.6em center no-repeat
-		&:hover
-			background-color: $grey_6 !important
-			@extend .form_glow
 			
-	&.delete
-		background: $grey_5 url(/images/admin/icons/button_delete.png) 0.6em center no-repeat
-		&:hover
-			background-color: $grey_6 !important
-			@extend .form_glow
-			
-	&.edit
-		background: $grey_5 url(/images/admin/icons/button_edit.png) 0.6em center no-repeat
-		&:hover
-			background-color: $grey_6 !important
-			@extend .form_glow
-
-	&.export
-		background: $grey_5 url(/images/admin/icons/button_export.png) 0.6em center no-repeat
-		&:hover
-			background-color: $grey_6 !important
-			@extend .form_glow
-		
-	&.back
-		background: $grey_5 url(/images/admin/icons/button_back.png) 0.6em center no-repeat
-		&:hover
-			background-color: $grey_6 !important
-			@extend .form_glow
-						
-	&.loading
-		background: $grey_5 url(/images/admin/spinner_d0d0d0.gif) 0.6em center no-repeat
-		
 // Button for destroying things
 a.destroy
 	display: block

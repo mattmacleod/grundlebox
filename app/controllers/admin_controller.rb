@@ -23,7 +23,6 @@ class AdminController < ApplicationController
   end
   
   def help
-    oaisnobra
     render :layout => "admin/wide"
   end
   
