@@ -320,7 +320,7 @@ a:hover {
   border-radius: 20px;
 }
 
-.fade, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, input, textarea, select, .button, fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select, table.list td, #folder_browser div.icon, .google_image_search div.icon {
+.fade, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, input, textarea, select, .button, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .button.export:hover, .button.back:hover, .button.loading:hover, fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select, table.list td, #folder_browser div.icon, .google_image_search div.icon {
   -webkit-transition: all 200ms ease-in-out !important;
 }
 
@@ -377,6 +377,15 @@ a:hover {
 #admin_tools a {
   color: white;
   padding: 0 0.25em;
+}
+
+body {
+  background: #ddddee;
+}
+
+#wrapper {
+  min-height: 400px;
+  background: white;
 }
 
 #main_content {
@@ -638,7 +647,6 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
   background: url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.cancel:hover {
-  background: #eeeeff;
   background: url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
   background: url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
@@ -648,7 +656,6 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
   background: url(/images/admin/icons/button_save.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.save:hover {
-  background: #eeeeff;
   background: url(/images/admin/icons/button_save.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
   background: url(/images/admin/icons/button_save.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
@@ -658,7 +665,6 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
   background: url(/images/admin/icons/button_new.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.new:hover {
-  background: #eeeeff;
   background: url(/images/admin/icons/button_new.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
   background: url(/images/admin/icons/button_new.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
@@ -668,7 +674,6 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
   background: url(/images/admin/icons/button_delete.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.delete:hover {
-  background: #eeeeff;
   background: url(/images/admin/icons/button_delete.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
   background: url(/images/admin/icons/button_delete.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
@@ -678,7 +683,6 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
   background: url(/images/admin/icons/button_edit.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.edit:hover {
-  background: #eeeeff;
   background: url(/images/admin/icons/button_edit.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
   background: url(/images/admin/icons/button_edit.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
@@ -688,7 +692,6 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
   background: url(/images/admin/icons/button_export.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.export:hover {
-  background: #eeeeff;
   background: url(/images/admin/icons/button_export.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
   background: url(/images/admin/icons/button_export.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
@@ -698,7 +701,6 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
   background: url(/images/admin/icons/button_back.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.back:hover {
-  background: #eeeeff;
   background: url(/images/admin/icons/button_back.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
   background: url(/images/admin/icons/button_back.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
@@ -708,7 +710,6 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
   background: url(/images/admin/icons/button_loader.gif) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.loading:hover {
-  background: #eeeeff;
   background: url(/images/admin/icons/button_loader.gif) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
   background: url(/images/admin/icons/button_loader.gif) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
