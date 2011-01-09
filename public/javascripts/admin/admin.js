@@ -9,6 +9,7 @@ grundlebox = {
 		
 		// Main init function for Grundlebox admin interface
 		init: function(){
+			this.login_page.init();			// Login page JS
 			this.ui.init();							// User interface elements
 			this.tinymce.init();				// Rich text editor
 			this.articles.init();				// Article editor tools

@@ -17,6 +17,7 @@ javascripts:
     - public/javascripts/admin/jquery-ui-timepicker.js
     - public/javascripts/tiny_mce/jquery.tinymce.js
     - public/javascripts/admin/admin.js  
+    - public/javascripts/admin/login_page.js  
     - public/javascripts/admin/ui.js
     - public/javascripts/admin/ui.pagination.js
     - public/javascripts/admin/articles.js
