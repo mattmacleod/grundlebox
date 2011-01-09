@@ -86,7 +86,7 @@ class AdminController < ApplicationController
   # Custom 500 for admin
   def display_500( e )
     render :template => "admin/error_500", :status => 500, :layout => "admin/error"
-    raise e if Rails.env=="development"
+    raise e if Rails.env != "production"
   end
   
   

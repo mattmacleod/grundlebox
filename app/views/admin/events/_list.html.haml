@@ -1,3 +1,8 @@
+- if events.empty? && !params[:page]
+	%tr
+		%td.empty{:colspan => 5}
+			No events found
+			
 - events.each do |event|
 	%tr{ :class => cycle(:even, :odd) }
 		%td

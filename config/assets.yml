@@ -12,6 +12,7 @@ javascripts:
     - public/javascripts/admin/jquery-form.js
     - public/javascripts/admin/jquery-googlemaps.js
     - public/javascripts/admin/jquery-treeview.js
+    - public/javascripts/admin/jquery-jstree.js
     - public/javascripts/admin/jquery-prettyphoto.js
     - public/javascripts/admin/jquery-jcrop.js
     - public/javascripts/admin/jquery-ui-timepicker.js
@@ -26,6 +27,8 @@ javascripts:
     - public/javascripts/admin/tinymce.js
     - public/javascripts/admin/asset_manager.js
     - public/javascripts/admin/events.js
+    - public/javascripts/admin/pages.js
+
 stylesheets:
   default:
     - public/stylesheets/styles.css

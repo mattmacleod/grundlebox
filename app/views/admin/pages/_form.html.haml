@@ -1,0 +1,41 @@
+= form_errors @page
+
+.tabbed_fieldsets.page_forms
+
+	%ul.tabs
+		%li
+			%h2= link_to "Basics", "#basic"
+		%li
+			%h2= link_to "Content", "#content"
+		- Grundlebox::Config::PageTypes.each_pair do |key, value|
+			%li.type{ :id => "page_type_#{key}_tab" }
+				%h2= link_to value, "##{key}"
+		%li
+			%h2= link_to "Publishing", "#publishing"
+
+	%fieldset#basic
+		%legend Basic info
+		.full= f.text_field :title, :required => true, :maxlength => 255, :note => "This will be the main title of the page."
+		.full= f.text_field :url, :required => true, :maxlength => 255, :note => "This will be the URL of the page relative to the home page. Do not include an initial forward slash."
+		.full= f.select	:page_type, Grundlebox::Config::PageTypes.map{|k,v|[v,k.to_s]}, :required => true, :note => "Choose the type of content that will appear on this page."
+						
+	%fieldset#content
+		%legend Main content
+		.full= f.text_area :abstract, :rows => 4, :maxlength => 255, :label => "Abstract", :note => "This will be used as the abstract for this page."
+		.full= f.text_area :content, :rows => 30, :class=>"text_editor", :label => "Text content"
+
+	- Grundlebox::Config::PageTypes.each_pair do |key, value|
+		%fieldset{ :id => "page_type_#{key}_pane" }
+			%legend= value
+			- begin
+				= render( :partial => "/admin/pages/page_types/#{key}", :locals => { :f => f })
+			- rescue MissingTemplate
+			
+	%fieldset#publishing
+		%legend Publishing settings
+		.full
+			.half= f.text_field :starts_at, :value => (f.object.starts_at.to_s(:parseable) if f.object.starts_at), :required => true, 	:note => "When will this page start showing online?", :class=>:datetime, :label => "Publishing date"
+			.half= f.text_field :ends_at, 	:value => (f.object.ends_at.to_s(:parseable) if f.object.ends_at), :required => false, 	:note => "When will this page stop showing online?", :class=>:datetime, :label => "End date"
+		.full
+			.half= f.check_box :enabled, :label => "Page enabled?"
+			.half= f.select :parent_id, "<option></option>"+page_options(Page.root, f.object.parent_id), :label => "Child of...", :note => "Choose the parent page"

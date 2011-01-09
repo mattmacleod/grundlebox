@@ -11,6 +11,7 @@ module Grundlebox #:nodoc:
         
         def grundlebox_has_properties
           serialize :properties
+          attr_accessible :properties
           include Grundlebox::ModelExtensions::Properties::InstanceMethods
         end
 

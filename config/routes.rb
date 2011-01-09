@@ -77,6 +77,11 @@ Grundlebox::Application.routes.draw do
       end
     end
     
+    resources :pages do
+      collection do
+        put "/update_order"  => "pages#update_order", :as => :update_order
+      end
+    end
   end
   
   # Default admin error page for nonexistent routes

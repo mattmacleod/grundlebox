@@ -21,6 +21,7 @@ module Grundlebox
           options[:class] = "#{options[:class]} required".strip if labeled_options[:required]
           options[:class] = [method_name, options[:class]].compact.join(" ")
           args << options
+          args << options.delete(:html_options) if [:select].include?(method_name) && options[:html_options]
           field = super(method, *args)
           field = labeled_field(method, field, labeled_options) if label
           field += add_note(labeled_options[:note]) unless labeled_options[:note].blank?
@@ -50,7 +51,7 @@ module Grundlebox
         labeled_options = extract_labeled_options(options)
         options[:class] = "#{options[:class]} required".strip if labeled_options[:required]
         options[:class] = ["tag_select", options[:class]].compact.join(" ")
-        options.reverse_merge!({ :rows => 3})
+        options.reverse_merge!({ :rows => 3, :popular => true})
         args << options
         field = ActionView::Helpers::FormBuilder.instance_method(:text_area).bind(self).call(method, *args)
         field = labeled_field(method, field, labeled_options)
@@ -59,14 +60,18 @@ module Grundlebox
         output = tagged_field(field, labeled_options[:wrap], labeled_options[:wrap_class])  
                 
         # Then generate a tag list to go with it
-        tag_list = "<h3>Most popular tags</h3>"
-        tag_list << "<div class=\"tag_attachment_list\">"
-        tag_list << Tag::popular.limit(20).map do |tag|
-          tag_attachment_link( tag )
-        end.compact.join
-        tag_list << "</div>"
+        unless !options[:popular]
+          tag_list = "<h3>Most popular tags</h3>"
+          tag_list << "<div class=\"tag_attachment_list\">"
+          tag_list << Tag::popular.limit(20).map do |tag|
+            tag_attachment_link( tag )
+          end.compact.join
+          tag_list << "</div>"
+          output += tag_list.html_safe
+          
+        end
         
-        output += tag_list.html_safe
+        output
         
       end
   

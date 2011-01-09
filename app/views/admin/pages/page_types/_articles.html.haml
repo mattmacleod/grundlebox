@@ -1,0 +1,8 @@
+= note "Choose the options for articles to be displayed on this page"
+
+= f.fields_for :properties do |ff|
+	.full= ff.tag_select :articles_tags, :label => "Show articles with these tags:", :required => true, :popular => false
+	.full
+		.quarter= ff.check_box :articles_all_tags, :label => "Require all tags?", :note => "Check to only show articles matching all tags. Otherwise, will show articles matching any tag."
+		.quarter= ff.text_field :articles_items_per_page, :label => "Items per page", :note => "Enter the number of articles to be displayed on each page", :maxlength => 3, :cols => 5
+		.half= ff.select :articles_sort_order, Grundlebox::Config::PageSortOrder.map{|k,v|[v,k]}, :label => "Default sort order"

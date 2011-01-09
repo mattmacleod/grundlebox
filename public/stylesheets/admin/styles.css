@@ -789,6 +789,12 @@ fieldset div.two_thirds {
   margin-right: 3%;
   padding-bottom: 1em;
 }
+fieldset div.quarter {
+  width: 23%;
+  float: left;
+  margin-right: 2%;
+  padding-bottom: 1em;
+}
 fieldset div.bottom {
   padding-bottom: 0 !important;
 }
@@ -3654,16 +3660,6 @@ button.ui-button::-moz-focus-inner {
   background-position: 0;
 }
 
-.treeview-red li {
-  background-image: url(/images/admin/treeview/treeview-red-line.gif);
-}
-.treeview-red .hitarea {
-  background-image: url(/images/admin/treeview/treeview-red.gif);
-}
-.treeview-red li.lastCollapsable, .treeview-red li.lastExpandable {
-  background-image: url(/images/admin/treeview/treeview-red.gif);
-}
-
 .treeview-black li {
   background-image: url(/images/admin/treeview/treeview-black-line.gif);
 }
@@ -3674,41 +3670,73 @@ button.ui-button::-moz-focus-inner {
   background-image: url(/images/admin/treeview/treeview-black.gif);
 }
 
-.treeview-gray li {
-  background-image: url(/images/admin/treeview/treeview-gray-line.gif);
+.jstree-grundlebox li, .jstree-grundlebox ins {
+  background-image: url("/images/admin/jstree/d.png");
+  background-repeat: no-repeat;
+  background-color: transparent;
 }
-.treeview-gray .hitarea {
-  background-image: url(/images/admin/treeview/treeview-gray.gif);
+.jstree-grundlebox li {
+  background-position: -90px 0;
+  background-repeat: repeat-y;
 }
-.treeview-gray li.lastCollapsable, .treeview-gray li.lastExpandable {
-  background-image: url(/images/admin/treeview/treeview-gray.gif);
+.jstree-grundlebox li.jstree-last {
+  background: transparent;
+}
+.jstree-grundlebox .jstree-open > ins {
+  background-position: -72px 0;
+}
+.jstree-grundlebox .jstree-closed > ins {
+  background-position: -54px 0;
+}
+.jstree-grundlebox .jstree-leaf > ins {
+  background-position: -36px 0;
+}
+.jstree-grundlebox a {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  text-shadow: 1px 1px 1px white;
+}
+.jstree-grundlebox .jstree-hovered {
+  background: #e7f4f9;
+  border: 1px solid #d8f0fa;
+  padding: 0 3px 0 1px;
+  text-shadow: 1px 1px 1px silver;
+}
+.jstree-grundlebox .jstree-clicked {
+  background: #beebff;
+  border: 1px solid #99defd;
+  padding: 0 3px 0 1px;
+}
+.jstree-grundlebox a .jstree-icon {
+  background-position: -56px -20px;
+}
+.jstree-grundlebox a.jstree-loading .jstree-icon {
+  background: url("/images/admin/jstree/throbber.gif") center center no-repeat !important;
+}
+.jstree-grundlebox.jstree-focused {
+  background: white;
+}
+.jstree-grundlebox .jstree-search {
+  font-style: italic;
 }
 
-.treeview-famfamfam li {
-  background-image: url(/images/admin/treeview/treeview-famfamfam-line.gif);
+#vakata-dragged.jstree-grundlebox ins {
+  background: transparent !important;
 }
-.treeview-famfamfam .hitarea {
-  background-image: url(/images/admin/treeview/treeview-famfamfam.gif);
+#vakata-dragged.jstree-grundlebox .jstree-ok {
+  background: url("/images/admin/jstree/d.png") -2px -53px no-repeat !important;
 }
-.treeview-famfamfam li.lastCollapsable, .treeview-famfamfam li.lastExpandable {
-  background-image: url(/images/admin/treeview/treeview-famfamfam.gif);
+#vakata-dragged.jstree-grundlebox .jstree-invalid {
+  background: url("/images/admin/jstree/d.png") -18px -53px no-repeat !important;
 }
 
-.filetree li {
-  padding: 3px 0 2px 16px;
+#jstree-marker.jstree-grundlebox {
+  background: url("/images/admin/jstree/d.png") -41px -57px no-repeat !important;
 }
-.filetree span.folder, .filetree span.file {
-  padding: 1px 0 1px 16px;
-  display: block;
-}
-.filetree span.folder {
-  background: url(/images/admin/treeview/folder.gif) 0 0 no-repeat;
-}
-.filetree li.expandable span.folder {
-  background: url(/images/admin/treeview/folder-closed.gif) 0 0 no-repeat;
-}
-.filetree span.file {
-  background: url(/images/admin/treeview/file.gif) 0 0 no-repeat;
+
+.jstree-apple a.jstree-search {
+  color: aqua;
 }
 
 div.light_rounded .pp_top .pp_left {

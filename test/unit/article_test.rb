@@ -34,7 +34,6 @@ class ArticleTest < ActiveSupport::TestCase
   should_not allow_mass_assignment_of :user_id
   should_not allow_mass_assignment_of :cached_authors
   should_not allow_mass_assignment_of :cached_tags
-  should_not allow_mass_assignment_of :properties
   should_not allow_mass_assignment_of :created_at
   should_not allow_mass_assignment_of :updated_at
   should allow_mass_assignment_of :section

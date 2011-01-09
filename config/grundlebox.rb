@@ -29,7 +29,18 @@ class Grundlebox::Config
     :feature       => "Feature",
     :review        => "Generic review",
     :preview       => "Generic preview"
-  }  
+  } 
+  PageTypes = {
+    :text     => "Text",
+    :articles => "Articles",
+    :events   => "Events",
+    :venues   => "Venues",
+    :blogs    => "Blogs"
+  }
+  PageSortOrder = {
+    :newest => "Newest",
+    :name   => "Alphabetical"
+  }
   
   # Magick geometry string
   ImageFileVersions = { 

@@ -1,0 +1,21 @@
+-@page_title = "Page manager"
+
+%h1 Pages
+
+.search_form
+
+	%form{ :action => request.path }
+		%fieldset
+			= label_tag :search_field, "Search pages:"
+			= text_field_tag :q, params[:q], :id => :search_field
+			= ajax_spinner("search")
+
+= flash_message
+
+#pagination_wrapper
+	- unless @pages.blank?
+		= render :partial => "list", :locals=>{ :pages => @pages }
+	-else
+		= note "There are no pages", :type => :alert
+
+=continuous_pagination "pages"
