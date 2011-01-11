@@ -28,6 +28,10 @@ module AdminHelper
     link_to content, url, :method => :delete, :class => :destroy, :confirm => "Are you sure you want to delete this item?"
   end
   
+  def approve_link(content, url)
+    link_to content, url, :class => :approve
+  end
+  
   
   
   # Formatting

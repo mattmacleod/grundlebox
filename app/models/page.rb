@@ -14,6 +14,8 @@ class Page < ActiveRecord::Base
   # Validations
   validates_presence_of :page_type, :user, :title, :menu, :sort_order
   validates_presence_of :url, :unless => Proc.new{ !parent }
+  validates_presence_of :parent, :unless => Proc.new{ url=="" }
+  
   validates :parent_id, :tree => true
   validates_uniqueness_of :url, :scope => :menu_id
   
@@ -58,9 +60,12 @@ class Page < ActiveRecord::Base
   def self.nodes
     return @nodes if (@nodes && !(Rails.env=="test")) # Disable caching in test mode    
     @nodes = []
-    order(:id).each{|n| @nodes[n.id] = n }
-    @nodes = @nodes
+    all.each{|n| @nodes[n.id] = n }
     return @nodes
+  end
+  
+  def self.clear_nodes
+    @nodes = nil
   end
   
   def self.with_id(id)
@@ -79,7 +84,7 @@ class Page < ActiveRecord::Base
   private
   
   def clear_node_cache
-    self.class.nodes = nil
+    self.class.clear_nodes
   end
 
 

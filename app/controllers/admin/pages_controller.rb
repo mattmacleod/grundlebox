@@ -12,7 +12,8 @@ class Admin::PagesController < AdminController
   ############################################################################
   
   def index
-    @pages = Page.nodes.compact
+    @root = Page.root
+    @recent_pages = Page.order( "updated_at DESC" ).limit(10)
   end
  
    
@@ -76,6 +77,15 @@ class Admin::PagesController < AdminController
   ############################################################################
   
   def update_order
+    
+    @page = Page.find( params[:m] )
+    @page.parent_id = params[:p]
+    @page.sort_order = params[:s]
+    
+    ok = @page.save    
+    @root = Page.root
+    logger.info @root.children.map(&:id).inspect
+    render :partial => "list", :status => ( ok ? 200 : 409 ), :locals => { :root => @root }
   end
   
 

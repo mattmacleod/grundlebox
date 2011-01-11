@@ -6,16 +6,30 @@
 
 	%form{ :action => request.path }
 		%fieldset
-			= label_tag :search_field, "Search pages:"
-			= text_field_tag :q, params[:q], :id => :search_field
-			= ajax_spinner("search")
+			= label_tag :pages_search_field, "Search pages:"
+			= text_field_tag :q, params[:q], :id => :pages_search_field, :autocomplete => "off"
+			.buttons
+				= ajax_spinner("search")
 
 = flash_message
 
-#pagination_wrapper
-	- unless @pages.blank?
-		= render :partial => "list", :locals=>{ :pages => @pages }
+#page_list_wrapper
+	- unless @root.blank?
+		= render :partial => "list", :locals=>{ :root => @root }
 	-else
 		= note "There are no pages", :type => :alert
-
-=continuous_pagination "pages"
+		
+		
+#page_list_recent
+	%h2.section Recently updated
+	%ul.recent_list
+		- @recent_pages.each do |page|
+			%li
+				.left
+					.title
+						= link_to page.title, edit_admin_page_path( page )
+					.url
+						\/#{ page.url }
+				.updated
+					Updated: #{ print_time( page.updated_at ) }
+		

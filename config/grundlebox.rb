@@ -64,9 +64,10 @@ class Grundlebox::Config
     { :title => :articles,    :controllers => [:articles],                            :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
     { :title => :pages,       :controllers => [:pages],                               :roles => [:publisher, :admin] },
     { :title => :media,       :controllers => [:assets, :asset_folders, :galleries],  :roles => [:editor, :subeditor, :publisher, :admin] },
+    { :title => :comments,    :controllers => [:comments],                            :roles => [:publisher, :admin] },
     { :title => :events,      :controllers => [:events, :venues],                     :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
     { :title => :users,       :controllers => [:users],                               :roles => [:admin] },
-    { :title => :management,  :controllers => [:management, :tags],                   :roles => [:publisher, :admin] }   
+    { :title => :management,  :controllers => [:management, :tags],                   :roles => [:publisher, :admin] }
   ]
   
   # API keys

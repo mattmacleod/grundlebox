@@ -35,7 +35,7 @@ class PageTest < ActiveSupport::TestCase
   context "Pages" do
     setup do
       @pages = [
-                  @page1 = Factory(:page, :title=>"a", :parent => nil),
+                  @page1 = Factory(:root_page),
                   @page2 = Factory(:page, :title=>"c", :parent => @page1),
                   @page3 = Factory(:page, :title=>"b", :parent => @page1),
                   @page4 = Factory(:page, :title=>"d", :parent => @page3)

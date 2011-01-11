@@ -17,7 +17,7 @@ class Admin::PagesControllerTest < ActionController::TestCase
     setup do
       @user = Factory(:admin_user)
       @menu = Factory(:menu)
-      @root = Factory(:page)
+      @root = Factory(:root_page)
       login_as @user
     end
     
@@ -63,8 +63,11 @@ class Admin::PagesControllerTest < ActionController::TestCase
       
       context "a GET to :index" do
         setup { get :index }
-        should "return all pages" do
-          assert_same_elements [@root, @page1, @page2], assigns(:pages)
+        should "return recent pages" do
+          assert assigns(:recent_pages)
+        end
+        should "get the root of the tree" do
+          assert_equal @root, assigns(:root)
         end
       end
      
