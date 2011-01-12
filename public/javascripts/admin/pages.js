@@ -59,7 +59,7 @@ grundlebox.admin.pages = {
 			
 			// Setup drag events
 			_this = this;
-			$("#page_tree").bind("check_move.jstree", function(){ console.log("test")})
+			$("#page_tree").bind("check_move", function(){ console.log("test")})
 			
 			$("#page_tree").bind("move_node.jstree", _this.handle_reorder)
 			
