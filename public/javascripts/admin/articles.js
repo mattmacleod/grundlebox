@@ -13,6 +13,7 @@ grundlebox.admin.articles = {
 		this.setup_article_type_chooser();		// Setup the article type widget
 		this.setup_title_updater();						// Auto-update page title from form
 		this.setup_show_links();							// Setup listings links to tools
+		this.setup_auto_tagger();							// Setup listings links to tools
 		this.lock_checker.init();							// Init the article lock checker
 		this.drafts.init();										// Setup draft management
 	},
@@ -87,7 +88,51 @@ grundlebox.admin.articles = {
     });
 		
 	},
+	
+	
+	// Sets up automatic tagging. Only runs once.
+	setup_auto_tagger: function(){
 		
+		// First, check if there is an article loaded
+		if( $("#article_tag_list").length===0 ){ return; }
+		
+		// Then return unless the tag list is empty
+		if( $("#article_tag_list").val().length > 0 ){ return; }
+		
+		// The tag list is empty, so when we change the section or page type
+		// dropdowns, rewrite the tag list. Once we've chosen both, disable
+		// the event (so we don't overwrite subsequent tags)
+		$("#article_section_id,#article_article_type").change(function(){
+			
+			if( ($("#article_article_type option:selected").html().length > 0) && ($("#article_section_id option:selected").html().length > 0) ){
+				
+				// We've selected both, so remove this handler
+				$(this).unbind("change");
+				$("#article_tag_list").val( 
+					[$("#article_article_type option:selected").html(), $("#article_section_id option:selected").html()].join(", ")
+				);
+								
+			} else if( $("#article_article_type option:selected").html().length > 0){
+				
+				$("#article_tag_list").val( 
+					$("#article_article_type option:selected").html()
+				);
+				
+			} else if( $("#article_section_id option:selected").html().length > 0){
+				
+				$("#article_tag_list").val( 
+					$("#article_section_id option:selected").html()
+				);
+								
+			} else {
+				
+				return;
+				
+			}
+			
+		});
+		
+	},
 	
 	// This is the lock checker. Periodically calls the check_lock method on the
 	// articles controller to see if anybody else is editing the article.
