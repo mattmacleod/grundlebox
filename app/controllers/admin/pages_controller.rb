@@ -78,14 +78,30 @@ class Admin::PagesController < AdminController
   
   def update_order
     
+    # Preload root node
+    @root = Page.root
+    
+    # Update the parent of the page
     @page = Page.find( params[:m] )
     @page.parent_id = params[:p]
-    @page.sort_order = params[:s]
     
-    ok = @page.save    
-    @root = Page.root
-    logger.info @root.children.map(&:id).inspect
-    render :partial => "list", :status => ( ok ? 200 : 409 ), :locals => { :root => @root }
+    # Save the page
+    if @page.save
+      # It saved, so update the sort order en masse
+      params[:s].each_with_index do |id,idx|
+        Page.find( id ).update_attribute(:sort_order, idx) rescue nil
+      end
+      
+      # Reload the node cache
+      Page.clear_nodes
+      
+      render :partial => "list", :status => 200, :locals => { :root => @root }
+      
+    else
+      # Save failed, don't touch the sort orders
+      render :partial => "list", :status => 409, :locals => { :root => @root }
+    end
+    
   end
   
 

@@ -91,12 +91,20 @@ grundlebox.admin.pages = {
 			var parent_id = e.args[0].np.attr("id").replace("page_node_", "");
 			var cp = e.args[0].cp;
 			
+			// Calculate ordering
+			var order_array = [];
+			$("#page_list_wrapper li").each( function(){ 
+				order_array.push( $(this).attr("id").replace("page_node_", "") );
+			});
+			
+			
+			
 			// Send the attributes
 			$.ajax( 
 				{	
 					url: "/admin/pages/update_order", 
 					type: "POST",
-					data: { _method: "put", m: moving_id, p: parent_id, s: cp },
+					data: { _method: "put", m: moving_id, p: parent_id, s: order_array },
 					complete: function(e,f){
 						$("#page_list_wrapper").html( e.responseText );
 						grundlebox.admin.pages.tree_browser.setup_tree();
