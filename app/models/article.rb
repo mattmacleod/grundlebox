@@ -39,6 +39,11 @@ class Article < ActiveRecord::Base
   def writer_string
     cached_authors
   end
+  
+  # Event and venue attachment
+  attr_accessor :associated_event_ids
+  attr_accessor :associated_venue_ids
+  before_save :associate_events_and_venues
 
   # Library stuff
   grundlebox_has_tags
@@ -232,6 +237,11 @@ class Article < ActiveRecord::Base
       self[:review] = self.send("review_#{article_type}") 
       self[:review_rating] = self.send("review_rating_#{article_type}")
     end
+  end
+  
+  def associate_events_and_venues
+    self.event_ids = self.associated_event_ids.split(",") if self.associated_event_ids
+    self.venue_ids = self.associated_venue_ids.split(",") if self.associated_venue_ids
   end
   
 end

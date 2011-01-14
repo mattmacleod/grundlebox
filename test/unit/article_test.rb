@@ -109,6 +109,29 @@ class ArticleTest < ActiveSupport::TestCase
       
     end
     
+    
+    context "when associated events are set" do
+      setup do
+        @events = [ Factory(:event), Factory(:event) ]
+        @article.associated_event_ids = @events.map(&:id).join(",")
+        @article.save!
+      end
+      should "attach requested events" do
+        assert_same_elements @events, @article.events
+      end
+    end
+ 
+    context "when associated venues are set" do
+      setup do
+        @venues = [ Factory(:venue), Factory(:venue) ]
+        @article.associated_venue_ids = @venues.map(&:id).join(",")
+        @article.save!
+      end
+      should "attach requested venues" do
+        assert_same_elements @venues, @article.venues
+      end
+    end   
+    
   end
 
   # Test general article seasrches etc

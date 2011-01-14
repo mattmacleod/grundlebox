@@ -14,7 +14,7 @@ class Admin::CommentsController < AdminController
   def index
     @comments = Comment.order("created_at DESC")
     @comments = @comments.where(["comments.name LIKE ? OR comments.email LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%"]) if params[:q]
-    @comments = @comments.paginate( :page => params[:page], :per_page => 50 )
+    @comments = @comments.paginate( :page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit )
     if request.xhr?
       render(:partial => "list", :locals => {:comments => @comments})
       return

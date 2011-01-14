@@ -20,7 +20,7 @@ class Admin::UsersController < AdminController
   def index
     @users ||= User.order("name ASC")
     @users = @users.where(["users.name LIKE ? OR users.email LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%"]) if params[:q]
-    @users = @users.paginate( :page => params[:page], :per_page => 20 )
+    @users = @users.paginate( :page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit )
     
     if request.xhr?
       render(:partial => "list", :locals => {:users => @users})

@@ -14,7 +14,7 @@ class Admin::VenuesController < AdminController
   def index
     @venues = Venue.order("title ASC")
     @venues = @venues.where(["venues.title LIKE ?", "%#{params[:q]}%"]) if params[:q]
-    @venues = @venues.paginate( :page => params[:page], :per_page => 20 )
+    @venues = @venues.paginate( :page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit )
     if request.xhr?
       render(:partial => "list", :locals => {:venues => @venues})
       return

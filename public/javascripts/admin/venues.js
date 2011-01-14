@@ -12,9 +12,18 @@ grundlebox.admin.venues = {
 	
 	// Start the ball rolling
 	init: function(){
+		
+		this.init_map();
+		this.attachment.init();
+
+	},
+	
+	init_map: function(){
+		
 		// Do nothing unless there's a map area on the page
 		if( $("#venue_map_area").length==0 ){ return; }
 		this.load_google_maps();
+		
 	},
 	
 	// Load the google maps API - there's a map on the page. Once it's loaded,
@@ -181,6 +190,16 @@ grundlebox.admin.venues = {
 	// Moves the map so it is centered on the venue marker.
 	center_map_on_marker: function( ){
 		$.googleMaps.gMap.setCenter( this.venue_marker.getLatLng() );
+	},
+	
+	
+	// Attachment
+	attachment: {
+		
+		init: function(){
+			
+		}
+		
 	}
 	
 	

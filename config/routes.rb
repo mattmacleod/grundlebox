@@ -74,6 +74,7 @@ Grundlebox::Application.routes.draw do
     resources :events do
       collection do
         match "build_performances"    => "events#build_performances", :as => :build_performances
+        match "for_attachment"        => "events#for_attachment", :as => :for_attachment
       end
     end
     

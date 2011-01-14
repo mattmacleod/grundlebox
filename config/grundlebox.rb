@@ -88,4 +88,9 @@ class Grundlebox::Config
     "Advance purchase" => "advance"
   }
   
+  # Admin counts
+  AdminPaginationLimit = 20
+  EventAttachmentLimit = 20
+  
+  
 end

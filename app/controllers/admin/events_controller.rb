@@ -14,7 +14,7 @@ class Admin::EventsController < AdminController
   def index
     @events = Event.order("title ASC")
     @events = @events.where(["events.title LIKE ?", "%#{params[:q]}%"]) if params[:q]
-    @events = @events.paginate( :page => params[:page], :per_page => 20 )
+    @events = @events.paginate( :page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit )
     if request.xhr?
       render(:partial => "list", :locals => {:events => @events})
       return
@@ -102,6 +102,16 @@ class Admin::EventsController < AdminController
     
     render :layout => "admin/iframe"
     
+  end
+  
+  
+  
+  # Attachment
+  ############################################################################
+  
+  def for_attachment
+    @events = Event.order("title ASC").where(["events.title LIKE ?", "%#{params[:q]}%"]).limit( Grundlebox::Config::EventAttachmentLimit )
+    render(:partial => "for_attachment", :locals => {:events => @events, :action => :add})
   end
   
 end

@@ -59,7 +59,35 @@
 		.full.bottom= f.text_area :pullquote, :maxlength => 255, 		:rows => 5
 	
 	%fieldset#events
-		%legend Events
+		%legend Events and venues
+		
+		=note "You can associate events and venues with this article."
+
+		%fieldset.subform.half.left
+		
+			%legend Find events
+			
+			.full.ajax
+				%label Event search
+				=text_field_tag :event_search, "", :class => "ajax"
+				=ajax_spinner :event_search
+				%span.form_note Enter some text to search for events
+			
+			.ajax_search_wrapper
+				%h3 Search results
+				#event_search_results.ajax_select_results
+					Enter text in the box above to find events
+					
+		%fieldset.subform.half.right
+		
+			= f.hidden_field :associated_event_ids, :id => :associated_event_ids
+			%legend Associated events
+			
+			.ajax_search_wrapper			
+				%h3 Currently associated events
+				#associated_event_list.ajax_select_results
+					=render :partial => "/admin/events/for_attachment", :locals => {:events => f.object.events, :action => :remove}
+
 
 	%fieldset#tagging{:style=>"max-width:900px"}
 		%legend Tagging

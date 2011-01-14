@@ -54,7 +54,7 @@ grundlebox.admin.pages = {
 				},
 				dnd: {
 					copy_modifier: null
-				}
+				},
 			});
 			
 			// Setup drag events

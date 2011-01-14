@@ -23,12 +23,12 @@ class Admin::TagsController < AdminController
         
     respond_to do |format|
       format.js do
-        @tags = @tags.includes(:taggings).paginate(:page => params[:page])
+        @tags = @tags.includes(:taggings).paginate(:page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit)
         render :partial => "list", :locals => {:tags => @tags}
         return
       end
       format.html do
-        @tags = @tags.includes(:taggings).paginate(:page => params[:page])
+        @tags = @tags.includes(:taggings).paginate(:page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit)
         render :action => "index"
         return
       end

@@ -10,6 +10,7 @@ grundlebox.admin.events = {
 	init: function(){
 		this.setup_accordion();								// Setup the accordian table rows
 		this.performance_generator.init();		// Performance generation stuff
+		this.attachment.init();								// Attachment to items
 	},
 	
 	// Setup accordion table rows on the event form. Also delete buttons.
@@ -156,6 +157,43 @@ grundlebox.admin.events = {
 			// Show the performance table and hide the empty warning
 			$(".event_performance_items .empty").hide();
 			$(".event_performance_items table").show();
+		}
+		
+	},
+	
+	attachment: {
+		
+		loading: false,
+		
+		init: function(){
+			
+			// Do nothing unless there's an event attachment box
+			if( $("#event_search").length===0){ return; }
+			
+			// Hook into the search box for ajax
+			var _this = this;
+			$("#event_search").keyup(function(){
+				$("#event_search_spinner").show();
+				clearTimeout( _this.loading ) 
+				_this.loading = setTimeout( _this.event_search.execute, 300 )
+			});
+
+			// Monitor the add links
+			$(".event_search_add_link").live("click", function(){
+				_this.add_event( $(this) )
+				return false;
+			});
+
+			// Monitor the remove links
+			$(".event_search_remove_link").live("click", function(){
+				_this.remove_event($(this))
+				return false;
+			});
+			
+			// Hide the spinner
+			$("#event_search_spinner").hide();
+			
+			
 		}
 		
 	}

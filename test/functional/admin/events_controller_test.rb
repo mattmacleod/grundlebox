@@ -7,11 +7,12 @@ class Admin::EventsControllerTest < ActionController::TestCase
   ###########################################################################
   
   should "route to correct event pages" do
-    assert_routing "/admin/events",         { :controller=>"admin/events", :action=>"index" }
-    assert_routing "/admin/events/new",     { :controller=>"admin/events", :action=>"new" }
-    assert_routing "/admin/events/1",       { :controller=>"admin/events", :action=>"show", :id => "1" }
-    assert_routing "/admin/events/1/edit",  { :controller=>"admin/events", :action=>"edit", :id => "1" }
-    assert_routing "/admin/events.csv",     { :controller=>"admin/events", :action=>"index", :format => "csv" }
+    assert_routing "/admin/events",                 { :controller=>"admin/events", :action=>"index" }
+    assert_routing "/admin/events/new",             { :controller=>"admin/events", :action=>"new" }
+    assert_routing "/admin/events/for_attachment",  { :controller=>"admin/events", :action=>"for_attachment" }
+    assert_routing "/admin/events/1",               { :controller=>"admin/events", :action=>"show", :id => "1" }
+    assert_routing "/admin/events/1/edit",          { :controller=>"admin/events", :action=>"edit", :id => "1" }
+    assert_routing "/admin/events.csv",             { :controller=>"admin/events", :action=>"index", :format => "csv" }
   end
   
   context "when logged in as an admin user" do
@@ -86,6 +87,16 @@ class Admin::EventsControllerTest < ActionController::TestCase
         end
         should render_template "list"
         should_not render_template "index"
+      end
+      
+      context "an XHR GET to :for_attachment with a query" do
+        setup { xhr :get, :for_attachment, { :q => "test event 2"} }
+        should "return one event" do
+          assert_equal [@event2], assigns(:events)
+        end
+        should render_template "for_attachment"
+        should_not render_template "index"
+        should_not render_template "list"
       end
       
       
