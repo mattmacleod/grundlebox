@@ -465,7 +465,7 @@ fieldset
 		
 
 //****************************************************************************
-// Subforms and ajax
+// Subforms and ajax search
 //***************************************************************************/
 
 fieldset.subform
@@ -473,16 +473,55 @@ fieldset.subform
 	&.half
 		width: 49%
 		
-	input.ajax
+	h3
+		margin: -10px -10px 10px -10px
+		
+.ajax_search_field
+	margin-bottom: 20px
+	input
 		width: 90%
+	.spinner
+		position: relative
+		right: 3px
+		top: 2px
+
+.ajax_search_results,.ajax_search_list
+	@extend .small_rounded
+	padding: 10px
+	background: $grey_5
+	line-height: 1.3em
+	
+	.empty
+		font-size: 0.9em
+		text-transform: uppercase
+		color: $grey_3
+		font-weight: bold
 		
-	.ajax_search_wrapper
-		background: $grey_5
-		@extend .small_rounded
-		padding: 10px
-		margin: 0px
-		h3
-			margin: -10px -10px 10px -10px
+	.item_title
+		display: block
+		color: $grey_1
+		text-transform: uppercase
+		font-weight: bold
+		line-height: 1.4em
+	
+		.item_link
+			margin-left: 5px
+			
+	.item_details_1, .item_details_2
+		font-size: 0.9em
+		color: $grey_3
+		display: block	
 		
+		
+.ajax_search_list
+	padding: 0
+	li
+		border-bottom: 1px $grey_4 dotted
+		padding: 0 0 10px 0
+		margin: 0 0 10px 0
+		&.last
+			border-bottom: none
+			margin: 0
+	
 	
 	

@@ -9,8 +9,8 @@ module AdminHelper
   
   # Ajax and pagination
   ############################################################################
-  def ajax_spinner(base)
-    image_tag( "/images/admin/spinner.gif", :alt => "Loading...", :class => "spinner", :id => "#{base}_spinner" )
+  def ajax_spinner(base, color=nil)
+    image_tag( "/images/admin/spinner#{("_"+color) if color}.gif", :alt => "Loading...", :class => "spinner", :id => "#{base}_spinner" )
   end
   
   def continuous_pagination(name)

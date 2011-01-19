@@ -202,6 +202,9 @@ class Article < ActiveRecord::Base
     abstract.blank? ? ( standfirst.blank? ? content : standfirst ) : abstract
   end
   
+  def associated_event_ids
+    @associated_event_ids || event_ids.join(",")
+  end
   
   # Private methods
   ############################################################################

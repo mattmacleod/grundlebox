@@ -110,8 +110,13 @@ class Admin::EventsController < AdminController
   ############################################################################
   
   def for_attachment
-    @events = Event.order("title ASC").where(["events.title LIKE ?", "%#{params[:q]}%"]).limit( Grundlebox::Config::EventAttachmentLimit )
-    render(:partial => "for_attachment", :locals => {:events => @events, :action => :add})
+    if params[:ids]
+      @events = Event.where( :id => params[:ids].split(",") ).order(:title)
+      render(:partial => "for_attachment", :locals => {:events => @events, :action => :remove})
+    else
+      @events = Event.order("title ASC").where(["events.title LIKE ?", "%#{params[:q]}%"]).limit( Grundlebox::Config::EventAttachmentLimit )
+      render(:partial => "for_attachment", :locals => {:events => @events, :action => :add})
+    end
   end
   
 end

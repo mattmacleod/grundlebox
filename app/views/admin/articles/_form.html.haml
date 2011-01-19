@@ -20,92 +20,22 @@
 			%h2= link_to "Publishing", "#publishing"
 
 	%fieldset#basic
-		%legend Basic info
-		.full= f.text_field :title, :required => true, :maxlength => 255, :note => "This will be the main title of the article"
-		.full= f.text_field :writer_string,	:note => "Separate user names with commas. Leave empty to publish an anonymous article", :label => "Authors"
-		.full
-			.half= f.select :publication_id, publication_options(@article.publication), :note => "Choose the publication this article will appear in", :class=>:half
-			.half= f.select :section_id, [""]+Section::all.map{|s| [s.name, s.id] }, :required => true, :note => "Choose the main section for this article"
-		.full.bottom
-			.half
-				= f.select :article_type, article_type_options(@article.article_type), :note => "Choose the type of article to fill in additional details", :class=>:half, :required => true
-				-# Default to setting review and star rating to blank - wil be 
-				-# overriden by a real field later if appropriate type selected
-				= f.hidden_field :review, :value => 0
-				= f.hidden_field :review_rating, :value => 0
-				
-			.half.type_options
-				- Grundlebox::Config::ArticleTypes.sort{|a,b| a.last<=>b.last}.each do |k,v|
-					- begin
-						= render :partial => "/admin/articles/article_types/#{k}", :locals => { :k => k, :v => v, :f => f }
-					- rescue MissingTemplate
-				
-	%fieldset#content
-		%legend Main content
-		.full
-			= f.text_area :standfirst, :rows => 4, :maxlength => 255, :label => "Standfirst", :note => "This will be used as the print standfirst. It will also be used as the online abstract unless overriden in the 'web abstract' field."
+		= render :partial => "form_basic", :locals => { :f => f }
 		
-		.word_counter
-			%span.label Word count:
-			%span.word_count= @article.word_count
-		.full
-			= f.text_area :content, :rows => 30, :class=>"text_editor"
+	%fieldset#content
+		= render :partial => "form_content", :locals => { :f => f }
 		
 	%fieldset#additional
-		%legend Additional
-		.half= f.text_area :abstract, :maxlength => 255, 		:rows => 5, :label => "Web-only abstract", :note => "This will override the article standfirst for online listing pages"
-		.half= f.text_area :footnote, :rows => 5, :note => "This will appear at the foot of the article in print and on the web"
-		.full= f.text_field :web_address, :maxlength => 255, :note => "Enter a web link relating to this article. Additional links can be supplied in the footnotes."
-		.full.bottom= f.text_area :pullquote, :maxlength => 255, 		:rows => 5
-	
+		= render :partial => "form_additional", :locals => { :f => f }
+		
 	%fieldset#events
-		%legend Events and venues
-		
-		=note "You can associate events and venues with this article."
+		= render :partial => "form_events", :locals => { :f => f }
 
-		%fieldset.subform.half.left
+	%fieldset#tagging
+		= render :partial => "form_tags", :locals => { :f => f }
 		
-			%legend Find events
-			
-			.full.ajax
-				%label Event search
-				=text_field_tag :event_search, "", :class => "ajax"
-				=ajax_spinner :event_search
-				%span.form_note Enter some text to search for events
-			
-			.ajax_search_wrapper
-				%h3 Search results
-				#event_search_results.ajax_select_results
-					Enter text in the box above to find events
-					
-		%fieldset.subform.half.right
-		
-			= f.hidden_field :associated_event_ids, :id => :associated_event_ids
-			%legend Associated events
-			
-			.ajax_search_wrapper			
-				%h3 Currently associated events
-				#associated_event_list.ajax_select_results
-					=render :partial => "/admin/events/for_attachment", :locals => {:events => f.object.events, :action => :remove}
-
-
-	%fieldset#tagging{:style=>"max-width:900px"}
-		%legend Tagging
-		.full
-			= f.tag_select :tag_list, :label => "Article tags", :required => true
-								
 	%fieldset#assets
-		%legend Image
-		.asset_search_suggestion= @article.title
-		= image_attachments( f )
-
-	%fieldset#publishing
-		%legend Publishing settings
-		.half=f.text_field 	:starts_at, 			:value => (f.object.starts_at.to_s(:parseable) if f.object.starts_at), :required => true, 	:note => "When will this article start showing online?", :class=>:datetime, :label => "Publishing date"
-		.half=f.text_field 	:ends_at, 				:value => (f.object.ends_at.to_s(:parseable) if f.object.ends_at), :required => false, 	:note => "When will this article stop showing online?", :class=>:datetime, :label => "End date"
+		= render :partial => "form_assets", :locals => { :f => f }
 		
-		.half=f.check_box 	:featured, 				:required => true, 				:label => "Include in featured article list", :note => "Check this to allow this article to appear on the front page and in other featured areas"
-		.half=f.check_box 	:print_only, 			:required => true, 				:label => "Print-only article", :note => "Check this box to hide this article from the website completely"
-		.full=f.select 			:template, 			Grundlebox::Config::ArticleTemplates, 			:required => true, :note => "Choose the article layout template to use"
-
-		.full.bottom=f.text_area		:private_notes,		:note => "Enter any notes for other staff that relate to this article. These will not be published online or in print", :rows=>7
+	%fieldset#publishing
+		= render :partial => "form_publishing", :locals => { :f => f }

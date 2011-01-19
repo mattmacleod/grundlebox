@@ -254,7 +254,7 @@ a:hover {
   background-position: -80px -128px;
 }
 
-.clipped_background, .rounded, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2, #page_list_recent h2, #page_list_wrapper h2, .small_rounded_top_left, .event_performance_items table th.first, .event_performance_items table th#content_body, .event_performance_items table th#content_body_wide, .event_performance_items table th#page_list_wrapper, .small_rounded_top_right, .event_performance_items table th.last, .event_performance_items table th#content_sidebar, .event_performance_items table th#right_pane, .event_performance_items table th#page_list_recent, .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, fieldset.subform .ajax_search_wrapper, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, body.notice .noscript, #error #error_wrapper, .jstree-grundlebox a, .medium_rounded, #admin_tools, .tag_attachment_list a, li.token-input-token, .search_form, span.tag, .asset_attachment_items ul.asset_attachment_list li.asset h4 a, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, body.notice #notice_body {
+.clipped_background, .rounded, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2, #page_list_recent h2, #page_list_wrapper h2, .small_rounded_top_left, .event_performance_items table th.first, .event_performance_items table th#content_body, .event_performance_items table th#content_body_wide, .event_performance_items table th#page_list_wrapper, .small_rounded_top_right, .event_performance_items table th.last, .event_performance_items table th#content_sidebar, .event_performance_items table th#right_pane, .event_performance_items table th#page_list_recent, .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, .ajax_search_results, .ajax_search_list, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, body.notice .noscript, #error #error_wrapper, .jstree-grundlebox a, .medium_rounded, #admin_tools, .tag_attachment_list a, li.token-input-token, .search_form, span.tag, .asset_attachment_items ul.asset_attachment_list li.asset h4 a, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, a.event_search_add_link, a.event_search_remove_link, body.notice #notice_body {
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
   background-clip: padding-box;
@@ -290,7 +290,7 @@ a:hover {
   border-radius: 0 0 4px 4px;
 }
 
-.small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, fieldset.subform .ajax_search_wrapper, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, body.notice .noscript, #error #error_wrapper, .jstree-grundlebox a {
+.small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, .ajax_search_results, .ajax_search_list, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, #venue_map_area, #venue_map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, body.notice .noscript, #error #error_wrapper, .jstree-grundlebox a {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -314,7 +314,7 @@ a:hover {
   border-radius: 0 0 12px 12px;
 }
 
-.large_rounded, .button, body.notice #notice_body {
+.large_rounded, .button, a.event_search_add_link, a.event_search_remove_link, body.notice #notice_body {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
@@ -966,16 +966,60 @@ fieldset.subform {
 fieldset.subform.half {
   width: 49%;
 }
-fieldset.subform input.ajax {
+fieldset.subform h3 {
+  margin: -10px -10px 10px -10px;
+}
+
+.ajax_search_field {
+  margin-bottom: 20px;
+}
+.ajax_search_field input {
   width: 90%;
 }
-fieldset.subform .ajax_search_wrapper {
-  background: #ddddee;
-  padding: 10px;
-  margin: 0px;
+.ajax_search_field .spinner {
+  position: relative;
+  right: 3px;
+  top: 2px;
 }
-fieldset.subform .ajax_search_wrapper h3 {
-  margin: -10px -10px 10px -10px;
+
+.ajax_search_results, .ajax_search_list {
+  padding: 10px;
+  background: #ddddee;
+  line-height: 1.3em;
+}
+.ajax_search_results .empty, .ajax_search_list .empty {
+  font-size: 0.9em;
+  text-transform: uppercase;
+  color: #888899;
+  font-weight: bold;
+}
+.ajax_search_results .item_title, .ajax_search_list .item_title {
+  display: block;
+  color: #333344;
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 1.4em;
+}
+.ajax_search_results .item_title .item_link, .ajax_search_list .item_title .item_link {
+  margin-left: 5px;
+}
+.ajax_search_results .item_details_1, .ajax_search_results .item_details_2, .ajax_search_list .item_details_1, .ajax_search_list .item_details_2 {
+  font-size: 0.9em;
+  color: #888899;
+  display: block;
+}
+
+.ajax_search_list {
+  padding: 0;
+}
+.ajax_search_list li {
+  border-bottom: 1px #ccccdd dotted;
+  padding: 0 0 10px 0;
+  margin: 0 0 10px 0;
+}
+.ajax_search_list li.last, .ajax_search_list li#content_body_wide, .ajax_search_list li#content_sidebar, .ajax_search_list li#right_pane, .ajax_search_list li#page_list_recent {
+  border-bottom: none;
+  margin: 0;
 }
 
 div.flash_wrapper {
@@ -1044,8 +1088,9 @@ div.note .button {
   float: right;
   margin: -2px -2px -2px 20px;
   padding: 5px 10px 5px 30px;
-  background-position: left center;
+  background-position: left center !important;
   border: none;
+  color: black !important;
 }
 
 span.icon.notice {
@@ -1668,6 +1713,27 @@ fieldset.preview .geometry {
   float: right;
 }
 
+a.event_search_add_link, a.event_search_remove_link {
+  display: inline-block;
+  background: #ccccdd;
+  padding: 2px 7px 2px 19px;
+  background-position: -1px center;
+  background-repeat: no-repeat;
+  width: auto;
+  color: #111122;
+  font-weight: bold;
+  font-size: 0.75em;
+  line-height: 1em;
+}
+
+a.event_search_add_link {
+  background-image: url(/images/admin/icons/small_button_save.png);
+}
+
+a.event_search_remove_link {
+  background-image: url(/images/admin/icons/small_button_delete.png);
+}
+
 #page_list_wrapper #page_tree {
   margin-top: 10px;
 }
@@ -1731,9 +1797,11 @@ body.notice input.button {
   width: auto;
   padding: 0.5em 1em;
   border: none;
+  color: black;
 }
 body.notice input.button:hover, body.notice input.button:active {
   background: #ccccdd;
+  background-position: 0 center;
   cursor: pointer;
 }
 body.notice label {

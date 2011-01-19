@@ -175,7 +175,7 @@ grundlebox.admin.events = {
 			$("#event_search").keyup(function(){
 				$("#event_search_spinner").show();
 				clearTimeout( _this.loading ) 
-				_this.loading = setTimeout( _this.event_search.execute, 300 )
+				_this.loading = setTimeout( _this.execute, 300 )
 			});
 
 			// Monitor the add links
@@ -193,6 +193,69 @@ grundlebox.admin.events = {
 			// Hide the spinner
 			$("#event_search_spinner").hide();
 			
+		},
+		
+		// Run the remote search for attachments
+		execute: function(){
+			$.get("/admin/events/for_attachment?q=" + $("#event_search").val(), function(html){
+				$("#event_search_results").html(html);
+				$("#event_search_spinner").hide();
+			});
+		},
+		
+		// Add the event to the associated event list
+		add_event: function(link){
+			
+			// Get the id of the event to add
+			id = link.attr("id").split("_")[3];
+			
+			// Display a loading message
+			link.html("Loading...");
+			
+			// Get the list of IDs
+			values = $("#associated_event_ids").val().split(",");
+			if( values[0]=="" ){ values=[]; }
+			
+			// Add this ID to the list
+			values = values.concat([id]);
+			$("#associated_event_ids").val( values.unique().join(",") )
+			
+			this.reload_event_list(link);
+		},
+		
+		reload_event_list: function(link){
+			
+			// Show the spinner while we load
+			$("#event_search_spinner").show();
+			
+			// Request the list
+			$.get("/admin/events/for_attachment?ids=" + $("#associated_event_ids").val(), function(html){
+				
+				$("#event_search_spinner").hide();
+				link.parents("li").hide("blind");
+				$("#associated_event_list").html(html)
+				
+			});
+		
+		},
+		
+		remove_event: function(link){
+			
+			// Get the id of the event to remove
+			id = link.attr("id").split("_")[3];
+			
+			// Display a loading message
+			link.html("Loading...");
+			
+			// Get the list of IDs
+			values = $("#associated_event_ids").val().split(",");
+			console.log( values);
+			
+			values[ values.indexOf(id)] = 0
+			console.log( values);
+			$("#associated_event_ids").val( $.map(values, function(v){ if(v>0){ return v }}).unique().join(",") )
+			
+			this.reload_event_list(link);
 			
 		}
 		
