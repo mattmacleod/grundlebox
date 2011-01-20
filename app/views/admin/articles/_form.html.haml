@@ -11,7 +11,9 @@
 		%li
 			%h2= link_to "Additional", "#additional"
 		%li
-			%h2= link_to "Events & venues", "#events"
+			%h2= link_to "Events", "#events"
+		%li
+			%h2= link_to "Venues", "#venues"
 		%li
 			%h2= link_to "Tagging", "#tagging"
 		%li
@@ -31,6 +33,9 @@
 	%fieldset#events
 		= render :partial => "form_events", :locals => { :f => f }
 
+	%fieldset#venues
+		= render :partial => "form_venues", :locals => { :f => f }
+		
 	%fieldset#tagging
 		= render :partial => "form_tags", :locals => { :f => f }
 		

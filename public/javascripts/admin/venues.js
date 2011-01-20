@@ -194,13 +194,105 @@ grundlebox.admin.venues = {
 	
 	
 	// Attachment
+	
 	attachment: {
 		
+		loading: false,
+		
 		init: function(){
+			
+			// Do nothing unless there's an venue attachment box
+			if( $("#venue_search").length===0){ return; }
+			
+			// Hook into the search box for ajax
+			var _this = this;
+			$("#venue_search").keyup(function(){
+				$("#venue_search_spinner").show();
+				clearTimeout( _this.loading ) 
+				_this.loading = setTimeout( _this.execute, 300 )
+			});
+
+			// Monitor the add links
+			$(".venue_search_add_link").live("click", function(){
+				_this.add_venue( $(this) )
+				return false;
+			});
+
+			// Monitor the remove links
+			$(".venue_search_remove_link").live("click", function(){
+				_this.remove_venue($(this))
+				return false;
+			});
+			
+			// Hide the spinner
+			$("#venue_search_spinner").hide();
+			
+		},
+		
+		// Run the remote search for attachments
+		execute: function(){
+			$.get("/admin/venues/for_attachment?q=" + $("#venue_search").val(), function(html){
+				$("#venue_search_results").html(html);
+				$("#venue_search_spinner").hide();
+			});
+		},
+		
+		// Add the venue to the associated venue list
+		add_venue: function(link){
+			
+			// Get the id of the venue to add
+			id = link.attr("id").split("_")[3];
+			
+			// Display a loading message
+			link.html("Loading...");
+			
+			// Get the list of IDs
+			values = $("#associated_venue_ids").val().split(",");
+			if( values[0]=="" ){ values=[]; }
+			
+			// Add this ID to the list
+			values = values.concat([id]);
+			$("#associated_venue_ids").val( values.unique().join(",") )
+			
+			this.reload_venue_list(link);
+		},
+		
+		reload_venue_list: function(link){
+			
+			// Show the spinner while we load
+			$("#venue_search_spinner").show();
+			
+			// Request the list
+			$.get("/admin/venues/for_attachment?ids=" + $("#associated_venue_ids").val(), function(html){
+				
+				$("#venue_search_spinner").hide();
+				link.parents("li").hide("blind");
+				$("#associated_venue_list").html(html)
+				
+			});
+		
+		},
+		
+		remove_venue: function(link){
+			
+			// Get the id of the venue to remove
+			id = link.attr("id").split("_")[3];
+			
+			// Display a loading message
+			link.html("Loading...");
+			
+			// Get the list of IDs
+			values = $("#associated_venue_ids").val().split(",");
+			
+			values[ values.indexOf(id)] = 0
+			$("#associated_venue_ids").val( $.map(values, function(v){ if(v>0){ return v }}).unique().join(",") )
+			
+			this.reload_venue_list(link);
 			
 		}
 		
 	}
+
 	
 	
 }

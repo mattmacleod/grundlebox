@@ -69,4 +69,18 @@ class Admin::VenuesController < AdminController
     redirect_to :action => :index
   end
   
+  
+  # Attachment
+  ############################################################################
+  
+  def for_attachment
+    if params[:ids]
+      @venues = Venue.where( :id => params[:ids].split(",") ).order(:title)
+      render(:partial => "for_attachment", :locals => {:venues => @venues, :action => :remove})
+    else
+      @venues = Venue.order("title ASC").where(["venues.title LIKE ? OR venues.address_1 LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%"]).limit( Grundlebox::Config::VenueAttachmentLimit )
+      render(:partial => "for_attachment", :locals => {:venues => @venues, :action => :add})
+    end
+  end
+  
 end

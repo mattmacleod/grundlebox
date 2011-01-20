@@ -67,7 +67,7 @@ class Article < ActiveRecord::Base
                   :footnote, :web_address, :featured, :print_only, :template,
                   :article_type, :section, :private_notes, :publication, 
                   :review, :review_rating, :starts_at, :ends_at, :writer_string, 
-                  :publication_id, :associated_event_ids, :tag_list, :asset_ids
+                  :publication_id, :associated_event_ids, :associated_venue_ids, :tag_list, :asset_ids
     
   # Callbacks
   before_save :save_word_count
@@ -205,6 +205,11 @@ class Article < ActiveRecord::Base
   def associated_event_ids
     @associated_event_ids || event_ids.join(",")
   end
+  
+  def associated_venue_ids
+    @associated_venue_ids || venue_ids.join(",")
+  end
+  
   
   # Private methods
   ############################################################################

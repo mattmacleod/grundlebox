@@ -249,10 +249,8 @@ grundlebox.admin.events = {
 			
 			// Get the list of IDs
 			values = $("#associated_event_ids").val().split(",");
-			console.log( values);
 			
 			values[ values.indexOf(id)] = 0
-			console.log( values);
 			$("#associated_event_ids").val( $.map(values, function(v){ if(v>0){ return v }}).unique().join(",") )
 			
 			this.reload_event_list(link);

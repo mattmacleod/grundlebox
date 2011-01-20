@@ -19,7 +19,6 @@ Grundlebox::Application.routes.draw do
     
     # Simple resourceful routes
     resources :tags
-    resources :venues
     
     # More complex...
     resources :users do
@@ -75,6 +74,12 @@ Grundlebox::Application.routes.draw do
       collection do
         match "build_performances"    => "events#build_performances", :as => :build_performances
         match "for_attachment"        => "events#for_attachment", :as => :for_attachment
+      end
+    end
+    
+    resources :venues do
+      collection do
+        match "for_attachment"        => "venues#for_attachment", :as => :for_attachment
       end
     end
     
