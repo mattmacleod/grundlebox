@@ -25,9 +25,9 @@ class CityTest < ActiveSupport::TestCase
       setup do
         @venue = Factory(:venue, :city=>@city)
       end
-      should "destroy associated venues when destroyed" do
+      should "not destroy associated venues when destroyed" do
         @city.destroy
-        assert_equal 0, Venue.count
+        assert_equal 1, Venue.count
       end
     end
 
