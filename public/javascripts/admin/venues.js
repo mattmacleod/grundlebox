@@ -21,7 +21,7 @@ grundlebox.admin.venues = {
 	init_map: function(){
 		
 		// Do nothing unless there's a map area on the page
-		if( $("#venue_map_area").length==0 ){ return; }
+		if( $("#map_area").length==0 ){ return; }
 		this.load_google_maps();
 		
 	},
@@ -59,17 +59,17 @@ grundlebox.admin.venues = {
 			
 		// If there is a value in the location fields for the venue, then set
 		// that as the initial location and store that we have a marker available.
-		if( !$("#venue_lat").val()=="" ){
+		if( !$("#latitude").val()=="" ){
 			initial_location =  {
-				latitude: $("#venue_lat").val(),
-				longitude: $("#venue_lng").val(),
+				latitude: $("#latitude").val(),
+				longitude: $("#longitude").val(),
 				depth: 15
 			}
 			var has_marker = true;
 		}
 	
 		// Initialise the map with the initial location we calculated
-		$("#venue_map_area").googleMaps( initial_location );
+		$("#map_area").googleMaps( initial_location );
 	
 		// If there are no markers, then we have to set things up so an initial 
 		// click will create one. Otherwise, we just add the marker and setup
@@ -80,7 +80,7 @@ grundlebox.admin.venues = {
 			// set the marker location. Also update the form fields.
 			event_listener = GEvent.addListener($.googleMaps.gMap, "click", function(overlay, latlng) {
 			  
-				set_marker_location( latlng.lat(), latlng.lng() );
+				grundlebox.admin.venues.set_marker_location( latlng.lat(), latlng.lng() );
 				grundlebox.admin.venues.update_venue_location_fields( latlng.lat(), latlng.lng() )
 				
 				// Remove the click event listener now that we've added a marker.
@@ -98,9 +98,9 @@ grundlebox.admin.venues = {
 		}
 	
 		// Add change handlers to venue form fields
-		$("#venue_lat,#venue_lng").keyup(function(){
+		$("#latitude,#longitude").keyup(function(){
 			grundlebox.admin.venues.update_marker_location(
-				$("#venue_lat").val(), $("#venue_lng").val()
+				$("#latitude").val(), $("#longitude").val()
 			);
 		});
 		
@@ -164,8 +164,8 @@ grundlebox.admin.venues = {
 	
 	// Just update the fields in the venue form with the supplied location
 	update_venue_location_fields: function( lat, lng ){
-		$("#venue_lat").val( lat );
-		$("#venue_lng").val( lng );
+		$("#latitude").val( lat );
+		$("#longitude").val( lng );
 		this.center_map_on_marker();
 	},
 	

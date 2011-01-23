@@ -35,12 +35,12 @@
 		%legend Location
 		= note "Choose the location for this venue. You can try to auto-locate the venue from the postcode, click on the map to place the marker, drag to move the marker, or enter a custom latitude and longitude."
 		.third
-			.full= f.text_field :lat, :label => "Latitude"
-			.full= f.text_field :lng, :label => "Longitude"
+			.full= f.text_field :lat, :label => "Latitude", :id => "latitude"
+			.full= f.text_field :lng, :label => "Longitude", :id => "longitude"
 			.full.button_area= link_to "Auto-locate venue", "#", :class => "button edit", :id => "venue_auto_locate_button"
 		.two_thirds
 			#grundlebox_default_map_location= Grundlebox::Config::DefaultAdminMapLocation
-			#venue_map_area
+			#map_area
 				.loading Loading map...
 	
 	%fieldset#content

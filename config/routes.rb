@@ -19,6 +19,7 @@ Grundlebox::Application.routes.draw do
     
     # Simple resourceful routes
     resources :tags
+    resources :cities
     
     # More complex...
     resources :users do
