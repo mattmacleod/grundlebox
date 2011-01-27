@@ -71,6 +71,5 @@
 						%th Venue
 						%th.icons.last
 				%tbody.performance_list_contents
-					- f.object.performances.each do |performance|
-						= render :partial => "performance", :locals => { :f => f, :performance => performance }
+					= render :partial => "performance", :locals => { :f => f }, :collection => f.object.performances
 		

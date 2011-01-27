@@ -111,6 +111,13 @@ Pages:
       roles:
         - publisher
         - admin
+    New Page:
+      order: 2
+      controller: pages
+      action: new
+      roles:
+        - publisher
+        - admin
 
 Media Manager:
   order: 3

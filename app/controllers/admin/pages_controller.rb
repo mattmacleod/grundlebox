@@ -37,6 +37,7 @@ class Admin::PagesController < AdminController
       flash[:notice] = "Page has been created"
       redirect_to( :action=>:index )
     else
+      force_subsection "new"
       render( :action=>:new, :layout => "admin/manual_sidebar" )
     end
   end
@@ -47,6 +48,7 @@ class Admin::PagesController < AdminController
   
   def edit
     @page = Page.find( params[:id] )
+    force_subsection "index"
     render( :layout => "admin/manual_sidebar" )
   end
   
@@ -57,6 +59,7 @@ class Admin::PagesController < AdminController
       flash[:notice] = "Page has been saved"
       redirect_to( :action => :index )
     else
+      force_subsection "index"
       render( :action => :edit, :layout => "admin/manual_sidebar" )
     end
   end

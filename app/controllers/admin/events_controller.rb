@@ -45,7 +45,7 @@ class Admin::EventsController < AdminController
   end
   
   def edit
-    @event = Event.find( params[:id] )
+    @event = Event.find( params[:id], :include => { :performances => :venue } )
     force_subsection "index"
     render( :layout => "admin/manual_sidebar" )
   end

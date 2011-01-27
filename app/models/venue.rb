@@ -48,6 +48,10 @@ class Venue < ActiveRecord::Base
       group("venues.id").order("distance ASC")
     end
     
+    def options_for_select
+      @options_for_select ||= all.map{|v| [v.admin_summary, v.id] }
+    end
+    
   end
 
 
