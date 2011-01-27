@@ -32,10 +32,11 @@ class Grundlebox::Config
   } 
   PageTypes = {
     :text     => "Text",
-    :articles => "Articles",
-    :events   => "Events",
-    :venues   => "Venues",
-    :blogs    => "Blogs"
+    :articles => "Article listing",
+    :events   => "Event listing",
+    :venues   => "Venue listing",
+    :blogs    => "Blog listing",
+    :competition => "Competition"
   }
   PageSortOrder = {
     :newest => "Newest",
