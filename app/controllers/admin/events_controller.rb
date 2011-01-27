@@ -1,12 +1,9 @@
 class Admin::EventsController < AdminController
   
   # Define controller subsections
-  def self.subsections
-    [
-      { :title => :all_events, :actions => [:index, :show, :edit, :update, :new, :create], :roles => [:admin, :publisher] }
-    ]
-  end
-  build_permissions
+  grundlebox_permissions(
+    { :actions => [:index, :show, :edit, :update, :new, :create], :roles => [:admin, :publisher] }
+  )
   
   # Lists
   ############################################################################
@@ -33,11 +30,12 @@ class Admin::EventsController < AdminController
   def create
     @event = Event.new( params[:event] )
     @event.user = current_user
-    @event.performances.each{|p| p.user = current_user unless p.user }
+    @event.performances.each{|p| p.user = current_user unless p.user; p.event = @event }
     if @event.save
       flash[:notice] = "Event has been created"
       redirect_to( :action=>:index )
     else
+      force_subsection "new"
       render( :action=>:new, :layout => "admin/manual_sidebar" )
     end
   end
@@ -48,6 +46,7 @@ class Admin::EventsController < AdminController
   
   def edit
     @event = Event.find( params[:id] )
+    force_subsection "index"
     render( :layout => "admin/manual_sidebar" )
   end
   
@@ -59,6 +58,7 @@ class Admin::EventsController < AdminController
       flash[:notice] = "Event has been saved"
       redirect_to( :action => :index )
     else
+      force_subsection "index"
       render( :action => :edit, :layout => "admin/manual_sidebar" )
     end
   end

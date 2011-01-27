@@ -1,12 +1,9 @@
 class Admin::VenuesController < AdminController
   
   # Define controller subsections
-  def self.subsections
-    [
-      { :title => :all_venues, :actions => [:index, :show, :edit, :update, :new, :create], :roles => [:admin, :publisher] }
-    ]
-  end
-  build_permissions
+  grundlebox_permissions(
+    { :actions => [:index, :show, :edit, :update, :new, :create], :roles => [:admin, :publisher] }
+  )
   
   # Lists
   ############################################################################
@@ -37,6 +34,7 @@ class Admin::VenuesController < AdminController
       flash[:notice] = "Venue has been created"
       redirect_to( :action=>:index )
     else
+      force_subsection "new"
       render( :action=>:new, :layout => "admin/manual_sidebar" )
     end
   end
@@ -47,6 +45,7 @@ class Admin::VenuesController < AdminController
   
   def edit
     @venue = Venue.find( params[:id] )
+    force_subsection "index"
     render( :layout => "admin/manual_sidebar" )
   end
   
@@ -57,6 +56,7 @@ class Admin::VenuesController < AdminController
       flash[:notice] = "Venue has been saved"
       redirect_to( :action => :index )
     else
+      force_subsection "index"
       render( :action => :edit, :layout => "admin/manual_sidebar" )
     end
   end

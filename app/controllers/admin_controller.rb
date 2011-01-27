@@ -138,18 +138,14 @@ class AdminController < ApplicationController
   # Define the subsections for use in authentication and menus
   #
       
-  def self.subsections
-    [
-      { :title => :summary, :actions => [:index], :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
-      { :title => :help, :actions => [:help], :roles => [:writer, :editor, :subeditor, :publisher, :admin] }
-    ]
-  end
+  grundlebox_permissions(
+    { :actions => [:index], :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
+    { :actions => [:help], :roles => [:writer, :editor, :subeditor, :publisher, :admin] }
+  )
 
   # Allows selected subsection tab to be forced to a particular selection
   def force_subsection( title )
     @forced_active_subsection = title
   end
-  
-  build_permissions
-  
+    
 end

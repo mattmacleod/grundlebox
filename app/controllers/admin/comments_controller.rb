@@ -1,12 +1,9 @@
 class Admin::CommentsController < AdminController
   
   # Define controller subsections
-  def self.subsections
-    [
-      { :title => :comment_manager, :actions => [:index, :show, :edit, :update, :new, :create], :roles => [:admin, :publisher] }
-    ]
-  end
-  build_permissions
+  grundlebox_permissions(
+    { :actions => [:index, :show, :edit, :update, :new, :create], :roles => [:admin, :publisher] }
+  )
   
   # Lists
   ############################################################################

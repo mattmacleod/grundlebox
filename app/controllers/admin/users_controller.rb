@@ -1,18 +1,15 @@
 class Admin::UsersController < AdminController
   
   # Define controller subsections
-  def self.subsections
-    [
-      { :title => :all_users, :actions => [:index, :show, :edit, :update, :new, :create], :roles => [:admin] },
-      { :title => :writers, :actions => [:writers], :roles => [:admin] },
-      { :title => :editors, :actions => [:editors], :roles => [:admin] },
-      { :title => :subeditors, :actions => [:subeditors], :roles => [:admin] },
-      { :title => :publishers, :actions => [:publishers], :roles => [:admin] },
-      { :title => :administrators, :actions => [:administrators], :roles => [:admin] },
-      { :title => :mailing_list_subscribers, :actions => [:mailing_list_subscribers], :roles => [:admin] }
-    ]
-  end
-  build_permissions
+  grundlebox_permissions(
+    { :actions => [:index, :show, :edit, :update, :new, :create], :roles => [:admin] },
+    { :actions => [:writers], :roles => [:admin] },
+    { :actions => [:editors], :roles => [:admin] },
+    { :actions => [:subeditors], :roles => [:admin] },
+    { :actions => [:publishers], :roles => [:admin] },
+    { :actions => [:administrators], :roles => [:admin] },
+    { :actions => [:mailing_list_subscribers], :roles => [:admin] }
+  )
   
   # User lists
   ############################################################################
@@ -94,6 +91,7 @@ class Admin::UsersController < AdminController
       flash[:notice] = "User created"
       redirect_to( :action=>:index )
     else
+      force_subsection "new"
       render( :action=>:new, :layout => "admin/manual_sidebar" )
     end
     
@@ -114,6 +112,8 @@ class Admin::UsersController < AdminController
   
   def edit
     @user = User.find( params[:id] )
+    force_subsection @user.role.downcase.pluralize
+    
     render :layout => "admin/manual_sidebar"
   end
   
@@ -139,6 +139,7 @@ class Admin::UsersController < AdminController
       flash[:notice] = "User has been saved"
       redirect_to( :action=>:index )
     else
+      force_subsection @user.role.downcase.pluralize
       render( :action => :edit, :layout => "admin/manual_sidebar" )
     end
   end

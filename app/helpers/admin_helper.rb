@@ -91,17 +91,64 @@ module AdminHelper
   # Menu helpers
   ############################################################################
   
+  # Top-level admin menu
   def admin_main_menu
-    "<li class=\"#{"in" unless controller_name=="admin"}active\">#{link_to "Dashboard", "/admin"}</li>".html_safe +
-    Grundlebox::Config::AdminModules.collect do |mod|
-      if mod[:roles].include?( current_user.role.downcase.to_sym )
-        path = "/admin/#{mod[:controllers].first}"
-        "<li class=\"#{"in" unless mod[:controllers].include?(controller_name.to_sym)}active\">#{link_to mod[:title].to_s.humanize, path}</li>"
+    
+    out = ""
+    
+    # Loop through each top-level menu in the AdminMenu hash and output a link.
+    # Sort the hash by the order key before doing this.
+    Grundlebox::Config::AdminMenus.sort_by{|h| h[1]["order"] }.each do |title,menu|
+      
+      # Check if this menu item is visible for this role - do any of the 
+      # submenus have access permission for the current user's role?
+      visible_for_roles = menu["submenus"].map{|s| s[1]["roles"] }.flatten.uniq.map(&:to_sym)
+      
+      # If the role is included, work out the path and output a link.
+      if visible_for_roles.include?( current_user.role.downcase.to_sym )
+        path = "#{ "/admin" unless menu["controllers"].first=="admin"}/#{ menu["controllers"].first }"
+        out << content_tag( :li, link_to(title, path), :class => ((menu["controllers"].include?(controller_name)) ? :active : :inactive))
       end
-    end.compact.join("\n").html_safe
+      
+    end
+    
+    return out.html_safe
   end
 
+
+  # Admin sub menu
   def admin_sub_menu
+    
+    out = ""
+    
+    # Find out what section we are in by searching for a matching controller
+    current_menu = Grundlebox::Config::AdminMenus.values.find do |menu|
+      menu["controllers"].include?( controller.controller_name )
+    end
+    
+    # No menu!
+    return nil unless current_menu
+    
+    # For each submenu item in the selected submenu, check to see if we can 
+    # access as the current user, then render if we can.
+    current_menu["submenus"].sort_by{|h| h[1]["order"] }.each do |title,submenu|
+      
+      # Search all permissions...
+      if submenu["roles"].map(&:to_sym).include?( current_user.role.downcase.to_sym )
+        
+        # Build the path of the request and output the link
+        path = "#{ "/admin" unless submenu["controller"]=="admin"}/#{ submenu["controller"] }#{ "/"+submenu["action"] unless submenu["action"]=="index" }"
+        out << content_tag( :li, link_to(title, path), :class => (((submenu["controller"] == controller_name) && ((submenu["action"] == action_name) || (submenu["action"] == @forced_active_subsection.to_s)))) ? :active : :inactive)
+        
+      end
+      
+    end
+    
+    return out.html_safe
+    
+  end
+  
+  def _admin_sub_menu
     submenu = controller.class.subsections.collect do |mod|
       if mod[:roles].include?( current_user.role.downcase.to_sym )
         path = "/admin/#{controller_name=="admin" ? "" : controller_name + "/"}#{mod[:actions].first==:index ? "" : mod[:actions].first}".chomp("/")

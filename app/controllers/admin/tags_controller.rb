@@ -3,12 +3,9 @@ class Admin::TagsController < AdminController
   layout "admin/wide"
   
   # Define controller subsections
-  def self.subsections
-    [
-      { :title => :tags, :actions => [:index, :show, :edit, :update, :new, :create], :roles => [:admin] }
-    ]
-  end
-  build_permissions
+  grundlebox_permissions(
+    { :actions => [:index, :show, :edit, :update, :new, :create], :roles => [:admin] }
+  )
   
   
   # Tag management

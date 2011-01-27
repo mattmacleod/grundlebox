@@ -2,22 +2,16 @@ class Admin::ArticlesController < AdminController
     
   before_filter :get_article, :only => [:edit, :update, :destroy, :unpublish, :check_lock, :revert_draft]
   
-  # Define controller subsections
-  def self.subsections
-    [
-      { :title => :summary,     :actions => [:index],       :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
-      { :title => :unsubmitted, :actions => [:unsubmitted], :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
-      { :title => :editing,     :actions => [:editing],     :roles => [:editor, :subeditor, :publisher, :admin] },
-      { :title => :subediting,  :actions => [:subediting],  :roles => [:subeditor, :publisher, :admin] },
-      { :title => :publishing,  :actions => [:publishing],  :roles => [:publisher, :admin] },
-      { :title => :download,    :actions => [:download],    :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
-      { :title => :live,        :actions => [:live],        :roles => [:publisher, :admin] },
-      { :title => :inactive,    :actions => [:inactive],    :roles => [:publisher, :admin] }
-    ]
-  end
-  
-  build_permissions
-    
+  grundlebox_permissions(
+    { :actions => [:index],       :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
+    { :actions => [:unsubmitted], :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
+    { :actions => [:editing],     :roles => [:editor, :subeditor, :publisher, :admin] },
+    { :actions => [:subediting],  :roles => [:subeditor, :publisher, :admin] },
+    { :actions => [:publishing],  :roles => [:publisher, :admin] },
+    { :actions => [:download],    :roles => [:writer, :editor, :subeditor, :publisher, :admin] },
+    { :actions => [:live],        :roles => [:publisher, :admin] },
+    { :actions => [:inactive],    :roles => [:publisher, :admin] }
+  )
     
     
     
