@@ -83,6 +83,7 @@ class Grundlebox::Config
   
   # Admin counts
   AdminPaginationLimit = 20
+  AdminAssetPaginationLimit = 20
   EventAttachmentLimit = 20
   VenueAttachmentLimit = 20
   
