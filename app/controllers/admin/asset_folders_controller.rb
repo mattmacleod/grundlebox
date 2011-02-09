@@ -9,7 +9,7 @@ class Admin::AssetFoldersController < AdminController
   
   def index
     if( params[:path].to_s.split("/") == @current_folder.path )
-      @assets = @current_folder.assets
+      @assets = (params[:location] == "all") ? Asset.where("asset_folder_id > 0") : @current_folder.assets
       @assets = @assets.where(["assets.title LIKE ?", "%#{params[:q]}%"]) if params[:q]
       @assets = @assets.paginate( :page => params[:page], :per_page => 20 )
       if request.xhr?

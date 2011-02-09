@@ -16,6 +16,13 @@
 				- unless params[:q].blank?
 					= link_to "Show all", request.path, :class => :button 
 				= ajax_spinner("search")
+			.options
+				%label
+					%input.radio{ :type => :radio, :name => :location, :value => :this, :checked => (params[:location]=="this" || !params[:location]) }
+					This folder
+				%label
+					%input.radio{ :type => :radio, :name => :location, :value => :all, :checked => (params[:location]=="all") }
+					All folders
 =flash_message
 
 - if (@assets).length>0	
@@ -27,6 +34,7 @@
 - else
 	#folder_browser
 		%h2= @current_folder.name
-		=note "No assets found"
+		#main_folder_wrapper
+			=note "No assets found"
 
 =continuous_pagination "asset_manager"

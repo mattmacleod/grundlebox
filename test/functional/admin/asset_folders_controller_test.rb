@@ -133,7 +133,8 @@ class Admin::AssetFoldersControllerTest < ActionController::TestCase
       setup do
         @assets = [ 
           @asset = Factory(:asset, :asset_folder => @root_folder, :title => "test"), 
-          @asset2 = Factory(:asset, :asset_folder => @root_folder, :title => "other") 
+          @asset2 = Factory(:asset, :asset_folder => @root_folder, :title => "other"),
+          @asset3 = Factory(:asset, :asset_folder => Factory(:asset_folder), :title => "folder")
         ]
       end
       
@@ -144,8 +145,8 @@ class Admin::AssetFoldersControllerTest < ActionController::TestCase
       
       context "a GET to the asset browser page" do
         setup { get :index, :path => "1-root" }
-        should "return all assets" do
-          assert_same_elements @assets, assigns(:assets)
+        should "return all assets in the specified folder" do
+          assert_same_elements [@asset, @asset2], assigns(:assets)
         end
       end
       
@@ -156,10 +157,24 @@ class Admin::AssetFoldersControllerTest < ActionController::TestCase
         end
       end
       
+      context "a GET to the asset browser page with a search string for an asset in another folder" do
+        setup { get :index, :path => "1-root", :q => "folder" }
+        should "not find assets in other folders" do
+          assert_same_elements [], assigns(:assets)
+        end
+      end
+      
+      context "a GET to the asset browser page with a search string for an asset in another folder and the 'all folders' option selected" do
+        setup { get :index, :path => "1-root", :q => "folder", :location => "all" }
+        should "find assets in other folders" do
+          assert_same_elements [@asset3], assigns(:assets)
+        end
+      end
+      
       context "an xhr GET to the asset browser" do
         setup { xhr :get, :index, :path => "1-root" }
-        should "return all assets" do
-          assert_same_elements @assets, assigns(:assets)
+        should "return all assets in the specified folder" do
+          assert_same_elements [@asset, @asset2], assigns(:assets)
         end
       end
       
@@ -177,10 +192,24 @@ class Admin::AssetFoldersControllerTest < ActionController::TestCase
         end
       end
       
+      context "an xhr GET to the asset browser with a query matching another folder" do
+        setup { xhr :get, :index, :path => "1-root", :q => "folder" }
+        should "return one asset" do
+          assert_same_elements [], assigns(:assets)
+        end
+      end
+      
+      context "an xhr GET to the asset browser with a query matching another folder and the 'all' location flah" do
+        setup { xhr :get, :index, :path => "1-root", :q => "folder", :location => "all" }
+        should "return one asset" do
+          assert_same_elements [@asset3], assigns(:assets)
+        end
+      end
+      
       context "a get to :attach" do
         setup { get :attach }
-        should "return a list of assets" do
-          assert_same_elements @assets, assigns(:assets)
+        should "return a list of assets in the selected folder" do
+          assert_same_elements [@asset, @asset2], assigns(:assets)
         end
         should "generate a new asset" do
           assert assigns(:asset)

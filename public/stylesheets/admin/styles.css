@@ -1155,6 +1155,18 @@ span.icon.error {
 .search_form .buttons input:hover, .search_form .buttons a:hover {
   text-decoration: none;
 }
+.search_form .options {
+  clear: left;
+  padding-top: 1em;
+}
+.search_form .options label {
+  float: left;
+  margin-right: 1em;
+}
+.search_form .options input {
+  width: auto;
+  margin-right: 0.5em;
+}
 
 #pagination_loading_wrapper {
   height: 50px;

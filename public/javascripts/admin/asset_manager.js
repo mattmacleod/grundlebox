@@ -44,21 +44,28 @@ grundlebox.admin.asset_manager = {
 			
 			if( $("#main_folder_wrapper" ).length==0){ return; }
 			
+			// Disable auto-complete
+			$("#search_field").attr("autocomplete", "off");
+			
 			$(document).scroll( this.checkScroll );
 			
 			var _this = this;
-			$("#search_field").keyup(function(){
-				_this.enabled = true;
-				clearTimeout(_this.timer);
-				$("#search_spinner").show();
-				_this.timer = setTimeout(_this.submit_search, 400)
-			});
+			$("#search_field").keyup( this.setup_search );
+			$(".search_form input.radio").change( this.setup_search );
 			
 		},
 
+		setup_search: function(){
+			_this = grundlebox.admin.asset_manager.pagination;
+			_this.enabled = true;
+			clearTimeout(_this.timer);
+			$("#search_spinner").show();
+			_this.timer = setTimeout(_this.submit_search, 400)
+		},
+		
 		submit_search: function(){
 			
-			$.get( location.href , { q:$("#search_field").val() }, function(html){
+			$.get( location.href , $(".search_form form").serialize(), function(html){
 				$("#main_folder_wrapper").html( html );
 				$("#search_spinner").hide();
 				grundlebox.admin.asset_manager.setup_pp();

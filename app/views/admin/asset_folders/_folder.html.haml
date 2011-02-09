@@ -1,5 +1,5 @@
 - if @assets.blank? && params[:page].blank? && !params[:q].blank?
-	=note "No images found"
+	=note "No assets found"
 	
 - @assets.each do |asset|
 	.icon{:class=>cycle(:first, "", "", "", :last)}
