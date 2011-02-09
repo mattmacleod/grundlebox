@@ -1,5 +1,9 @@
 Grundlebox::Application.routes.draw do
 
+  ############################################################################
+  # Admin section
+  ############################################################################
+  
   # Admin modules
   match "admin"               => "admin#index",         :as => :admin
   match "admin/login"         => "admin#login",         :as => :admin_login
@@ -98,8 +102,15 @@ Grundlebox::Application.routes.draw do
     
   end
   
+  
   # Default admin error page for nonexistent routes
   match "admin/*path" => "admin#display_404"
    
    
+  ############################################################################
+  # API section
+  ############################################################################
+  get "api/v:version/users(.:format)" => "api#users", :as => :api_users
+  
+  
 end
