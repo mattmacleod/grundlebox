@@ -12,21 +12,21 @@ grundlebox.admin.tinymce = {
 					script_url : '/javascripts/tiny_mce/tiny_mce.js',
 
 					theme : "advanced",
-					plugins : "inlinepopups,searchreplace,print,contextmenu,paste,fullscreen,xhtmlxtras",
+					plugins : "inlinepopups,searchreplace,print,contextmenu,paste,fullscreen,xhtmlxtras,advimage,grundlebox_files",
 					
 					width: "100%",
 					height: "600px",
 					
 					theme_advanced_buttons1 : "bold,italic,underline,|,formatselect,|,cut,copy,paste,pastetext,pasteword,|,search,replace",
-					theme_advanced_buttons2: "bullist,numlist,|,undo,redo,|,link,unlink,code,|,iespell,print,fullscreen",
-					theme_advanced_buttons3: "",
+					theme_advanced_buttons2: "bullist,numlist,|,undo,redo,|,link,unlink,code,|,iespell,print,fullscreen,|,image,grundlebox_files",
 					theme_advanced_toolbar_location : "top",
 					theme_advanced_toolbar_align : "left",
 					theme_advanced_statusbar_location : "bottom",
 					theme_advanced_resizing : true,
 
 					content_css : "/stylesheets/content.css",
-
+					valid_elements : "a[href|title|class|id],-strong/-b,-em/-i,br,-strike,-u,-sub,-sup,-p[class],-ul,-ol,-li,img[class|src|alt=|title|width|height],-h1,-h2[class],-h3[class],-h4,hr,span[class]",
+					
 					init_instance_callback: 'grundlebox.admin.tinymce.word_counter.init'
 
 			});

@@ -180,6 +180,12 @@ grundlebox.admin.asset_manager = {
 	
 	attachment: {
 		
+		// Variables
+		stored_selection: null,
+		active_filename: null,
+		editor_select: false,
+		properties: {},
+		
 		init: function(){
 
 			// Quit if there are no attachment forms here
@@ -234,6 +240,7 @@ grundlebox.admin.asset_manager = {
 		},
 		
 		open_attachment_browser: function(){
+			this.editor_select = false;
 			$.prettyPhoto.open("/admin/asset_folders/attach?suggestion=" + encodeURI($(".asset_search_suggestion").html() + "&iframe=true&width=850&height=" + (document.documentElement.clientHeight - 100)) )
 			return false;			
 		},
@@ -268,12 +275,22 @@ grundlebox.admin.asset_manager = {
 		
 		add_attachment: function( thumbnail_path, asset_id ){
 			
-			$(".asset_attachment_items .empty").hide();
+			if( this.editor_select ){
+				
+				this.insert_editor_image( thumbnail_path, asset_id );
+				
+				return false;
+				
+			} else {
+				
+				$(".asset_attachment_items .empty").hide();
 			
-			code = global_asset_link_string.replace(/REPLACE_WITH_THUMBNAIL_PATH/g, thumbnail_path ).replace(/REPLACE_WITH_ASSET_ID/g, asset_id );
-			var new_asset_link_id = "new_" + new Date().getTime();
-			$('.asset_attachment_list').append(code.replace(/new_\\d+/g, new_asset_link_id) );
-			this.set_sort_order();
+				code = global_asset_link_string.replace(/REPLACE_WITH_THUMBNAIL_PATH/g, thumbnail_path ).replace(/REPLACE_WITH_ASSET_ID/g, asset_id );
+				var new_asset_link_id = "new_" + new Date().getTime();
+				$('.asset_attachment_list').append(code.replace(/new_\\d+/g, new_asset_link_id) );
+				this.set_sort_order();
+				
+			}
 		},
 		
 		select_attachment: function(){
@@ -282,6 +299,30 @@ grundlebox.admin.asset_manager = {
 			return false;
 		},
 
+		insert_editor_image: function(thumbnail_path, asset_id){
+		
+			var ed = tinyMCE.activeEditor, args = {}, el;
+			ed.selection.moveToBookmark( this.current_editor_selection );
+
+			args = {
+				src: thumbnail_path
+			};
+
+			el = ed.selection.getNode();
+
+			if (el && el.nodeName == 'IMG') {
+				ed.dom.setAttribs(el, args);
+				this.insert_image_link(ed, el, link_to_original_image, args);
+			} else {
+				ed.execCommand('mceInsertContent', false, '<img id="__mce_tmp" src="#" />');
+				ed.dom.setAttribs('__mce_tmp', args);
+				ed.dom.setAttrib('__mce_tmp', 'class', args.class_name);
+				this.insert_image_link(ed, ed.dom.get('__mce_tmp'), link_to_original_image, args);
+				ed.dom.setAttrib('__mce_tmp', 'id', '');
+			}
+				
+		},
+		
 		google: {
 			
 			init: function(){
