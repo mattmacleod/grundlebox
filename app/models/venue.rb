@@ -9,6 +9,21 @@ class Venue < ActiveRecord::Base
   # Model definition
   ############################################################################
   
+  # Export handlers
+  grundlebox_set_export_columns(
+    ["ID",              :id],
+    ["Address",         Proc.new{|v| [v.address_1,v.address_2].select{|a| !a.blank?}.join(", ") }],
+    ["City",            Proc.new{|v| v.city.name if v.city}],
+    ["Postcode",        :postcode],
+    ["Phone",           :phone],
+    ["Email",           :email],
+    ["Web",             :web],
+    ["Abstract",        :abstract],
+    ["Description",     :content],
+    ["Featured",        :featured],
+    ["Location",        Proc.new{|v| [v.lat, v.lng].join(",")} ]
+  )
+  
   # Relationships
   belongs_to :user
   belongs_to :city

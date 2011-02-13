@@ -26,7 +26,6 @@ class Admin::UsersController < AdminController
     
     respond_to do |format|
       format.html { render :action => :index }
-      format.xml { render :xml => @users.to_xml }
       format.csv { send_csv @users, :users }
     end
 

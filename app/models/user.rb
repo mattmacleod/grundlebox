@@ -11,22 +11,22 @@ class User < ActiveRecord::Base
   Roles = ["USER", "WRITER", "EDITOR", "SUBEDITOR", "PUBLISHER", "ADMIN"]
   
   # Export handlers
-  grundlebox_set_export_columns({
-    "Unique ID"        => :id,
-    "User name"        => :name,
-    "Email"            => :email,
-    "Role"             => :role,
-    "Verified?"        => :verified,
-    "Enabled?"         => :enabled,
-    "Position"         => :position,
-    "Country"          => :country,
-    "Postcode"         => :postcode,
-    "Date of birth"    => :date_of_birth,
-    "Account created"  => :created_at,
-    "Account updated"  => :updated_at,
-    "Last visit"       => :accessed_at,
-    "On mailing list?" => :mailing_list
-  })
+  grundlebox_set_export_columns(
+    ["ID",              :id],
+    ["User name",       :name],
+    ["Email",           :email],
+    ["Role",            :role],
+    ["Verified",        :verified],
+    ["Enabled",         :enabled],
+    ["Position",        :position],
+    ["Country",         :country],
+    ["Postcode",        :postcode],
+    ["Date of birth",   :date_of_birth],
+    ["Account created", :created_at],
+    ["Account updated", :updated_at],
+    ["Last visit",      :accessed_at],
+    ["On mailing list", :mailing_list]
+  )
 
 
   # Relationships

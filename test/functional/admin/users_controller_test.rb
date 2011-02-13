@@ -133,16 +133,6 @@ class Admin::UsersControllerTest < ActionController::TestCase
         end
       end
       
-      context "a GET to :index for an XML type" do
-        setup { get :index, {:format=>:xml} }
-        should respond_with :success
-        should respond_with_content_type :xml
-        should_not render_with_layout
-        should "return all users" do
-          assert_same_elements @users, assigns(:users)
-        end
-      end
-      
       context "an XHR GET to :index" do
         setup { xhr :get, :index }
         should "return all users" do

@@ -3,6 +3,22 @@ class Performance < ActiveRecord::Base
   # Model definition
   ############################################################################
   
+  # Export handlers
+  grundlebox_set_export_columns(
+    ["Venue",           :cached_venue_name],
+    ["Venue ID",        :venue_id],
+    ["Event",           :cached_event_name],
+    ["Event ID",        :event_id],
+    ["City",            :cached_city_name],
+    ["Start",           :starts_at],
+    ["End",             :ends_at],
+    ["Price",           :price],
+    ["Performer",       :performer],
+    ["Drop in",         :drop_in],
+    ["Ticket type",     :ticket_type],
+    ["Notes",           :notes]
+  )
+  
   # Relationships
   belongs_to :user
   belongs_to :venue

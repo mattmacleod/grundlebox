@@ -111,6 +111,9 @@ Grundlebox::Application.routes.draw do
   # API section
   ############################################################################
   get "api/v:version/users(.:format)" => "api#users", :as => :api_users
+  get "api/v:version/events(.:format)" => "api#events", :as => :api_events
+  get "api/v:version/venues(.:format)" => "api#venues", :as => :api_venues
+  get "api/v:version/articles(.:format)" => "api#articles", :as => :api_articles
   
   
 end

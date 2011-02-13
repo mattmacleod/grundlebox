@@ -3,6 +3,26 @@ class Article < ActiveRecord::Base
   # Model definition
   ############################################################################
 
+  # Export handlers
+  grundlebox_set_export_columns(
+    ["ID",              :id],
+    ["Title",           :title],
+    ["Abstract",        :abstract],
+    ["Standfirst",      :standfirst],
+    ["Content",         :content],
+    ["Authors",         :cached_authors],
+    ["Tags",            :cached_tags],
+    ["Article type",    :article_type],
+    ["Live time",       :starts_at],
+    ["End time",        :ends_at],
+    ["Review",          :review],
+    ["Review rating",   :review_rating],
+    ["Print only",      :print_only],
+    ["Status",          :status],
+    ["Web address",     :web_address],
+    ["Properties",      :properties]
+  )
+  
   # Constants 
   Status = {
     :unsubmitted => "NEW", 

@@ -43,23 +43,45 @@ Array.class_eval do
   # or fail entirely to do anything.
   def to_csv( options={} )
     
-    # What columns do we want?
+    # What columns do we want to export?
     if options[:columns].blank?
+      
+      # Try the default export columns
       if (first && first.class.respond_to?( :default_export_columns ))
         options[:columns] ||= first.class.default_export_columns
       end
+      
+      # Try to access ActiveRecord columns
       return unless first.class.respond_to?( :column_names )
-      options[:columns] ||= Hash[*first.class.column_names.map{|c| [c.humanize, c]}.flatten]
+      options[:columns] ||= first.class.column_names.map{|c| [c.humanize, c]}
+      
     end
     
+    # Build the CSV export
     return FasterCSV.generate do |csv|
-      csv << options[:columns].keys
+      
+      # Add the row titles (first array entry)
+      csv << options[:columns].map(&:first)
+      
+      # Add each row. If the content is a symbol, call that method. If it's a 
+      # proc, call the proc with the context of the instance. Otherwise, 
+      # output the data directly.
       self.each do |item|
-        csv << options[:columns].values.map{|c| item.send(c) }
+        csv << options[:columns].map(&:last).map do |column|
+          if column.is_a?( Symbol ) 
+            item.send(column)
+          elsif column.is_a?( Proc)
+            column.call( item )
+          else
+            column
+          end
+        end
       end
+      
     end
     
   end
+  
   
   
   def map_with_index!

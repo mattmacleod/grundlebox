@@ -75,16 +75,19 @@ class AdminController < ApplicationController
   
   # Custom 404 for admin
   def display_404
+    render :nothing => true, :status => 404 and return if request.xhr?
     render :template => "admin/error_404", :status => 404, :layout => "admin/error"
   end
   
   # Custom 403 for admin
   def display_403
+    render :nothing => true, :status => 403 and return if request.xhr?
     render :template => "admin/error_403", :status => 403, :layout => "admin/error"
   end
   
   # Custom 500 for admin
   def display_500( e )
+    render :nothing => true, :status => 500 and return unless request.format==:html && !request.xhr?
     render :template => "admin/error_500", :status => 500, :layout => "admin/error"
     raise e if Rails.env != "production"
   end

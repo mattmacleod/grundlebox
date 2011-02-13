@@ -3,6 +3,22 @@ class Event < ActiveRecord::Base
   # Model definition
   ############################################################################
   
+  # Export handlers
+  grundlebox_set_export_columns(
+    ["ID",              :id],
+    ["Title",           :title],
+    ["Abstract",        :abstract],
+    ["Short content",   :short_content],
+    ["Content",         :content],
+    ["Featured",        :featured],
+    ["Affiliate type",  :affiliate_type],
+    ["Affiliate code",  :affiliate_code],
+    ["Times",           :cached_times],
+    ["Dates",           :cached_dates],
+    ["Prices",          :cached_prices],
+    ["Venues",          :cached_venues]
+  )
+  
   # Relationships
   belongs_to :user
   has_and_belongs_to_many :articles
@@ -41,11 +57,25 @@ class Event < ActiveRecord::Base
     end
     
     def in_range(time_start, time_end)
-      joins("INNER JOIN performances ON performances.event_id=events.id").
-      where("performances.starts_at>=? OR (NOT performances.ends_at IS NULL AND performances.ends_at>=?)", time_start, time_end).
-      group("events.id")
+      after(time_start).before(time_end)
     end
   
+    def enabled
+      where(:enabled => true)
+    end
+    
+    def after( the_time )
+      joins("INNER JOIN performances ON performances.event_id=events.id").
+      where("performances.starts_at>=? OR (NOT performances.ends_at IS NULL AND performances.ends_at>=?)", the_time, the_time).
+      group("events.id")
+    end
+    
+    def before( the_time )
+      joins("INNER JOIN performances ON performances.event_id=events.id").
+      where("performances.starts_at<=? OR (NOT performances.ends_at IS NULL AND performances.ends_at<=?)", the_time, the_time).
+      group("events.id")
+    end
+    
   end
 
 
