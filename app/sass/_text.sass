@@ -38,7 +38,9 @@ h5
 h6
 	font-size: 		$base_text_size
 	line-height: 	$base_line_height
-	
+
+p
+	margin: 1em 0
 	
 //****************************************************************************
 // Links
@@ -50,3 +52,35 @@ a
 	
 	&:hover
 		text-decoration: underline
+		
+		
+//****************************************************************************
+// Alignment
+//****************************************************************************
+
+img
+	&.align_left
+		float: left
+		display: block
+		margin-right: 1em
+		margin-bottom: 1em
+		
+	&.align_right
+		float: right
+		display: block
+		margin-left: 1em
+		margin-bottom: 1em
+		
+	&.align_center
+		display: block
+		margin: 1em auto
+
+p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li
+	&.align_left
+		text-align: left !important
+	&.align_right
+		text-align: right !important
+	&.align_center
+		text-align: center !important	
+	
+	

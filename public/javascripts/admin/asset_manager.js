@@ -215,6 +215,9 @@ grundlebox.admin.asset_manager = {
 			// Setup use buttons
 			$(".asset_use").live("click", this.select_attachment )
 			
+			// Setup variation selector buttons
+			$(".select_variation").live("click", this.select_variation );
+			
 			// Setup google search
 			this.google.init();
 			
@@ -281,35 +284,41 @@ grundlebox.admin.asset_manager = {
 		},
 		
 		add_attachment: function( thumbnail_path, asset_id ){
-			
-			if( this.editor_select ){
 				
-				this.insert_editor_image( thumbnail_path, asset_id );
+			$(".asset_attachment_items .empty").hide();
+		
+			code = global_asset_link_string.replace(/REPLACE_WITH_THUMBNAIL_PATH/g, thumbnail_path ).replace(/REPLACE_WITH_ASSET_ID/g, asset_id );
+			var new_asset_link_id = "new_" + new Date().getTime();
+			$('.asset_attachment_list').append(code.replace(/new_\\d+/g, new_asset_link_id) );
+			this.set_sort_order();
 				
-				return false;
-				
-			} else {
-				
-				$(".asset_attachment_items .empty").hide();
-			
-				code = global_asset_link_string.replace(/REPLACE_WITH_THUMBNAIL_PATH/g, thumbnail_path ).replace(/REPLACE_WITH_ASSET_ID/g, asset_id );
-				var new_asset_link_id = "new_" + new Date().getTime();
-				$('.asset_attachment_list').append(code.replace(/new_\\d+/g, new_asset_link_id) );
-				this.set_sort_order();
-				
-			}
 		},
 		
 		select_attachment: function(){
-			parent.grundlebox.admin.asset_manager.attachment.add_attachment( $(this).attr("href"), $(this).attr("id") );
+			
+			// Decide what to do by checking if we're in the editor or not
+			if( parent.grundlebox.admin.asset_manager.attachment.editor_select ){
+				// We need to display the variation selector page
+				window.location.href = "/admin/asset_folders/attach_variation/" + $(this).attr("id")
+				return false;
+			} else {
+				// We are not in the editor, so we use the standard attachment method
+				parent.grundlebox.admin.asset_manager.attachment.add_attachment( $(this).attr("href"), $(this).attr("id") );
+				parent.$.prettyPhoto.close();
+				return false;
+			}
+		},
+
+		select_variation: function( ){
+			parent.grundlebox.admin.asset_manager.attachment.insert_editor_image( $(this).attr("href") );
 			parent.$.prettyPhoto.close();
 			return false;
 		},
-
-		insert_editor_image: function(thumbnail_path, asset_id){
+		
+		insert_editor_image: function( thumbnail_path ){
 		
 			var ed = tinyMCE.activeEditor, args = {}, el;
-			ed.selection.moveToBookmark( this.current_editor_selection );
+			ed.selection.moveToBookmark( this.stored_selection );
 
 			args = {
 				src: thumbnail_path
@@ -319,12 +328,9 @@ grundlebox.admin.asset_manager = {
 
 			if (el && el.nodeName == 'IMG') {
 				ed.dom.setAttribs(el, args);
-				this.insert_image_link(ed, el, link_to_original_image, args);
 			} else {
 				ed.execCommand('mceInsertContent', false, '<img id="__mce_tmp" src="#" />');
 				ed.dom.setAttribs('__mce_tmp', args);
-				ed.dom.setAttrib('__mce_tmp', 'class', args.class_name);
-				this.insert_image_link(ed, ed.dom.get('__mce_tmp'), link_to_original_image, args);
 				ed.dom.setAttrib('__mce_tmp', 'id', '');
 			}
 				

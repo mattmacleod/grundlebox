@@ -178,6 +178,11 @@ h1 {
   padding: 0.2em;
   color: white;
 }
+h1 a.button {
+  font-size: 12px;
+  float: right;
+  margin: 0.2em 0 0 1em;
+}
 
 h2 {
   font-size: 24px;
@@ -888,6 +893,9 @@ fieldset div.button_area {
 .tabbed_fieldsets.tabs_enabled .note a {
   color: #66a3ff;
 }
+.tabbed_fieldsets .top_buttons {
+  margin: 1em 0 2em 0;
+}
 
 form .errors {
   border: 1px solid #ee0033;
@@ -1523,6 +1531,10 @@ fieldset.preview .geometry {
 .asset_attachment_items ul.asset_attachment_list li.asset .caption {
   width: 335px;
   float: left;
+}
+
+.asset_attachment_window fieldset.preview {
+  max-width: 775px !important;
 }
 
 /* Google search */

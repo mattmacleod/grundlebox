@@ -126,12 +126,43 @@ h6 {
   line-height: 18px;
 }
 
+p {
+  margin: 1em 0;
+}
+
 a {
   text-decoration: none;
   color: #0066ff;
 }
 a:hover {
   text-decoration: underline;
+}
+
+img.align_left {
+  float: left;
+  display: block;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+img.align_right {
+  float: right;
+  display: block;
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+img.align_center {
+  display: block;
+  margin: 1em auto;
+}
+
+p.align_left, h1.align_left, h2.align_left, h3.align_left, h4.align_left, h5.align_left, h6.align_left, td.align_left, th.align_left, div.align_left, ul.align_left, ol.align_left, li.align_left {
+  text-align: left !important;
+}
+p.align_right, h1.align_right, h2.align_right, h3.align_right, h4.align_right, h5.align_right, h6.align_right, td.align_right, th.align_right, div.align_right, ul.align_right, ol.align_right, li.align_right {
+  text-align: right !important;
+}
+p.align_center, h1.align_center, h2.align_center, h3.align_center, h4.align_center, h5.align_center, h6.align_center, td.align_center, th.align_center, div.align_center, ul.align_center, ol.align_center, li.align_center {
+  text-align: center !important;
 }
 
 html {

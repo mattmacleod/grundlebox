@@ -148,6 +148,11 @@ class Admin::AssetFoldersController < AdminController
     render :layout => "admin/iframe"
   end
   
+  def attach_variation
+    @asset = Asset.find( params[:id] )
+    render :layout => "admin/iframe"
+  end
+  
   
   ############################################################################
   # Private helper methods

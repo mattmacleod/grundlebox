@@ -12,22 +12,30 @@ grundlebox.admin.tinymce = {
 					script_url : '/javascripts/tiny_mce/tiny_mce.js',
 
 					theme : "advanced",
-					plugins : "inlinepopups,searchreplace,print,contextmenu,paste,fullscreen,xhtmlxtras,advimage,grundlebox_files",
+					plugins : "inlinepopups,searchreplace,print,contextmenu,paste,fullscreen,xhtmlxtras,grundlebox_files",
 					
 					width: "100%",
 					height: "600px",
 					
 					theme_advanced_buttons1 : "bold,italic,underline,|,formatselect,|,cut,copy,paste,pastetext,pasteword,|,search,replace",
-					theme_advanced_buttons2: "bullist,numlist,|,undo,redo,|,link,unlink,code,|,iespell,print,fullscreen,|,image,grundlebox_files",
+					theme_advanced_buttons2: "justifyleft,justifycenter,justifyright,|,bullist,numlist,|,undo,redo,|,link,unlink,code,|,iespell,print,fullscreen,|,image,grundlebox_files",
 					theme_advanced_toolbar_location : "top",
 					theme_advanced_toolbar_align : "left",
 					theme_advanced_statusbar_location : "bottom",
 					theme_advanced_resizing : true,
 
-					content_css : "/stylesheets/content.css",
-					valid_elements : "a[href|title|class|id],-strong/-b,-em/-i,br,-strike,-u,-sub,-sup,-p[class],-ul,-ol,-li,img[class|src|alt=|title|width|height],-h1,-h2[class],-h3[class],-h4,hr,span[class]",
+					relative_urls : false,
 					
-					init_instance_callback: 'grundlebox.admin.tinymce.word_counter.init'
+					content_css : "/stylesheets/content.css",
+					valid_elements : "a[href|title|class|id],-strong/-b,-em/-i,br,-strike,-u,-sub,-sup,-p[class|style],-ul[class|style],-ol[class|style],-li[class|style],img[class|src|alt=|title|width|height|style],-h1[class|style],-h2[class|style],-h3[class|style],-h4[style],hr,span[class|style]",
+					
+					init_instance_callback: 'grundlebox.admin.tinymce.word_counter.init',
+					
+					formats : {
+							alignleft   : {selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes : 'align_left'},
+							alignright  : {selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes : 'align_right'},
+							aligncenter   : {selector : 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes : 'align_center'} 
+						}
 
 			});
 	},
@@ -41,9 +49,8 @@ grundlebox.admin.tinymce = {
 		// Add the callback to the tinyMCE editor instance
 		init: function( editor ){
 			this.counted_editor = editor;
-			_this = this;
 			editor.onKeyUp.add(function(ed, e) {
-				_this.count_words();
+				grundlebox.admin.tinymce.word_counter.count_words();
 			});
 		},
 

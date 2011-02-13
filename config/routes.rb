@@ -57,14 +57,15 @@ Grundlebox::Application.routes.draw do
     
     resources :asset_folders do
       collection do
-        get "/:id/edit"           => "asset_folders#edit", :as => :edit
-        put "/:id"                => "asset_folders#update", :as => :update
-        delete "/:id"             => "asset_folders#destroy", :as => :destroy
-        get "/new"                => "asset_folders#new", :as => :new
-        put "/"                   => "asset_folders#create", :as => :update
-        get "use_attach/:id"      => "asset_folders#use_attach", :as => :use_attach
-        match "attach(/*path)"    => "asset_folders#attach", :as => :attach
-        get "/*path"              => "asset_folders#index", :as => :browse
+        get "/:id/edit"            => "asset_folders#edit", :as => :edit
+        put "/:id"                 => "asset_folders#update", :as => :update
+        delete "/:id"              => "asset_folders#destroy", :as => :destroy
+        get "/new"                 => "asset_folders#new", :as => :new
+        put "/"                    => "asset_folders#create", :as => :update
+        get "use_attach/:id"       => "asset_folders#use_attach", :as => :use_attach
+        match "attach(/*path)"     => "asset_folders#attach", :as => :attach
+        get "attach_variation/:id" => "asset_folders#attach_variation", :as => :attach_variation
+        get "/*path"               => "asset_folders#index", :as => :browse
       end
     end
     
