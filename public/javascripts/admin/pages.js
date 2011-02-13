@@ -45,7 +45,7 @@ grundlebox.admin.pages = {
 			
 			// Execute jstree
 			$("#page_tree").jstree({
-				plugins : [ "html_data", "search", "dnd", "CRRM" ],
+				plugins : [ "html_data", "search", "dnd", "crrm" ],
 				core: {
 					animation: 50
 				},
@@ -55,15 +55,27 @@ grundlebox.admin.pages = {
 				dnd: {
 					copy_modifier: null
 				},
+				crrm: {
+					move: {
+						check_move: function(data){
+							return grundlebox.admin.pages.tree_browser.validate_move( data );
+						}
+					}
+				}
 			});
 			
 			// Setup drag events
-			_this = this;
-			$("#page_tree").bind("check_move", function(){ console.log("test")})
-			
+			_this = this;			
 			$("#page_tree").bind("move_node.jstree", _this.handle_reorder)
 			
 		},
+		
+		
+		// Check that the move is valid
+		validate_move: function( move ){
+			return move.np[0].id != "page_tree";
+		},
+		
 		
 		// The handler for actually submitting a search from the search box
 		do_search: function(){
