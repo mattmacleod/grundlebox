@@ -1,7 +1,7 @@
 module Grundlebox #:nodoc:
   module ModelExtensions #:nodoc:
     module Versions #:nodoc:
-      
+          
       def self.included(base)
         base.extend(ClassMethods)
       end

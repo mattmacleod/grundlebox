@@ -4,8 +4,8 @@
 	%head
 		%meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
 		%title= page_title
-		= include_stylesheets :show_article, :media => "all"
-		= include_stylesheets :print_article, :media => "print"
+		= include_stylesheets :grundlebox_show_article, :media => "all"
+		= include_stylesheets :grundlebox_print_article, :media => "print"
 		= csrf_meta_tag
 	
 	%body

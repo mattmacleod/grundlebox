@@ -1,11 +1,11 @@
-require "iconv"
-
-class Grundlebox::Util
+module Grundlebox
   
-  class << self
+  require "iconv"
+  
+  class Util
     
     # Turns a string into a nice, pretty URL
-    def pretty_url(string)
+    def self.pretty_url(string)
       str_src = Iconv.iconv('ascii//ignore//translit', 'utf-8', string.to_s.downcase) rescue string.to_s.downcase
       return  str_src.
               to_s.

@@ -1,5 +1,5 @@
 module Grundlebox #:nodoc:
-  module ExportColumns #:nodoc:
+  module Export #:nodoc:
                
       def self.included(base)
         base.extend(ClassMethods)
@@ -9,7 +9,7 @@ module Grundlebox #:nodoc:
         def grundlebox_set_export_columns( *columns )
           cattr_accessor :default_export_columns
           self.default_export_columns = columns || column_names
-          include Grundlebox::ExportColumns::InstanceMethods
+          include Grundlebox::Export::InstanceMethods
         end
       end
       
@@ -80,4 +80,4 @@ module Grundlebox #:nodoc:
   end
 end
  
-ActiveRecord::Base.send(:include, Grundlebox::ExportColumns)
+ActiveRecord::Base.send(:include, Grundlebox::Export)

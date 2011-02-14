@@ -1,24 +1,34 @@
-# Include required Grundlebox libraries
-require "core_extensions"
-require "export"
-require "validators"
-require "util"
-require "labelled_form_builder"
-require "cropper"
+module Grundlebox
 
-# Load model extensions
-Dir[ File.expand_path(File.dirname(__FILE__) + '/model_extensions/*.rb') ].each do |file| 
-  require file 
-end
+  Version = File.read( File.expand_path( File.dirname(__FILE__) + "/../VERSION" ) )
 
-# Load controller extensions
-Dir[ File.expand_path(File.dirname(__FILE__) + '/controller_extensions/*.rb') ].each do |file| 
-  require file 
-end
+  # Load the engine if required
+  unless defined?( Grundlebox::Application )
+    require "grundlebox/engine" 
+    require "generators/grundlebox/migrations/migrations_generator"
+  end
+  
+  # Load external libraries. I don't quite understand why I have to do this.
+  # Something screwy is going on with the load order.
+  require "paper_trail"
+  require "will_paginate"
+  require "paperclip"
+  require "jammit"
+  
+  # Load Grundlebox library files
+  require "core_extensions"
+  require "paperclip/cropper"
+  require "grundlebox/export"
+  require "grundlebox/validators"
+  require "grundlebox/util"
+  require "grundlebox/labelled_form_builder"
+  
+  # Load model extensions
+  Dir[ File.expand_path(File.dirname(__FILE__) + '/grundlebox/model_extensions/*.rb') ].each do |file| 
+    require file 
+  end
 
-# Setup JSON
-ActiveRecord::Base.include_root_in_json = false
-
-class Grundlebox::Internal  
-  Version = "1.0"
+  # Setup JSON configuration
+  ActiveRecord::Base.include_root_in_json = false
+    
 end

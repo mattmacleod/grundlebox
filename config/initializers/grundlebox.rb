@@ -1,5 +1,8 @@
+# Load default configuration
+require File.expand_path(File.dirname(__FILE__) + "/../grundlebox.rb" )
+
+# Load the application
 require "grundlebox"
-require "config/grundlebox"
 
 # Stub remote tests
 if Rails.env=="test"

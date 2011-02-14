@@ -36,11 +36,11 @@ grundlebox.admin.ui = {
 	setup_tabbed_forms: function(){
 		
 		// Return unless there are tabbed fieldsets to process
-		if( $(".tabbed_fieldsets").length==0 ){ return; }
+		if( $(".tabbed_fieldsets").length===0 ){ return; }
 		
 		// Enable the tabs
-		$(".tabbed_fieldsets").addClass("tabs_enabled")
-		$(".tabbed_fieldsets ul.tabs").tabs(".tabbed_fieldsets > fieldset")
+		$(".tabbed_fieldsets").addClass("tabs_enabled");
+		$(".tabbed_fieldsets ul.tabs").tabs(".tabbed_fieldsets > fieldset");
 		
 		// If any tabs have errors, update the corresponding link to include
 		// an error notification on it.
@@ -71,4 +71,4 @@ grundlebox.admin.ui = {
 		
 	}
 	
-}
+};

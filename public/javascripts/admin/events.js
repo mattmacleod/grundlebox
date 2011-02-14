@@ -67,7 +67,7 @@ grundlebox.admin.events = {
 		}
 		
 		// Are there any attachments left?
-		if( $(".event_performance_items input.destroy_field[value=false]").length==0 ){
+		if( $(".event_performance_items input.destroy_field[value=false]").length===0 ){
 			$(".event_performance_items .empty").show();
 			$(".event_performance_items table").hide();
 		}
@@ -89,7 +89,7 @@ grundlebox.admin.events = {
 	},
 	
 	open_performance_builder: function(){
-		$.prettyPhoto.open("/admin/events/build_performances&iframe=true&width=850&height=" + (document.documentElement.clientHeight - 100))
+		$.prettyPhoto.open("/admin/events/build_performances&iframe=true&width=850&height=" + (document.documentElement.clientHeight - 100));
 		return false;			
 	},
 	
@@ -140,14 +140,14 @@ grundlebox.admin.events = {
 		save_performances: function( arr ){
 			
 			// Get the current index of performance items
-			current_index = ($(".performance_list_contents tr").length / 2)
+			current_index = ($(".performance_list_contents tr").length / 2);
 			
 			// Replace the generated index in the supplied items
 			for( i=0; i<arr.length; i++){
 				
 				// Replace the index
-				var content = arr[i].replace(new RegExp( ("event_performances_attributes_"+i), 'g'), ("event_performances_attributes_"+(i + current_index)))
-				content = content.replace(new RegExp( ("event\\[performances_attributes\\]\\["+i), "g"), ("event[performances_attributes]["+(i + current_index)))
+				var content = arr[i].replace(new RegExp( ("event_performances_attributes_"+i), 'g'), ("event_performances_attributes_"+(i + current_index)));
+				content = content.replace(new RegExp( ("event\\[performances_attributes\\]\\["+i), "g"), ("event[performances_attributes]["+(i + current_index)));
 				
 				// Append to the performance table
 				$('.performance_list_contents').append( content );
@@ -174,19 +174,19 @@ grundlebox.admin.events = {
 			var _this = this;
 			$("#event_search").keyup(function(){
 				$("#event_search_spinner").show();
-				clearTimeout( _this.loading ) 
-				_this.loading = setTimeout( _this.execute, 300 )
+				clearTimeout( _this.loading );
+				_this.loading = setTimeout( _this.execute, 300 );
 			});
 
 			// Monitor the add links
 			$(".event_search_add_link").live("click", function(){
-				_this.add_event( $(this) )
+				_this.add_event( $(this) );
 				return false;
 			});
 
 			// Monitor the remove links
 			$(".event_search_remove_link").live("click", function(){
-				_this.remove_event($(this))
+				_this.remove_event($(this));
 				return false;
 			});
 			
@@ -214,11 +214,11 @@ grundlebox.admin.events = {
 			
 			// Get the list of IDs
 			values = $("#associated_event_ids").val().split(",");
-			if( values[0]=="" ){ values=[]; }
+			if( values[0]==="" ){ values=[]; }
 			
 			// Add this ID to the list
 			values = values.concat([id]);
-			$("#associated_event_ids").val( values.unique().join(",") )
+			$("#associated_event_ids").val( values.unique().join(",") );
 			
 			this.reload_event_list(link);
 		},
@@ -233,7 +233,7 @@ grundlebox.admin.events = {
 				
 				$("#event_search_spinner").hide();
 				link.parents("li").hide("blind");
-				$("#associated_event_list").html(html)
+				$("#associated_event_list").html(html);
 				
 			});
 		
@@ -250,8 +250,8 @@ grundlebox.admin.events = {
 			// Get the list of IDs
 			values = $("#associated_event_ids").val().split(",");
 			
-			values[ values.indexOf(id)] = 0
-			$("#associated_event_ids").val( $.map(values, function(v){ if(v>0){ return v }}).unique().join(",") )
+			values[ values.indexOf(id)] = 0;
+			$("#associated_event_ids").val( $.map(values, function(v){ if(v>0){ return v }}).unique().join(",") );
 			
 			this.reload_event_list(link);
 			
@@ -260,4 +260,4 @@ grundlebox.admin.events = {
 	}
 	
 	
-}
+};

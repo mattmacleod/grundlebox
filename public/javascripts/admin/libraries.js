@@ -2,10 +2,11 @@ Array.prototype.unique = function(){
 	
 	var new_array = [];
 	var index = 0;
+	var value = null;
 	
-	for(var count=0; count < this.length; count++){
+	for( count=0; count < this.length; count++){
 		
-		var value = this[count];
+		value = this[count];
 		
 		if( new_array.indexOf(value)==-1 ){
 			new_array[index++] = value;
@@ -15,4 +16,4 @@ Array.prototype.unique = function(){
 	
 	return new_array;
 	
-}
+};

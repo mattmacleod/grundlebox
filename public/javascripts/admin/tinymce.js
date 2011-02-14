@@ -57,7 +57,7 @@ grundlebox.admin.tinymce = {
 		// Handles the tinyMCE update event by checking to see if there's already 
 		// a timer set to run. If there isn't, set one now.
 		count_words: function(){
-			if( this.word_count_timer == null ){
+			if( this.word_count_timer === null ){
 				_this = this;
 				this.word_count_timer = setTimeout(_this.execute_count, grundlebox.admin.jsconfig.word_counter_timeout);
 			}
@@ -81,4 +81,4 @@ grundlebox.admin.tinymce = {
 		
 	}
 	
-}
+};

@@ -9,7 +9,7 @@ grundlebox.admin.tagging = {
 	init: function(){
 		
 		// Return unless there is a tag entry field on this page
-		if( $(".tag_select").length==0 ){ return; }
+		if( $(".tag_select").length===0 ){ return; }
 		
 		this.setup_autocomplete();	// Set up the autocomplete and tokenization
 		this.setup_links();					// Set up the most popular links
@@ -36,7 +36,7 @@ grundlebox.admin.tagging = {
 					// and value is to be the same.
 					success: function( data ) {
 						response( $.map( data, function( item ) {
-							return { label: item.name, value: item.name }
+							return { label: item.name, value: item.name };
 						}));
 					}
 					
@@ -46,7 +46,7 @@ grundlebox.admin.tagging = {
 			
 			// Don't do anything on intial focus
 			focus: function() {
-				return false
+				return false;
 			},
 			
 			// When an item is selected from the list, add it to the end of the
@@ -77,11 +77,11 @@ grundlebox.admin.tagging = {
 			}
 		).focus( 
 			function(){
-				if( !$(this).val().match(/,\s$/g) && !( $(this).val() == "" ) ){
+				if( !$(this).val().match(/,\s$/g) && !( $(this).val() === "" ) ){
 					$(this).val( $(this).val() + ", ");
 				}
 			}
-		)
+		);
 	},
 	
 	// Set up the popular tag links, so they add a tag to the list when clicked
@@ -113,4 +113,4 @@ grundlebox.admin.tagging = {
 		return this.split_list( term ).pop();
 	}
 	
-}
+};

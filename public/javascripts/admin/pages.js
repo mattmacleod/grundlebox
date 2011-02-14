@@ -35,7 +35,7 @@ grundlebox.admin.pages = {
 
 				// Submit the search after a short delay (i.e. only submit a search a
 				// short while after the user has stopped typing)
-				this.timer = setTimeout(grundlebox.admin.pages.tree_browser.do_search, grundlebox.admin.jsconfig.paginated_search_timeout)
+				this.timer = setTimeout(grundlebox.admin.pages.tree_browser.do_search, grundlebox.admin.jsconfig.paginated_search_timeout);
 				
 			});
 						
@@ -66,14 +66,14 @@ grundlebox.admin.pages = {
 			
 			// Setup drag events
 			_this = this;			
-			$("#page_tree").bind("move_node.jstree", _this.handle_reorder)
+			$("#page_tree").bind("move_node.jstree", _this.handle_reorder);
 			
 		},
 		
 		
 		// Check that the move is valid
 		validate_move: function( move ){
-			return move.np[0].id != "page_tree";
+			return move.np[0].id !== "page_tree";
 		},
 		
 		
@@ -88,10 +88,10 @@ grundlebox.admin.pages = {
 			
 			// If we're searching for an empty string, then remove the search
 			// class, otherwise add it...
-			if( $("#pages_search_field").val()=="" ){
-				$("#page_tree").removeClass("searching")
+			if( $("#pages_search_field").val()==="" ){
+				$("#page_tree").removeClass("searching");
 			} else {
-				$("#page_tree").addClass("searching")
+				$("#page_tree").addClass("searching");
 			}
 			
 		},
@@ -120,7 +120,7 @@ grundlebox.admin.pages = {
 					complete: function(e,f){
 						$("#page_list_wrapper").html( e.responseText );
 						grundlebox.admin.pages.tree_browser.setup_tree();
-						if( f=="error" ){							
+						if( f==="error" ){							
 							alert("Error updating page structure.");
 						}
 						
@@ -156,4 +156,4 @@ grundlebox.admin.pages = {
 		
 	}
 	
-}
+};

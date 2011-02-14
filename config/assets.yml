@@ -1,12 +1,13 @@
 embed_assets: on
 package_path: packages
+package_assets: <%= defined?( Grundlebox::Application ) ? "yes" : "always" %>
 
 javascripts:
-  default:
+  grundlebox_frontend:
     - public/javascripts/application.js
-  admin:
+  grundlebox_admin:
     - public/javascripts/admin/libraries.js 
-    - public/javascripts/admin/jquery-1.4.js  
+    - public/javascripts/admin/jquery-1.5.js  
     - public/javascripts/admin/jquery-ui.js
     - public/javascripts/admin/jquery-tools.js
     - public/javascripts/admin/jquery-rails.js
@@ -31,11 +32,12 @@ javascripts:
     - public/javascripts/admin/pages.js
 
 stylesheets:
-  default:
+  grundlebox_frontend:
     - public/stylesheets/styles.css
-  admin:
+  grundlebox_admin:
     - public/stylesheets/admin/styles.css
-  show_article:
+  grundlebox_show_article:
     - public/stylesheets/admin/show_article.css
-  print_article:
+  grundlebox_print_article:
     - public/stylesheets/admin/print_article.css
+  

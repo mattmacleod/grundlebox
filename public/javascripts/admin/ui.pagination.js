@@ -15,11 +15,11 @@ grundlebox.admin.ui.pagination = {
 	init: function(){
 		
 		// Only activate if we need it
-		if( $("#pagination_wrapper").length==0 ){ return; }
+		if( $("#pagination_wrapper").length===0 ){ return; }
 			
 		// Scroll event - check how far down we are, maybe request another page
 		// if we're near the bottom of the document.
-		$(document).scroll( this.checkScroll )
+		$(document).scroll( this.checkScroll );
 		
 		// Watch the search field for updates and submit search
 		$("#search_field").keyup(function(){
@@ -32,7 +32,7 @@ grundlebox.admin.ui.pagination = {
 			
 			// Submit the search after a short delay (i.e. only submit a search a
 			// short while after the user has stopped typing)
-			this.timer = setTimeout(grundlebox.admin.ui.pagination.submit_search, grundlebox.admin.jsconfig.paginated_search_timeout)
+			this.timer = setTimeout(grundlebox.admin.ui.pagination.submit_search, grundlebox.admin.jsconfig.paginated_search_timeout);
 		
 		});
 		
@@ -48,7 +48,7 @@ grundlebox.admin.ui.pagination = {
 			// If there is a table in the list, then we have to update the rows in
 			// it by updating the tbody element. If not, we update the whole wrapper
 			// area instead.
-			if ($("#pagination_wrapper tbody").length==1){
+			if ($("#pagination_wrapper tbody").length===1){
 				$("#pagination_wrapper tbody").html( html );
 			} else {
 				$("#pagination_wrapper").html( html );
@@ -79,10 +79,10 @@ grundlebox.admin.ui.pagination = {
 				
 				// Disable pagination if there were no results - we're at the end of 
 				// the list
-				if( html.length==0 ){
+				if( html.length===0 ){
 					_this.enabled = false;
 				} else {
-					if ( $("#pagination_wrapper tbody").length==1 ){
+					if ( $("#pagination_wrapper tbody").length===1 ){
 						$("#pagination_wrapper tbody").append( html );
 					} else {
 						$("#pagination_wrapper").append( html );
@@ -111,4 +111,4 @@ grundlebox.admin.ui.pagination = {
 	pageHeight: function() {
 	  return Math.max(document.body.scrollHeight, document.body.offsetHeight);
 	}
-}
+};

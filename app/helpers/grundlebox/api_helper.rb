@@ -1,0 +1,2 @@
+module Grundlebox::ApiHelper
+end

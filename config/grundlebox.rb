@@ -1,4 +1,4 @@
-# Main app configuration file
+# Default configuration file
 
 class Grundlebox::Config
   

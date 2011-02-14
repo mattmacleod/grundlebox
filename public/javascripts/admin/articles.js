@@ -21,13 +21,13 @@ grundlebox.admin.articles = {
 	// Changes the location to the value of the select box when the publication
 	// selector is changed on the listings page
 	setup_publication_filter: function(){
-		$("#publication_id").change( function(){ window.location = $(this).val(); } )
+		$("#publication_id").change( function(){ window.location = $(this).val(); } );
 	},
 	
 	// Changes the location to the value of the select box when the section
 	// selector is changed on the listings page
 	setup_section_filter: function(){
-		$("#section_id").change( function(){ window.location = $(this).val(); } )
+		$("#section_id").change( function(){ window.location = $(this).val(); } );
 	},
 
 	// For the article form - hide the article type subforms, only displaying 
@@ -52,7 +52,7 @@ grundlebox.admin.articles = {
 		$("#article_title").keyup( 
 			function(){
 				text = $(this).val();
-				if(text.length==0){ text = "(untitled)" }
+				if(text.length===0){ text = "(untitled)"; }
 				$("h1").html(text);
 		}).keyup();
 	},
@@ -62,10 +62,10 @@ grundlebox.admin.articles = {
 	setup_show_links: function(){
 		
 		// Don't execute unless there's an article list.
-		if( $(".search_form.articles").length==0 ){ return; }
+		if( $(".search_form.articles").length===0 ){ return; }
 		
 		// Add the print iframe inside the body closing tag
-		$("body").append("<iframe id='print_frame' name='print_frame' style='width: 0; height: 0;'></iframe>")
+		$("body").append("<iframe id='print_frame' name='print_frame' style='width: 0; height: 0;'></iframe>");
 		
 		// When the show button is clicked, just open in a new window
 		$("a.article_show").live( "click", function() {
@@ -143,7 +143,7 @@ grundlebox.admin.articles = {
 		init: function(){
 			if( $("#current_article_id").length > 0 ){
 				_this = this;
-				setInterval(_this.execute, grundlebox.admin.jsconfig.lock_checker_frequency )
+				setInterval(_this.execute, grundlebox.admin.jsconfig.lock_checker_frequency );
 			}
 		},
 	
@@ -221,7 +221,7 @@ grundlebox.admin.articles = {
 				// button and reset the text after two seconds.
 				complete: function(){
 					$("input.save_draft").removeClass("loading");
-					setTimeout("$(\"input.save_draft\").attr('value', 'Save draft')", 2000)
+					setTimeout("$(\"input.save_draft\").attr('value', 'Save draft')", 2000);
 				},
 				
 				// Update the text on the save button to indicate status.
@@ -239,9 +239,9 @@ grundlebox.admin.articles = {
 		},
 		
 		enable_autosave_if_locked: function(){
-			this.autosave_enabled = ( $("#lock_warning").length == 0 );
+			this.autosave_enabled = ( $("#lock_warning").length === 0 );
 		}
 		
 	}
 
-}
+};

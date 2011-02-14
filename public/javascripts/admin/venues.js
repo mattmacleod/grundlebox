@@ -21,7 +21,7 @@ grundlebox.admin.venues = {
 	init_map: function(){
 		
 		// Do nothing unless there's a map area on the page
-		if( $("#map_area").length==0 ){ return; }
+		if( $("#map_area").length===0 ){ return; }
 		this.load_google_maps();
 		
 	},
@@ -39,7 +39,7 @@ grundlebox.admin.venues = {
 	prep_map: function(){
 		var tabs_api = $(".tabbed_fieldsets ul.tabs").data("tabs");
 		tabs_api.onClick(function(a,b){
-			if( b==1 && !grundlebox.admin.venues.map_active ){
+			if( b===1 && !grundlebox.admin.venues.map_active ){
 				grundlebox.admin.venues.set_initial_map_location();
 				grundlebox.admin.venues.map_active = true;
 			}
@@ -49,23 +49,25 @@ grundlebox.admin.venues = {
 	// Onl called on initial display of the map
 	set_initial_map_location: function(){
 			
+		var has_marker = false;
+		
 		// The latitude and longitude to display initially are stored in a
 		// hidden element. Load them up into an object.
 		var initial_location = {
 			latitude: $("#grundlebox_default_map_location").html().split(",")[0],
 			longitude: $("#grundlebox_default_map_location").html().split(",")[1],
 			depth: 5
-		}
+		};
 			
 		// If there is a value in the location fields for the venue, then set
 		// that as the initial location and store that we have a marker available.
-		if( !$("#latitude").val()=="" ){
+		if( !$("#latitude").val()==="" ){
 			initial_location =  {
 				latitude: $("#latitude").val(),
 				longitude: $("#longitude").val(),
 				depth: 15
-			}
-			var has_marker = true;
+			};
+			has_marker = true;
 		}
 	
 		// Initialise the map with the initial location we calculated
@@ -81,7 +83,7 @@ grundlebox.admin.venues = {
 			event_listener = GEvent.addListener($.googleMaps.gMap, "click", function(overlay, latlng) {
 			  
 				grundlebox.admin.venues.set_marker_location( latlng.lat(), latlng.lng() );
-				grundlebox.admin.venues.update_venue_location_fields( latlng.lat(), latlng.lng() )
+				grundlebox.admin.venues.update_venue_location_fields( latlng.lat(), latlng.lng() );
 				
 				// Remove the click event listener now that we've added a marker.
 				GEvent.removeListener(event_listener);
@@ -108,7 +110,7 @@ grundlebox.admin.venues = {
 		$("#venue_auto_locate_button").click(function(){
 			
 			// Check that the postcode has been filled out
-			if( $("#venue_postcode").val().length==0 ){
+			if( $("#venue_postcode").val().length===0 ){
 				alert("You need to enter a postcode on the information page to auto-locate the venue.");				
 				return false;
 			}
@@ -118,7 +120,7 @@ grundlebox.admin.venues = {
 			
 			// Geocode the supplied postcode and pass the result to a callback
 			// to either update the location or error out.
-			geocoder = new GClientGeocoder;
+			geocoder = new GClientGeocoder();
 			geocoder.getLocations( 
 				($("#venue_postcode").val() + ", UK"), 
 				function(response){ 
@@ -138,7 +140,7 @@ grundlebox.admin.venues = {
 		if( this.venue_marker ){
 			
 			// If there is already a marker, then just set the location of it
-			this.venue_marker.setLatLng( new GLatLng(lat, lng) )
+			this.venue_marker.setLatLng( new GLatLng(lat, lng) );
 			
 		} else {
 			
@@ -173,7 +175,7 @@ grundlebox.admin.venues = {
 	update_from_geocode: function( response ){
 		
 		// Check if the response was OK
-		if( response.Status && response.Status.code == 200 ){
+		if( response.Status && response.Status.code === 200 ){
 			
 			var loc = response.Placemark[0].Point.coordinates;
 			this.update_venue_location_fields( loc[1], loc[0] );
@@ -208,19 +210,19 @@ grundlebox.admin.venues = {
 			var _this = this;
 			$("#venue_search").keyup(function(){
 				$("#venue_search_spinner").show();
-				clearTimeout( _this.loading ) 
-				_this.loading = setTimeout( _this.execute, 300 )
+				clearTimeout( _this.loading );
+				_this.loading = setTimeout( _this.execute, 300 );
 			});
 
 			// Monitor the add links
 			$(".venue_search_add_link").live("click", function(){
-				_this.add_venue( $(this) )
+				_this.add_venue( $(this) );
 				return false;
 			});
 
 			// Monitor the remove links
 			$(".venue_search_remove_link").live("click", function(){
-				_this.remove_venue($(this))
+				_this.remove_venue($(this));
 				return false;
 			});
 			
@@ -248,11 +250,11 @@ grundlebox.admin.venues = {
 			
 			// Get the list of IDs
 			values = $("#associated_venue_ids").val().split(",");
-			if( values[0]=="" ){ values=[]; }
+			if( values[0]==="" ){ values=[]; }
 			
 			// Add this ID to the list
 			values = values.concat([id]);
-			$("#associated_venue_ids").val( values.unique().join(",") )
+			$("#associated_venue_ids").val( values.unique().join(",") );
 			
 			this.reload_venue_list(link);
 		},
@@ -267,7 +269,7 @@ grundlebox.admin.venues = {
 				
 				$("#venue_search_spinner").hide();
 				link.parents("li").hide("blind");
-				$("#associated_venue_list").html(html)
+				$("#associated_venue_list").html(html);
 				
 			});
 		
@@ -284,8 +286,8 @@ grundlebox.admin.venues = {
 			// Get the list of IDs
 			values = $("#associated_venue_ids").val().split(",");
 			
-			values[ values.indexOf(id)] = 0
-			$("#associated_venue_ids").val( $.map(values, function(v){ if(v>0){ return v }}).unique().join(",") )
+			values[ values.indexOf(id)] = 0;
+			$("#associated_venue_ids").val( $.map(values, function(v){ if(v>0){ return v; }}).unique().join(",") );
 			
 			this.reload_venue_list(link);
 			
@@ -295,4 +297,4 @@ grundlebox.admin.venues = {
 
 	
 	
-}
+};

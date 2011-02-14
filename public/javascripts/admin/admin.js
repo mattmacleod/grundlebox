@@ -4,7 +4,7 @@
 // This javascript file handles the main admin startup
 //////////////////////////////////////////////////////////////////////////////
 
-grundlebox = { 
+var grundlebox = { 
 	admin: {
 		
 		// Main init function for Grundlebox admin interface
@@ -29,8 +29,8 @@ grundlebox = {
 		}
 		
 	}
-}
+};
 
 $(document).ready(function(){
-	grundlebox.admin.init();	
+	grundlebox.admin.init();
 });

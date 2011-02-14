@@ -1,4 +1,4 @@
-module ApplicationHelper
+module Grundlebox::ApplicationHelper
   
   # General elements
   ############################################################################
