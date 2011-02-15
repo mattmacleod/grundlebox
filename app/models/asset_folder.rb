@@ -54,7 +54,7 @@ class AssetFolder < ActiveRecord::Base
   end
   
   def self.with_id(id)
-    return nodes[id] if nodes[id]
+    return nodes[id.to_i] if nodes[id.to_i]
     raise ActiveRecord::RecordNotFound
   end
   

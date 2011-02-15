@@ -21,6 +21,7 @@ class Admin::AssetsController < AdminController
   end
   
   def create
+    force_subsection "new"
     @asset = Asset.new( params[:asset] )
     @asset.asset = params[:asset][:asset]
     @asset.user = current_user
@@ -33,11 +34,13 @@ class Admin::AssetsController < AdminController
   end
   
   def edit
+    force_subsection "index"
     @asset = Asset.find( params[:id] )
     render :layout => "admin/manual_sidebar"
   end
   
   def update
+    force_subsection "index"
     @asset = Asset.find( params[:id] )
     @asset.attributes = params[:asset]
     @asset.asset = params[:asset][:asset] unless params[:asset][:asset].nil?
@@ -50,6 +53,7 @@ class Admin::AssetsController < AdminController
   end
   
   def destroy
+    force_subsection "index"
     @asset = Asset.find(params[:id])
     if @asset.destroy
       flash[:notice] = "Asset removed"
@@ -63,11 +67,13 @@ class Admin::AssetsController < AdminController
   ############################################################################
   
   def zip_upload
+    force_subsection "index"
     @zip_upload = ZipUpload.new( :asset_folder_id => @current_folder.id )
     render :layout => "admin/manual_sidebar"
   end
   
   def create_from_zip
+    force_subsection "index"
     @zip_upload = ZipUpload.new( params[:zip_upload] )
     @zip_upload.user = current_user
     if @zip_upload.valid? && @zip_upload.convert!

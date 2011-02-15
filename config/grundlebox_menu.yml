@@ -136,7 +136,17 @@ Media Manager:
         - subeditor
         - publisher
         - admin
-  
+    New asset:
+      order: 2
+      controller: assets
+      action: new
+      roles:
+        - writer
+        - editor
+        - subeditor
+        - publisher
+        - admin
+        
 Listings:
   order: 4
   controllers:
@@ -279,6 +289,12 @@ Site management:
     - management
     - tags
   submenus:
+    Site manager:
+      order: 0
+      controller: management
+      action: index
+      roles:
+        - admin
     Tag manager:
       order: 1
       controller: tags

@@ -30,6 +30,7 @@ class Admin::AssetFoldersController < AdminController
 
   
   def new
+    force_subsection "index"
     @asset_folder = AssetFolder.new( :parent_id => @current_folder.id )
     @asset_folder.parent = @current_folder
     render :layout => "admin/manual_sidebar"    
@@ -38,6 +39,8 @@ class Admin::AssetFoldersController < AdminController
 
   
   def create
+    force_subsection "index"
+    
     @asset_folder = AssetFolder.new( params[:asset_folder] )
     @asset_folder.parent_id = params[:asset_folder][:parent_id]
     if @asset_folder.save
@@ -51,6 +54,7 @@ class Admin::AssetFoldersController < AdminController
   
   
   def edit
+    force_subsection "index"
     @asset_folder = AssetFolder.with_id( params[:id] )
     render :layout => "admin/manual_sidebar"
   end
@@ -58,6 +62,7 @@ class Admin::AssetFoldersController < AdminController
   
   
   def update
+    force_subsection "index"
     @asset_folder = AssetFolder.with_id( params[:id] )
     @asset_folder.attributes = params[:asset_folder]
     @asset_folder.parent_id = params[:asset_folder][:parent_id]

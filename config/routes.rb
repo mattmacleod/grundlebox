@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   namespace :admin do
   
     # Simple routes
-    get   "management"      => "management#index",    :as => :admin_management
+    get   "management"      => "management#index",    :as => :management
     
     # Simple resourceful routes
     resources :tags
