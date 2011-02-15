@@ -9,7 +9,7 @@ module Admin::ArticlesHelper
     content_tag(
       :span,
       (1..article.review_rating).map{|n| 
-        image_tag("admin/icons/inline_star.png", :title => pluralize(article.review_rating, "star"), :alt=> pluralize(article.review_rating, "star") )
+        image_tag("admin/embed/icons/inline_star.png", :title => pluralize(article.review_rating, "star"), :alt=> pluralize(article.review_rating, "star") )
       }.join.html_safe,
       :class=>"review_rating"
     )

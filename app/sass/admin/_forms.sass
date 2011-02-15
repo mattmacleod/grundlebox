@@ -109,7 +109,7 @@ li
 			display: block
 			float: right
 			text-indent: -999em
-			background: url(/images/admin/icons/tag_delete.png) no-repeat center center
+			background: url(/images/admin/embed/icons/embed/tag_delete.png) no-repeat center center
 			cursor: pointer
 			
 	&.token-input-selected-token
@@ -158,12 +158,12 @@ div.token-input-dropdown
 
 @mixin button_background($icon)
 	background: $grey_5
-	background: url(/images/admin/icons/button_#{ $icon }) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, $grey_4), color-stop(1, $grey_5))
-	background: url(/images/admin/icons/button_#{ $icon }) 0.6em center no-repeat, -moz-linear-gradient(center bottom, $grey_4 0%, $grey_5 100%)
+	background: url(/images/admin/embed/icons/button_#{ $icon }) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, $grey_4), color-stop(1, $grey_5))
+	background: url(/images/admin/embed/icons/button_#{ $icon }) 0.6em center no-repeat, -moz-linear-gradient(center bottom, $grey_4 0%, $grey_5 100%)
 	&:hover
 		@extend .fade
-		background: url(/images/admin/icons/button_#{ $icon }) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, $grey_5), color-stop(1, $grey_6))
-		background: url(/images/admin/icons/button_#{ $icon }) 0.6em center no-repeat, -moz-linear-gradient(center bottom, $grey_5 0%, $grey_6 100%)
+		background: url(/images/admin/embed/icons/button_#{ $icon }) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, $grey_5), color-stop(1, $grey_6))
+		background: url(/images/admin/embed/icons/button_#{ $icon }) 0.6em center no-repeat, -moz-linear-gradient(center bottom, $grey_5 0%, $grey_6 100%)
 	
 	
 .button
@@ -218,7 +218,7 @@ a.destroy
 	display: block
 	width: 20px
 	height: 20px
-	background: url(/images/admin/icons/link_destroy.png) center center no-repeat
+	background: url(/images/admin/embed/icons/link_destroy.png) center center no-repeat
 	text-indent: -999em
 	opacity: 0.2
 	&:hover
@@ -229,7 +229,7 @@ a.approve
 	display: block
 	width: 20px
 	height: 20px
-	background: url(/images/admin/icons/link_approve.png) center center no-repeat
+	background: url(/images/admin/embed/icons/link_approve.png) center center no-repeat
 	text-indent: -999em
 	opacity: 0.2
 	&:hover
@@ -354,7 +354,7 @@ fieldset
 					background: $grey_6
 				&.has_error
 					padding-left: 2em
-					background-image: url(/images/admin/icons/tab_error.png)
+					background-image: url(/images/admin/embed/icons/tab_error.png)
 					background-position: 0.5em center
 					background-repeat: no-repeat
 		

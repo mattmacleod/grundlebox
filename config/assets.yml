@@ -1,6 +1,5 @@
 embed_assets: on
 package_path: packages
-package_assets: <%= defined?( Grundlebox::Application ) ? "yes" : "always" %>
 
 javascripts:
   grundlebox_frontend:

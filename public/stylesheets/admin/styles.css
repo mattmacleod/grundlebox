@@ -234,7 +234,7 @@ a:hover {
   text-indent: -999em;
   width: 14px;
   height: 14px;
-  background-image: url(/images/admin/icons/icons_222.png);
+  background-image: url(/images/admin/embed/icons/icons_222.png);
   margin-right: 3px;
 }
 .action_icons .article_edit {
@@ -586,7 +586,7 @@ li.token-input-token span {
   display: block;
   float: right;
   text-indent: -999em;
-  background: url(/images/admin/icons/tag_delete.png) no-repeat center center;
+  background: url(/images/admin/embed/icons/embed/tag_delete.png) no-repeat center center;
   cursor: pointer;
 }
 li.token-input-selected-token {
@@ -648,75 +648,75 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
 }
 .button.cancel {
   background: #ddddee;
-  background: url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
-  background: url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+  background: url(/images/admin/embed/icons/button_cancel.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/embed/icons/button_cancel.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.cancel:hover {
-  background: url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
-  background: url(/images/admin/icons/button_cancel.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+  background: url(/images/admin/embed/icons/button_cancel.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/embed/icons/button_cancel.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
 .button.save {
   background: #ddddee;
-  background: url(/images/admin/icons/button_save.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
-  background: url(/images/admin/icons/button_save.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+  background: url(/images/admin/embed/icons/button_save.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/embed/icons/button_save.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.save:hover {
-  background: url(/images/admin/icons/button_save.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
-  background: url(/images/admin/icons/button_save.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+  background: url(/images/admin/embed/icons/button_save.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/embed/icons/button_save.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
 .button.new {
   background: #ddddee;
-  background: url(/images/admin/icons/button_new.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
-  background: url(/images/admin/icons/button_new.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+  background: url(/images/admin/embed/icons/button_new.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/embed/icons/button_new.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.new:hover {
-  background: url(/images/admin/icons/button_new.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
-  background: url(/images/admin/icons/button_new.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+  background: url(/images/admin/embed/icons/button_new.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/embed/icons/button_new.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
 .button.delete {
   background: #ddddee;
-  background: url(/images/admin/icons/button_delete.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
-  background: url(/images/admin/icons/button_delete.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+  background: url(/images/admin/embed/icons/button_delete.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/embed/icons/button_delete.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.delete:hover {
-  background: url(/images/admin/icons/button_delete.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
-  background: url(/images/admin/icons/button_delete.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+  background: url(/images/admin/embed/icons/button_delete.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/embed/icons/button_delete.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
 .button.edit {
   background: #ddddee;
-  background: url(/images/admin/icons/button_edit.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
-  background: url(/images/admin/icons/button_edit.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+  background: url(/images/admin/embed/icons/button_edit.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/embed/icons/button_edit.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.edit:hover {
-  background: url(/images/admin/icons/button_edit.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
-  background: url(/images/admin/icons/button_edit.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+  background: url(/images/admin/embed/icons/button_edit.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/embed/icons/button_edit.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
 .button.export {
   background: #ddddee;
-  background: url(/images/admin/icons/button_export.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
-  background: url(/images/admin/icons/button_export.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+  background: url(/images/admin/embed/icons/button_export.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/embed/icons/button_export.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.export:hover {
-  background: url(/images/admin/icons/button_export.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
-  background: url(/images/admin/icons/button_export.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+  background: url(/images/admin/embed/icons/button_export.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/embed/icons/button_export.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
 .button.back {
   background: #ddddee;
-  background: url(/images/admin/icons/button_back.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
-  background: url(/images/admin/icons/button_back.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+  background: url(/images/admin/embed/icons/button_back.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/embed/icons/button_back.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.back:hover {
-  background: url(/images/admin/icons/button_back.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
-  background: url(/images/admin/icons/button_back.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+  background: url(/images/admin/embed/icons/button_back.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/embed/icons/button_back.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
 .button.loading {
   background: #ddddee;
-  background: url(/images/admin/icons/button_loader.gif) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
-  background: url(/images/admin/icons/button_loader.gif) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+  background: url(/images/admin/embed/icons/button_loader.gif) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/embed/icons/button_loader.gif) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
 }
 .button.loading:hover {
-  background: url(/images/admin/icons/button_loader.gif) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
-  background: url(/images/admin/icons/button_loader.gif) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+  background: url(/images/admin/embed/icons/button_loader.gif) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/embed/icons/button_loader.gif) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
 .button:hover {
   background-color: #eeeeff !important;
@@ -727,7 +727,7 @@ a.destroy {
   display: block;
   width: 20px;
   height: 20px;
-  background: url(/images/admin/icons/link_destroy.png) center center no-repeat;
+  background: url(/images/admin/embed/icons/link_destroy.png) center center no-repeat;
   text-indent: -999em;
   opacity: 0.2;
 }
@@ -739,7 +739,7 @@ a.approve {
   display: block;
   width: 20px;
   height: 20px;
-  background: url(/images/admin/icons/link_approve.png) center center no-repeat;
+  background: url(/images/admin/embed/icons/link_approve.png) center center no-repeat;
   text-indent: -999em;
   opacity: 0.2;
 }
@@ -860,7 +860,7 @@ fieldset div.button_area {
 }
 .tabbed_fieldsets.tabs_enabled h2 a.has_error {
   padding-left: 2em;
-  background-image: url(/images/admin/icons/tab_error.png);
+  background-image: url(/images/admin/embed/icons/tab_error.png);
   background-position: 0.5em center;
   background-repeat: no-repeat;
 }
@@ -888,7 +888,7 @@ fieldset div.button_area {
   color: white;
 }
 .tabbed_fieldsets.tabs_enabled .note span.icon {
-  background-image: url(/images/admin/icons/icons_fff.png);
+  background-image: url(/images/admin/embed/icons/icons_fff.png);
 }
 .tabbed_fieldsets.tabs_enabled .note a {
   color: #66a3ff;
@@ -1040,16 +1040,16 @@ div.flash {
   line-height: 1.3em;
   font-weight: bold;
   color: white;
-  background-image: url(/images/admin/icons/flash_close_inactive.png);
+  background-image: url(/images/admin/embed/icons/flash_close_inactive.png);
   background-repeat: no-repeat;
   background-position: right 1em;
 }
 div.flash:hover {
-  background-image: url(/images/admin/icons/flash_close_active.png);
+  background-image: url(/images/admin/embed/icons/flash_close_active.png);
   cursor: pointer;
 }
 div.flash span.icon {
-  background-image: url(/images/admin/icons/icons_fff.png);
+  background-image: url(/images/admin/embed/icons/icons_fff.png);
 }
 div.flash_error {
   background-color: #ee0033;
@@ -1076,7 +1076,7 @@ div.note {
   padding: 1em;
 }
 div.note span.icon {
-  background-image: url(/images/admin/icons/icons_222.png);
+  background-image: url(/images/admin/embed/icons/icons_222.png);
 }
 div.note.alert {
   background: #fff899;
@@ -1312,7 +1312,7 @@ span.tag a.delete {
   display: block;
   float: right;
   text-indent: -999em;
-  background: url(/images/admin/icons/tag_delete.png) no-repeat center center;
+  background: url(/images/admin/embed/icons/tag_delete.png) no-repeat center center;
 }
 
 #grundlebox_default_map_location {
@@ -1344,13 +1344,13 @@ span.tag a.delete {
 .asset_folder_list a {
   color: #333344;
   padding: 18px;
-  background: url(/images/admin/icons/folder_closed.png) no-repeat left center;
+  background: url(/images/admin/embed/icons/folder_closed.png) no-repeat left center;
 }
 .asset_folder_list a.collapsable {
-  background: url(/images/admin/icons/folder.png) no-repeat left center;
+  background: url(/images/admin/embed/icons/folder.png) no-repeat left center;
 }
 .asset_folder_list a.current {
-  background: url(/images/admin/icons/folder_white.png) no-repeat left center;
+  background: url(/images/admin/embed/icons/folder_white.png) no-repeat left center;
   background-color: #333344;
   color: white;
   font-weight: bold;
@@ -1438,13 +1438,13 @@ span.tag a.delete {
   text-indent: -999em;
   width: 14px;
   height: 14px;
-  background-image: url(/images/admin/icons/icons_fff.png);
+  background-image: url(/images/admin/embed/icons/icons_fff.png);
   margin-right: 3px;
 }
 #folder_browser div.label a:hover, .google_image_search div.label a:hover {
   width: 14px;
   height: 14px;
-  background-image: url(/images/admin/icons/icons_yellow.png);
+  background-image: url(/images/admin/embed/icons/icons_yellow.png);
 }
 
 /* Cropper */
@@ -1502,7 +1502,7 @@ fieldset.preview .geometry {
   margin-bottom: 1em;
 }
 .asset_attachment_items ul.asset_attachment_list li.asset h4 {
-  background: #555566 url(/images/admin/icons/move.png) 5px center no-repeat;
+  background: #555566 url(/images/admin/embed/icons/move.png) 5px center no-repeat;
   color: #888899;
   font-size: 1em;
   padding: 3px 10px 3px 30px;
@@ -1515,7 +1515,7 @@ fieldset.preview .geometry {
   padding: 3px 7px 3px 25px;
   margin: 1px -5px 1px 10px;
   line-height: 1em;
-  background: #888899 url(/images/admin/icons/button_delete.png) 0 center no-repeat;
+  background: #888899 url(/images/admin/embed/icons/button_delete.png) 0 center no-repeat;
 }
 .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail {
   width: 126px;
@@ -1680,7 +1680,7 @@ fieldset.preview .geometry {
   text-indent: -999em;
   width: 14px;
   height: 14px;
-  background-image: url(/images/admin/icons/icons_222.png);
+  background-image: url(/images/admin/embed/icons/icons_222.png);
   margin-right: 3px;
 }
 .event_performance_items table td.icons .edit {
@@ -1752,11 +1752,11 @@ a.event_search_add_link, a.event_search_remove_link, a.venue_search_add_link, a.
 }
 
 a.event_search_add_link, a.venue_search_add_link {
-  background-image: url(/images/admin/icons/small_button_save.png);
+  background-image: url(/images/admin/embed/icons/small_button_save.png);
 }
 
 a.event_search_remove_link, a.venue_search_remove_link {
-  background-image: url(/images/admin/icons/small_button_delete.png);
+  background-image: url(/images/admin/embed/icons/small_button_delete.png);
 }
 
 #page_list_wrapper #page_tree {
@@ -2046,7 +2046,7 @@ body.notice .noscript {
 
 .ui-widget-content {
   border: 1px solid #777788;
-  background: #333344 url(/images/admin/jquery-ui/ui-bg_flat_30_333344_40x100.png) 50% 50% repeat-x;
+  background: #333344 url(/images/admin/embed/jquery-ui/ui-bg_flat_30_333344_40x100.png) 50% 50% repeat-x;
   color: white;
 }
 .ui-widget-content a {
@@ -2055,7 +2055,7 @@ body.notice .noscript {
 
 .ui-widget-header {
   border: 1px solid #222233;
-  background: #333344 url(/images/admin/jquery-ui/ui-bg_flat_25_333344_40x100.png) 50% 50% repeat-x;
+  background: #333344 url(/images/admin/embed/jquery-ui/ui-bg_flat_25_333344_40x100.png) 50% 50% repeat-x;
   color: white;
   font-weight: bold;
 }
@@ -2067,7 +2067,7 @@ body.notice .noscript {
  *---------------------------------- */
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
   border: 1px solid #ddddee;
-  background: #ddddee url(/images/admin/jquery-ui/ui-bg_highlight-soft_100_ddddee_1x100.png) 50% 50% repeat-x;
+  background: #ddddee url(/images/admin/embed/jquery-ui/ui-bg_highlight-soft_100_ddddee_1x100.png) 50% 50% repeat-x;
   font-weight: bold;
   color: #666677;
 }
@@ -2083,7 +2083,7 @@ body.notice .noscript {
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
   border: 1px solid #ddddee;
-  background: #eeeeff url(/images/admin/jquery-ui/ui-bg_highlight-soft_100_eeeeff_1x100.png) 50% 50% repeat-x;
+  background: #eeeeff url(/images/admin/embed/jquery-ui/ui-bg_highlight-soft_100_eeeeff_1x100.png) 50% 50% repeat-x;
   font-weight: bold;
   color: #777788;
 }
@@ -2099,7 +2099,7 @@ body.notice .noscript {
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
   border: 1px solid #777788;
-  background: #555566 url(/images/admin/jquery-ui/ui-bg_highlight-soft_45_555566_1x100.png) 50% 50% repeat-x;
+  background: #555566 url(/images/admin/embed/jquery-ui/ui-bg_highlight-soft_45_555566_1x100.png) 50% 50% repeat-x;
   font-weight: bold;
   color: white;
 }
@@ -2121,7 +2121,7 @@ body.notice .noscript {
  *---------------------------------- */
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
   border: 1px solid #ffdb1f;
-  background: #ffffaa url(/images/admin/jquery-ui/ui-bg_flat_55_ffffaa_40x100.png) 50% 50% repeat-x;
+  background: #ffffaa url(/images/admin/embed/jquery-ui/ui-bg_flat_55_ffffaa_40x100.png) 50% 50% repeat-x;
   color: #333333;
 }
 
@@ -2131,7 +2131,7 @@ body.notice .noscript {
 
 .ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {
   border: 1px solid #ee0033;
-  background: #ff2255 url(/images/admin/jquery-ui/ui-bg_flat_55_ff2255_40x100.png) 50% 50% repeat-x;
+  background: #ff2255 url(/images/admin/embed/jquery-ui/ui-bg_flat_55_ff2255_40x100.png) 50% 50% repeat-x;
   color: white;
 }
 
@@ -2161,35 +2161,35 @@ body.notice .noscript {
 .ui-icon {
   width: 16px;
   height: 16px;
-  background-image: url(/images/admin/jquery-ui/ui-icons_ffffff_256x240.png);
+  background-image: url(/images/admin/embed/jquery-ui/ui-icons_ffffff_256x240.png);
 }
 
 .ui-widget-content .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_ffffff_256x240.png);
+  background-image: url(/images/admin/embed/jquery-ui/ui-icons_ffffff_256x240.png);
 }
 
 .ui-widget-header .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_aaaabb_256x240.png);
+  background-image: url(/images/admin/embed/jquery-ui/ui-icons_aaaabb_256x240.png);
 }
 
 .ui-state-default .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_888899_256x240.png);
+  background-image: url(/images/admin/embed/jquery-ui/ui-icons_888899_256x240.png);
 }
 
 .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_777788_256x240.png);
+  background-image: url(/images/admin/embed/jquery-ui/ui-icons_777788_256x240.png);
 }
 
 .ui-state-active .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_888899_256x240.png);
+  background-image: url(/images/admin/embed/jquery-ui/ui-icons_888899_256x240.png);
 }
 
 .ui-state-highlight .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_333333_256x240.png);
+  background-image: url(/images/admin/embed/jquery-ui/ui-icons_333333_256x240.png);
 }
 
 .ui-state-error .ui-icon, .ui-state-error-text .ui-icon {
-  background-image: url(/images/admin/jquery-ui/ui-icons_ffffff_256x240.png);
+  background-image: url(/images/admin/embed/jquery-ui/ui-icons_ffffff_256x240.png);
 }
 
 /* positioning */
@@ -2961,7 +2961,7 @@ body.notice .noscript {
 
 /* Overlays */
 .ui-widget-overlay {
-  background: #ddddee url(/images/admin/jquery-ui/ui-bg_diagonals-thick_70_ddddee_40x40.png) 50% 50% repeat;
+  background: #ddddee url(/images/admin/embed/jquery-ui/ui-bg_diagonals-thick_70_ddddee_40x40.png) 50% 50% repeat;
   opacity: 0.9;
   filter: Alpha(Opacity=90);
 }
@@ -2969,7 +2969,7 @@ body.notice .noscript {
 .ui-widget-shadow {
   margin: -4px 0 0 -4px;
   padding: 4px;
-  background: #aaaabb url(/images/admin/jquery-ui/ui-bg_flat_0_aaaabb_40x100.png) 50% 50% repeat-x;
+  background: #aaaabb url(/images/admin/embed/jquery-ui/ui-bg_flat_0_aaaabb_40x100.png) 50% 50% repeat-x;
   opacity: 0.6;
   filter: Alpha(Opacity=60);
   -moz-border-radius: 4px;
@@ -3708,7 +3708,7 @@ button.ui-button::-moz-focus-inner {
 .jcrop-vline, .jcrop-hline {
   font-size: 0;
   position: absolute;
-  background: white url(/images/admin/jcrop.gif) top left repeat;
+  background: white url(/images/admin/embed/jcrop.gif) top left repeat;
 }
 
 .jcrop-vline {
@@ -3892,83 +3892,6 @@ button.ui-button::-moz-focus-inner {
   opacity: 0.5;
 }
 
-div.light_rounded .pp_top .pp_left {
-  background: url(/images/admin/prettyPhoto/light_rounded/sprite.png) -88px -53px no-repeat;
-}
-div.light_rounded .pp_top .pp_middle {
-  background: white;
-}
-div.light_rounded .pp_top .pp_right {
-  background: url(/images/admin/prettyPhoto/light_rounded/sprite.png) -110px -53px no-repeat;
-}
-div.light_rounded .pp_content .ppt {
-  color: black;
-}
-div.light_rounded .pp_content_container .pp_left, div.light_rounded .pp_content_container .pp_right {
-  background: white;
-}
-div.light_rounded .pp_content {
-  background-color: white;
-}
-div.light_rounded .pp_next:hover {
-  background: url(/images/admin/prettyPhoto/light_rounded/btnNext.png) center right no-repeat;
-  cursor: pointer;
-}
-div.light_rounded .pp_previous:hover {
-  background: url(/images/admin/prettyPhoto/light_rounded/btnPrevious.png) center left no-repeat;
-  cursor: pointer;
-}
-div.light_rounded .pp_expand {
-  background: url(/images/admin/prettyPhoto/light_rounded/sprite.png) -31px -26px no-repeat;
-  cursor: pointer;
-}
-div.light_rounded .pp_expand:hover {
-  background: url(/images/admin/prettyPhoto/light_rounded/sprite.png) -31px -47px no-repeat;
-  cursor: pointer;
-}
-div.light_rounded .pp_contract {
-  background: url(/images/admin/prettyPhoto/light_rounded/sprite.png) 0 -26px no-repeat;
-  cursor: pointer;
-}
-div.light_rounded .pp_contract:hover {
-  background: url(/images/admin/prettyPhoto/light_rounded/sprite.png) 0 -47px no-repeat;
-  cursor: pointer;
-}
-div.light_rounded .pp_close {
-  width: 75px;
-  height: 22px;
-  background: url(/images/admin/prettyPhoto/light_rounded/sprite.png) -1px -1px no-repeat;
-  cursor: pointer;
-}
-div.light_rounded #pp_full_res .pp_inline {
-  color: black;
-}
-div.light_rounded .pp_arrow_previous {
-  background: url(/images/admin/prettyPhoto/light_rounded/sprite.png) 0 -71px no-repeat;
-}
-div.light_rounded .pp_arrow_previous.disabled {
-  background-position: 0 -87px;
-  cursor: default;
-}
-div.light_rounded .pp_arrow_next {
-  background: url(/images/admin/prettyPhoto/light_rounded/sprite.png) -22px -71px no-repeat;
-}
-div.light_rounded .pp_arrow_next.disabled {
-  background-position: -22px -87px;
-  cursor: default;
-}
-div.light_rounded .pp_bottom .pp_left {
-  background: url(/images/admin/prettyPhoto/light_rounded/sprite.png) -88px -80px no-repeat;
-}
-div.light_rounded .pp_bottom .pp_middle {
-  background: white;
-}
-div.light_rounded .pp_bottom .pp_right {
-  background: url(/images/admin/prettyPhoto/light_rounded/sprite.png) -110px -80px no-repeat;
-}
-div.light_rounded .pp_loaderIcon {
-  background: url(/images/admin/prettyPhoto/light_rounded/loader.gif) center center no-repeat;
-}
 div.dark_rounded .pp_top .pp_left {
   background: url(/images/admin/prettyPhoto/dark_rounded/sprite.png) -88px -53px no-repeat;
 }
@@ -4048,220 +3971,6 @@ div.dark_rounded .pp_bottom .pp_right {
 }
 div.dark_rounded .pp_loaderIcon {
   background: url(/images/admin/prettyPhoto/dark_rounded/loader.gif) center center no-repeat;
-}
-div.dark_square .pp_left, div.dark_square .pp_middle, div.dark_square .pp_right, div.dark_square .pp_content {
-  background: url(/images/admin/prettyPhoto/dark_square/contentPattern.png) top left repeat;
-}
-div.dark_square .currentTextHolder {
-  color: #c4c4c4;
-}
-div.dark_square .pp_description {
-  color: white;
-}
-div.dark_square .pp_loaderIcon {
-  background: url(/images/admin/prettyPhoto/dark_rounded/loader.gif) center center no-repeat;
-}
-div.dark_square .pp_content_container .pp_left {
-  background: url(/images/admin/prettyPhoto/dark_rounded/contentPattern.png) top left repeat-y;
-}
-div.dark_square .pp_content_container .pp_right {
-  background: url(/images/admin/prettyPhoto/dark_rounded/contentPattern.png) top right repeat-y;
-}
-div.dark_square .pp_expand {
-  background: url(/images/admin/prettyPhoto/dark_square/sprite.png) -31px -26px no-repeat;
-  cursor: pointer;
-}
-div.dark_square .pp_expand:hover {
-  background: url(/images/admin/prettyPhoto/dark_square/sprite.png) -31px -47px no-repeat;
-  cursor: pointer;
-}
-div.dark_square .pp_contract {
-  background: url(/images/admin/prettyPhoto/dark_square/sprite.png) 0 -26px no-repeat;
-  cursor: pointer;
-}
-div.dark_square .pp_contract:hover {
-  background: url(/images/admin/prettyPhoto/dark_square/sprite.png) 0 -47px no-repeat;
-  cursor: pointer;
-}
-div.dark_square .pp_close {
-  width: 75px;
-  height: 22px;
-  background: url(/images/admin/prettyPhoto/dark_square/sprite.png) -1px -1px no-repeat;
-  cursor: pointer;
-}
-div.dark_square #pp_full_res .pp_inline {
-  color: white;
-}
-div.dark_square .pp_arrow_previous {
-  background: url(/images/admin/prettyPhoto/dark_square/sprite.png) 0 -71px no-repeat;
-}
-div.dark_square .pp_arrow_previous.disabled {
-  background-position: 0 -87px;
-  cursor: default;
-}
-div.dark_square .pp_arrow_next {
-  background: url(/images/admin/prettyPhoto/dark_square/sprite.png) -22px -71px no-repeat;
-}
-div.dark_square .pp_arrow_next.disabled {
-  background-position: -22px -87px;
-  cursor: default;
-}
-div.dark_square .pp_next:hover {
-  background: url(/images/admin/prettyPhoto/dark_square/btnNext.png) center right no-repeat;
-  cursor: pointer;
-}
-div.dark_square .pp_previous:hover {
-  background: url(/images/admin/prettyPhoto/dark_square/btnPrevious.png) center left no-repeat;
-  cursor: pointer;
-}
-div.light_square .pp_left, div.light_square .pp_middle, div.light_square .pp_right {
-  background: white;
-}
-div.light_square .pp_content {
-  background: white;
-}
-div.light_square .pp_content .ppt {
-  color: black;
-}
-div.light_square .pp_expand {
-  background: url(/images/admin/prettyPhoto/light_square/sprite.png) -31px -26px no-repeat;
-  cursor: pointer;
-}
-div.light_square .pp_expand:hover {
-  background: url(/images/admin/prettyPhoto/light_square/sprite.png) -31px -47px no-repeat;
-  cursor: pointer;
-}
-div.light_square .pp_contract {
-  background: url(/images/admin/prettyPhoto/light_square/sprite.png) 0 -26px no-repeat;
-  cursor: pointer;
-}
-div.light_square .pp_contract:hover {
-  background: url(/images/admin/prettyPhoto/light_square/sprite.png) 0 -47px no-repeat;
-  cursor: pointer;
-}
-div.light_square .pp_close {
-  width: 75px;
-  height: 22px;
-  background: url(/images/admin/prettyPhoto/light_square/sprite.png) -1px -1px no-repeat;
-  cursor: pointer;
-}
-div.light_square #pp_full_res .pp_inline {
-  color: black;
-}
-div.light_square .pp_arrow_previous {
-  background: url(/images/admin/prettyPhoto/light_square/sprite.png) 0 -71px no-repeat;
-}
-div.light_square .pp_arrow_previous.disabled {
-  background-position: 0 -87px;
-  cursor: default;
-}
-div.light_square .pp_arrow_next {
-  background: url(/images/admin/prettyPhoto/light_square/sprite.png) -22px -71px no-repeat;
-}
-div.light_square .pp_arrow_next.disabled {
-  background-position: -22px -87px;
-  cursor: default;
-}
-div.light_square .pp_next:hover {
-  background: url(/images/admin/prettyPhoto/light_square/btnNext.png) center right no-repeat;
-  cursor: pointer;
-}
-div.light_square .pp_previous:hover {
-  background: url(/images/admin/prettyPhoto/light_square/btnPrevious.png) center left no-repeat;
-  cursor: pointer;
-}
-div.facebook .pp_top .pp_left {
-  background: url(/images/admin/prettyPhoto/facebook/sprite.png) -88px -53px no-repeat;
-}
-div.facebook .pp_top .pp_middle {
-  background: url(/images/admin/prettyPhoto/facebook/contentPatternTop.png) top left repeat-x;
-}
-div.facebook .pp_top .pp_right {
-  background: url(/images/admin/prettyPhoto/facebook/sprite.png) -110px -53px no-repeat;
-}
-div.facebook .pp_content .ppt {
-  color: black;
-}
-div.facebook .pp_content_container .pp_left {
-  background: url(/images/admin/prettyPhoto/facebook/contentPatternLeft.png) top left repeat-y;
-}
-div.facebook .pp_content_container .pp_right {
-  background: url(/images/admin/prettyPhoto/facebook/contentPatternRight.png) top right repeat-y;
-}
-div.facebook .pp_content {
-  background: white;
-}
-div.facebook .pp_expand {
-  background: url(/images/admin/prettyPhoto/facebook/sprite.png) -31px -26px no-repeat;
-  cursor: pointer;
-}
-div.facebook .pp_expand:hover {
-  background: url(/images/admin/prettyPhoto/facebook/sprite.png) -31px -47px no-repeat;
-  cursor: pointer;
-}
-div.facebook .pp_contract {
-  background: url(/images/admin/prettyPhoto/facebook/sprite.png) 0 -26px no-repeat;
-  cursor: pointer;
-}
-div.facebook .pp_contract:hover {
-  background: url(/images/admin/prettyPhoto/facebook/sprite.png) 0 -47px no-repeat;
-  cursor: pointer;
-}
-div.facebook .pp_close {
-  width: 22px;
-  height: 22px;
-  background: url(/images/admin/prettyPhoto/facebook/sprite.png) -1px -1px no-repeat;
-  cursor: pointer;
-}
-div.facebook #pp_full_res .pp_inline {
-  color: black;
-}
-div.facebook .pp_loaderIcon {
-  background: url(/images/admin/prettyPhoto/facebook/loader.gif) center center no-repeat;
-}
-div.facebook .pp_nav .pp_arrow_previous {
-  background: url(/images/admin/prettyPhoto/facebook/sprite.png) 0 -71px no-repeat;
-  height: 22px;
-  margin-top: 0;
-  width: 22px;
-}
-div.facebook .pp_arrow_previous.disabled {
-  background-position: 0 -96px;
-  cursor: default;
-}
-div.facebook .pp_nav .pp_arrow_next {
-  background: url(/images/admin/prettyPhoto/facebook/sprite.png) -32px -71px no-repeat;
-  height: 22px;
-  margin-top: 0;
-  width: 22px;
-}
-div.facebook .pp_arrow_next.disabled {
-  background-position: -32px -96px;
-  cursor: default;
-}
-div.facebook .pp_nav {
-  margin-top: 0;
-}
-div.facebook .pp_nav p {
-  font-size: 15px;
-  padding: 0 3px 0 4px;
-}
-div.facebook .pp_next:hover {
-  background: url(/images/admin/prettyPhoto/facebook/btnNext.png) center right no-repeat;
-  cursor: pointer;
-}
-div.facebook .pp_previous:hover {
-  background: url(/images/admin/prettyPhoto/facebook/btnPrevious.png) center left no-repeat;
-  cursor: pointer;
-}
-div.facebook .pp_bottom .pp_left {
-  background: url(/images/admin/prettyPhoto/facebook/sprite.png) -88px -80px no-repeat;
-}
-div.facebook .pp_bottom .pp_middle {
-  background: url(/images/admin/prettyPhoto/facebook/contentPatternBottom.png) top left repeat-x;
-}
-div.facebook .pp_bottom .pp_right {
-  background: url(/images/admin/prettyPhoto/facebook/sprite.png) -110px -80px no-repeat;
 }
 div.pp_pic_holder a:focus {
   outline: none;
@@ -4379,7 +4088,7 @@ div.pp_pic_holder {
 }
 
 a.pp_next {
-  background: url(/images/admin/prettyPhoto/light_rounded/btnNext.png) 10000px 10000px no-repeat;
+  background: url(/images/admin/prettyPhoto/dark_rounded/btnNext.png) 10000px 10000px no-repeat;
   display: block;
   float: right;
   height: 100%;
@@ -4387,7 +4096,7 @@ a.pp_next {
   width: 49%;
 }
 a.pp_previous {
-  background: url(/images/admin/prettyPhoto/light_rounded/btnNext.png) 10000px 10000px no-repeat;
+  background: url(/images/admin/prettyPhoto/dark_rounded/btnNext.png) 10000px 10000px no-repeat;
   display: block;
   float: left;
   height: 100%;
