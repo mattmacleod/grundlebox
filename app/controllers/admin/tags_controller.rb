@@ -40,9 +40,10 @@ class Admin::TagsController < AdminController
 
   def show
     @tag = Tag.find( params[:id] )
+    force_subsection "index"
     render :layout => "admin/manual_sidebar"
   end
-  
+
   def edit
     redirect_to admin_tags_path
   end

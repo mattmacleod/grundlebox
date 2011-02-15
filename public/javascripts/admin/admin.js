@@ -18,6 +18,7 @@ var grundlebox = {
 			this.asset_manager.init();	// Asset manager
 			this.events.init();					// Event manager
 			this.pages.init();					// Page tree manager
+			this.tag_manager.init();		// Tag manager
 		},
 
 		// Set some config variables here

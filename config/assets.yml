@@ -29,6 +29,7 @@ javascripts:
     - public/javascripts/admin/asset_manager.js
     - public/javascripts/admin/events.js
     - public/javascripts/admin/pages.js
+    - public/javascripts/admin/tag_manager.js
 
 stylesheets:
   grundlebox_frontend:

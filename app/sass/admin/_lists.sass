@@ -84,17 +84,21 @@ table.list
 // Tags
 //***************************************************************************/
 
-span.tag
+span.tag, a.tag
 	@extend .small_rounded
-	font-size: 0.8em
+	font-size: 10px
+	color: $grey_1
+	background: $grey_5
+	border: 1px $grey_4 solid
+	text-transform: uppercase
+	font-weight: bold
 	display: block
 	float: left
 	margin: 0 1em 1em 0
 	padding: 0.1em 0.5em 0.1em 0.7em 
-	
-	background: $grey_5
-	border: $grey_1
-	
+	&:hover
+		text-decoration: none !important
+		color: $grey_1
 	&:hover
 		background: $grey_4
 	a.show
