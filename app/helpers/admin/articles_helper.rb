@@ -116,7 +116,9 @@ module Admin::ArticlesHelper
       text = "Submit to subeditors"
     when Article::Status[:subediting]
       text = "Submit to publishing"
-    when Article::Status[:publishing], Article::Status[:ready]
+    when Article::Status[:published]
+      text = "Publish now"
+    when Article::Status[:ready]
       text = "Publish now"
     else
       return nil
