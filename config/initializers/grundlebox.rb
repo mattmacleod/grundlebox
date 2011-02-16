@@ -18,3 +18,4 @@ Time::DATE_FORMATS[:listings] = '%a %d %b %Y %H:%M'
 
 Time::DATE_FORMATS[:parseable] = '%Y-%m-%d %H:%M'
 Date::DATE_FORMATS[:parseable] = '%Y-%m-%d'
+Time::DATE_FORMATS[:parseable_time_only] = '%H:%M'

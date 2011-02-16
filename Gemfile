@@ -9,6 +9,8 @@ gem "fastercsv",    "1.5.3"
 gem "htmlentities", "4.2.2"
 gem "zip",          "2.0.2"
 gem "chronic",      "0.3.0"
+#gem "newrelic",     "2.13.4"
+
 
 # Need to require the correct name
 gem "mime-types",   "1.16", :require => "mime/types"

@@ -64,7 +64,7 @@
 			.empty{ :style => ("display: none" unless f.object.performances.empty?)}
 				There are no performances on record
 
-			%table.performance_list
+			%table.performance_list{ :style => ("display: none" if f.object.performances.empty?)}
 				%thead
 					%tr
 						%th.first Time
