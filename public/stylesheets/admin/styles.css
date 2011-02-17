@@ -1171,6 +1171,10 @@ span.icon.error {
   line-height: 2em;
 }
 
+#article_lock_info div {
+  text-align: center;
+}
+
 #lock_notice, #lock_warning {
   margin: 0px 0px 1em 0;
   padding: 10px;

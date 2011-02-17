@@ -154,9 +154,17 @@ grundlebox.admin.articles = {
 			
 			var lock_check_url = "/admin/articles/" + $("#current_article_id").val() + "/check_lock";
 			
-			$.get(lock_check_url, function( html ){
-				$("#article_lock_info").html( html );
-				grundlebox.admin.articles.drafts.enable_autosave_if_locked();
+			$.ajax({
+				url: lock_check_url, 
+				method: "get",
+				success: function( html ){
+					$("#article_lock_info").html( html );
+					grundlebox.admin.articles.drafts.enable_autosave_if_locked();
+				},
+				error: function(){
+					$("#article_lock_info").html( "<div id=\"lock_warning\">Unable to contact server</div>" );
+					$("#lock_warning").effect("pulsate");
+				}
 			});
 			
 		}
