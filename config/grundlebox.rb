@@ -28,7 +28,8 @@ class Grundlebox::Config
     :venue_review  => "Venue review",
     :feature       => "Feature",
     :review        => "Generic review",
-    :preview       => "Generic preview"
+    :preview       => "Generic preview",
+    :blog          => "Blog post"
   } 
   PageTypes = {
     :text     => "Text",

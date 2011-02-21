@@ -14,8 +14,9 @@
 			%h2= link_to "Images", "#images"
 		%li
 			%h2= link_to "Tagging", "#tagging"
-		%li
-			%h2= link_to "Events", "#events"
+		- unless @venue.new_record?
+			%li
+				%h2= link_to "Events", "#events"
 	
 	%fieldset#basic
 		%legend Basic information
@@ -61,5 +62,25 @@
 	%fieldset#tagging
 		%legend Tagging
 		.full= f.tag_select :tag_list, :label => "Venue tags"
-	%fieldset#events
-		
+
+	- unless @venue.new_record?
+		%fieldset#events
+			%legend Events
+			= note "To create new events, use the #{ link_to "event manager", admin_events_path }."
+
+			%table.list.alternating
+				%thead
+					%tr
+						%th Event name
+				%tbody
+					- if @venue.events.empty?
+						%tr
+							%td.empty
+								No events found
+
+					- @venue.events.uniq.each do |event|
+						%tr{ :class => cycle(:even, :odd) }
+							%td
+								= link_to event.title, edit_admin_event_path( event )
+								%span.extra= [ event.cached_times, event.cached_dates, event.cached_venues ].select{|e| !e.blank? }.join(", ")
+			
