@@ -335,7 +335,7 @@ ActiveRecord::Schema.define(:version => 27) do
   add_index "users", ["email"], :name => "index_users_email", :unique => true
 
   create_table "venues", :force => true do |t|
-    t.string   "title",                         :null => false
+    t.string   "title",                            :null => false
     t.string   "address_1"
     t.string   "address_2"
     t.integer  "city_id"
@@ -345,14 +345,15 @@ ActiveRecord::Schema.define(:version => 27) do
     t.string   "web"
     t.string   "abstract"
     t.text     "content"
-    t.integer  "user_id",                       :null => false
-    t.boolean  "featured",   :default => false, :null => false
-    t.boolean  "enabled",    :default => true,  :null => false
-    t.string   "url",                           :null => false
+    t.integer  "user_id",                          :null => false
+    t.boolean  "featured",      :default => false, :null => false
+    t.boolean  "enabled",       :default => true,  :null => false
+    t.string   "url",                              :null => false
     t.float    "lat"
     t.float    "lng"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "opening_hours"
   end
 
   add_index "venues", ["city_id"], :name => "index_venues_on_city_id"

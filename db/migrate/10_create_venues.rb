@@ -23,6 +23,8 @@ class CreateVenues < ActiveRecord::Migration
       t.float :lat
       t.float :lng
       
+      t.text :opening_hours
+      
       t.timestamps
     end
     

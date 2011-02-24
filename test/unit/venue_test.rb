@@ -40,6 +40,31 @@ class VenueTest < ActiveSupport::TestCase
     should "not be marked as having a location" do
       assert !@venue.has_location?
     end
+    context "without opening hours being set" do
+      should "have an opening hours hash" do
+        assert @venue.venue_opening_hours.is_a?( Hash )
+      end
+      should "have no values in the hash" do
+        assert_nil @venue.venue_opening_hours[:monday_open]
+      end
+    end
+    
+    context "when opening hours are set" do
+      setup do
+        @venue.update_attribute(:venue_opening_hours, {"monday_open" => "09:00", "monday_close" => "17:30"})
+      end
+      should "have correct opening hours" do
+        assert @venue.venue_opening_hours["monday_open"]
+      end
+      should "correctly determine if venue is open" do
+        assert @venue.open_at?( Time::utc(2011,4,25,13,0) ) # Monday at 13:00        
+      end
+      should "correctly determine if venue is closed" do
+        assert !@venue.open_at?( Time::utc(2011,4,25,19,0) ) # Monday at 19:00
+        assert !@venue.open_at?( Time::utc(2011,4,26,13,0) ) # Tuesday at 13:00
+      end
+    end
+    
   end
   
   context "a collection of Venues with locations" do

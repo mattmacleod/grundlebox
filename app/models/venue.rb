@@ -46,10 +46,14 @@ class Venue < ActiveRecord::Base
   grundlebox_has_url   :url, :generated_from => :title
   grundlebox_has_versions :title, :abstract, :content
   
+  # Opening times
+  serialize :opening_hours
+  attr_accessor :venue_opening_hours
+  
   # Accessible - most
   attr_accessible :title, :address_1, :address_2, :city_id, :postcode, :phone,
                   :email, :web, :abstract, :content, :featured, :enabled, 
-                  :lat, :lng
+                  :lat, :lng, :venue_opening_hours
   
   # Class methods
   ############################################################################
@@ -97,6 +101,40 @@ class Venue < ActiveRecord::Base
   def admin_summary
     [ title, address_1, (city.name if city)].select{|e| !e.blank? }.join(", ")
   end
+  
+  # Opening hours
+  def venue_opening_hours
+    return opening_hours || {}
+  end
+  
+  def venue_opening_hours=(val)
+    self.opening_hours = val    
+  end
+  
+  # Determines if this venue is probably open at the specified time
+  def open_at?( datetime )
+    
+    # Get the day, then the open and closing times
+    day = datetime.strftime("%A").downcase
+    open = opening_hours["#{day}_open"]
+    close = opening_hours["#{day}_close"]
+    return nil unless open && close
+
+    # Get the actual open and close time objects on that day
+    begin
+      open = Time::parse(datetime.midnight.strftime("%Y-%m-%d #{open}"))
+      close = Time::parse(datetime.midnight.strftime("%Y-%m-%d #{close}"))
+    rescue
+      return nil
+    end
+        
+    return (datetime >= open) && (datetime < close)
+    
+  end
+  
+  
+  # Private methods
+  ############################################################################
   
   private
   
