@@ -112,6 +112,9 @@ grundlebox.admin.events = {
 			
 			// Setup the preview link
 			$(".build_performances_window a.preview_link").click( this.load_preview );
+			
+			// Setup the venue AJAX
+			$("#performance_run_performance_attributes_venue_id").change( this.load_venue_opening_times );
 
 		},
 		
@@ -157,6 +160,12 @@ grundlebox.admin.events = {
 			// Show the performance table and hide the empty warning
 			$(".event_performance_items .empty").hide();
 			$(".event_performance_items table").show();
+		},
+		
+		load_venue_opening_times: function(){
+			$.get("/admin/venues/" + $(this).val() + "/opening_times", function(html){
+				$("#venue_opening_times").html(html);
+			});
 		}
 		
 	},

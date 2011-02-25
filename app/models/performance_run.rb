@@ -32,7 +32,6 @@ class PerformanceRun < ActiveRecord::Base
   validates_inclusion_of :run_type, :in => ["one_off", "periodic", "opening_times"]
   validates_presence_of :one_off_start_time, :if => Proc.new{ run_type=="one_off" }
   validates_presence_of :periodic_start_time, :nl_string, :start_date, :end_date, :if => Proc.new{ run_type=="periodic" }
-  validates_presence_of :venue, :if => Proc.new{ run_type=="opening_times" }
   
   validates_presence_of :performance
   
@@ -121,8 +120,63 @@ class PerformanceRun < ActiveRecord::Base
       
     when "opening_times"
       
-      # Not implemented yet
-      return false;
+      # Create performances from the supplied dates and the venue's opening
+      # time information
+      
+      # We need a venue for this
+      return false unless (venue = Venue.find_by_id(performance.attributes["venue_id"]))
+      
+      logger.info( "*"*50 )
+      logger.info( " Got a venue" )
+      
+      # Get the dates
+      dates = []
+      current_date = start_date
+      while( current_date && (current_date <= end_date) ) do
+        dates << current_date
+        current_date = current_date + 1.day
+      end
+      
+      
+      # Convert dates to time pairs
+      times = []
+      dates.each do |date|
+        
+        # What day is this, so we can check opening times?
+        day_name = date.strftime("%A").downcase
+        open_time = venue.venue_opening_hours["#{day_name}_open"]
+        close_time = venue.venue_opening_hours["#{day_name}_close"]
+        if open_time.blank? || close_time.blank?
+          next
+        end
+        
+        # Get the start time on that day
+        start_time = Time::parse(date.strftime("%Y-%m-%d") + " " + open_time + " UTC" ).utc
+        
+          
+        # Create the end time. If it's before the start time, add a day - we've
+        # wrapped around into the wee small hours
+        end_time = Time::parse(date.strftime("%Y-%m-%d") + " " + close_time + " UTC" ).utc
+        end_time += 1.day if end_time < start_time
+        
+        times << { 
+          :start_time => start_time,
+          :end_time => end_time
+        }
+        
+      end
+      
+      # Now create the performances
+      times.each do |time|
+        p = Performance.new( performance.attributes )
+        p.user = User.new
+        p.event = Event.new        
+        p.starts_at = time[:start_time]
+        p.ends_at = time[:end_time]
+        performances << p
+      end
+      
+      
       
     end
     

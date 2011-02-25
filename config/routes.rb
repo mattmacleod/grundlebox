@@ -87,6 +87,9 @@ Rails.application.routes.draw do
       collection do
         match "for_attachment"        => "venues#for_attachment", :as => :for_attachment
       end
+      member do
+        get "opening_times"           => "venues#opening_times", :as => :opening_times
+      end
     end
     
     resources :pages do

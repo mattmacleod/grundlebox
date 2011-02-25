@@ -67,8 +67,12 @@
 						.half= f.text_field 	:periodic_end_time, 		:value => (f.object.periodic_end_time.to_s(:parseable_time_only) if f.object.periodic_end_time), :required => false, 	:note => "End time of event on these days.", :class=>:time, :label => "End time"
 										
 					.full.opening_times
-						.full To be implemented
-		
+						.full 
+						#venue_opening_times
+							- if venue = f.object.performance.venue
+								= render :partial => "/admin/venues/opening_times", :locals => { :venue => f.object.performance.venue }
+							- else
+								=note "You need to select a venue first to see opening times."
 		
 		%fieldset#step_3
 			%legend Preview

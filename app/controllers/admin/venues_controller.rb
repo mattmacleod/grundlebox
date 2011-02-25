@@ -69,6 +69,11 @@ class Admin::VenuesController < AdminController
     redirect_to :action => :index
   end
   
+  def opening_times
+    @venue = Venue.find( params[:id] )
+    render :partial => "opening_times", :locals => { :venue => @venue }
+  end
+  
   
   # Attachment
   ############################################################################

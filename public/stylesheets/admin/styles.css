@@ -1307,6 +1307,20 @@ span.tag a.delete, a.tag a.delete {
   background: url(/images/admin/embed/icons/tag_delete.png) no-repeat center center;
 }
 
+table.opening_times {
+  width: 100%;
+}
+table.opening_times td {
+  padding: 3px;
+}
+table.opening_times th {
+  padding: 0 3px;
+  border-bottom: 1px #555566 solid;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
 #grundlebox_default_map_location {
   display: none;
 }
