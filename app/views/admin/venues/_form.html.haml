@@ -67,7 +67,7 @@
 
 	%fieldset#opening_times
 		%legend Opening times
-		= note "Times must be in 24-hour format e.g. 13:45"
+		= note "Enter the venue's opening and closing times in 24-hour format e.g. 13:45"
 		= f.fields_for :venue_opening_hours do |oh|
 			.full
 				.quarter= oh.text_field :monday_open, :value => f.object.venue_opening_hours["monday_open"]
