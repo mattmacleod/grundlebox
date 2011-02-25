@@ -48,7 +48,6 @@ class Venue < ActiveRecord::Base
   
   # Opening times
   serialize :opening_hours
-  attr_accessor :venue_opening_hours
   
   # Accessible - most
   attr_accessible :title, :address_1, :address_2, :city_id, :postcode, :phone,
@@ -108,28 +107,64 @@ class Venue < ActiveRecord::Base
   end
   
   def venue_opening_hours=(val)
-    self.opening_hours = val    
+    oh = Hash.new
+    val.each_pair do |key,value|
+      oh[key] = (value.blank? ? "" : Chronic::parse( value ).strftime("%H:%M") rescue nil)
+    end
+    self.opening_hours = oh
   end
   
   # Determines if this venue is probably open at the specified time
   def open_at?( datetime )
     
-    # Get the day, then the open and closing times
-    day = datetime.strftime("%A").downcase
-    open = opening_hours["#{day}_open"]
-    close = opening_hours["#{day}_close"]
-    return nil unless open && close
+    # Get the day, then the open and closing times. Also get the times
+    # from the previous day to determine if the venue was open over midnight
+    # and thus may affect today's opening hours.
+    day            = datetime.strftime("%A").downcase
+    previous_day   = (datetime - 1.day).strftime("%A").downcase
+    
+    open           = opening_hours["#{day}_open"]
+    close          = opening_hours["#{day}_close"]
+    previous_open  = opening_hours["#{previous_day}_open"]
+    previous_close = opening_hours["#{previous_day}_close"]
 
-    # Get the actual open and close time objects on that day
+    # There is no opening on this day unless there is an open and close
+    # time, or there is a close time from the previous day.
+    return nil unless (open && close) || (previous_open && previous_close)
+
+    # Create some real datetimes we can use for comparison
     begin
-      open = Time::parse(datetime.midnight.strftime("%Y-%m-%d #{open}"))
-      close = Time::parse(datetime.midnight.strftime("%Y-%m-%d #{close}"))
+      
+      day            = datetime.midnight
+      previous_day   = (datetime-1.day).midnight
+      
+      open           = open.blank? ? nil : Time::parse(day.strftime("%Y-%m-%d #{open} UTC"))
+      close          = close.blank? ? nil : Time::parse(day.strftime("%Y-%m-%d #{close} UTC"))
+      previous_open  = previous_open.blank? ? nil : Time::parse(previous_day.strftime("%Y-%m-%d #{previous_open} UTC"))
+      previous_close = previous_close.blank? ? nil : Time::parse(previous_day.strftime("%Y-%m-%d #{previous_close} UTC"))
+      
+      # If the close time is before the start time, we need to add 1 day
+      # to the close time (because we're running overnight)
+      if (open && close) && (close < open)
+        close = close + 1.day
+      end
+      
+      # If the previous day's close is before open, then we need to get the 
+      # close time too - and add a day to it. It will affect opening times
+      # for today.
+      if (previous_open && previous_close) && (previous_close < previous_open)
+        previous_close = previous_close + 1.day
+      else
+        previous_close = nil
+      end
+      
     rescue
       return nil
     end
-        
-    return (datetime >= open) && (datetime < close)
     
+    # Either we're in the rage for today, or within the range from yesterday.
+    return ( (open && close) && ( datetime >= open ) && ( datetime < close )) || (previous_close && (datetime < previous_close))
+  
   end
   
   

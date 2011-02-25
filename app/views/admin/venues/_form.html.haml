@@ -14,6 +14,8 @@
 			%h2= link_to "Images", "#images"
 		%li
 			%h2= link_to "Tagging", "#tagging"
+		%li
+			%h2= link_to "Opening times", "#opening_times"
 		- unless @venue.new_record?
 			%li
 				%h2= link_to "Events", "#events"
@@ -63,6 +65,32 @@
 		%legend Tagging
 		.full= f.tag_select :tag_list, :label => "Venue tags"
 
+	%fieldset#opening_times
+		%legend Opening times
+		= note "Times must be in 24-hour format e.g. 13:45"
+		= f.fields_for :venue_opening_hours do |oh|
+			.full
+				.quarter= oh.text_field :monday_open, :value => f.object.venue_opening_hours["monday_open"]
+				.quarter= oh.text_field :monday_close, :value => f.object.venue_opening_hours["monday_close"]
+			.full
+				.quarter= oh.text_field :tuesday_open, :value => f.object.venue_opening_hours["tuesday_open"]
+				.quarter= oh.text_field :tuesday_close, :value => f.object.venue_opening_hours["tuesday_close"]
+			.full
+				.quarter= oh.text_field :wednesday_open, :value => f.object.venue_opening_hours["wednesday_open"]
+				.quarter= oh.text_field :wednesday_close, :value => f.object.venue_opening_hours["wednesday_close"]
+			.full
+				.quarter= oh.text_field :thursday_open, :value => f.object.venue_opening_hours["thursday_open"]
+				.quarter= oh.text_field :thursday_close, :value => f.object.venue_opening_hours["thursday_close"]
+			.full
+				.quarter= oh.text_field :friday_open, :value => f.object.venue_opening_hours["friday_open"]
+				.quarter= oh.text_field :friday_close, :value => f.object.venue_opening_hours["friday_close"]
+			.full
+				.quarter= oh.text_field :saturday_open, :value => f.object.venue_opening_hours["saturday_open"]
+				.quarter= oh.text_field :saturday_close, :value => f.object.venue_opening_hours["saturday_close"]
+			.full
+				.quarter= oh.text_field :sunday_open, :value => f.object.venue_opening_hours["sunday_open"]
+				.quarter= oh.text_field :sunday_close, :value => f.object.venue_opening_hours["sunday_close"]
+			
 	- unless @venue.new_record?
 		%fieldset#events
 			%legend Events

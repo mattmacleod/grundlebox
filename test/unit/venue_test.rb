@@ -65,6 +65,34 @@ class VenueTest < ActiveSupport::TestCase
       end
     end
     
+    context "when opening hours are over midnight" do
+      setup do
+        @venue.update_attribute(:venue_opening_hours, {"monday_open" => "09:00", "monday_close" => "03:00"})
+      end
+      should "correctly determine if venue is open" do
+        assert @venue.open_at?( Time::utc(2011,4,26,1,0) ) # Tuesday at 01:00 
+        assert @venue.open_at?( Time::utc(2011,4,25,23,0) ) # Monday at 23:00        
+      end
+      should "correctly determine if venue is closed" do
+        assert !@venue.open_at?( Time::utc(2011,4,26,4,0) ) # Tuesday at 04:00
+        assert !@venue.open_at?( Time::utc(2011,4,26,23,0) ) # Tuesday at 23:00
+        assert !@venue.open_at?( Time::utc(2011,4,25,1,0) ) # Monday at 01:00 
+      end
+    end
+    
+    context "with dodgily formatted opening times" do
+      setup do
+        @venue.update_attribute(:venue_opening_hours, {"monday_open" => "9am", "monday_close" => "midnight"})
+      end
+      should "correctly determine if venue is open" do
+        assert @venue.open_at?( Time::utc(2011,4,25,13,0) ) # Monday at 13:00        
+      end
+      should "correctly determine if venue is closed" do
+        assert !@venue.open_at?( Time::utc(2011,4,25,8,0) ) # Monday at 8:00
+        assert !@venue.open_at?( Time::utc(2011,4,26,23,0) ) # Tuesday at 23:00
+      end
+    end
+    
   end
   
   context "a collection of Venues with locations" do
