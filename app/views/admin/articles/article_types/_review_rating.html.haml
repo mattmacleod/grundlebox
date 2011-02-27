@@ -1,4 +1,3 @@
 = f.hidden_field "review_#{k}", :value => 1
-= f.object.send "review_rating_#{k}"
 .review_rating_input.bottom
 	= f.select "review_rating_#{k}", ([""] + (1..5).to_a), :label => "Star rating", :required => true
