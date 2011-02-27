@@ -5,4 +5,4 @@
 		= render :partial => "admin/articles/article_types/review_rating", :locals => { :f => f, :k => k }
 	
 	= f.fields_for :properties do |properties|
-		.full.bottom= properties.text_field :venue_name
+		.full.bottom= properties.text_field :venue_name, :value => f.object.properties[:venue_name]
