@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 27) do
+ActiveRecord::Schema.define(:version => 28) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "code",                            :null => false
@@ -194,6 +194,32 @@ ActiveRecord::Schema.define(:version => 27) do
   add_index "events", ["print", "enabled"], :name => "index_events_on_print_and_enabled"
   add_index "events", ["review_id"], :name => "index_events_on_review_id"
   add_index "events", ["url"], :name => "index_events_on_url"
+
+  create_table "imported_performances", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "event_name"
+    t.string   "event_id"
+    t.string   "performer_name"
+    t.string   "short_description"
+    t.text     "long_description"
+    t.string   "venue_name"
+    t.integer  "venue_id"
+    t.string   "city_name"
+    t.string   "city_id"
+    t.string   "price"
+    t.string   "start_date"
+    t.string   "end_date"
+    t.string   "start_time"
+    t.string   "end_time"
+    t.datetime "parsed_start"
+    t.datetime "parsed_end"
+    t.string   "ticket_type"
+    t.string   "category"
+    t.string   "keywords"
+    t.string   "notes"
+    t.boolean  "featured"
+  end
 
   create_table "locks", :force => true do |t|
     t.string   "lockable_type", :null => false

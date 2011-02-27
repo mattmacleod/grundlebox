@@ -125,10 +125,7 @@ class PerformanceRun < ActiveRecord::Base
       
       # We need a venue for this
       return false unless (venue = Venue.find_by_id(performance.attributes["venue_id"]))
-      
-      logger.info( "*"*50 )
-      logger.info( " Got a venue" )
-      
+            
       # Get the dates
       dates = []
       current_date = start_date

@@ -325,7 +325,7 @@ a:hover {
   border-radius: 20px;
 }
 
-.fade, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, input, textarea, select, .button, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .button.export:hover, .button.back:hover, .button.loading:hover, fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select, table.list td, #folder_browser div.icon, .google_image_search div.icon {
+.fade, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, input, textarea, select, .button, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .button.export:hover, .button.import:hover, .button.back:hover, .button.loading:hover, fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select, table.list td, #folder_browser div.icon, .google_image_search div.icon {
   -webkit-transition: all 200ms ease-in-out !important;
 }
 
@@ -680,6 +680,15 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
 .button.export:hover {
   background: url(/images/admin/embed/icons/button_export.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
   background: url(/images/admin/embed/icons/button_export.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
+}
+.button.import {
+  background: #ddddee;
+  background: url(/images/admin/embed/icons/button_import.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccccdd), color-stop(1, #ddddee));
+  background: url(/images/admin/embed/icons/button_import.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ccccdd 0%, #ddddee 100%);
+}
+.button.import:hover {
+  background: url(/images/admin/embed/icons/button_import.png) 0.6em center no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddddee), color-stop(1, #eeeeff));
+  background: url(/images/admin/embed/icons/button_import.png) 0.6em center no-repeat, -moz-linear-gradient(center bottom, #ddddee 0%, #eeeeff 100%);
 }
 .button.back {
   background: #ddddee;
@@ -1319,6 +1328,34 @@ table.opening_times th {
   font-weight: bold;
   text-transform: uppercase;
   font-size: 0.9em;
+}
+
+table.import_list .subrow {
+  display: block;
+}
+table.import_list .times {
+  white-space: nowrap;
+}
+table.import_list .error_icon {
+  width: 16px;
+  height: 16px;
+  background: url(/images/admin/embed/icons/tab_error.png) no-repeat center center;
+  text-indent: -999em;
+}
+table.import_list .description {
+  font-size: 0.9em;
+  line-height: 1.3em;
+  color: #555566;
+  margin: 5px 0;
+}
+table.import_list em {
+  display: block;
+  color: #888899;
+  font-size: 0.9em;
+  line-height: 1.3em;
+}
+table.import_list strong.error {
+  color: #ee0033;
 }
 
 #grundlebox_default_map_location {

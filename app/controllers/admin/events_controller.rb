@@ -119,4 +119,61 @@ class Admin::EventsController < AdminController
     end
   end
   
+  
+  # Importer
+  ############################################################################
+  
+  def import
+    
+    # GET displays upload form
+    return unless request.post?
+    
+    if params[:upload]
+      
+      # Zap existing performance import
+      ImportedPerformance.zap!
+      
+      result = ImportedPerformance.create_from_csv!( params[:upload] )
+            
+      if result && !(result.first.length==0)
+        flash[:notice] = "Import complete - found #{result.first.length} valid listings and #{result.last.length} invalid listings."
+        redirect_to verify_import_admin_events_path
+        return
+      end
+      
+    end
+    
+    flash[:error] = "Import failed. Check that your CSV file is in the correct format."
+    
+  end
+  
+  def verify_import
+    
+    force_subsection "import"
+    
+    @imported_performances = ImportedPerformance.all
+    
+    unless request.post?
+      # Display the verification list
+      render :layout => "admin/manual_sidebar" and return 
+    end
+    
+    # Save the performances
+    ids_to_save = params[:import_performance].keys.map(&:to_i).uniq
+    result = ImportedPerformance.convert!( ids_to_save )
+    
+    if result && !(result.first.length==0)
+      
+      saved_performances, failed_imports, new_events, updated_events = result
+      
+      flash[:notice] = "Import complete - saved #{saved_performances.length} listings, #{failed_imports.length} failed."
+      redirect_to admin_events_path
+      return
+    end
+    
+    flash[:error] = "Import failed - No events successfully imported."
+    render :layout => "admin/manual_sidebar" and return 
+    
+  end
+  
 end
