@@ -14,7 +14,6 @@ if !defined?( Grundlebox::Application )
     merged << engine_config.to_yaml 
     merged.close
     
-    puts  File.read(merged.path)
     Jammit.load_configuration( merged.path, false)    
     
   else

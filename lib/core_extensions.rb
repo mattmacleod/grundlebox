@@ -17,6 +17,20 @@ String.class_eval do
   def strip_html
     gsub(/<\/?[^>]*>/, "")
   end
+  
+  def strip_html_except(allowed=[])
+    re = if allowed.any?
+      Regexp.new(
+        %(<(?!(\\s|\\/)*(#{
+          allowed.map {|tag| Regexp.escape( tag )}.join( "|" )
+        })( |>|\\/|'|"|<|\\s*\\z))[^>]*(>+|\\s*\\z)),
+        Regexp::IGNORECASE | Regexp::MULTILINE, 'u'
+      )
+    else
+      /<[^>]*(>+|\s*\z)/m
+    end
+    gsub(re,'')
+  end
 
   def tagify
     return self.downcase.gsub(/\s/, "+")

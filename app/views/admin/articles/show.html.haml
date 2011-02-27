@@ -23,4 +23,4 @@
 
 -unless @article.events.empty?
 	%h2 Associated events
-	= @article.events.map{|e| simple_format("<strong>#{e.title}</strong>, #{e.cached_venue}, #{e.cached_times}, #{e.cached_dates}") }.join.html_safe
+	= @article.events.map{|e| simple_format("<strong>#{e.title}</strong>, #{e.cached_venues}, #{e.cached_times}, #{e.cached_dates}") }.join.html_safe

@@ -129,6 +129,66 @@ module Admin::ArticlesHelper
   
   
   
+  # Indesign helpers
+  ############################################################################
+  
+  def indesign_header
+    "<UNICODE-MAC>\n".html_safe +
+    "<Version:5><FeatureSet:InDesign-Roman>".html_safe
+  end
+  
+  def indesign_format(text, paratype, texttype)
+    return "" if text.blank?
+    return "<ParaStyle:#{paratype}>" + 
+    text.gsub("<em>", "<CharStyle:Story formatting\\:#{texttype} Italic>").
+    gsub("<i>", "<CharStyle:Story formatting\\:#{texttype} Italic>").
+    gsub("</em>", "<CharStyle:>").
+    gsub("</i>", "<CharStyle:>").
+    gsub("<strong>", "<CharStyle:Story formatting\\:#{texttype} Bold>").
+    gsub("</strong>", "<CharStyle:>").
+    gsub("<b>", "<CharStyle:Story formatting\\:#{texttype} Bold>").
+    gsub("</b>", "<CharStyle:>").html_safe
+  end
+  
+  def simple_indesign_format(text, paratype, texttype=nil)
+    return "" if text.blank?
+    string = text.
+    gsub("<em>", "<CharStyle:Italic>").
+    gsub("<i>", "<CharStyle:Italic>").
+    gsub("</em>", "<CharStyle:>").
+    gsub("</i>", "<CharStyle:>").
+    gsub("<strong>", "<CharStyle:Bold>").
+    gsub("</strong>", "<CharStyle:>").
+    gsub("<b>", "<CharStyle:Bold>").
+    gsub("</b>", "<CharStyle:>").html_safe
+    if texttype
+      return "<ParaStyle:#{paratype}><CharStyle:#{texttype}>#{string}<CharStyle:>"
+    else
+      return "<ParaStyle:#{paratype}>#{string}"
+    end
+  end
+  
+  # Work out review stars
+  def indesign_review_stars( article )
+    if article.review? && (article.review_rating.to_i > 0)
+      text = "<ParaStyle:Reviews\\:Review Rating>"
+      text << (0..article.review_rating.to_i-1).collect{|n| "r"}.join
+      return text.html_safe
+    else
+      return ""
+    end
+  end
+  
+  def indesign_filtered_content( string )
+    return "" if string.blank?
+    allowed_tags = ["i", "em", "b", "strong"]
+    string.to_s.gsub("<br />", "\n").strip_html_except(allowed_tags).html_safe
+  end
+  
+  def indesign_with_newline( string )
+    out = string.blank? ? "" : string + "\n"
+    out.html_safe
+  end
   
   # Form helpers
   ############################################################################
