@@ -298,8 +298,16 @@ grundlebox.admin.asset_manager = {
 			
 			// Decide what to do by checking if we're in the editor or not
 			if( parent.grundlebox.admin.asset_manager.attachment.editor_select ){
-				// We need to display the variation selector page
-				window.location.href = "/admin/asset_folders/attach_variation/" + $(this).attr("id");
+				// We need to either display the variation selector page if this is
+				// an image, or we need to select the file, wrap it in a link and
+				// insert it into the editor
+				if( $(this).hasClass("linked") ){
+					// Get url from download button
+					parent.grundlebox.admin.asset_manager.attachment.insert_editor_document( $(this).attr("href"), $(this).siblings(".asset_download").attr("href") );
+					parent.$.prettyPhoto.close();
+				} else {
+					window.location.href = "/admin/asset_folders/attach_variation/" + $(this).attr("id");
+				}
 				return false;
 			} else {
 				// We are not in the editor, so we use the standard attachment method
@@ -334,6 +342,36 @@ grundlebox.admin.asset_manager = {
 				ed.dom.setAttrib('__mce_tmp', 'id', '');
 			}
 				
+		},
+		
+		insert_editor_document: function( thumbnail_path, file_path ){
+		
+			var ed = tinyMCE.activeEditor, args = {}, el;
+			ed.selection.moveToBookmark( this.stored_selection );
+
+			img_args = {
+				src: thumbnail_path
+			};
+			
+			link_args = {
+				href: file_path
+			};
+			
+			el = ed.selection.getNode();
+
+			if (el && el.nodeName === 'A') {
+				ed.dom.setAttribs(el, link_args);
+			} else {
+				console.log(file_path)
+				console.log(("popup " + file_path.split(".")[1]))
+				ed.execCommand('mceInsertContent', false, '<a id="__mce_tmp_link" class=' + ("popup " + file_path.split(".")[1]) + '><img id="__mce_tmp" src="#" /></a>');
+				ed.dom.setAttribs('__mce_tmp_link', link_args);
+				ed.dom.setAttrib('__mce_tmp_link', 'id', '');
+				
+				ed.dom.setAttribs('__mce_tmp', img_args);
+				ed.dom.setAttrib('__mce_tmp', 'id', '');
+			}
+
 		},
 		
 		google: {

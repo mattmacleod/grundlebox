@@ -227,6 +227,25 @@ a {
 a:hover {
   text-decoration: underline !important;
 }
+a.download_asset {
+  margin: 10px 0;
+  padding: 5px 10px 5px 25px;
+  color: #555566;
+  font-weight: bold;
+  background: #ccccdd url(/images/admin/embed/icons/file_types/mini/txt.png) no-repeat 4px center;
+}
+a.pdf {
+  background-image: url(/images/admin/embed/icons/file_types/mini/pdf.png);
+}
+a.doc {
+  background-image: url(/images/admin/embed/icons/file_types/mini/doc.png);
+}
+a.xls {
+  background-image: url(/images/admin/embed/icons/file_types/mini/xls.png);
+}
+a.zip {
+  background-image: url(/images/admin/embed/icons/file_types/mini/zip.png);
+}
 
 .action_icons a {
   display: block;
@@ -259,7 +278,7 @@ a:hover {
   background-position: -80px -128px;
 }
 
-.clipped_background, .rounded, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2, #page_list_recent h2, #page_list_wrapper h2, .small_rounded_top_left, .event_performance_items table th.first, .event_performance_items table th#content_body, .event_performance_items table th#content_body_wide, .event_performance_items table th#page_list_wrapper, .small_rounded_top_right, .event_performance_items table th.last, .event_performance_items table th#content_sidebar, .event_performance_items table th#right_pane, .event_performance_items table th#page_list_recent, .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, .ajax_search_results, .ajax_search_list, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, span.tag, a.tag, #map_area, #map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, body.notice .noscript, #error #error_wrapper, .jstree-grundlebox a, .medium_rounded, #admin_tools, li.token-input-token, .search_form, .asset_attachment_items ul.asset_attachment_list li.asset h4 a, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, a.event_search_add_link, a.event_search_remove_link, a.venue_search_add_link, a.venue_search_remove_link, body.notice #notice_body {
+.clipped_background, .rounded, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2, #page_list_recent h2, #page_list_wrapper h2, .small_rounded_top_left, .event_performance_items table th.first, .event_performance_items table th#content_body, .event_performance_items table th#content_body_wide, .event_performance_items table th#page_list_wrapper, .small_rounded_top_right, .event_performance_items table th.last, .event_performance_items table th#content_sidebar, .event_performance_items table th#right_pane, .event_performance_items table th#page_list_recent, .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset, .small_rounded, h1, a.download_asset, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, .ajax_search_results, .ajax_search_list, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, span.tag, a.tag, #map_area, #map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, body.notice .noscript, #error #error_wrapper, .jstree-grundlebox a, .medium_rounded, #admin_tools, li.token-input-token, .search_form, .asset_attachment_items ul.asset_attachment_list li.asset h4 a, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, a.event_search_add_link, a.event_search_remove_link, a.venue_search_add_link, a.venue_search_remove_link, body.notice #notice_body {
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
   background-clip: padding-box;
@@ -295,7 +314,7 @@ a:hover {
   border-radius: 0 0 4px 4px;
 }
 
-.small_rounded, h1, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, .ajax_search_results, .ajax_search_list, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, span.tag, a.tag, #map_area, #map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, body.notice .noscript, #error #error_wrapper, .jstree-grundlebox a {
+.small_rounded, h1, a.download_asset, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, .ajax_search_results, .ajax_search_list, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, span.tag, a.tag, #map_area, #map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, body.notice .noscript, #error #error_wrapper, .jstree-grundlebox a {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -1438,8 +1457,25 @@ table.import_list strong.error {
   margin-right: 11px;
   margin-bottom: 13px;
 }
-#folder_browser div.icon img, .google_image_search div.icon img {
+#folder_browser div.icon img, #folder_browser div.icon .icon_area, .google_image_search div.icon img, .google_image_search div.icon .icon_area {
   width: 125px;
+  height: 100px;
+  text-indent: -999em;
+}
+#folder_browser div.icon .icon_area, .google_image_search div.icon .icon_area {
+  background: black url(/images/admin/embed/icons/file_types/generic.png) no-repeat center center;
+}
+#folder_browser div.icon.pdf .icon_area, .google_image_search div.icon.pdf .icon_area {
+  background-image: url(/images/admin/embed/icons/file_types/pdf.png);
+}
+#folder_browser div.icon.doc .icon_area, .google_image_search div.icon.doc .icon_area {
+  background-image: url(/images/admin/embed/icons/file_types/doc.png);
+}
+#folder_browser div.icon.xls .icon_area, .google_image_search div.icon.xls .icon_area {
+  background-image: url(/images/admin/embed/icons/file_types/xls.png);
+}
+#folder_browser div.icon.zip .icon_area, .google_image_search div.icon.zip .icon_area {
+  background-image: url(/images/admin/embed/icons/file_types/zip.png);
 }
 #folder_browser div.icon.last, #folder_browser div.icon#content_body_wide, #folder_browser div.icon#content_sidebar, #folder_browser div.icon#right_pane, #folder_browser div.icon#page_list_recent, .google_image_search div.icon.last, .google_image_search div.icon#content_body_wide, .google_image_search div.icon#content_sidebar, .google_image_search div.icon#right_pane, .google_image_search div.icon#page_list_recent {
   margin-right: 0px;
@@ -1469,10 +1505,13 @@ table.import_list strong.error {
 #folder_browser div.icon .label em .asset_show, .google_image_search div.icon .label em .asset_show {
   background-position: -160px -112px;
 }
+#folder_browser div.icon .label em .asset_download, .google_image_search div.icon .label em .asset_download {
+  background-position: -32px -80px;
+}
 #folder_browser div.icon .label em .asset_delete, .google_image_search div.icon .label em .asset_delete {
   background-position: -80px -128px;
 }
-#folder_browser div.icon .label em .asset_use, #folder_browser div.icon .label em .asset_download, .google_image_search div.icon .label em .asset_use, .google_image_search div.icon .label em .asset_download {
+#folder_browser div.icon .label em .asset_use, .google_image_search div.icon .label em .asset_use {
   background-position: -64px -144px;
 }
 #folder_browser div.label a, .google_image_search div.label a {
@@ -1503,6 +1542,18 @@ fieldset.preview .recrop {
 }
 fieldset.preview .geometry {
   display: none;
+}
+fieldset.preview .thumbnail {
+  float: left;
+  width: 49%;
+}
+fieldset.preview .download_pdf {
+  float: right;
+  width: 49%;
+}
+fieldset.preview .download_document {
+  float: left;
+  width: 49%;
 }
 
 /* Attachments */
@@ -1944,6 +1995,8 @@ body.notice .noscript {
 #iframe #main_folder_wrapper {
   border-color: #ddddee;
   background: white;
+  padding: 7px;
+  overflow: visible;
 }
 #iframe .tabbed_fieldsets .errors h2 {
   float: none;

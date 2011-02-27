@@ -3,6 +3,8 @@ class Asset < ActiveRecord::Base
   # Model definition
   ############################################################################
   
+  ImageContentTypes = ["application/pdf", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/gif"]
+  
   # Relationships
   belongs_to :user
   belongs_to :asset_folder
@@ -39,9 +41,27 @@ class Asset < ActiveRecord::Base
   define_callbacks :post_process, :terminator => "result == false"
   set_callback(:post_process, :before, :image?)
   def image?
-    return ["application/pdf", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/gif"].include?(self.asset_content_type)
+    return ImageContentTypes.include?(self.asset_content_type)
   end
   
+  # Returnt the type of this asset so we know how to display it on the front end
+  def asset_type
+    
+    if asset_content_type=="application/pdf"
+      return :pdf
+    elsif image?
+      return :image
+    elsif asset_content_type=="application/msword"
+      return :doc
+    elsif asset_content_type=="application/vnd.ms-excel"
+      return :xls
+    elsif asset_content_type=="application/zip"
+      return :zip
+    else
+      return :generic
+    end
+    
+  end
   
   # Handle cropping
   after_update :reprocess_cropped_styles

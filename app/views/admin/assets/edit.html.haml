@@ -12,13 +12,24 @@
 			%ul.tabs
 				%li
 					%h2= link_to "Asset information", "#info"
-				- if @asset.image?
+				- if @asset.asset_type == :image
 					%li
 						%h2= link_to "Original image", "#original"
 					- Grundlebox::Config::ImageFileVersions.each_pair do |k,v|
 						%li
 							%h2= link_to k.to_s.capitalize, "##{k}"
+				- if @asset.asset_type == :pdf
+					%li
+						%h2= link_to "PDF details", "#pdf"
 
+				- if [:doc,:xls,:zip].include? (@asset.asset_type)
+					%li
+						%h2= link_to "Document details", "#document"
+
+				- if [:generic].include? (@asset.asset_type)
+					%li
+						%h2= link_to "File details", "#file"						
+					
 			%fieldset#info
 				%legend Asset information
 				.half
@@ -30,7 +41,7 @@
 					.full= f.text_area :credit, :rows => 3
 					
 					
-			- if @asset.image?
+			- if @asset.asset_type == :image
 			
 				%fieldset.preview#original
 					%legend Original
@@ -54,7 +65,37 @@
 						= f.hidden_field "crop_y_#{k}", :class => :crop_y
 						= f.hidden_field "crop_w_#{k}", :class => :crop_w
 						= f.hidden_field "crop_h_#{k}", :class => :crop_h
-						
+			
+			- if @asset.asset_type == :pdf
+			
+				%fieldset.preview#pdf
+					%legend PDF details
+										
+					.thumbnail
+						=note "This is the thumbnail for this PDF"
+						=image_tag( @asset.asset.url(:article), :id=>"image_for_version_article" )
+
+					.download_pdf
+						= note "Download the original PDF below"
+						= link_to "Download \"#{ @asset.title }\"", @asset.asset.url(:original), :class => "download_asset pdf"
+
+			- if [:doc,:xls,:zip].include? (@asset.asset_type)
+
+				%fieldset.preview#document
+					%legend Document details
+
+					.download_document
+						= note "Download the original document below"
+						= link_to "Download \"#{ @asset.title }\"", @asset.asset.url(:original), :class => "download_asset #{@asset.asset_type}"
+
+			- if [:file].include? (@asset.asset_type)
+
+				%fieldset.preview#file
+					%legend File details
+
+					.download_document
+						= note "Download the original file below"
+						= link_to "Download \"#{ @asset.title }\"", @asset.asset.url(:original), :class => "download_asset #{@asset.asset_type}"
 
 	#content_sidebar
 		=render :partial => "sidebar", :locals=>{:f=>f}

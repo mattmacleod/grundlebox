@@ -44,7 +44,8 @@ class Grundlebox::Config
     :name   => "Alphabetical"
   }
   
-  # Magick geometry string
+  # Magick geometry string. Always leave :thumb in this list or bad things will
+  # happen elsewhere. You've been warned.
   ImageFileVersions = { 
     :large   => ["900x675>",   :jpg],
     :wide    => ["540x",      :jpg],
@@ -58,7 +59,7 @@ class Grundlebox::Config
   AssetContentTypes = [
     "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/gif",
     "application/pdf", "application/msword", "application/vnd.ms-excel",
-    "application/vnd.ms-powerpoint"
+    "application/zip"
   ]
   
   # Admin menu system

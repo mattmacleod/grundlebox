@@ -14,7 +14,7 @@
 				var selected_node = current_editor_selection.getNode();
 				var target_href = "/admin/asset_folders/attach";
 				var is_managed = true;
-				var image_regex = /\/assets\/[a-z]+\/[\d+]\/([\d+])/i;
+				var image_regex = /\/assets\/[a-z]+\/[\d+]+\/([\d+]+)/i;
 				
 				// Store the selected area
 				grundlebox.admin.asset_manager.attachment.stored_selection = current_editor_selection.getBookmark();

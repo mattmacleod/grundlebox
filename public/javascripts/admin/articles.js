@@ -213,12 +213,12 @@ grundlebox.admin.articles = {
 			// Mark unchanged
 			this.changed_since_last_draft = false;
 			
-			// Need to copy tinyMCE content into text area before we submit the form
-			$("#article_content").val( tinyMCE.get('article_content').getContent() );
+			tinyMCE.triggerSave();
 
 			// Set the button to indicate a draft is being saved
 			$("input.save_draft").addClass("loading");
 			$("input.save_draft").attr("value", "Saving draft...");
+      tinyMCE.get('article_content').setProgressState(1);
 
 			// Submit the form by Ajax
 			$(".edit_article").ajaxSubmit({
@@ -230,6 +230,7 @@ grundlebox.admin.articles = {
 				complete: function(){
 					$("input.save_draft").removeClass("loading");
 					setTimeout("$(\"input.save_draft\").attr('value', 'Save draft')", 2000);
+					tinyMCE.get('article_content').setProgressState(0);
 				},
 				
 				// Update the text on the save button to indicate status.

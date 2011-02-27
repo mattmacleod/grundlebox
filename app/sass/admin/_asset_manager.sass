@@ -59,9 +59,25 @@
 			min-height: 100px
 			float: left
 			margin-right: 11px
-			margin-bottom: 13px
-			img
+			margin-bottom: 13px			
+			img,.icon_area
 				width: 125px
+				height: 100px
+				text-indent: -999em
+				
+			// Icon types
+			.icon_area
+				background: black url(/images/admin/embed/icons/file_types/generic.png) no-repeat center center
+				
+			&.pdf .icon_area
+				background-image: url(/images/admin/embed/icons/file_types/pdf.png)
+			&.doc .icon_area
+				background-image: url(/images/admin/embed/icons/file_types/doc.png)
+			&.xls .icon_area
+				background-image: url(/images/admin/embed/icons/file_types/xls.png)
+			&.zip .icon_area
+				background-image: url(/images/admin/embed/icons/file_types/zip.png)
+				
 			&:hover
 				@extend .hover_glow
 			&.last
@@ -85,9 +101,11 @@
 						background-position: -64px -112px
 					.asset_show
 						background-position: -160px -112px
+					.asset_download
+						background-position: -32px -80px
 					.asset_delete
 						background-position: -80px -128px
-					.asset_use,.asset_download
+					.asset_use
 						background-position: -64px -144px
 					
 		&.label a
@@ -118,6 +136,18 @@ fieldset.preview
 	.geometry
 		display: none
 
+	.thumbnail
+		float: left
+		width: 49%
+		
+	.download_pdf
+		float: right
+		width: 49%
+
+
+	.download_document
+		float: left
+		width: 49%	
 			
 
 /* Attachments
