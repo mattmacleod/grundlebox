@@ -7,10 +7,6 @@
 .full.bottom
 	.half
 		= f.select :article_type, article_type_options(@article.article_type), :note => "Choose the type of article to fill in additional details", :class=>:half, :required => true
-		-# Default to setting review and star rating to blank - wil be 
-		-# overriden by a real field later if appropriate type selected
-		= f.hidden_field :review, :value => 0
-		= f.hidden_field :review_rating, :value => 0
 		
 	.half.type_options
 		- Grundlebox::Config::ArticleTypes.sort{|a,b| a.last<=>b.last}.each do |k,v|

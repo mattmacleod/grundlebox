@@ -91,7 +91,6 @@ class Article < ActiveRecord::Base
     
   # Callbacks
   before_save :save_word_count
-  before_validation :update_rating_from_article_type
   
   # Special method generation for ratings
   Grundlebox::Config::ArticleTypes.each_pair do |k,v|
@@ -102,8 +101,15 @@ class Article < ActiveRecord::Base
     define_method "review_#{k}" do
       review
     end
+    define_method "review_rating_#{k}=" do |value|
+      self.review_rating = value if (k.to_s==article_type)      
+    end
+    define_method "review_#{k}=" do |value|
+      self.review = value if (k.to_s==article_type)      
+    end
     attr_accessible "review_#{k}", "review_rating_#{k}"
   end
+
   
   
   # Class methods
@@ -259,14 +265,7 @@ class Article < ActiveRecord::Base
   def save_word_count
     self[:word_count] = content.to_s.strip_html.split(/\s/).length
   end
-  
-  def update_rating_from_article_type
-    if article_type && self.respond_to?( "review_#{article_type}" )
-      self[:review] = self.send("review_#{article_type}") 
-      self[:review_rating] = self.send("review_rating_#{article_type}")
-    end
-  end
-  
+
   def associate_events_and_venues
     self.event_ids = self.associated_event_ids.split(",") if self.associated_event_ids
     self.venue_ids = self.associated_venue_ids.split(",") if self.associated_venue_ids
