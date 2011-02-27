@@ -91,23 +91,25 @@ class Article < ActiveRecord::Base
     
   # Callbacks
   before_save :save_word_count
+  before_validation :update_review_rating
   
   # Special method generation for ratings
   Grundlebox::Config::ArticleTypes.each_pair do |k,v|
     attr_accessor "review_#{k}", "review_rating_#{k}"
     define_method "review_rating_#{k}" do
-      review_rating
+      instance_variable_get("@review_rating_#{k}") || review_rating
     end
     define_method "review_#{k}" do
-      review
-    end
-    define_method "review_rating_#{k}=" do |value|
-      self.review_rating = value if (k.to_s==article_type)      
-    end
-    define_method "review_#{k}=" do |value|
-      self.review = value if (k.to_s==article_type)      
+      instance_variable_get("@review_#{k}") || review
     end
     attr_accessible "review_#{k}", "review_rating_#{k}"
+  end
+  
+  def update_review_rating    
+    if article_type && respond_to?("review_rating_#{ article_type }")
+      self.review_rating = self.send("review_rating_#{ article_type }")
+      self.review = self.send("review_#{ article_type }")   
+    end
   end
 
   

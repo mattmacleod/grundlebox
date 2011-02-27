@@ -37,7 +37,10 @@ module Grundlebox #:nodoc:
         # There is only one draft
         def load_draft
           return self unless self.drafts.first
-          self.attributes = self.attributes.merge( drafts.first.item_data )
+          drafts.first.item_data.each_pair do |attribute, value|
+            self.send("#{attribute}=", value)
+          end
+          valid? # There's a good reason for this.
           return self
         end
       
