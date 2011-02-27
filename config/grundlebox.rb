@@ -30,16 +30,21 @@ class Grundlebox::Config
     :review        => "Generic review",
     :preview       => "Generic preview",
     :blog          => "Blog post",
-    :video         => "Video",
-    
+    :video         => "Video"
   } 
   PageTypes = {
-    :text     => "Text",
-    :articles => "Article listing",
-    :events   => "Event listing",
-    :venues   => "Venue listing",
-    :blogs    => "Blog listing",
-    :competition => "Competition"
+    :home        => "Home page",
+    :section     => "Section landing page",
+    :articles    => "Article listing",
+    :events      => "Event listing",
+    :venues      => "Venue listing",
+    :videos      => "Video listing",
+    :galleries   => "Gallery listing",
+    :blogs       => "Blog listing",
+    :staff       => "Staff listing",
+    :text        => "Static text",
+    :competition => "Competition",
+    :contact     => "Contact form"
   }
   PageSortOrder = {
     :newest => "Newest",
