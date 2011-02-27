@@ -5,7 +5,7 @@ module Grundlebox
   # Load the engine if required
   unless defined?( Grundlebox::Application )
     require "grundlebox/engine" 
-    require "generators/grundlebox/migrations/migrations_generator"
+    require "generators/grundlebox/setup_generator"
   end
   
   # Load external libraries. I don't quite understand why I have to do this.
