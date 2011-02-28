@@ -61,17 +61,18 @@ grundlebox.admin.venues = {
 			
 		// If there is a value in the location fields for the venue, then set
 		// that as the initial location and store that we have a marker available.
-		if( !$("#latitude").val()==="" ){
+		if( !($("#latitude").val()==="") ){
 			initial_location =  {
 				latitude: $("#latitude").val(),
 				longitude: $("#longitude").val(),
 				depth: 15
 			};
-			has_marker = true;
+			has_marker = true;			
 		}
 	
 		// Initialise the map with the initial location we calculated
 		$("#map_area").googleMaps( initial_location );
+	
 	
 		// If there are no markers, then we have to set things up so an initial 
 		// click will create one. Otherwise, we just add the marker and setup
@@ -101,7 +102,7 @@ grundlebox.admin.venues = {
 	
 		// Add change handlers to venue form fields
 		$("#latitude,#longitude").keyup(function(){
-			grundlebox.admin.venues.update_marker_location(
+			grundlebox.admin.venues.set_marker_location(
 				$("#latitude").val(), $("#longitude").val()
 			);
 		});
