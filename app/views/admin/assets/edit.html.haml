@@ -22,11 +22,11 @@
 					%li
 						%h2= link_to "PDF details", "#pdf"
 
-				- if [:doc,:xls,:zip].include? (@asset.asset_type)
+				- if [:doc,:xls,:zip].include?(@asset.asset_type)
 					%li
 						%h2= link_to "Document details", "#document"
 
-				- if [:generic].include? (@asset.asset_type)
+				- if [:generic].include?(@asset.asset_type)
 					%li
 						%h2= link_to "File details", "#file"						
 					
@@ -79,7 +79,7 @@
 						= note "Download the original PDF below"
 						= link_to "Download \"#{ @asset.title }\"", @asset.asset.url(:original), :class => "download_asset pdf"
 
-			- if [:doc,:xls,:zip].include? (@asset.asset_type)
+			- if [:doc,:xls,:zip].include?(@asset.asset_type)
 
 				%fieldset.preview#document
 					%legend Document details
@@ -88,7 +88,7 @@
 						= note "Download the original document below"
 						= link_to "Download \"#{ @asset.title }\"", @asset.asset.url(:original), :class => "download_asset #{@asset.asset_type}"
 
-			- if [:file].include? (@asset.asset_type)
+			- if [:file].include?(@asset.asset_type)
 
 				%fieldset.preview#file
 					%legend File details

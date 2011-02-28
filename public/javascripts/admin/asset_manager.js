@@ -18,7 +18,8 @@ grundlebox.admin.asset_manager = {
 	// Sets up the treeview for the folder browser using the jQuery treeview
 	// plugin.
 	setup_folder_browser: function(){
-		$(".asset_folder_list").treeview({ animated: "fast" });
+		$(".asset_folder_list").treeview({ animated: "fast", collapsed: true });
+		$(".asset_folder_list a.current").parents("li").find(">div").click();
 	},
 	
 	setup_pp: function(){

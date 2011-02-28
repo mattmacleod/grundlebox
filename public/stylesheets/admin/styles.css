@@ -1405,7 +1405,7 @@ table.import_list strong.error {
 }
 .asset_folder_list a {
   color: #333344;
-  padding: 18px;
+  padding: 0 0 0 18px;
   background: url(/images/admin/embed/icons/folder_closed.png) no-repeat left center;
 }
 .asset_folder_list a.collapsable {

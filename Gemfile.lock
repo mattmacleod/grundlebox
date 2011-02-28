@@ -1,25 +1,10 @@
 GIT
-  remote: http://github.com/mattmacleod/paper_trail.git
-  revision: a2559172f15e721e87bd0a189cacb187fbe87077
-  specs:
-    paper_trail (1.6.4)
-      actionpack (>= 2.3)
-      activerecord (>= 2.3)
-
-GIT
   remote: http://github.com/mattmacleod/paperclip.git
   revision: ae53c4d935977b443df7dea7eb6632c824fa7a9c
   specs:
     paperclip (2.3.8)
       activerecord
       activesupport
-
-GIT
-  remote: http://github.com/mislav/will_paginate.git
-  revision: b1a5beeec9f56ecbe3594fcdca76d92b6767ce50
-  branch: rails3
-  specs:
-    will_paginate (3.0.pre3)
 
 GIT
   remote: https://github.com/lapluviosilla/tickle.git
@@ -67,7 +52,7 @@ GEM
     builder (2.1.2)
     cgi_multipart_eof_fix (2.5.0)
     chronic (0.3.0)
-    closure-compiler (0.3.3)
+    closure-compiler (1.0.0)
     columnize (0.3.2)
     daemons (1.1.0)
     dr_dre (0.1.1)
@@ -105,6 +90,8 @@ GEM
       gem_plugin (>= 0.2.3)
     mongrel_experimental (1.1)
       mongrel (= 1.1)
+    paper_trail (2.0.1)
+      rails (~> 3)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -138,7 +125,8 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
-    yui-compressor (0.9.1)
+    will_paginate (3.0.pre2)
+    yui-compressor (0.9.4)
     zip (2.0.2)
 
 PLATFORMS
@@ -155,13 +143,13 @@ DEPENDENCIES
   fastthread
   haml (= 3.0.25)
   htmlentities (= 4.2.2)
-  jammit (= 0.5.4)
+  jammit
   jeweler (= 1.5.2)
   lapluviosilla-tickle!
   mime-types (= 1.16)
   mongrel
   mongrel_experimental
-  paper_trail!
+  paper_trail (= 2.0.1)
   paperclip!
   rails (= 3.0.4)
   rcov
@@ -169,5 +157,5 @@ DEPENDENCIES
   ruby-debug
   shoulda
   sqlite3-ruby
-  will_paginate!
+  will_paginate (= 3.0.pre2)
   zip (= 2.0.2)

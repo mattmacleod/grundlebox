@@ -15,19 +15,25 @@ class Admin::UsersController < AdminController
   ############################################################################
   
   def index
+    
     @users ||= User.order("name ASC")
     @users = @users.where(["users.name LIKE ? OR users.email LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%"]) if params[:q]
-    @users = @users.paginate( :page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit )
+    
+    respond_to do |format|
+      format.html do
+        @users = @users.paginate( :page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit )
+        request.xhr? ? render(:partial => "list", :locals => {:users => @users}) : render(:action => :index)
+        return
+      end
+      format.csv { send_csv @users, :users }
+    end
     
     if request.xhr?
       render(:partial => "list", :locals => {:users => @users})
       return
     end
     
-    respond_to do |format|
-      format.html { render :action => :index }
-      format.csv { send_csv @users, :users }
-    end
+
 
   end
   

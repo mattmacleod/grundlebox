@@ -1,5 +1,9 @@
 # Load default configuration
 require File.expand_path(File.dirname(__FILE__) + "/../grundlebox.rb" )
+if defined?( Grundlebox::Engine )
+  puts Rails.root
+  require File.join( Rails.root, "config", "grundlebox.rb" )
+end
 
 # Load the application
 require "grundlebox"

@@ -1,16 +1,19 @@
 source 'http://rubygems.org'
 
+# Only for gem development
+#gem "jammit",       "0.5.4"
+
 gem 'rails', '3.0.4'
 
 # Essentials
 gem "haml",         "3.0.25"
-gem "jammit",       "0.5.4"
 gem "fastercsv",    "1.5.3"
 gem "htmlentities", "4.2.2"
 gem "zip",          "2.0.2"
 gem "chronic",      "0.3.0"
 #gem "newrelic",     "2.13.4"
-
+gem "paper_trail",  "2.0.1"
+gem "will_paginate", "3.0.pre2"
 
 # Need to require the correct name
 gem "mime-types",   "1.16", :require => "mime/types"
@@ -19,13 +22,7 @@ gem "mime-types",   "1.16", :require => "mime/types"
 gem "lapluviosilla-tickle", 
   :git => "https://github.com/lapluviosilla/tickle.git", 
   :require => "tickle"
-  
-gem "paper_trail",
-    :git => "http://github.com/mattmacleod/paper_trail.git"
     
-gem "will_paginate",
-		:git => "http://github.com/mislav/will_paginate.git",
-		:branch => "rails3"
 		
 gem 'paperclip',
     :git => "http://github.com/mattmacleod/paperclip.git"
@@ -39,7 +36,7 @@ group :development do
   gem "mongrel_experimental"
   gem "dr_dre"
   gem "ruby-debug"
-  gem "jeweler",      "1.5.2"
+  gem "jeweler",      "1.5.2"  
 end
   
 # Testing only
@@ -55,4 +52,5 @@ end
 # Development database
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem "jammit"
 end

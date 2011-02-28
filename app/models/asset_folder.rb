@@ -23,7 +23,7 @@ class AssetFolder < ActiveRecord::Base
   ############################################################################
   
   def self.root
-    return @nodes.select{|n| n && !n.parent_id }.first
+    return nodes.select{|n| n && !n.parent_id }.first
   end
   
   # Instance methods

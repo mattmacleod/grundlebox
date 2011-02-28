@@ -255,7 +255,6 @@ Gem::Specification.new do |s|
     "config/grundlebox.rb",
     "config/grundlebox_menu.yml",
     "config/initializers/application.rb",
-    "config/initializers/engine.rb",
     "config/initializers/grundlebox.rb",
     "config/initializers/haml.rb",
     "config/initializers/mime_types.rb",
@@ -292,7 +291,7 @@ Gem::Specification.new do |s|
     "db/seeds.rb",
     "grundlebox.gemspec",
     "lib/core_extensions.rb",
-    "lib/generators/grundlebox/migrations/migrations_generator.rb",
+    "lib/generators/grundlebox/setup_generator.rb",
     "lib/grundlebox.rb",
     "lib/grundlebox/engine.rb",
     "lib/grundlebox/export.rb",
@@ -969,15 +968,14 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rails>, ["= 3.0.4"])
       s.add_runtime_dependency(%q<haml>, ["= 3.0.25"])
-      s.add_runtime_dependency(%q<jammit>, ["= 0.5.4"])
       s.add_runtime_dependency(%q<fastercsv>, ["= 1.5.3"])
       s.add_runtime_dependency(%q<htmlentities>, ["= 4.2.2"])
       s.add_runtime_dependency(%q<zip>, ["= 2.0.2"])
       s.add_runtime_dependency(%q<chronic>, ["= 0.3.0"])
+      s.add_runtime_dependency(%q<paper_trail>, ["= 2.0.1"])
+      s.add_runtime_dependency(%q<will_paginate>, ["= 3.0.pre2"])
       s.add_runtime_dependency(%q<mime-types>, ["= 1.16"])
       s.add_runtime_dependency(%q<lapluviosilla-tickle>, [">= 0"])
-      s.add_runtime_dependency(%q<paper_trail>, [">= 0"])
-      s.add_runtime_dependency(%q<will_paginate>, [">= 0"])
       s.add_runtime_dependency(%q<paperclip>, [">= 0"])
       s.add_development_dependency(%q<mongrel>, [">= 0"])
       s.add_development_dependency(%q<cgi_multipart_eof_fix>, [">= 0"])
@@ -990,15 +988,14 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<rails>, ["= 3.0.4"])
       s.add_dependency(%q<haml>, ["= 3.0.25"])
-      s.add_dependency(%q<jammit>, ["= 0.5.4"])
       s.add_dependency(%q<fastercsv>, ["= 1.5.3"])
       s.add_dependency(%q<htmlentities>, ["= 4.2.2"])
       s.add_dependency(%q<zip>, ["= 2.0.2"])
       s.add_dependency(%q<chronic>, ["= 0.3.0"])
+      s.add_dependency(%q<paper_trail>, ["= 2.0.1"])
+      s.add_dependency(%q<will_paginate>, ["= 3.0.pre2"])
       s.add_dependency(%q<mime-types>, ["= 1.16"])
       s.add_dependency(%q<lapluviosilla-tickle>, [">= 0"])
-      s.add_dependency(%q<paper_trail>, [">= 0"])
-      s.add_dependency(%q<will_paginate>, [">= 0"])
       s.add_dependency(%q<paperclip>, [">= 0"])
       s.add_dependency(%q<mongrel>, [">= 0"])
       s.add_dependency(%q<cgi_multipart_eof_fix>, [">= 0"])
@@ -1012,15 +1009,14 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<rails>, ["= 3.0.4"])
     s.add_dependency(%q<haml>, ["= 3.0.25"])
-    s.add_dependency(%q<jammit>, ["= 0.5.4"])
     s.add_dependency(%q<fastercsv>, ["= 1.5.3"])
     s.add_dependency(%q<htmlentities>, ["= 4.2.2"])
     s.add_dependency(%q<zip>, ["= 2.0.2"])
     s.add_dependency(%q<chronic>, ["= 0.3.0"])
+    s.add_dependency(%q<paper_trail>, ["= 2.0.1"])
+    s.add_dependency(%q<will_paginate>, ["= 3.0.pre2"])
     s.add_dependency(%q<mime-types>, ["= 1.16"])
     s.add_dependency(%q<lapluviosilla-tickle>, [">= 0"])
-    s.add_dependency(%q<paper_trail>, [">= 0"])
-    s.add_dependency(%q<will_paginate>, [">= 0"])
     s.add_dependency(%q<paperclip>, [">= 0"])
     s.add_dependency(%q<mongrel>, [">= 0"])
     s.add_dependency(%q<cgi_multipart_eof_fix>, [">= 0"])
