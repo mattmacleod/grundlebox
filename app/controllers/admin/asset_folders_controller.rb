@@ -166,8 +166,8 @@ class Admin::AssetFoldersController < AdminController
   private
   
   def load_folder
-    @current_folder = AssetFolder.with_id( params[:path].to_s.split("/").last.to_s.split("-").first.to_i ) rescue nil
-    @current_folder ||= AssetFolder.with_id( session[:current_folder].to_i ) rescue nil
+    @current_folder = AssetFolder.with_id( params[:path].to_s.split("/").last.to_s.split("-").first.to_i )# rescue nil
+    @current_folder ||= AssetFolder.with_id( session[:current_folder].to_i )# rescue nil
     @current_folder ||= AssetFolder.root
     session[:current_folder] = @current_folder.id
   end

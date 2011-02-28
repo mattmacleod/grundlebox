@@ -18,7 +18,7 @@ class AssetFolder < ActiveRecord::Base
   
   after_save :clear_node_cache
   after_destroy :clear_node_cache
-  
+    
   # Class methods
   ############################################################################
   
@@ -46,10 +46,16 @@ class AssetFolder < ActiveRecord::Base
   ############################################################################
   
   cattr_accessor :nodes
+  attr_accessor :child_ids
   def self.nodes
     return @nodes if (@nodes && !(Rails.env=="test")) # Disable caching in test mode    
     @nodes = []
     order(:id).each{|n| @nodes[n.id] = n }
+    @nodes.each do |n| 
+      if n && n.parent_id && @nodes[n.parent_id]
+        @nodes[n.parent_id].child_ids ? (@nodes[n.parent_id].child_ids << n.id) : ( @nodes[n.parent_id].child_ids = [n.id])
+      end
+    end
     return @nodes
   end
   
@@ -63,13 +69,14 @@ class AssetFolder < ActiveRecord::Base
   end
   
   def children
-    return AssetFolder::nodes.select{|n| n && n.parent_id == self.id }.sort_by(&:name)
+    return self.child_ids.blank? ? [] : child_ids.map{|c| AssetFolder::nodes[c] }.sort_by(&:name)
   end
   
   private
   
   def clear_node_cache
     self.class.nodes = nil
+    self.child_ids = nil
   end
   
 end

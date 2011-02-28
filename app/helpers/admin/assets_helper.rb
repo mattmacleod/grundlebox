@@ -16,10 +16,9 @@ module Admin::AssetsHelper
     path = get_folder_url(folder)
     
     if folder.children.length > 0
-      content_tag :li, content_tag(:a, folder.name, :href => path, :class=>("current" if @current_folder==folder)) +
-      content_tag(:ul, folder.children.map{|f| asset_folder_tree(f) }.join.html_safe ) 
+      "<li><a href='#{path}' class='#{("current" if @current_folder.id==folder.id)}'>#{folder.name}</a><ul> #{folder.children.map{|f| asset_folder_tree(f) }.join} </ul></li>".html_safe
     else
-      content_tag :li, content_tag(:a, folder.name, :href => path, :class=>("current" if @current_folder==folder))
+      "<li><a href='#{path}' class='#{("current" if @current_folder.id==folder.id)}'>#{folder.name}</a></li>"
     end
   end
   
