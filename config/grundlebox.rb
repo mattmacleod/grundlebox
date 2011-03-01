@@ -23,6 +23,7 @@ class Grundlebox::Config
     :single_review => "Single review",
     :gig_review    => "Gig review",
     :film_review   => "Film review",
+    :event_preview => "Event preview",
     :book_review   => "Book review",
     :game_review   => "Game review",
     :venue_review  => "Venue review",

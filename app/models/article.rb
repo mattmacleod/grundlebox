@@ -110,6 +110,7 @@ class Article < ActiveRecord::Base
       self.review_rating = self.send("review_rating_#{ article_type }")
       self.review = self.send("review_#{ article_type }")   
     end
+    return true
   end
 
   
