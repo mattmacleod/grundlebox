@@ -48,6 +48,8 @@ class CreateArticles < ActiveRecord::Migration
     add_index :articles, [:status, :starts_at, :ends_at, :print_only, :featured], :name=>"index_articles_main"
     add_index :articles, [:review, :review_rating], :name => "index_articles_review"
     add_index :articles, :url, :name => "index_articles_url"
+    add_index :articles, :status
+    add_index :articles, :updated_at
     
   end
 

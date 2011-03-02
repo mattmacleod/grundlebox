@@ -377,9 +377,9 @@ ActiveRecord::Schema.define(:version => 28) do
     t.string   "url",                              :null => false
     t.float    "lat"
     t.float    "lng"
+    t.text     "opening_hours"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "opening_hours"
   end
 
   add_index "venues", ["city_id"], :name => "index_venues_on_city_id"

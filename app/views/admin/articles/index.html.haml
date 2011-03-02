@@ -7,7 +7,7 @@
 	
 .search_form.articles
 	.summary
-		Found #{ pluralize(@articles.total_entries, "article") }
+		Found #{ pluralize(@article_count, "article") }
 
 		- if @section
 			%br/
