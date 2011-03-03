@@ -250,7 +250,7 @@ class Article < ActiveRecord::Base
     
     authors.destroy_all
     
-    @writer_string.split(",").map(&:strip).uniq.each_with_index do |author, index|
+    @writer_string.split(",").map{|a| a.strip unless a.blank?}.compact.uniq.each_with_index do |author, index|
       if (user = User.where(["name LIKE ? AND NOT role=?", author, "USER"]).first)        
         authors << Author.create!(:article => self, :user => user, :sort_order => index)
       else

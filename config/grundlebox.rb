@@ -30,7 +30,7 @@ class Grundlebox::Config
     :feature       => "Feature",
     :review        => "Generic review",
     :preview       => "Generic preview",
-    :blog          => "Blog post",
+    :blog_post     => "Blog post",
     :video         => "Video"
   } 
   PageTypes = {
