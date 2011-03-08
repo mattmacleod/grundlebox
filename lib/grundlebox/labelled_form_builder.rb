@@ -73,7 +73,7 @@ module Grundlebox
       unless !options[:popular]
         tag_list = "<h3>Most popular tags</h3>"
         tag_list << "<div class=\"tag_attachment_list\">"
-        tag_list << Tag::popular.limit(20).map do |tag|
+        tag_list << Tag::popular.limit(50).map do |tag|
           tag_attachment_link( tag )
         end.compact.join
         tag_list << "</div>"

@@ -6,6 +6,9 @@ class CreateTaggings < ActiveRecord::Migration
       t.string :taggable_type, :null=>false
     end
     add_index :taggings, [:tag_id, :taggable_type, :taggable_id], :unique=>true, :name => "tagging_index"
+    add_index :taggings, [:tag_id], :unique=>false
+    add_index :taggings, [:taggable_type, :taggable_id], :unique=>false
+    
   end
 
   def self.down
