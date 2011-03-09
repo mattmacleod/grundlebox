@@ -12,27 +12,27 @@ ul#main_navigation
 	@extend .clearfix
 	position: absolute
 	bottom: 4px
-	text-transform: uppercase
-	font-size: 1em
+	font-size: 1.1em
 
 	li
 		float: left
 		a
 			@extend .small_rounded_top, .fade
-			padding: 0.5em 1em
-			background: $grey_2
-			margin-right: 1em
-			color: white
+			padding: 0.5em 0.7em
+			margin-right: 0.5em
+			color: $grey_4
 			font-weight: bold
 			text-decoration: none
 			
 			&:hover
-				background: $grey_3
-				color: #fff
+				background: $grey_2
+				color: white
+				text-decoration: none
+				
 
 		&.active a
-			background: $grey_5
-			color: $grey_1
+			background: $grey_2
+			color: white
 
 
 
@@ -42,27 +42,27 @@ ul#main_navigation
 //***************************************************************************/
 			
 #sub_navigation_wrapper
-	background: $grey_5
+	background: $grey_2
 	height: 1em
-	padding: 0.8em 0
+	padding: 0.6em 0 0.9em 0
 
 	ul#sub_navigation
 		@extend .container_12
-		text-transform: uppercase
 		li
 			float: left
 			a
-				@extend .small_rounded_top, .fade
-				padding: 0.5em 1em
+				@extend .small_rounded_top
+				padding: 0.4em 1em 0.5em 1em
 				text-decoration: none
 				font-weight: bold
-				font-size: 0.9em
 				background: none
 				margin-right: 1em
-				color: $grey_2
+				color: $grey_5
 				
 				&:hover
-					background: $grey_4
+					text-decoration: none
+					background: #fff
+					color: $grey_1
 					z-index: 5
 					
 			&.active a

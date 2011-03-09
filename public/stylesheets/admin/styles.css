@@ -81,6 +81,62 @@ th {
   height: 1%;
 }
 
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/embed/Ubuntu-R-webfont.eot");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url(//:) format("no404"), url("/fonts/embed/Ubuntu-R-webfont.ttf") format("truetype"), url("/fonts/embed/Ubuntu-R-webfont.svg#webfont5QrTZHwg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/embed/Ubuntu-I-webfont.eot");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url(//:) format("no404"), url("/fonts/embed/Ubuntu-I-webfont.ttf") format("truetype"), url("/fonts/embed/Ubuntu-I-webfont.svg#webfontwdgWd3TL") format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/embed/Ubuntu-B-webfont.eot");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url(//:) format("no404"), url("/fonts/embed/Ubuntu-B-webfont.ttf") format("truetype"), url("/fonts/embed/Ubuntu-B-webfont.svg#webfontCKhwRblf") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/embed/Ubuntu-BI-webfont.eot");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url(//:) format("no404"), url("/fonts/embed/Ubuntu-BI-webfont.ttf") format("truetype"), url("/fonts/embed/Ubuntu-BI-webfont.svg#webfontLmVyebAO") format("svg");
+  font-weight: bold;
+  font-style: italic;
+}
+
 .container_12, #header_wrapper, #main_content, #footer, #sub_navigation_wrapper ul#sub_navigation, body.notice #notice_wrapper {
   position: relative;
   margin: 0 auto;
@@ -160,13 +216,13 @@ th {
 }
 
 html, body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 18px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
   font-weight: bold;
 }
 
@@ -344,7 +400,7 @@ a.zip {
   border-radius: 20px;
 }
 
-.fade, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, input, textarea, select, .button, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .button.export:hover, .button.import:hover, .button.back:hover, .button.loading:hover, fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select, table.list td, #folder_browser div.icon, .google_image_search div.icon {
+.fade, ul#main_navigation li a, input, textarea, select, .button, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .button.export:hover, .button.import:hover, .button.back:hover, .button.loading:hover, fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select, table.list td, #folder_browser div.icon, .google_image_search div.icon {
   -webkit-transition: all 200ms ease-in-out !important;
 }
 
@@ -386,6 +442,7 @@ a.zip {
 
 #header_title {
   font-size: 4em;
+  line-height: 1em;
   font-weight: bold;
   color: #555566;
 }
@@ -438,6 +495,7 @@ body {
   background: #ddddee;
   width: 100%;
   bottom: 0;
+  font-size: 0.9em;
 }
 
 #footer {
@@ -447,51 +505,48 @@ body {
 ul#main_navigation {
   position: absolute;
   bottom: 4px;
-  text-transform: uppercase;
-  font-size: 1em;
+  font-size: 1.1em;
 }
 ul#main_navigation li {
   float: left;
 }
 ul#main_navigation li a {
-  padding: 0.5em 1em;
-  background: #555566;
-  margin-right: 1em;
-  color: white;
+  padding: 0.5em 0.7em;
+  margin-right: 0.5em;
+  color: #ccccdd;
   font-weight: bold;
   text-decoration: none;
 }
 ul#main_navigation li a:hover {
-  background: #888899;
+  background: #555566;
   color: white;
+  text-decoration: none;
 }
 ul#main_navigation li.active a {
-  background: #ddddee;
-  color: #333344;
+  background: #555566;
+  color: white;
 }
 
 #sub_navigation_wrapper {
-  background: #ddddee;
+  background: #555566;
   height: 1em;
-  padding: 0.8em 0;
-}
-#sub_navigation_wrapper ul#sub_navigation {
-  text-transform: uppercase;
+  padding: 0.6em 0 0.9em 0;
 }
 #sub_navigation_wrapper ul#sub_navigation li {
   float: left;
 }
 #sub_navigation_wrapper ul#sub_navigation li a {
-  padding: 0.5em 1em;
+  padding: 0.4em 1em 0.5em 1em;
   text-decoration: none;
   font-weight: bold;
-  font-size: 0.9em;
   background: none;
   margin-right: 1em;
-  color: #555566;
+  color: #ddddee;
 }
 #sub_navigation_wrapper ul#sub_navigation li a:hover {
-  background: #ccccdd;
+  text-decoration: none;
+  background: white;
+  color: #333344;
   z-index: 5;
 }
 #sub_navigation_wrapper ul#sub_navigation li.active a {
@@ -506,7 +561,7 @@ legend {
 }
 
 input, textarea, select {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
   border: 1px #555566 solid;
   margin: 0;
   padding: 0.25em;
