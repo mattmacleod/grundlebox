@@ -216,17 +216,18 @@ th {
 }
 
 html, body {
-  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 18px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
 }
 
 h1 {
+  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
   background: #333344;
   font-size: 30px;
   line-height: 36px;
@@ -441,6 +442,7 @@ a.zip {
 }
 
 #header_title {
+  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
   font-size: 4em;
   line-height: 1em;
   font-weight: bold;
@@ -503,6 +505,7 @@ body {
 }
 
 ul#main_navigation {
+  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
   position: absolute;
   bottom: 4px;
   font-size: 1.1em;
@@ -528,6 +531,7 @@ ul#main_navigation li.active a {
 }
 
 #sub_navigation_wrapper {
+  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
   background: #555566;
   height: 1em;
   padding: 0.6em 0 0.9em 0;
@@ -561,7 +565,7 @@ legend {
 }
 
 input, textarea, select {
-  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   border: 1px #555566 solid;
   margin: 0;
   padding: 0.25em;
