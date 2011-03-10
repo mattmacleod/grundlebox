@@ -21,6 +21,7 @@ class Page < ActiveRecord::Base
   
   # Libraries
   grundlebox_has_comments
+  grundlebox_has_properties
   grundlebox_has_versions :title, :abstract, :content
   grundlebox_has_tags
   

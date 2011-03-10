@@ -2,6 +2,15 @@
 	@extend .grid_4,.first
 	#page_tree
 		margin-top: 10px
+		a.add_child
+			display: none
+			padding: 0 !important
+			text-indent: -999em
+			width: 16px
+			height: 16px
+			background: url(/images/admin/embed/icons/new_page.png) center center no-repeat
+		li:hover a.add_child
+			display: inline-block
 		
 #page_list_recent
 	@extend .grid_5,.last

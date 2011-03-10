@@ -29,7 +29,7 @@ class ApiController < ApplicationController
     @events = Event.where(:enabled => true).includes(:performances)
     @events = @events.where("performances.starts_at >= ?", Time::parse(params[:start])) if params[:start]
     @events = @events.where("performances.starts_at <= ?", Time::parse(params[:end])) if params[:end]
-    @events = @events.tagged_with(params[:tag]) if params[:tag]
+    @events = @events.tagged_with_all(params[:tag]) if params[:tag]
     @events = @events.where(:id => params[:id]) if params[:id]    
     respond_to do |format|
       format.xml { render :xml => @events.to_xml( :skip_types => true, :include => ( :performances if params[:include_performances] ) ) }
@@ -48,7 +48,7 @@ class ApiController < ApplicationController
     end
     
     @venues = @venues.includes(:city).where("cities.name LIKE ?", params[:city]) if params[:city]
-    @venues = @venues.tagged_with(params[:tag]) if params[:tag]
+    @venues = @venues.tagged_with_all(params[:tag]) if params[:tag]
     @venues = @venues.where(:id => params[:id]) if params[:id]
      
     respond_to do |format|
@@ -66,7 +66,7 @@ class ApiController < ApplicationController
     
     @articles = Article.live
     @articles = @articles.where("updated_at >= ? OR created_at >= ?", Time::parse(params[:since]), Time::parse(params[:since])) if params[:since]
-    @articles = @articles.tagged_with(params[:tag]) if params[:tag]
+    @articles = @articles.tagged_with_all(params[:tag]) if params[:tag]
     @articles = @articles.where(:id => params[:id]) if params[:id]    
 
     respond_to do |format|

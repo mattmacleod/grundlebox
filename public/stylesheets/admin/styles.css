@@ -81,62 +81,6 @@ th {
   height: 1%;
 }
 
-@font-face {
-  font-family: "Ubuntu";
-  src: url("/fonts/embed/Ubuntu-R-webfont.eot");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Ubuntu";
-  src: url(//:) format("no404"), url("/fonts/embed/Ubuntu-R-webfont.ttf") format("truetype"), url("/fonts/embed/Ubuntu-R-webfont.svg#webfont5QrTZHwg") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Ubuntu";
-  src: url("/fonts/embed/Ubuntu-I-webfont.eot");
-  font-weight: normal;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "Ubuntu";
-  src: url(//:) format("no404"), url("/fonts/embed/Ubuntu-I-webfont.ttf") format("truetype"), url("/fonts/embed/Ubuntu-I-webfont.svg#webfontwdgWd3TL") format("svg");
-  font-weight: normal;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "Ubuntu";
-  src: url("/fonts/embed/Ubuntu-B-webfont.eot");
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Ubuntu";
-  src: url(//:) format("no404"), url("/fonts/embed/Ubuntu-B-webfont.ttf") format("truetype"), url("/fonts/embed/Ubuntu-B-webfont.svg#webfontCKhwRblf") format("svg");
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Ubuntu";
-  src: url("/fonts/embed/Ubuntu-BI-webfont.eot");
-  font-weight: bold;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "Ubuntu";
-  src: url(//:) format("no404"), url("/fonts/embed/Ubuntu-BI-webfont.ttf") format("truetype"), url("/fonts/embed/Ubuntu-BI-webfont.svg#webfontLmVyebAO") format("svg");
-  font-weight: bold;
-  font-style: italic;
-}
-
 .container_12, #header_wrapper, #main_content, #footer, #sub_navigation_wrapper ul#sub_navigation, body.notice #notice_wrapper {
   position: relative;
   margin: 0 auto;
@@ -227,7 +171,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
   background: #333344;
   font-size: 30px;
   line-height: 36px;
@@ -442,7 +385,6 @@ a.zip {
 }
 
 #header_title {
-  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
   font-size: 4em;
   line-height: 1em;
   font-weight: bold;
@@ -505,7 +447,6 @@ body {
 }
 
 ul#main_navigation {
-  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
   position: absolute;
   bottom: 4px;
   font-size: 1.1em;
@@ -531,7 +472,6 @@ ul#main_navigation li.active a {
 }
 
 #sub_navigation_wrapper {
-  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
   background: #555566;
   height: 1em;
   padding: 0.6em 0 0.9em 0;
@@ -1914,6 +1854,17 @@ a.event_search_remove_link, a.venue_search_remove_link {
 
 #page_list_wrapper #page_tree {
   margin-top: 10px;
+}
+#page_list_wrapper #page_tree a.add_child {
+  display: none;
+  padding: 0 !important;
+  text-indent: -999em;
+  width: 16px;
+  height: 16px;
+  background: url(/images/admin/embed/icons/new_page.png) center center no-repeat;
+}
+#page_list_wrapper #page_tree li:hover a.add_child {
+  display: inline-block;
 }
 
 #page_list_recent ul.recent_list li {

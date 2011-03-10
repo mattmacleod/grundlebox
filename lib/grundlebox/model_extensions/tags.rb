@@ -40,24 +40,32 @@ module Grundlebox #:nodoc:
       module SingletonMethods
         
         # Pass either a tag string, or an array of strings or tags
-        def tagged_with(tags)
+        def tagged_with_all(tags)
           
-          # If we got an array, we need to split it up. Otherwise build the
-          # taglist right from the supplied string.
-          tags = tags.is_a?(Array) ? TagList.new(tags.map(&:to_s)) : TagList.from(tags)
+           tags = tags.is_a?(Array) ? TagList.new(tags.map(&:to_s)) : TagList.from(tags)
 
-          # If there are no tags, we don't need to do anything...
-          return [] if tags.empty?
+           return where("1=0") if tags.empty?
 
-          # Now the rest...          
-          return select("DISTINCT #{table_name}.*").where(""+
-          "((SELECT COUNT(*) FROM taggings INNER JOIN tags "+
-          "ON taggings.tag_id = tags.id "+
-          "WHERE taggable_id = #{table_name}.id AND taggable_type = \"#{name}\" "+
-          "AND #{tags_condition(tags)}) = #{tags.size})")
-                            
-       end
-       
+           return select("DISTINCT #{table_name}.*").where(""+
+           "((SELECT COUNT(*) FROM taggings INNER JOIN tags "+
+           "ON taggings.tag_id = tags.id "+
+           "WHERE taggable_id = #{table_name}.id AND taggable_type = \"#{name}\" "+
+           "AND #{tags_condition(tags)}) = #{tags.size})")
+
+        end
+
+        def tagged_with_any(tags)
+
+           tags = tags.is_a?(Array) ? TagList.new(tags.map(&:to_s)) : TagList.from(tags)
+           return where("1=0") if tags.empty?
+
+           return  select("DISTINCT #{table_name}.*").
+                   where("taggable_id = #{table_name}.id AND taggable_type = \"#{name}\" ").
+                   where( tags_condition(tags) ).
+                   joins(:taggings => :tag)
+
+        end
+
        private
        
        # Build a matcher for each tag

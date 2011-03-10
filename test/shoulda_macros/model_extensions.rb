@@ -57,10 +57,15 @@ class ActiveSupport::TestCase
         end
         
         should "be found by tags" do
-          assert_equal [@item3], klass.tagged_with("Tag 5").all
+          assert_equal [@item3], klass.tagged_with_all("Tag 5").all
         end
         should "only be found when all tags match" do
-          assert_equal [@item3], klass.tagged_with(["Tag 5", "Tag 4", "Tag 1"]).all
+          assert_equal [@item1, @item2], klass.tagged_with_all(["Tag 2", "Tag 3"]).all
+          assert_equal [@item3], klass.tagged_with_all(["Tag 5", "Tag 4", "Tag 1"]).all
+        end
+        should "only be found when any tags match" do
+          assert_equal [@item1, @item3], klass.tagged_with_any(["Tag 1"]).all
+          assert_equal [@item1, @item2, @item3], klass.tagged_with_any(["Tag 1", "Tag 2"]).all
         end
         should "have related items" do
           assert_same_elements [@item2, @item3], @item1.related.map(&:taggable)
