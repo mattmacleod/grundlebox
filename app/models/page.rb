@@ -31,11 +31,26 @@ class Page < ActiveRecord::Base
   after_save :clear_node_cache
   after_destroy :clear_node_cache
   
+  # Routing system
+  after_save :reload_routes
+  
   # Class methods
   ############################################################################
   
   def self.root
     where(:parent_id=>nil).first
+  end
+  
+  def self.live
+    where(
+      "(starts_at IS NULL OR starts_at <= ?) AND "+
+      "(ends_at IS NULL OR ends_at >= ?) AND enabled=?", 
+      Time::now, Time::now, true
+    )
+  end
+  
+  def self.routable
+    live.where("NOT parent_id IS NULL")
   end
   
   # Instance methods
@@ -78,7 +93,11 @@ class Page < ActiveRecord::Base
   end
   
   def children
-    return self.class.nodes.select{|n| n && n.parent_id == self.id }.sort_by(&:sort_order)
+    return @children ||= self.class.nodes.select{|n| n && n.parent_id == self.id }.sort_by(&:sort_order)
+  end
+  
+  def enabled_children
+    return @enabled_children ||= self.class.nodes.select{|n| n && n.enabled? && n.parent_id == self.id }.sort_by(&:sort_order)
   end
   
   private
@@ -87,5 +106,8 @@ class Page < ActiveRecord::Base
     self.class.clear_nodes
   end
 
+  def reload_routes
+    Rails.application.reload_routes!
+  end
 
 end
