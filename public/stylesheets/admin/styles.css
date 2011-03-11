@@ -1863,7 +1863,7 @@ a.event_search_remove_link, a.venue_search_remove_link {
   height: 16px;
   background: url(/images/admin/embed/icons/new_page.png) center center no-repeat;
 }
-#page_list_wrapper #page_tree li:hover a.add_child {
+#page_list_wrapper #page_tree .page_row:hover a.add_child {
   display: inline-block;
 }
 

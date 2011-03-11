@@ -14,6 +14,9 @@ grundlebox.admin.pages = {
 		// Setup the page type tabs
 		this.setup_page_type_tabs();
 		
+		// Setup the UI js to handle title and URL generation
+		this.setup_fields();
+		
 	},
 	
 	tree_browser: {
@@ -25,6 +28,7 @@ grundlebox.admin.pages = {
 			
 			// Setup the JStree
 			this.setup_tree();
+			
 			
 			// Setup search handler
 			// Watch the search field for updates and submit search
@@ -69,8 +73,7 @@ grundlebox.admin.pages = {
 			$("#page_tree").bind("move_node.jstree", _this.handle_reorder);
 			
 		},
-		
-		
+				
 		// Check that the move is valid
 		validate_move: function( move ){
 			return move.np[0].id !== "page_tree";
@@ -133,6 +136,62 @@ grundlebox.admin.pages = {
 			
 		}
 		
+	},
+	
+	setup_fields: function(){
+		
+		// Return unless there's a page URL
+		if( $("#page_url").length==0 ){ return; }
+
+		// Setup the title updater
+		$("#page_title").keyup( 
+			function(){
+				text = "Page: " + $(this).val();
+				if(text.length===0){ text = "Page: (untitled)"; }
+				$("h1").html(text);
+		}).keyup();
+		
+		// Setup the URL generator
+		url_element = $("#page_url");
+		
+		$("#page_title,#page_parent_id").change( function(){
+			if( url_element.data("active")==true ){
+				 grundlebox.admin.pages.update_page_url();
+			}
+		});
+		
+		// Set the focus event to check and enable
+		$("#page_title,#page_parent_id").focus(function(){
+			if( url_element.val().length == 0 ){
+				url_element.data("active", true);
+			}
+		});
+		
+		// Set the blur event to disable any further updates if there is any content
+		$("#page_title,#page_parent_id").blur(function(){
+			if( url_element.val().length > 0 ){
+				url_element.data("active", false);
+			}
+		});
+		
+	},
+	
+	update_page_url: function(){
+		if( !$("#page_url").data("active")==true ){ return; }
+		if( ($("#page_title").val()==="") || ($("#page_parent_id").val()==="" )){ 
+			$("#page_url").val("") 
+		} else {
+			$("#page_url").val( ($("#page_parent_id").find("option:selected").data("path") + "/" + this.urlify( $("#page_title").val() )).replace(/^\//, "") )
+		}
+	},
+	
+	urlify: function( value ){
+		value = value.toLowerCase();
+		value = value.replace(/(\s+(and|or|the|go|at|be|to|as|at|is|it|an|of|on|a)\s+)+/g, " ");
+		value = value.replace(/[^a-z0-9_\-\s]/g, "");
+		value = value.replace(/\s+/g, "_");
+		value = value.replace(/\_+/g, "_");
+		return value;
 	},
 	
 	setup_page_type_tabs: function(){

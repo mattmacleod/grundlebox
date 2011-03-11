@@ -16,8 +16,9 @@
 	%fieldset#basic
 		%legend Basic info
 		.full= f.text_field :title, :required => true, :maxlength => 255, :note => "This will be the main title of the page."
+		.half= f.select :parent_id, "<option></option>"+page_options(Page.root, f.object.parent_id), :label => "Child of...", :note => "Choose the parent page"
+		.half= f.select	:page_type, Grundlebox::Config::PageTypes.map{|k,v|[v,k.to_s]}, :required => true, :note => "Choose the type of content that will appear on this page."
 		.full= f.text_field :url, :required => true, :maxlength => 255, :note => "This will be the URL of the page relative to the home page. Do not include an initial forward slash."
-		.full= f.select	:page_type, Grundlebox::Config::PageTypes.map{|k,v|[v,k.to_s]}, :required => true, :note => "Choose the type of content that will appear on this page."
 						
 	%fieldset#content
 		%legend Main content
@@ -38,4 +39,3 @@
 			.half= f.text_field :ends_at, 	:value => (f.object.ends_at.to_s(:parseable) if f.object.ends_at), :required => false, 	:note => "When will this page stop showing online?", :class=>:datetime, :label => "End date"
 		.full
 			.half= f.check_box :enabled, :label => "Page enabled?"
-			.half= f.select :parent_id, "<option></option>"+page_options(Page.root, f.object.parent_id), :label => "Child of...", :note => "Choose the parent page"

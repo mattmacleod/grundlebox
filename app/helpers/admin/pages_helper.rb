@@ -15,15 +15,15 @@ module Admin::PagesHelper
    
    def page_options( page, selected_id, prefix="" )
      if page.children.length > 0
-       content_tag(:option, "#{prefix} #{page.title}".strip, :value => page.id, :selected => (selected_id==page.id)) +
+       content_tag(:option, "#{prefix} #{page.title}".strip, "data-path" => page.url, :value => page.id, :selected => (selected_id==page.id)) +
        page.children.map{|f| page_options(f, selected_id, "#{prefix}--") }.join.html_safe
      else
-       content_tag :option, "#{prefix} #{page.title}".strip, :value => page.id, :selected => (selected_id==page.id)
+       content_tag :option, "#{prefix} #{page.title}".strip, "data-path" => page.url, :value => page.id, :selected => (selected_id==page.id)
      end
    end
    
    def page_tree_element( page ) 
-     link_to(page.title, edit_admin_page_path( page )) + link_to( "Add a child page", new_admin_page_path(:parent_id => page.id), :class => "add_child")
+     content_tag(:span, link_to(page.title, edit_admin_page_path( page )) + link_to( "Add a child page", new_admin_page_path(:parent_id => page.id), :class => "add_child"), :class => :page_row)
    end
    
 end
