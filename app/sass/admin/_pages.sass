@@ -3,14 +3,13 @@
 	#page_tree
 		margin-top: 10px
 		a.add_child
-			display: none
+			display: inline-block
 			padding: 0 !important
 			text-indent: -999em
 			width: 16px
 			height: 16px
-			background: url(/images/admin/embed/icons/new_page.png) center center no-repeat
-		.page_row:hover a.add_child
-			display: inline-block
+			&:hover,&.show
+				background: url(/images/admin/embed/icons/new_page.png) center center no-repeat
 			
 #page_list_recent
 	@extend .grid_5,.last

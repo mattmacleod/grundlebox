@@ -1856,15 +1856,14 @@ a.event_search_remove_link, a.venue_search_remove_link {
   margin-top: 10px;
 }
 #page_list_wrapper #page_tree a.add_child {
-  display: none;
+  display: inline-block;
   padding: 0 !important;
   text-indent: -999em;
   width: 16px;
   height: 16px;
-  background: url(/images/admin/embed/icons/new_page.png) center center no-repeat;
 }
-#page_list_wrapper #page_tree .page_row:hover a.add_child {
-  display: inline-block;
+#page_list_wrapper #page_tree a.add_child:hover, #page_list_wrapper #page_tree a.add_child.show {
+  background: url(/images/admin/embed/icons/new_page.png) center center no-repeat;
 }
 
 #page_list_recent ul.recent_list li {

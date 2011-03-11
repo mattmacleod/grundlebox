@@ -23,7 +23,7 @@ module Admin::PagesHelper
    end
    
    def page_tree_element( page ) 
-     content_tag(:span, link_to(page.title, edit_admin_page_path( page )) + link_to( "Add a child page", new_admin_page_path(:parent_id => page.id), :class => "add_child"), :class => :page_row)
+     link_to(page.title, edit_admin_page_path( page )) + link_to( "Add a child page", new_admin_page_path(:parent_id => page.id), :class => "add_child")
    end
    
 end

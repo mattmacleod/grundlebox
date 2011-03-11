@@ -29,6 +29,8 @@ grundlebox.admin.pages = {
 			// Setup the JStree
 			this.setup_tree();
 			
+			// Setup new child links
+			this.setup_new_child_links();
 			
 			// Setup search handler
 			// Watch the search field for updates and submit search
@@ -73,7 +75,18 @@ grundlebox.admin.pages = {
 			$("#page_tree").bind("move_node.jstree", _this.handle_reorder);
 			
 		},
-				
+		
+		setup_new_child_links: function(){
+			$("#page_tree li a:not(.add_child)").hover(
+				function(){ 
+					$(this).siblings(".add_child").addClass("show");
+				},
+				function(){ 
+					$(this).siblings(".add_child").removeClass("show");
+				}
+			);
+		},
+		
 		// Check that the move is valid
 		validate_move: function( move ){
 			return move.np[0].id !== "page_tree";
