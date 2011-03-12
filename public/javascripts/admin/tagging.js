@@ -58,6 +58,7 @@ grundlebox.admin.tagging = {
 				
 				// Add the new term to the end
 				terms.pop();
+				terms.pop();
 				terms.push( ui.item.value );
 				terms.push( "" );
 				

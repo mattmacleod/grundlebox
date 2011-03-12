@@ -167,7 +167,13 @@ grundlebox.admin.pages = {
 		// Setup the URL generator
 		url_element = $("#page_url");
 		
-		$("#page_title,#page_parent_id").change( function(){
+		$("#page_parent_id").live("change", function(){
+			if( url_element.data("active")==true ){
+				 grundlebox.admin.pages.update_page_url();
+			}
+		});
+		
+		$("#page_title").live("keyup", function(){
 			if( url_element.data("active")==true ){
 				 grundlebox.admin.pages.update_page_url();
 			}
