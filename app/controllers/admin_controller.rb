@@ -113,7 +113,6 @@ class AdminController < ApplicationController
    
   def require_admin_login
     
-    logger.info "\n\n\n######################## User: #{current_user.inspect}"
     # Check the user's timeout
     if current_user && (current_user.accessed_at > (Time::now - Grundlebox::Config::SessionTimeout))
       return is_admin?
