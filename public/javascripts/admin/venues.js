@@ -126,7 +126,7 @@ grundlebox.admin.venues = {
 				($("#venue_postcode").val() + ", UK"), 
 				function(response){ 
 					grundlebox.admin.venues.update_from_geocode( response );
-					$(this).removeClass("loading");
+					$("#venue_auto_locate_button").removeClass("loading");
 				}
 			);
 			return false;
@@ -192,6 +192,7 @@ grundlebox.admin.venues = {
 	
 	// Moves the map so it is centered on the venue marker.
 	center_map_on_marker: function( ){
+		if( this.venue_marker==null ){ return };
 		$.googleMaps.gMap.setCenter( this.venue_marker.getLatLng() );
 	},
 	
