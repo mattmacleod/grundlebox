@@ -13,12 +13,15 @@
 
 = flash_message
 
-#page_list_wrapper
-	- unless @root.blank?
-		= render :partial => "list", :locals=>{ :root => @root }
-	-else
-		= note "There are no pages", :type => :alert
-		
+#page_list_area
+	#page_list_wrapper
+		- unless @root.blank?
+			= render :partial => "list", :locals=>{ :root => @root }
+		-else
+			= note "There are no pages", :type => :alert
+	
+	#page_tree_loading
+		Loading...
 		
 #page_list_recent
 	%h2.section Recently updated

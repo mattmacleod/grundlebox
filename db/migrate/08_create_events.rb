@@ -30,6 +30,7 @@ class CreateEvents < ActiveRecord::Migration
     add_index :events, [:print, :enabled]
     add_index :events, :review_id
     add_index :events, :url
+    add_index :events, :title
     
   end
 

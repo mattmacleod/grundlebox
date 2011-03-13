@@ -96,7 +96,7 @@ Rails.application.routes.draw do
     
     resources :pages do
       collection do
-        put "/update_order"  => "pages#update_order", :as => :update_order
+        post "/update_order"  => "pages#update_order", :as => :update_order
       end
     end
     

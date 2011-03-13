@@ -50,6 +50,18 @@ class Performance < ActiveRecord::Base
       where("starts_at>=? OR (NOT ends_at IS NULL AND ends_at>=?)", Time::now, Time::now)
     end
     
+    def in_range(time_start, time_end)
+      after(time_start).before(time_end)
+    end
+    
+    def after( the_time )
+      where("starts_at>=? OR (NOT ends_at IS NULL AND ends_at>=?)", the_time, the_time)
+    end
+    
+    def before( the_time )
+      where("starts_at<=? OR (NOT ends_at IS NULL AND ends_at<=?)", the_time, the_time)
+    end
+    
   end
 
 
@@ -93,6 +105,10 @@ class Performance < ActiveRecord::Base
   
   def get_description
     notes.blank? ? event.get_abstract : notes
+  end
+  
+  def get_title
+    performer.blank? ? event.title : "#{event.title} – #{performer}"
   end
   
   # Cached value updates

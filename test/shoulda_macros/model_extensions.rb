@@ -173,11 +173,11 @@ class ActiveSupport::TestCase
         end
         context "with two assets" do
           setup do
-            Factory(:asset_link, :item => @item, :asset=>@a2=Factory(:asset), :sort_order => 1)
-            Factory(:asset_link, :item => @item, :asset=>@a1=Factory(:asset), :sort_order => 2)
+            @al1=Factory(:asset_link, :item => @item, :asset=>@a2=Factory(:asset), :sort_order => 1)
+            @al2=Factory(:asset_link, :item => @item, :asset=>@a1=Factory(:asset), :sort_order => 2)
           end
           should "return the correct main image" do
-            assert_equal @a2, @item.main_image
+            assert_equal @al1, @item.main_image
           end
         end
       end

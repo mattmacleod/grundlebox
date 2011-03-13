@@ -31,10 +31,7 @@ class Page < ActiveRecord::Base
   # Tree cache
   after_save :clear_node_cache
   after_destroy :clear_node_cache
-  
-  # Routing system
-  after_save :reload_routes
-  
+
   # Class methods
   ############################################################################
   
@@ -105,10 +102,6 @@ class Page < ActiveRecord::Base
   
   def clear_node_cache
     self.class.clear_nodes
-  end
-
-  def reload_routes
-    Rails.application.reload_routes!
   end
 
 end

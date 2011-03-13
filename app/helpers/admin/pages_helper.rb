@@ -6,7 +6,7 @@ module Admin::PagesHelper
        content_tag :li, page_tree_element(root) +
        content_tag(:ul, root.children.map{|p| page_tree(p) }.join.html_safe ), 
        :id => "page_node_#{root.id}",
-       :class => ([Page.root, nil].include? root.parent) ? "jstree-open" : "jstree-closed"
+       :class => (root.parent==nil) ? "jstree-open" : "jstree-closed"
      else
        content_tag :li, page_tree_element(root), 
        :id => "page_node_#{root.id}"

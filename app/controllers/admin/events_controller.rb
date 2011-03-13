@@ -9,8 +9,8 @@ class Admin::EventsController < AdminController
   ############################################################################
   
   def index
-    @events = Event.order("title ASC")
-    @events = @events.where(["events.title LIKE ?", "%#{params[:q]}%"]) if params[:q]
+    @events = Event.order("title ASC").includes(:performances => {:venue => :city})
+    @events = @events.where(["events.title LIKE ?", "%#{params[:q]}%"]) unless params[:q].blank?
     @events = @events.paginate( :page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit )
     if request.xhr?
       render(:partial => "list", :locals => {:events => @events})

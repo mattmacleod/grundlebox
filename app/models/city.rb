@@ -13,6 +13,10 @@ class City < ActiveRecord::Base
       all.map{|c| [c.name, c.id]}
     end
     
+    def with_upcoming
+      select("cities.name, cities.id").includes(:performances).where("performances.starts_at>=?", Time::now)
+    end
+    
   end
   
 end

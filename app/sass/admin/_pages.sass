@@ -1,4 +1,4 @@
-#page_list_wrapper
+#page_list_area
 	@extend .grid_4,.first
 	#page_tree
 		margin-top: 10px
@@ -10,6 +10,17 @@
 			height: 16px
 			&:hover,&.show
 				background: url(/images/admin/embed/icons/new_page.png) center center no-repeat
+
+#page_tree_loading
+	@extend .small_rounded_bottom
+	margin: 0 auto
+	background: $grey_6
+	padding: 1em
+	text-align: center
+	text-transform: uppercase
+	color: $grey_2
+	font-size: 0.9em
+	display: none
 			
 #page_list_recent
 	@extend .grid_5,.last

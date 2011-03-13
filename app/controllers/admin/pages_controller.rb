@@ -2,8 +2,10 @@ class Admin::PagesController < AdminController
   
   # Define controller subsections
   grundlebox_permissions(
-    { :actions => [:index, :show, :edit, :update, :new, :create], :roles => [:admin, :publisher] }
+    { :actions => [:index, :show, :edit, :update, :new, :create, :update_order], :roles => [:admin, :publisher] }
   )
+  
+  skip_before_filter :verify_authenticity_token, :only => [:update_order]
   
   # Lists
   ############################################################################
@@ -33,7 +35,9 @@ class Admin::PagesController < AdminController
     @page = Page.new( params[:page] )
     @page.user = current_user
     @page.menu = Menu.first #TODO
+    @page.sort_order = @page.parent ? ((@page.parent.children.last.sort_order + 1) rescue @page.parent.sort_order+1) : 1
     if @page.save
+      flush_routes
       flash[:notice] = "Page has been created"
       redirect_to( :action=>:index )
     else
@@ -56,6 +60,7 @@ class Admin::PagesController < AdminController
     @page = Page.find( params[:id] )
     @page.attributes = params[:page]
     if @page.save
+      flush_routes
       flash[:notice] = "Page has been saved"
       redirect_to( :action => :index )
     else
@@ -94,9 +99,9 @@ class Admin::PagesController < AdminController
       
       # Reload the node cache
       Page.clear_nodes
+      flush_routes
       
       render :partial => "list", :status => 200, :locals => { :root => @root }
-      
     else
       # Save failed, don't touch the sort orders
       render :partial => "list", :status => 409, :locals => { :root => @root }
@@ -104,5 +109,10 @@ class Admin::PagesController < AdminController
     
   end
   
+  private
+  
+  def flush_routes
+    Rails.application.reload_routes!
+  end
 
 end

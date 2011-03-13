@@ -126,16 +126,21 @@ grundlebox.admin.pages = {
 			});
 			
 			
+			$("#page_tree").hide("blind");
+			$("#page_tree_loading").show("blind");
+			
 			
 			// Send the attributes
 			$.ajax( 
 				{	
 					url: "/admin/pages/update_order", 
 					type: "POST",
-					data: { _method: "put", m: moving_id, p: parent_id, s: order_array },
+					data: { m: moving_id, p: parent_id, s: order_array },
 					complete: function(e,f){
 						$("#page_list_wrapper").html( e.responseText );
 						grundlebox.admin.pages.tree_browser.setup_tree();
+						$("#page_tree").show("blind");
+						$("#page_tree_loading").hide("blind");
 						if( f==="error" ){							
 							alert("Error updating page structure.");
 						}
