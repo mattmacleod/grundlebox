@@ -19,4 +19,8 @@ class AssetLink < ActiveRecord::Base
     item.update_caches if item.respond_to? :update_caches
   end
   
+  def get_caption
+    caption.blank? ? asset.caption : caption
+  end
+  
 end

@@ -29,7 +29,7 @@
 			.full= ff.text_field :performer, :label => "Performer / act", :note => "Additional information on the performer or act. Can be left blank if the event title is enough.", :maxlength => 255
 
 			.full
-				.half= ff.text_field :price, :label => "Price", :note => "Enter text or pounds without pound sign"
+				.half= ff.text_field :price, :label => "Price", :note => "Text as applicable"
 				.half= ff.select :venue_id, Venue::options_for_select, :note => "Choose from list or add a new venue first"
 
 			.half

@@ -29,8 +29,8 @@ module Grundlebox #:nodoc:
       module InstanceMethods
         
         def main_image
-          return nil unless assets.count > 0
-          return assets.order("sort_order ASC").first
+          return nil unless asset_links.length > 0
+          return asset_links.sort_by(&:sort_order).first
         end
         
       end

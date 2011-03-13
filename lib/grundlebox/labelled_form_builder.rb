@@ -12,7 +12,7 @@ module Grundlebox
     end
 
     def tag_attachment_link( tag )
-      link_to( tag.name + " (#{tag.taggings.length})", "#", :class => "tag", :title => tag.name )
+      link_to( tag.name, "#", :class => "tag", :title => tag.name )
     end
     include ActionView::Helpers::UrlHelper
     

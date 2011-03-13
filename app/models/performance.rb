@@ -68,6 +68,32 @@ class Performance < ActiveRecord::Base
     return read_attribute(:affiliate_code) || (event.affiliate_code if event)
   end
   
+  def date_string
+    
+    # No end time
+    return starts_at.to_s(:listings) unless ends_at
+    
+    # Same day
+    return "#{starts_at.to_s(:listings)} – #{ends_at.strftime("%H:%M")}" if (starts_at.beginning_of_day==ends_at.beginning_of_day)
+    
+    # Next day before 7am
+    return "#{starts_at.to_s(:listings)} – #{ends_at.strftime("%H:%M")}" if (starts_at.beginning_of_day == (ends_at-7.hours).beginning_of_day)
+    
+    # Another day
+    return "#{starts_at.to_s(:listings)} – #{ends_at.to_s(:listings)}"
+    
+  end
+  
+  def time_string
+    return starts_at.strftime("%H:%M") unless ends_at
+    return "#{starts_at.strftime("%H:%M")} – #{ends_at.strftime("%H:%M")}" if ( starts_at.beginning_of_day == ends_at.beginning_of_day )
+    return "#{starts_at.strftime("%H:%M")} – #{ends_at.strftime("%H:%M")}" if ( starts_at.beginning_of_day == (ends_at-7.hours).beginning_of_day )
+    return "#{starts_at.strftime("%H:%M")} – #{ends_at.to_s(:listings)}"
+  end
+  
+  def get_description
+    notes.blank? ? event.get_abstract : notes
+  end
   
   # Cached value updates
   ############################################################################

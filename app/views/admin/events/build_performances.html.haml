@@ -25,7 +25,7 @@
 				.full= ff.text_field :performer, :label => "Performer / act", :note => "Additional information on the performer or act. Can be left blank if the event title is enough.", :maxlength => 255
 
 				.full
-					.half= ff.text_field :price, :label => "Price", :note => "Enter text or pounds without pound sign"
+					.half= ff.text_field :price, :label => "Price", :note => "Enter text as applicable"
 					.half= ff.select :venue_id, ([""] + @venues.map{|v| [v.admin_summary, v.id] }), :note => "Choose from list or add a new venue first"
 
 				.full= ff.check_box :drop_in, :label => "Drop-in event?", :note => "Check if this performance is an all-day event that can be visited at different times"

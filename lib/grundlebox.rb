@@ -14,6 +14,7 @@ module Grundlebox
   require "fastercsv"
   require "will_paginate"
   require "paperclip"
+  require "tickle"
   
   # Load Grundlebox library files
   require "core_extensions"

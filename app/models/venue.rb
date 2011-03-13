@@ -70,6 +70,10 @@ class Venue < ActiveRecord::Base
       @options_for_select ||= all.map{|v| [v.admin_summary, v.id] }
     end
     
+    def enabled
+      where(:enabled => true)
+    end
+    
   end
 
 
@@ -95,6 +99,10 @@ class Venue < ActiveRecord::Base
   
   def address_elements
     [address_1, address_2, (city.name if city), postcode].select{|e| !e.blank? }
+  end
+  
+  def get_abstract
+    abstract.blank? ? content : abstract
   end
   
   def admin_summary

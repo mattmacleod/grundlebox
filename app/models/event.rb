@@ -86,6 +86,9 @@ class Event < ActiveRecord::Base
     self.class.upcoming.where("events.id=#{id}").count.length == 1
   end
 
+  def get_abstract
+    abstract.blank? ? content : abstract
+  end
 
   # The following code generates nice, human-friendly summaries of the data
   # for this event. Some of this can get quite ugly and slow, but it's all

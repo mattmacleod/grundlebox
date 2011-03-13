@@ -15,7 +15,7 @@ module Grundlebox
               gsub(/\_+/, "_").
               chomp("_").
               split("_")[0,10].
-              join("_")
+              join("_").downcase
     end
     
   end
