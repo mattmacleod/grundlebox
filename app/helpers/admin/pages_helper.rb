@@ -2,11 +2,13 @@ module Admin::PagesHelper
   
   def page_tree( root )
 
+    force_open = @updated_page ? @updated_page.ancestors.include?(root) : false
+    
      if root.children.length > 0
        content_tag :li, page_tree_element(root) +
        content_tag(:ul, root.children.map{|p| page_tree(p) }.join.html_safe ), 
        :id => "page_node_#{root.id}",
-       :class => (root.parent==nil) ? "jstree-open" : "jstree-closed"
+       :class => (root.parent==nil || force_open) ? "jstree-open" : "jstree-closed"
      else
        content_tag :li, page_tree_element(root), 
        :id => "page_node_#{root.id}"
@@ -23,7 +25,12 @@ module Admin::PagesHelper
    end
    
    def page_tree_element( page ) 
-     link_to(page.title, edit_admin_page_path( page )) + link_to( "Add a child page", new_admin_page_path(:parent_id => page.id), :class => "add_child")
+     classes = []
+     classes << :highlighted if @updated_page==page
+     classes << :timed if !page.live? && page.enabled?
+     classes << :disabled if !page.live? && !page.enabled?
+     
+     link_to(page.title, edit_admin_page_path( page ), :class => classes.join(" ")) + link_to( "Add a child page", new_admin_page_path(:parent_id => page.id), :class => "add_child")
    end
    
 end

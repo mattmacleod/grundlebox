@@ -231,6 +231,22 @@ class Article < ActiveRecord::Base
     abstract.blank? ? ( standfirst.blank? ? content : standfirst ) : abstract
   end
   
+  def intro
+    parts = content.split(/(\<\/p\>)/)
+    return content.truncate(500) unless parts.length > 2
+    out = ""
+    idx = 0
+    while (out.length < 500) do
+      if parts[idx].blank?
+        break
+      else
+        out << parts[idx].to_s+("</p>" if parts.length> 0)
+      end
+      idx += 1
+    end
+    return out
+  end
+  
   def associated_event_ids
     @associated_event_ids || event_ids.join(",")
   end
@@ -258,7 +274,7 @@ class Article < ActiveRecord::Base
       end
     end
         
-    self[:cached_authors] = authors.blank? ? nil : authors.map{|a| a.display_name }.join(", ")
+    self[:cached_authors] = authors.blank? ? nil : authors.map{|a| a.display_name }.to_sentence
 
     @writer_string = nil
     save!

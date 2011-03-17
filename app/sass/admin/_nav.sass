@@ -13,16 +13,17 @@ ul#main_navigation
 	position: absolute
 	bottom: 4px
 	font-size: 1.1em
+	text-transform: uppercase
 
 	li
 		float: left
 		a
 			@extend .small_rounded_top, .fade
 			padding: 0.5em 0.7em
-			margin-right: 0.5em
+			margin-right: 0.7em
 			color: $grey_4
 			font-weight: bold
-			text-decoration: none
+			text-decoration: none !important
 			
 			&:hover
 				background: $grey_2
@@ -31,8 +32,8 @@ ul#main_navigation
 				
 
 		&.active a
-			background: $grey_2
-			color: white
+			background: $grey_5
+			color: $grey_1
 
 
 
@@ -43,22 +44,27 @@ ul#main_navigation
 			
 #sub_navigation_wrapper
 
-	background: $grey_2
+	background: $grey_5
 	height: 1em
-	padding: 0.6em 0 0.9em 0
-
+	padding: 0.8em 0 0.9em 0
+	text-transform: uppercase
+	font-size: 0.9em
+	border-bottom: 1px $grey_4 solid
+	
 	ul#sub_navigation
 		@extend .container_12
 		li
 			float: left
 			a
-				@extend .small_rounded_top
+				@extend .small_rounded_top, .fade
 				padding: 0.4em 1em 0.5em 1em
-				text-decoration: none
+				text-decoration: none  !important
 				font-weight: bold
 				background: none
 				margin-right: 1em
-				color: $grey_5
+				color: $grey_2
+				border: 1px $grey_5 solid
+				border-bottom: none
 				
 				&:hover
 					text-decoration: none
@@ -71,3 +77,6 @@ ul#main_navigation
 				color: $grey_1
 				z-index: 5
 				position: relative
+
+			&.active a, a:hover
+				border-color: $grey_4

@@ -31,6 +31,7 @@ class Grundlebox::Config
     :review        => "Generic review",
     :preview       => "Generic preview",
     :blog_post     => "Blog post",
+    :gallery       => "Gallery",
     :video         => "Video"
   } 
   PageTypes = {
@@ -40,7 +41,6 @@ class Grundlebox::Config
     :events      => "Event listing",
     :venues      => "Venue listing",
     :videos      => "Video listing",
-    :galleries   => "Gallery listing",
     :blogs       => "Blog listing",
     :staff       => "Staff listing",
     :text        => "Static text",

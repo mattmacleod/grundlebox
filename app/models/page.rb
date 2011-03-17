@@ -54,6 +54,10 @@ class Page < ActiveRecord::Base
   # Instance methods
   ############################################################################
   
+  def live?
+    (!starts_at || starts_at < Time::now) && (!ends_at || ends_at > Time::now) && enabled
+  end
+  
   def ancestors
     return @ancestors ||= (parent ? (parent.ancestors + [self]) : [self])
   end
@@ -95,7 +99,7 @@ class Page < ActiveRecord::Base
   end
   
   def enabled_children
-    return @enabled_children ||= self.class.nodes.select{|n| n && n.enabled? && n.parent_id == self.id }.sort_by(&:sort_order)
+    return @enabled_children ||= self.class.nodes.select{|n| n && n.live? && n.parent_id == self.id }.sort_by(&:sort_order)
   end
   
   private

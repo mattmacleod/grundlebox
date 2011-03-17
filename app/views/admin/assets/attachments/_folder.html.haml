@@ -2,7 +2,7 @@
 	=note "No images found"
 	
 - @assets.each do |asset|
-	.icon{:class=>"#{asset.asset_type} #{cycle(:first, "", "", "", :last)}"}
+	.icon{:class=>"#{asset.asset_type} #{cycle(:first, "", "", :last)}"}
 		- if asset.asset_type == :image
 			=image_tag( asset.asset.url(:thumb) )
 		- else

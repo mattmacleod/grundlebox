@@ -1,8 +1,0 @@
-= note "Choose the options for the gallery page"
-
-= f.fields_for :properties do |ff|
-	.full= ff.tag_select :galleries_tags, :label => "Show galleries tagged with:", :required => true, :popular => false
-	.full
-		.quarter= ff.check_box :galleries_all_tags, :label => "Require all tags?", :note => "Check to only show galleries matching all tags. Otherwise, will show galleries matching any tag."
-		.quarter= ff.text_field :galleries_items_per_page, :label => "Items per page", :note => "Enter the number of galleries to be displayed on each page", :maxlength => 3, :cols => 5
-		.half= ff.select :galleries_sort_order, Grundlebox::Config::PageSortOrder.map{|k,v|[v,k]}, :label => "Default sort order"

@@ -74,6 +74,9 @@ grundlebox.admin.pages = {
 			_this = this;			
 			$("#page_tree").bind("move_node.jstree", _this.handle_reorder);
 			
+			// Highlights
+			$("#page_tree a.highlighted").effect("highlight", {}, 5000);
+			
 		},
 		
 		setup_new_child_links: function(){
@@ -148,9 +151,6 @@ grundlebox.admin.pages = {
 					}
 				}
 			);	
-			
-			// Open all nodes
-			$("#page_tree").jstree("open_all");
 			
 		}
 		

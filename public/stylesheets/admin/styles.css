@@ -344,7 +344,7 @@ a.zip {
   border-radius: 20px;
 }
 
-.fade, ul#main_navigation li a, input, textarea, select, .button, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .button.export:hover, .button.import:hover, .button.back:hover, .button.loading:hover, fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select, table.list td, #folder_browser div.icon, .google_image_search div.icon {
+.fade, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, input, textarea, select, .button, .button.cancel:hover, .button.save:hover, .button.new:hover, .button.delete:hover, .button.edit:hover, .button.export:hover, .button.import:hover, .button.back:hover, .button.loading:hover, fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select, table.list td, #folder_browser div.icon, .google_image_search div.icon {
   -webkit-transition: all 200ms ease-in-out !important;
 }
 
@@ -450,16 +450,17 @@ ul#main_navigation {
   position: absolute;
   bottom: 4px;
   font-size: 1.1em;
+  text-transform: uppercase;
 }
 ul#main_navigation li {
   float: left;
 }
 ul#main_navigation li a {
   padding: 0.5em 0.7em;
-  margin-right: 0.5em;
+  margin-right: 0.7em;
   color: #ccccdd;
   font-weight: bold;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 ul#main_navigation li a:hover {
   background: #555566;
@@ -467,25 +468,30 @@ ul#main_navigation li a:hover {
   text-decoration: none;
 }
 ul#main_navigation li.active a {
-  background: #555566;
-  color: white;
+  background: #ddddee;
+  color: #333344;
 }
 
 #sub_navigation_wrapper {
-  background: #555566;
+  background: #ddddee;
   height: 1em;
-  padding: 0.6em 0 0.9em 0;
+  padding: 0.8em 0 0.9em 0;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  border-bottom: 1px #ccccdd solid;
 }
 #sub_navigation_wrapper ul#sub_navigation li {
   float: left;
 }
 #sub_navigation_wrapper ul#sub_navigation li a {
   padding: 0.4em 1em 0.5em 1em;
-  text-decoration: none;
+  text-decoration: none !important;
   font-weight: bold;
   background: none;
   margin-right: 1em;
-  color: #ddddee;
+  color: #555566;
+  border: 1px #ddddee solid;
+  border-bottom: none;
 }
 #sub_navigation_wrapper ul#sub_navigation li a:hover {
   text-decoration: none;
@@ -498,6 +504,9 @@ ul#main_navigation li.active a {
   color: #333344;
   z-index: 5;
   position: relative;
+}
+#sub_navigation_wrapper ul#sub_navigation li.active a, #sub_navigation_wrapper ul#sub_navigation li a:hover {
+  border-color: #ccccdd;
 }
 
 legend {
@@ -3970,6 +3979,15 @@ button.ui-button::-moz-focus-inner {
 }
 .jstree-grundlebox a .jstree-icon {
   background-position: -56px -20px;
+}
+.jstree-grundlebox a.disabled {
+  color: #888899;
+}
+.jstree-grundlebox a.disabled .jstree-icon {
+  background-position: -56px -38px;
+}
+.jstree-grundlebox a.timed .jstree-icon {
+  background-position: -56px -55px;
 }
 .jstree-grundlebox a.jstree-loading .jstree-icon {
   background: url("/images/admin/jstree/throbber.gif") center center no-repeat !important;

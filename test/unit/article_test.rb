@@ -81,7 +81,7 @@ class ArticleTest < ActiveSupport::TestCase
       end
     
       should "have correct cached authors" do
-        assert_equal "User 2, User 1", @article.cached_authors
+        assert_equal "User 2 and User 1", @article.cached_authors
       end
       
       context "when an additional author is added and exists as a user" do
@@ -92,7 +92,7 @@ class ArticleTest < ActiveSupport::TestCase
           @article.reload
         end
         should "have correct cached authors" do
-          assert_equal "User 1, User 2, Test author user", @article.cached_authors
+          assert_equal "User 1, User 2, and Test author user", @article.cached_authors
         end 
       end
       
@@ -103,7 +103,7 @@ class ArticleTest < ActiveSupport::TestCase
           @article.reload
         end
         should "have correct cached authors" do
-          assert_equal "User 1, User 2, Another uncreated user", @article.cached_authors
+          assert_equal "User 1, User 2, and Another uncreated user", @article.cached_authors
         end 
       end
       

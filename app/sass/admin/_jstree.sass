@@ -30,6 +30,12 @@
 	a
 		.jstree-icon
 			background-position: -56px -20px
+		&.disabled 
+			color: $grey_3
+			.jstree-icon
+				background-position: -56px -38px
+		&.timed .jstree-icon
+			background-position: -56px -55px		
 		&.jstree-loading .jstree-icon
 			background: url("/images/admin/jstree/throbber.gif") center center no-repeat !important
 	&.jstree-focused

@@ -12,6 +12,7 @@ class Admin::PagesController < AdminController
   
   def index
     @root = Page.root
+    @updated_page ||= Page.find( flash[:updated_page_id] ) rescue nil
     @recent_pages = Page.order( "updated_at DESC" ).limit(10)
   end
  
@@ -38,6 +39,7 @@ class Admin::PagesController < AdminController
     @page.sort_order = @page.parent ? ((@page.parent.children.last.sort_order + 1) rescue @page.parent.sort_order+1) : 1
     if @page.save
       flush_routes
+      flash[:updated_page_id] = @page.id
       flash[:notice] = "Page has been created"
       redirect_to( :action=>:index )
     else
@@ -61,6 +63,7 @@ class Admin::PagesController < AdminController
     @page.attributes = params[:page]
     if @page.save
       flush_routes
+      flash[:updated_page_id] = @page.id
       flash[:notice] = "Page has been saved"
       redirect_to( :action => :index )
     else
@@ -100,6 +103,7 @@ class Admin::PagesController < AdminController
       # Reload the node cache
       Page.clear_nodes
       flush_routes
+      updated_page = @page
       
       render :partial => "list", :status => 200, :locals => { :root => @root }
     else

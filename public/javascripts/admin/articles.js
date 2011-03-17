@@ -21,13 +21,13 @@ grundlebox.admin.articles = {
 	// Changes the location to the value of the select box when the publication
 	// selector is changed on the listings page
 	setup_publication_filter: function(){
-		$("#publication_id").live( "change, click", function(){ window.location = $(this).val(); } );
+		$("#publication_id").live( "change", function(){ window.location = $(this).val(); } );
 	},
 	
 	// Changes the location to the value of the select box when the section
 	// selector is changed on the listings page
 	setup_section_filter: function(){
-		$("#section_id").live( "change, click", function(){ window.location = $(this).val(); } );
+		$("#section_id").live( "change", function(){ window.location = $(this).val(); } );
 	},
 
 	// For the article form - hide the article type subforms, only displaying 

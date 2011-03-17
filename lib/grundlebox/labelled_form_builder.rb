@@ -46,7 +46,7 @@ module Grundlebox
 
     public
     
-    %w(text_field password_field file_field text_area check_box radio_button select collection_select date_select datetime_select time_select).each do |name|
+    %w(text_field email_field telephone_field password_field file_field text_area check_box radio_button select collection_select date_select datetime_select time_select).each do |name|
       create_tagged_field(name.to_sym)
     end
 

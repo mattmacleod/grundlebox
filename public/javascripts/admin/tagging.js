@@ -64,6 +64,7 @@ grundlebox.admin.tagging = {
 				
 				// Update the field with the new string
 				this.value = terms.join( ", " );
+				$(this).focus().val(this.value);
 				
 				return false;
 				

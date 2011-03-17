@@ -98,6 +98,10 @@ class User < ActiveRecord::Base
         return (User.salted_hash(pass.downcase, u.password_salt) == u.password_hash) ? u : nil
       end
     end
+    
+    def staff
+      where( "NOT role='USER' ")
+    end
   
   end
   
