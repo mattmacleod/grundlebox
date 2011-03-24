@@ -26,7 +26,9 @@ class Admin::ArticlesController < AdminController
     @articles = @articles.where(:section_id => params[:section_id]) if ( params[:section_id] && @section = Section.find(params[:section_id]) )
     @articles = @articles.where(["articles.title LIKE ? OR cached_authors LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%"]) if !params[:q].blank?
     
-    @articles = @articles.includes(:assets).includes(:drafts).includes(:lock).paginate(:page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit)
+    @articles = @articles.order("updated_at DESC").includes(:assets).includes(:drafts).includes(:lock).paginate(:page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit)
+    
+    @article_count = @articles.total_entries
     
     if request.xhr?
       render :partial => "list", :locals => {:articles => @articles}

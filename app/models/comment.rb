@@ -12,9 +12,6 @@ class Comment < ActiveRecord::Base
   validates_presence_of :user, :unless => Proc.new { name }
   validates_presence_of :name, :email, :ip
   
-  # Sort by order attribute by default
-  default_scope :order => 'created_at ASC'
-  
   
   # Class methods
   ############################################################################

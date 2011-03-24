@@ -41,6 +41,7 @@
 	%fieldset#images
 		%legend Images
 		.asset_search_suggestion= @event.title
+		=note "Choose the assets to be attached to this item. The first item will be used as the main image."
 		= image_attachments( f )
 		
 	%fieldset#tagging

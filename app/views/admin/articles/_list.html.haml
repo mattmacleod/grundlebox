@@ -17,7 +17,7 @@
 			= print_time article.updated_at
 			- if ["index", "download"].include?(controller.action_name)
 				%span.extra
-					= article.queue
+					= [article.queue, (article.publication.name if article.publication), article.section.name].compact.join(", ")
 		%td.center
 			= article.word_count
 		%td.center

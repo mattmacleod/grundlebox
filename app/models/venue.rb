@@ -74,6 +74,10 @@ class Venue < ActiveRecord::Base
       where(:enabled => true)
     end
     
+    def with_location
+      where("NOT (lat IS NULL OR lng IS NULL)")
+    end
+    
   end
 
 
