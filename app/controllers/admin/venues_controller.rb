@@ -11,11 +11,24 @@ class Admin::VenuesController < AdminController
   def index
     @venues = Venue.includes(:city).order(:title)
     @venues = @venues.where(["venues.title LIKE ?", "%#{params[:q]}%"]) if params[:q]
-    @venues = @venues.paginate( :page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit )
-    if request.xhr?
-      render(:partial => "list", :locals => {:venues => @venues})
-      return
+    respond_to do |format|
+      format.js do
+        @venues = @venues.paginate( :page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit )
+        render(:partial => "list", :locals => {:venues => @venues})
+        return
+      end
+      format.html do
+        @venues = @venues.paginate( :page => params[:page], :per_page => Grundlebox::Config::AdminPaginationLimit )
+        render :action => "index"
+        return
+      end
+      format.json do
+        @venues = @venues.limit(10).all
+        render :json => @venues.to_json
+        return
+      end
     end
+    
   end
  
    

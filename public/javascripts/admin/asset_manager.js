@@ -288,9 +288,9 @@ grundlebox.admin.asset_manager = {
 				
 			$(".asset_attachment_items .empty").hide();
 		
+			new_id = new Date().getTime();
 			var code = global_asset_link_string.replace(/REPLACE_WITH_THUMBNAIL_PATH/g, thumbnail_path ).replace(/REPLACE_WITH_ASSET_ID/g, asset_id );
-			var new_asset_link_id = "new_" + new Date().getTime();
-			$('.asset_attachment_list').append(code.replace(/new_\\d+/g, new_asset_link_id) );
+			$('.asset_attachment_list').append( code.replace(/\[0\]/g, "["+new_id+"]").replace(/\_0\_/g, "_"+new_id+"_") );
 			this.set_sort_order();
 				
 		},

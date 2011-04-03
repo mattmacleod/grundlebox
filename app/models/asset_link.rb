@@ -9,7 +9,6 @@ class AssetLink < ActiveRecord::Base
   
   # Validation
   validates_presence_of :asset, :item, :sort_order
-  validates_uniqueness_of :asset_id, :scope => [:item_id, :item_type]
   
   # Sort by order attribute by default
   default_scope :order => 'sort_order ASC'

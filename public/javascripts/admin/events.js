@@ -50,6 +50,31 @@ grundlebox.admin.events = {
 		
 	},
 	
+	setup_venue_autocomplete: function(){
+		
+		$("input.venue_selector").autocomplete({
+
+			source: function( request, response ) {
+
+				$.ajax({
+
+					url: "/admin/venues",
+					dataType: "json",
+					data: { q: request.term },
+
+					success: function( data ) {
+						response( $.map( data, function( item ) {
+							return { label: item.title, value: item.title };
+						}));
+					}
+
+				});
+
+			}
+		});
+		
+		},
+		
 	// Remove a specific performance by the first TR element
 	remove_performance: function( element ){
 		

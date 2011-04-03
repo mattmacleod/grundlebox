@@ -29,10 +29,6 @@ class AssetLinkTest < ActiveSupport::TestCase
         @l3 = Factory(:asset_link, :item=>@item, :sort_order=>2)
         ]
     end
-    should "not allow the same asset to be attached more than once to the same item" do
-      @l4 = Factory.build(:asset_link, :item=>@l1.item, :asset=>@l1.asset)
-      assert !@l4.save
-    end
     should "be listed in order of order attribute" do
       assert_equal [@l2, @l3, @l1], @item.asset_links
     end
