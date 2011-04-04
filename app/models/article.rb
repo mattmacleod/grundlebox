@@ -93,6 +93,16 @@ class Article < ActiveRecord::Base
   before_save :save_word_count
   before_validation :update_review_rating
   
+  
+  # Search
+  searchable :auto_index => true, :auto_remove => true do
+    text :title, :default_boost => 2
+    text :content
+    text :cached_authors
+    boolean(:active){ live? }
+    time(:default_sort){ starts_at }
+  end
+  
   # Special method generation for ratings
   Grundlebox::Config::ArticleTypes.each_pair do |k,v|
     attr_accessor "review_#{k}", "review_rating_#{k}"

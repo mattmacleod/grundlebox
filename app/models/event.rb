@@ -44,6 +44,15 @@ class Event < ActiveRecord::Base
   # Handle performances
   accepts_nested_attributes_for :performances, :allow_destroy => true
   
+  # Search
+  searchable :auto_index => true, :auto_remove => true do
+    text :title, :default_boost => 2
+    text :short_content
+    text :content
+    text :cached_venues
+    boolean(:active){ upcoming? && enabled }
+    time(:default_sort){ next_performance_time }
+  end
     
   # Class methods
   ############################################################################
@@ -86,6 +95,10 @@ class Event < ActiveRecord::Base
     self.class.upcoming.where("events.id=#{id}").count.length == 1
   end
 
+  def next_performance_time
+    performances.upcoming.first.starts_at rescue nil
+  end
+  
   def get_abstract
     abstract.blank? ? content : abstract
   end

@@ -12,6 +12,7 @@ gem "htmlentities", "4.2.2"
 gem "zip",          "2.0.2"
 gem "chronic",      "0.3.0"
 gem "tickle",       "0.1.7"
+gem "sunspot_rails"
 
 #gem "newrelic",     "2.13.4"
 gem "paper_trail",  "2.0.1"

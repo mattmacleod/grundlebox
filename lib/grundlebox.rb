@@ -15,6 +15,7 @@ module Grundlebox
   require "will_paginate"
   require "paperclip"
   require "tickle"
+  require "sunspot_rails"
   
   # Load Grundlebox library files
   require "core_extensions"

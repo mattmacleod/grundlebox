@@ -29,7 +29,7 @@ module Grundlebox::AdminHelper
   end
   
   def approve_link(content, url)
-    link_to content, url, :class => :approve
+    link_to content, url, :class => :approve, :method => :post
   end
   
   

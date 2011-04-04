@@ -54,6 +54,17 @@ class Venue < ActiveRecord::Base
                   :email, :web, :abstract, :content, :featured, :enabled, 
                   :lat, :lng, :venue_opening_hours
   
+  # Search
+  searchable :auto_index => true, :auto_remove => true do
+    text :title, :boost => 10
+    text(:address){ address_elements.join(", ") }
+    text :phone
+    text :email
+    text :content
+    time(:default_sort){ Time::now+10.years }
+    boolean(:active){ enabled }
+  end
+  
   # Class methods
   ############################################################################
   

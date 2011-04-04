@@ -19,7 +19,7 @@ class AssetLink < ActiveRecord::Base
   end
   
   def get_caption
-    caption.blank? ? asset.caption : caption
+    caption.blank? ? asset.get_caption : caption
   end
   
 end

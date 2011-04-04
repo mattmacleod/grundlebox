@@ -10,7 +10,6 @@ class Section < ActiveRecord::Base
   # Validations
   validate :name, :presence => true, :uniqueness => true
   
-  
   # Class methods
   ############################################################################
   

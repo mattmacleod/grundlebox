@@ -33,6 +33,15 @@ class Page < ActiveRecord::Base
   after_save :clear_node_cache
   after_destroy :clear_node_cache
 
+  
+  # Search
+  searchable :auto_index => true, :auto_remove => true do
+    text :title, :default_boost => 2
+    text :content
+    boolean(:active){ live? }
+    time(:default_sort){ starts_at }
+  end
+  
   # Class methods
   ############################################################################
   

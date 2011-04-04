@@ -5,7 +5,7 @@
 
 
 - comments.each do |comment|
-	%tr{ :class=>cycle(:even, :odd) }
+	%tr{ :class=>"#{cycle(:even, :odd)}#{" reported" if comment.reported? && !comment.approved? }" }
 		%td
 			= link_to comment.item.title, edit_admin_comment_path( comment )
 			%br/
@@ -17,4 +17,4 @@
 			- unless comment.approved?
 				= approve_link "Approve comment", approve_admin_comment_path( comment.id )
 		%td.destroy
-			= delete_link "Approve comment", admin_comment_path( comment.id )
+			= delete_link "Delete comment", admin_comment_path( comment.id )

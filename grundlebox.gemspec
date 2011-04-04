@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matthew MacLeod"]
-  s.date = %q{2011-02-27}
+  s.date = %q{2011-04-03}
   s.description = %q{A Rails Engine that provides basic CMS functionality.}
   s.email = %q{matt@matt-m.co.uk}
   s.extra_rdoc_files = [
@@ -126,6 +126,8 @@ Gem::Specification.new do |s|
     "app/views/admin/articles/_table.html.haml",
     "app/views/admin/articles/article_types/_album_review.html.haml",
     "app/views/admin/articles/article_types/_book_review.html.haml",
+    "app/views/admin/articles/article_types/_event_preview.html.haml",
+    "app/views/admin/articles/article_types/_event_review.html.haml",
     "app/views/admin/articles/article_types/_film_review.html.haml",
     "app/views/admin/articles/article_types/_game_review.html.haml",
     "app/views/admin/articles/article_types/_gig_review.html.haml",
@@ -140,6 +142,7 @@ Gem::Specification.new do |s|
     "app/views/admin/articles/new.html.haml",
     "app/views/admin/articles/show.html.haml",
     "app/views/admin/articles/show.indtt.erb",
+    "app/views/admin/asset_folders/_asset.html.haml",
     "app/views/admin/asset_folders/_folder.html.haml",
     "app/views/admin/asset_folders/_sidebar.html.haml",
     "app/views/admin/asset_folders/attach.html.haml",
@@ -204,7 +207,6 @@ Gem::Specification.new do |s|
     "app/views/admin/pages/page_types/_competition.html.haml",
     "app/views/admin/pages/page_types/_contact.html.haml",
     "app/views/admin/pages/page_types/_events.html.haml",
-    "app/views/admin/pages/page_types/_galleries.html.haml",
     "app/views/admin/pages/page_types/_home.html.haml",
     "app/views/admin/pages/page_types/_section.html.haml",
     "app/views/admin/pages/page_types/_staff.html.haml",
@@ -314,6 +316,22 @@ Gem::Specification.new do |s|
     "public/422.html",
     "public/500.html",
     "public/favicon.ico",
+    "public/fonts/embed/Ubuntu-B-webfont.eot",
+    "public/fonts/embed/Ubuntu-B-webfont.svg",
+    "public/fonts/embed/Ubuntu-B-webfont.ttf",
+    "public/fonts/embed/Ubuntu-B-webfont.woff",
+    "public/fonts/embed/Ubuntu-BI-webfont.eot",
+    "public/fonts/embed/Ubuntu-BI-webfont.svg",
+    "public/fonts/embed/Ubuntu-BI-webfont.ttf",
+    "public/fonts/embed/Ubuntu-BI-webfont.woff",
+    "public/fonts/embed/Ubuntu-I-webfont.eot",
+    "public/fonts/embed/Ubuntu-I-webfont.svg",
+    "public/fonts/embed/Ubuntu-I-webfont.ttf",
+    "public/fonts/embed/Ubuntu-I-webfont.woff",
+    "public/fonts/embed/Ubuntu-R-webfont.eot",
+    "public/fonts/embed/Ubuntu-R-webfont.svg",
+    "public/fonts/embed/Ubuntu-R-webfont.ttf",
+    "public/fonts/embed/Ubuntu-R-webfont.woff",
     "public/images/admin/embed/icons/button_back.png",
     "public/images/admin/embed/icons/button_cancel.png",
     "public/images/admin/embed/icons/button_delete.png",
@@ -322,6 +340,7 @@ Gem::Specification.new do |s|
     "public/images/admin/embed/icons/button_import.png",
     "public/images/admin/embed/icons/button_loader.gif",
     "public/images/admin/embed/icons/button_new.png",
+    "public/images/admin/embed/icons/button_save",
     "public/images/admin/embed/icons/button_save.png",
     "public/images/admin/embed/icons/file_types/doc.png",
     "public/images/admin/embed/icons/file_types/generic.png",
@@ -427,6 +446,7 @@ Gem::Specification.new do |s|
     "public/images/admin/embed/icons/link_approve.png",
     "public/images/admin/embed/icons/link_destroy.png",
     "public/images/admin/embed/icons/move.png",
+    "public/images/admin/embed/icons/new_page.png",
     "public/images/admin/embed/icons/small_button_delete.png",
     "public/images/admin/embed/icons/small_button_save.png",
     "public/images/admin/embed/icons/tab_error.png",
@@ -972,6 +992,8 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<htmlentities>, ["= 4.2.2"])
       s.add_runtime_dependency(%q<zip>, ["= 2.0.2"])
       s.add_runtime_dependency(%q<chronic>, ["= 0.3.0"])
+      s.add_runtime_dependency(%q<tickle>, ["= 0.1.7"])
+      s.add_runtime_dependency(%q<sunspot_rails>, [">= 0"])
       s.add_runtime_dependency(%q<paper_trail>, ["= 2.0.1"])
       s.add_runtime_dependency(%q<will_paginate>, ["= 3.0.pre2"])
       s.add_runtime_dependency(%q<mime-types>, ["= 1.16"])
@@ -985,6 +1007,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<ruby-debug>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["= 1.5.2"])
       s.add_development_dependency(%q<sqlite3-ruby>, [">= 0"])
+      s.add_development_dependency(%q<jammit>, [">= 0"])
     else
       s.add_dependency(%q<rails>, ["= 3.0.4"])
       s.add_dependency(%q<haml>, ["= 3.0.25"])
@@ -992,6 +1015,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<htmlentities>, ["= 4.2.2"])
       s.add_dependency(%q<zip>, ["= 2.0.2"])
       s.add_dependency(%q<chronic>, ["= 0.3.0"])
+      s.add_dependency(%q<tickle>, ["= 0.1.7"])
+      s.add_dependency(%q<sunspot_rails>, [">= 0"])
       s.add_dependency(%q<paper_trail>, ["= 2.0.1"])
       s.add_dependency(%q<will_paginate>, ["= 3.0.pre2"])
       s.add_dependency(%q<mime-types>, ["= 1.16"])
@@ -1005,6 +1030,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<ruby-debug>, [">= 0"])
       s.add_dependency(%q<jeweler>, ["= 1.5.2"])
       s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
+      s.add_dependency(%q<jammit>, [">= 0"])
     end
   else
     s.add_dependency(%q<rails>, ["= 3.0.4"])
@@ -1013,6 +1039,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<htmlentities>, ["= 4.2.2"])
     s.add_dependency(%q<zip>, ["= 2.0.2"])
     s.add_dependency(%q<chronic>, ["= 0.3.0"])
+    s.add_dependency(%q<tickle>, ["= 0.1.7"])
+    s.add_dependency(%q<sunspot_rails>, [">= 0"])
     s.add_dependency(%q<paper_trail>, ["= 2.0.1"])
     s.add_dependency(%q<will_paginate>, ["= 3.0.pre2"])
     s.add_dependency(%q<mime-types>, ["= 1.16"])
@@ -1026,6 +1054,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<ruby-debug>, [">= 0"])
     s.add_dependency(%q<jeweler>, ["= 1.5.2"])
     s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
+    s.add_dependency(%q<jammit>, [">= 0"])
   end
 end
 

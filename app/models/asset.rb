@@ -18,6 +18,10 @@ class Asset < ActiveRecord::Base
   default_scope :order => 'title ASC'
   
   
+  def get_caption
+    caption.blank? ? title : caption
+  end
+  
   # Paperclip details
   ############################################################################
   
