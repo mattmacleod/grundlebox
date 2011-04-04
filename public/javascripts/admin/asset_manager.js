@@ -251,7 +251,7 @@ grundlebox.admin.asset_manager = {
 		},
 		
 		open_attachment_browser: function(){
-			this.editor_select = false;
+			grundlebox.admin.asset_manager.attachment.editor_select = false;
 			$.prettyPhoto.open("/admin/asset_folders/attach?suggestion=" + encodeURI($(".asset_search_suggestion").html() + "&iframe=true&width=850&height=" + (document.documentElement.clientHeight - 100)) );
 			return false;			
 		},
