@@ -29,6 +29,7 @@ class AssetFolderTest < ActiveSupport::TestCase
                   @folder3 = Factory(:asset_folder, :name=>"b", :parent => @folder1),
                   @folder4 = Factory(:asset_folder, :name=>"d", :parent => @folder3)
                  ]
+      @folders.each(&:reload)
     end
     
     should "have a tree root" do

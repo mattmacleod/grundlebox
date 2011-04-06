@@ -65,7 +65,10 @@ ActiveRecord::Schema.define(:version => 28) do
   end
 
   add_index "articles", ["review", "review_rating"], :name => "index_articles_review"
+  add_index "articles", ["section_id", "publication_id"], :name => "index_articles_on_section_id_and_publication_id"
   add_index "articles", ["status", "starts_at", "ends_at", "print_only", "featured"], :name => "index_articles_main"
+  add_index "articles", ["status"], :name => "index_articles_on_status"
+  add_index "articles", ["updated_at"], :name => "index_articles_on_updated_at"
   add_index "articles", ["url"], :name => "index_articles_url"
 
   create_table "articles_events", :id => false, :force => true do |t|
@@ -95,6 +98,7 @@ ActiveRecord::Schema.define(:version => 28) do
     t.string  "item_type",                 :null => false
     t.integer "asset_id",                  :null => false
     t.string  "caption"
+    t.string  "url"
     t.integer "sort_order", :default => 0, :null => false
   end
 
@@ -193,6 +197,7 @@ ActiveRecord::Schema.define(:version => 28) do
 
   add_index "events", ["print", "enabled"], :name => "index_events_on_print_and_enabled"
   add_index "events", ["review_id"], :name => "index_events_on_review_id"
+  add_index "events", ["title"], :name => "index_events_on_title"
   add_index "events", ["url"], :name => "index_events_on_url"
 
   create_table "imported_performances", :force => true do |t|
@@ -328,6 +333,8 @@ ActiveRecord::Schema.define(:version => 28) do
   end
 
   add_index "taggings", ["tag_id", "taggable_type", "taggable_id"], :name => "tagging_index", :unique => true
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_type", "taggable_id"], :name => "index_taggings_on_taggable_type_and_taggable_id"
 
   create_table "tags", :force => true do |t|
     t.string "name", :null => false

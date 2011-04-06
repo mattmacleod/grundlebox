@@ -5,7 +5,7 @@ class AssetFolder < ActiveRecord::Base
   ############################################################################
   
   # Relationships
-  belongs_to :parent, :class_name=>"AssetFolder", :foreign_key=>:parent_id
+  belongs_to :parent, :class_name=>"AssetFolder"
   has_many :children, :class_name=>"AssetFolder", :foreign_key=>:parent_id,
            :dependent => :destroy, :order => "name ASC"
   has_many :assets
@@ -48,7 +48,7 @@ class AssetFolder < ActiveRecord::Base
   cattr_accessor :nodes
   attr_accessor :child_ids
   def self.nodes
-    return @nodes if (@nodes && !(Rails.env=="test")) # Disable caching in test mode    
+    return @nodes if ( @nodes && !Rails.env.test? )
     @nodes = []
     order(:id).each{|n| @nodes[n.id] = n }
     @nodes.each do |n| 
@@ -64,11 +64,11 @@ class AssetFolder < ActiveRecord::Base
     raise ActiveRecord::RecordNotFound
   end
   
-  def parent
+  def get_parent
     AssetFolder::nodes[self.parent_id] rescue nil
   end
   
-  def children
+  def get_children
     return self.child_ids.blank? ? [] : child_ids.map{|c| AssetFolder::nodes[c] }.sort_by(&:name)
   end
   

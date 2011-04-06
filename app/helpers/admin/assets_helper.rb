@@ -15,17 +15,17 @@ module Admin::AssetsHelper
   def asset_folder_tree(folder)
     path = get_folder_url(folder)
     
-    if folder.children.length > 0
-      "<li><a href='#{path}' class='#{("current" if @current_folder.id==folder.id)}'>#{folder.name}</a><ul> #{folder.children.map{|f| asset_folder_tree(f) }.join} </ul></li>".html_safe
+    if folder.get_children.length > 0
+      "<li><a href='#{path}' class='#{("current" if @current_folder.id==folder.id)}'>#{folder.name}</a><ul> #{folder.get_children.map{|f| asset_folder_tree(f) }.join} </ul></li>".html_safe
     else
       "<li><a href='#{path}' class='#{("current" if @current_folder.id==folder.id)}'>#{folder.name}</a></li>"
     end
   end
   
   def asset_folder_options(folder, selected_id, prefix="")
-    if folder.children.length > 0
+    if folder.get_children.length > 0
       content_tag(:option, "#{prefix} #{folder.name}".strip, :value => folder.id, :selected => (selected_id==folder.id)) +
-      folder.children.map{|f| asset_folder_options(f, selected_id, "#{prefix}--") }.join.html_safe
+      folder.get_children.map{|f| asset_folder_options(f, selected_id, "#{prefix}--") }.join.html_safe
     else
       content_tag :option, "#{prefix} #{folder.name}".strip, :value => folder.id, :selected => (selected_id==folder.id)
     end
