@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     # Simple resourceful routes
     resources :tags
     resources :cities
+    resources :widgets
     
     # More complex...
     resources :users do

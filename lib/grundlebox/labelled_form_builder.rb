@@ -25,16 +25,22 @@ module Grundlebox
     
     def self.create_tagged_field(method_name, label = true)
       define_method(method_name) do |method, *args|
+        
         options = args.extract_options!
+        
         labeled_options = extract_labeled_options(options)
         labeled_options[:label_position] ||= :wrap if [:check_box, :radio_button].include?(method_name)
+        
         options[:class] = "#{options[:class]} required".strip if labeled_options[:required]
         options[:class] = [method_name, options[:class]].compact.join(" ")
+        
         args << options
         args << options.delete(:html_options) if [:select].include?(method_name) && options[:html_options]
+        
         field = super(method, *args)
         field = labeled_field(method, field, labeled_options) if label
         field += add_note(labeled_options[:note]) unless labeled_options[:note].blank?
+        
         tagged_field(field, labeled_options[:wrap], labeled_options[:wrap_class])
       end
     end

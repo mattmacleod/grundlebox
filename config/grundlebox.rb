@@ -98,4 +98,20 @@ class Grundlebox::Config
   VenueAttachmentLimit = 20
   
   
+  # Widgets
+  WidgetTypes = {
+    :ad_slot         => "Advert slot",
+    :latest_tagged   => "Latest tagged articles",
+    :latest_comments => "Latest comments",
+    :custom_html     => "Custom HTML"
+  }
+
+  WidgetAdSlots = {
+    1 => "Leaderboard",
+    2 => "Top MPU",
+    3 => "Skyscraper",
+    4 => "Banner",
+    5 => "Bottom MPU"
+  }
+  
 end

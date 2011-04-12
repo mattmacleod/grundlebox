@@ -19,6 +19,7 @@ var grundlebox = {
 			this.events.init();					// Event manager
 			this.pages.init();					// Page tree manager
 			this.tag_manager.init();		// Tag manager
+			this.widgets.init();				// Widget manager
 		},
 
 		// Set some config variables here

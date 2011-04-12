@@ -9,6 +9,7 @@ class Widget < ActiveRecord::Base
   
   # Validations
   validates_presence_of :title, :widget_type, :properties
+  attr_accessible :title, :widget_type
   
   # Library bits
   grundlebox_has_properties
