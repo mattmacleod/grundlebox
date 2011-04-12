@@ -114,4 +114,10 @@ class Grundlebox::Config
     5 => "Bottom MPU"
   }
   
+  WidgetSlots = {
+    :header         => "Header bar",
+    :sidebar        => "Sidebar",
+    :skyscraper_bar => "Skyscraper bar"
+  }
+  
 end

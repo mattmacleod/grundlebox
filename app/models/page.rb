@@ -29,6 +29,10 @@ class Page < ActiveRecord::Base
   # Attributes
   attr_accessible :url, :page_type, :title, :abstract, :content, :starts_at, :ends_at, :parent_id, :enabled
   
+  # Page widgets
+  accepts_nested_attributes_for :page_widgets
+  attr_accessible :page_widgets_attributes
+  
   # Tree cache
   after_save :clear_node_cache
   after_destroy :clear_node_cache

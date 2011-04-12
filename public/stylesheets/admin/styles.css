@@ -65,10 +65,10 @@ th {
   clear: both;
 }
 
-.clearfix, #main_content, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset, .google_image_search .result .label em, #page_list_recent ul.recent_list li {
+.clearfix, #main_content, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset, .google_image_search .result .label em, #page_list_recent ul.recent_list li, .page_widget_items ul.page_widget_list li.widget {
   display: block;
 }
-.clearfix:after, #main_content:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after, #pagination_wrapper:after, .asset_attachment_items ul.asset_attachment_list li.asset:after, .google_image_search .result .label em:after, #page_list_recent ul.recent_list li:after {
+.clearfix:after, #main_content:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after, #pagination_wrapper:after, .asset_attachment_items ul.asset_attachment_list li.asset:after, .google_image_search .result .label em:after, #page_list_recent ul.recent_list li:after, .page_widget_items ul.page_widget_list li.widget:after {
   content: ".";
   clear: both;
   display: block;
@@ -76,19 +76,17 @@ th {
   height: 0;
   font-size: 1px;
 }
-* html .clearfix, * html #main_content, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form, * html #pagination_wrapper, * html .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list * html li.asset, * html .google_image_search .result .label em, .google_image_search .result .label * html em, * html #page_list_recent ul.recent_list li, #page_list_recent ul.recent_list * html li {
+* html .clearfix, * html #main_content, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form, * html #pagination_wrapper, * html .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list * html li.asset, * html .google_image_search .result .label em, .google_image_search .result .label * html em, * html #page_list_recent ul.recent_list li, #page_list_recent ul.recent_list * html li, * html .page_widget_items ul.page_widget_list li.widget, .page_widget_items ul.page_widget_list * html li.widget {
   display: block;
   height: 1%;
 }
 
 .container_12, #header_wrapper, #main_content, #footer, #sub_navigation_wrapper ul#sub_navigation, body.notice #notice_wrapper {
-  position: relative;
   margin: 0 auto;
   width: 960px;
 }
 
 .grid, .grid_1, .grid_2, .grid_3, #content_sidebar, #right_pane, .grid_4, #page_list_area, .grid_5, #page_list_recent, .grid_6, .grid_7, .grid_8, .grid_9, #content_body, .grid_10, .grid_11, .grid_12, #content_body_wide {
-  position: relative;
   float: left;
   display: inline;
   margin-left: 10px;
@@ -278,7 +276,7 @@ a.zip {
   background-position: -80px -128px;
 }
 
-.clipped_background, .rounded, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2, #page_list_recent h2, #page_list_wrapper h2, .small_rounded_top_left, .event_performance_items table th.first, .event_performance_items table th#content_body, .event_performance_items table th#content_body_wide, .event_performance_items table th#page_list_area, .small_rounded_top_right, .event_performance_items table th.last, .event_performance_items table th#content_sidebar, .event_performance_items table th#right_pane, .event_performance_items table th#page_list_recent, .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset, #page_tree_loading, .small_rounded, h1, a.download_asset, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, .ajax_search_results, .ajax_search_list, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, span.tag, a.tag, #map_area, #map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, body.notice .noscript, #error #error_wrapper, .jstree-grundlebox a, .medium_rounded, #admin_tools, li.token-input-token, .search_form, .asset_attachment_items ul.asset_attachment_list li.asset h4 a, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, a.event_search_add_link, a.event_search_remove_link, a.venue_search_add_link, a.venue_search_remove_link, body.notice #notice_body {
+.clipped_background, .rounded, .small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2, #page_list_recent h2, #page_list_wrapper h2, .page_widget_items ul.page_widget_list li.widget h4, .small_rounded_top_left, .event_performance_items table th.first, .event_performance_items table th#content_body, .event_performance_items table th#content_body_wide, .event_performance_items table th#page_list_area, .small_rounded_top_right, .event_performance_items table th.last, .event_performance_items table th#content_sidebar, .event_performance_items table th#right_pane, .event_performance_items table th#page_list_recent, .small_rounded_bottom, div.token-input-dropdown, .tabbed_fieldsets.tabs_enabled fieldset, #page_tree_loading, .small_rounded, h1, a.download_asset, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, .ajax_search_results, .ajax_search_list, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, span.tag, a.tag, #map_area, #map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, .page_widget_items .empty, .page_widget_items ul.page_widget_list li.placeholder, .page_widget_items ul.page_widget_list li.widget, body.notice .noscript, #error #error_wrapper, .jstree-grundlebox a, .medium_rounded, #admin_tools, li.token-input-token, .search_form, .asset_attachment_items ul.asset_attachment_list li.asset h4 a, .page_widget_items ul.page_widget_list li.widget h4 a, .medium_rounded_top, .medium_rounded_bottom, .large_rounded, .button, a.event_search_add_link, a.event_search_remove_link, a.venue_search_add_link, a.venue_search_remove_link, body.notice #notice_body {
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
   background-clip: padding-box;
@@ -290,7 +288,7 @@ a.zip {
   border-radius: 0;
 }
 
-.small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2, #page_list_recent h2, #page_list_wrapper h2 {
+.small_rounded_top, #content_sidebar .box, #right_pane .box, #content_sidebar .box h2, #right_pane .box h2, ul#main_navigation li a, #sub_navigation_wrapper ul#sub_navigation li a, .tabbed_fieldsets.tabs_enabled h2 a, .word_counter, .asset_attachment_items ul.asset_attachment_list li.asset h4, #google_search_results h2, #page_list_recent h2, #page_list_wrapper h2, .page_widget_items ul.page_widget_list li.widget h4 {
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
@@ -314,13 +312,13 @@ a.zip {
   border-radius: 0 0 4px 4px;
 }
 
-.small_rounded, h1, a.download_asset, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, .ajax_search_results, .ajax_search_list, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, span.tag, a.tag, #map_area, #map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, body.notice .noscript, #error #error_wrapper, .jstree-grundlebox a {
+.small_rounded, h1, a.download_asset, input, textarea, select, ul.token-input-list, fieldset.standard, fieldset.standard legend, .tabbed_fieldsets fieldset, .tabbed_fieldsets fieldset legend, .tabbed_fieldsets fieldset h3, .tabbed_fieldsets.tabs_enabled fieldset.article_type, .tabbed_fieldsets.tabs_enabled fieldset.article_type legend, form .errors, .ajax_search_results, .ajax_search_list, div.flash, div.note, .search_form .buttons input, .search_form .buttons a, #lock_notice, #lock_warning, table.list td span.label, span.tag, a.tag, #map_area, #map_area .loading, .asset_folder_list a.current, .asset_attachment_items .empty, .asset_attachment_items ul.asset_attachment_list li.placeholder, .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list li.asset .thumbnail, #google_search_query a, #google_branding, .google_image_search .result .label em a, .event_performance_items .empty, .page_widget_items .empty, .page_widget_items ul.page_widget_list li.placeholder, .page_widget_items ul.page_widget_list li.widget, body.notice .noscript, #error #error_wrapper, .jstree-grundlebox a {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
 
-.medium_rounded, #admin_tools, li.token-input-token, .search_form, .asset_attachment_items ul.asset_attachment_list li.asset h4 a {
+.medium_rounded, #admin_tools, li.token-input-token, .search_form, .asset_attachment_items ul.asset_attachment_list li.asset h4 a, .page_widget_items ul.page_widget_list li.widget h4 a {
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
   border-radius: 12px;
@@ -1600,6 +1598,9 @@ fieldset.preview .download_document {
   color: #555566;
   font-size: 0.9em;
 }
+.asset_attachment_items ul.asset_attachment_list {
+  overflow: auto;
+}
 .asset_attachment_items ul.asset_attachment_list li.placeholder {
   background: #eeeeff;
   margin-bottom: 1em;
@@ -1923,6 +1924,57 @@ a.event_search_remove_link, a.venue_search_remove_link {
   padding: 3px 10px;
   font-size: 1.2em;
   margin: 0;
+}
+
+.page_widget_tools {
+  float: left;
+  width: 150px;
+  margin-right: 20px;
+}
+.page_widget_tools .button {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.page_widget_items {
+  float: left;
+  width: 500px;
+}
+.page_widget_items .empty {
+  margin: 0 auto;
+  background: #ddddee;
+  padding: 1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #555566;
+  font-size: 0.9em;
+}
+.page_widget_items ul.page_widget_list li.placeholder {
+  background: #eeeeff;
+  margin-bottom: 1em;
+  padding: 7px;
+  border: 3px #ccccdd dotted;
+}
+.page_widget_items ul.page_widget_list li.widget {
+  background: #ddddee;
+  padding: 10px;
+  margin-bottom: 1em;
+}
+.page_widget_items ul.page_widget_list li.widget h4 {
+  background: #555566 url(/images/admin/embed/icons/move.png) 5px center no-repeat;
+  color: #888899;
+  font-size: 1em;
+  padding: 3px 10px 3px 30px;
+  margin: -10px -10px 10px -10px;
+  cursor: move;
+}
+.page_widget_items ul.page_widget_list li.widget h4 a {
+  float: right;
+  color: white;
+  padding: 3px 7px 3px 25px;
+  margin: 1px -5px 1px 10px;
+  line-height: 1em;
+  background: #888899 url(/images/admin/embed/icons/button_delete.png) 0 center no-repeat;
 }
 
 body.notice {
@@ -3567,7 +3619,6 @@ button.ui-button::-moz-focus-inner {
  * *
  * * http://docs.jquery.com/UI/Tabs#theming */
 .ui-tabs {
-  position: relative;
   padding: 0.2em;
   zoom: 1;
 }
@@ -3578,7 +3629,6 @@ button.ui-button::-moz-focus-inner {
 .ui-tabs .ui-tabs-nav li {
   list-style: none;
   float: left;
-  position: relative;
   top: 1px;
   margin: 0 0.2em 1px 0;
   border-bottom: 0 !important;
@@ -4326,10 +4376,10 @@ div.ppt {
   z-index: 9999;
 }
 
-.clearfix, #main_content, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset, .google_image_search .result .label em, #page_list_recent ul.recent_list li {
+.clearfix, #main_content, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset, .google_image_search .result .label em, #page_list_recent ul.recent_list li, .page_widget_items ul.page_widget_list li.widget {
   display: inline-block;
 }
-.clearfix:after, #main_content:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after, #pagination_wrapper:after, .asset_attachment_items ul.asset_attachment_list li.asset:after, .google_image_search .result .label em:after, #page_list_recent ul.recent_list li:after {
+.clearfix:after, #main_content:after, #content_sidebar .box:after, #right_pane .box:after, ul#main_navigation:after, fieldset div:after, .search_form:after, #pagination_wrapper:after, .asset_attachment_items ul.asset_attachment_list li.asset:after, .google_image_search .result .label em:after, #page_list_recent ul.recent_list li:after, .page_widget_items ul.page_widget_list li.widget:after {
   content: ".";
   display: block;
   height: 0;
@@ -4338,11 +4388,11 @@ div.ppt {
 }
 
 /* Hides from IE-mac \ */
-* html .clearfix, * html #main_content, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form, * html #pagination_wrapper, * html .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list * html li.asset, * html .google_image_search .result .label em, .google_image_search .result .label * html em, * html #page_list_recent ul.recent_list li, #page_list_recent ul.recent_list * html li {
+* html .clearfix, * html #main_content, * html #content_sidebar .box, #content_sidebar * html .box, * html #right_pane .box, #right_pane * html .box, * html ul#main_navigation, * html fieldset div, fieldset * html div, * html .search_form, * html #pagination_wrapper, * html .asset_attachment_items ul.asset_attachment_list li.asset, .asset_attachment_items ul.asset_attachment_list * html li.asset, * html .google_image_search .result .label em, .google_image_search .result .label * html em, * html #page_list_recent ul.recent_list li, #page_list_recent ul.recent_list * html li, * html .page_widget_items ul.page_widget_list li.widget, .page_widget_items ul.page_widget_list * html li.widget {
   height: 1%;
 }
 
-.clearfix, #main_content, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset, .google_image_search .result .label em, #page_list_recent ul.recent_list li {
+.clearfix, #main_content, #content_sidebar .box, #right_pane .box, ul#main_navigation, fieldset div, .search_form, #pagination_wrapper, .asset_attachment_items ul.asset_attachment_list li.asset, .google_image_search .result .label em, #page_list_recent ul.recent_list li, .page_widget_items ul.page_widget_list li.widget {
   display: block;
 }
 

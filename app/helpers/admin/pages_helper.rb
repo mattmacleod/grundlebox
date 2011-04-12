@@ -33,4 +33,8 @@ module Admin::PagesHelper
      link_to(page.title, edit_admin_page_path( page ), :class => classes.join(" ")) + link_to( "Add a child page", new_admin_page_path(:parent_id => page.id), :class => "add_child")
    end
    
+   def new_page_widget_form( form, slot )
+     javascript_tag "var global_page_widget_string_#{slot} = \"#{ escape_javascript render(:partial => '/admin/pages/page_widget', :locals => { :f => form, :page_widget => PageWidget.new(:slot => slot) }) }\""     
+   end
+   
 end

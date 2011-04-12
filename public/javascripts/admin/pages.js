@@ -17,6 +17,9 @@ grundlebox.admin.pages = {
 		// Setup the UI js to handle title and URL generation
 		this.setup_fields();
 		
+		// Setup the widget manager
+		this.widget_manager.init();
+		
 	},
 	
 	tree_browser: {
@@ -237,6 +240,102 @@ grundlebox.admin.pages = {
 		$("#page_type_" + $("#page_page_type").val() + "_tab").show();
 		
 		
+	},
+	
+	
+	widget_manager: {
+		
+		init: function(){
+			
+			var _this = this;
+			
+			// Quit if there are no widget forms
+			if($(".page_widget_items").length===0){ return; }
+			
+			// Setup ordering
+			this.setup_ordering();
+			
+			// Setup clear button
+			$(".page_widget_tools a.delete").click( this.clear_widgets );
+			
+			// Setup add button
+			$(".page_widget_tools a.new").click( this.add_widget );
+			
+			// Setup delete buttons
+			$(".page_widget_items .delete_widget").live("click", function(){ _this.remove_widget( $(this).parents(".widget") ); return false; });
+			
+		},
+
+		setup_ordering: function(){
+
+			// Create the sortable
+			$(".page_widget_list").sortable({
+				axis: "y", 
+				opacity: 0.5,
+				placeholder: "placeholder",
+				forcePlaceholderSize: true,
+				stop: function(event,ui){
+					grundlebox.admin.pages.widget_manager.set_sort_order();
+				}
+			});
+
+			// Setup initial sort order fields
+			this.set_sort_order();
+
+		},
+
+		set_sort_order: function(){
+			var idx = 0;
+			$(".page_widget_list").find("input.sort_order").each(function(){
+				$(this).val( idx++ );
+			});
+		},
+
+		clear_widgets: function(){
+			if( $(".page_widget_items .widget:visible").length>0 ){
+				$(".page_widget_items .delete_widget").click();
+				$(".page_widget_items .empty").show("blind");
+			}
+			return false;
+		},
+
+		add_widget: function(){
+
+			var slot = $(this).data("slot");
+			var string = eval("global_page_widget_string_"+slot);
+			
+			$(this).parents(".widget_slot").find(".page_widget_items .empty").hide();
+
+			new_id = new Date().getTime();
+	
+			$(this).parents(".widget_slot").find('.page_widget_list').append( string.replace(/\[\d\]/g, "["+new_id+"]").replace(/\_\d\_/g, "_"+new_id+"_") );
+			grundlebox.admin.pages.widget_manager.set_sort_order();
+
+			return false;
+			
+		},
+		
+		remove_widget: function( element ){
+			
+			// If this is an existing element, we have to set the destroy field.
+			// Otherwise, we can just remove the whole thing and it'll be fine.
+			if( element.hasClass("existing") ){
+				element.find(".destroy_field").val(1);
+				element.hide("blind");
+			} else {
+				element.hide("blind");
+				element.remove();
+			}
+			
+			// Are there any attachments left?
+			if( $(this).parents(".widget_slot").find(".page_widget_items input.destroy_field[value=false]").length===0 ){
+				$(this).parents(".widget_slot").find(".page_widget_items .empty").show("blind");
+			}
+			
+			return false;
+			
+		}
+				
 	}
 	
 };

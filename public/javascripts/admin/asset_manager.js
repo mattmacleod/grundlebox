@@ -363,8 +363,6 @@ grundlebox.admin.asset_manager = {
 			if (el && el.nodeName === 'A') {
 				ed.dom.setAttribs(el, link_args);
 			} else {
-				console.log(file_path)
-				console.log(("popup " + file_path.split(".")[1]))
 				ed.execCommand('mceInsertContent', false, '<a id="__mce_tmp_link" class=' + ("popup " + file_path.split(".")[1]) + '><img id="__mce_tmp" src="#" /></a>');
 				ed.dom.setAttribs('__mce_tmp_link', link_args);
 				ed.dom.setAttrib('__mce_tmp_link', 'id', '');

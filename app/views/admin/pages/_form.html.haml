@@ -14,6 +14,8 @@
 				%h2= link_to value, "##{key}"
 		%li
 			%h2= link_to "Publishing", "#publishing"
+		%li
+			%h2= link_to "Widgets", "#widgets"
 
 	%fieldset#basic
 		%legend Basic info
@@ -47,3 +49,28 @@
 			.half= f.text_field :ends_at, 	:value => (f.object.ends_at.to_s(:parseable) if f.object.ends_at), :required => false, 	:note => "When will this page stop showing online?", :class=>:datetime, :label => "End date"
 		.full
 			.half= f.check_box :enabled, :label => "Page enabled?"
+
+	%fieldset#widgets
+		%legend Widgets
+			
+		- Grundlebox::Config::WidgetSlots.each do |key,value|
+			
+			.widget_slot
+				%h3.clear #{ value } widgets
+			
+				.new_page_widget_code
+					= new_page_widget_form( f, key )
+
+				.page_widget_tools
+					= link_to "Add widget", "#", :class => "button new", "data-slot" => key
+					= link_to "Clear all", "#", :class => "button delete", "data-slot" => key
+
+				.page_widget_items
+
+					.empty{ :style => ("display: none" unless f.object.page_widgets.empty?)}
+						There are no widgets
+
+					%ul.page_widget_list
+						- f.object.page_widgets.where(:slot => key).sort{ |a,b| a.sort_order <=> b.sort_order }.each do |page_widget|
+							= render :partial => "/admin/pages/page_widget", :locals => { :f => f, :page_widget => page_widget, :slot => key }
+		
