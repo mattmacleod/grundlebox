@@ -117,6 +117,7 @@ Rails.application.routes.draw do
   ############################################################################
   # API section
   ############################################################################
+  get "api/flush_pages" => "api#flush_pages", :as => :flush_pages
   get "api/v:version/users(.:format)" => "api#users", :as => :api_users
   get "api/v:version/events(.:format)" => "api#events", :as => :api_events
   get "api/v:version/venues(.:format)" => "api#venues", :as => :api_venues
