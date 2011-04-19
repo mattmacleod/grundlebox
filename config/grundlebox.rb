@@ -103,7 +103,8 @@ class Grundlebox::Config
     :ad_slot         => "Advert slot",
     :latest_tagged   => "Latest tagged articles",
     :latest_comments => "Latest comments",
-    :custom_html     => "Custom HTML"
+    :custom_html     => "Custom HTML",
+    :image           => "Image link"
   }
 
   WidgetAdSlots = {

@@ -116,6 +116,10 @@ class Venue < ActiveRecord::Base
     [address_1, address_2, (city.name if city), postcode].select{|e| !e.blank? }
   end
   
+  def city_name
+    city.name if city
+  end
+  
   def get_abstract
     abstract.blank? ? content : abstract
   end

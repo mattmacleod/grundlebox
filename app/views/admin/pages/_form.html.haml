@@ -53,6 +53,8 @@
 	%fieldset#widgets
 		%legend Widgets
 			
+		=note "Choose the widgets to display on this page. If you do not specify any widgets for a slot, this page will inherit the widgets displayed on its parent."
+		
 		- Grundlebox::Config::WidgetSlots.each do |key,value|
 			
 			.widget_slot

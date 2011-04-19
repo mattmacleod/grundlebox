@@ -30,7 +30,7 @@ class AssetFolder < ActiveRecord::Base
   ############################################################################
   
   def ancestors
-    return @ancestors ||= parent ? (parent.ancestors + [self]) : [self]
+    return @ancestors ||= get_parent ? (get_parent.ancestors + [self]) : [self]
   end
   
   def to_param

@@ -15,8 +15,9 @@ module Admin::AssetsHelper
   def asset_folder_tree(folder)
     path = get_folder_url(folder)
     
-    if folder.get_children.length > 0
-      "<li><a href='#{path}' class='#{("current" if @current_folder.id==folder.id)}'>#{folder.name}</a><ul> #{folder.get_children.map{|f| asset_folder_tree(f) }.join} </ul></li>".html_safe
+    c = folder.get_children
+    if c.length > 0
+      "<li><a href='#{path}' class='#{("current" if @current_folder.id==folder.id)}'>#{folder.name}</a><ul> #{c.map{|f| asset_folder_tree(f) }.join} </ul></li>".html_safe
     else
       "<li><a href='#{path}' class='#{("current" if @current_folder.id==folder.id)}'>#{folder.name}</a></li>"
     end

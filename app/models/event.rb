@@ -114,13 +114,13 @@ class Event < ActiveRecord::Base
   def time_string
     
     # Get array of start times
-    start_times = performances.all.map do |n| 
+    start_times = performances.upcoming.map do |n| 
       n.starts_at.strftime("%l:%M%p").downcase.strip 
     end.uniq
     return "times vary" unless ( start_times.length == 1 )
 
     # Get array of end times
-    end_times = performances.all.map do |n| 
+    end_times = performances.upcoming.map do |n| 
       n.ends_at.strftime("%l:%M%p").downcase.strip if n.ends_at 
     end.uniq
     return "times vary" unless ( end_times.length == 1 )
@@ -139,7 +139,7 @@ class Event < ActiveRecord::Base
   # work out a range if the prices are numeric. Failing that, they vary
   def price_string
     
-    prices = performances.all.map(&:price).uniq
+    prices = performances.upcoming.map(&:price).uniq
     
     # Only 1 price? Format if it's numeric, otherwise return
     if ( prices.length == 1 )
@@ -164,7 +164,7 @@ class Event < ActiveRecord::Base
   # Venue - if there are multiple venues, say that. Otherwise return the venue
   # name and the city name combined.
   def venue_string(city=true)
-    venues = performances.all.map(&:venue_id).uniq
+    venues = performances.upcoming.map(&:venue_id).uniq
     if venues.length==1 
       v = Venue.find( venues.first )
       return [v.title, ((v.city ? v.city.name : nil) if city)].compact.join(", ")
@@ -182,12 +182,12 @@ class Event < ActiveRecord::Base
     return unless performances.count > 0
     
     # Get all distinct start days
-    start_dates = performances.all.map do |n| 
+    start_dates = performances.upcoming.map do |n| 
       n.starts_at.midnight
     end.uniq
     
     # Get all distinct end days
-    end_dates = performances.all.map do |n| 
+    end_dates = performances.upcoming.map do |n| 
       n.ends_at.midnight if n.ends_at
     end.compact.uniq
     
@@ -222,9 +222,9 @@ class Event < ActiveRecord::Base
     else
       
       # Try to find "runs" of performances for calculating useful date info 
-      start_date        = performances.all.first.starts_at.midnight
-      end_date          = performances.all.last.starts_at.midnight
-      performance_dates = performances.all.map{|p| p.starts_at.midnight }.uniq
+      start_date        = performances.upcoming.first.starts_at.midnight
+      end_date          = performances.upcoming.last.starts_at.midnight
+      performance_dates = performances.upcoming.map{|p| p.starts_at.midnight }.uniq
       
       # First get an array of days between start_date and end_date
       test_dates = []

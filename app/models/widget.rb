@@ -13,5 +13,6 @@ class Widget < ActiveRecord::Base
   
   # Library bits
   grundlebox_has_properties
+  grundlebox_has_assets
   
 end

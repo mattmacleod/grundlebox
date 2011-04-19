@@ -292,9 +292,9 @@ grundlebox.admin.pages = {
 		},
 
 		clear_widgets: function(){
-			if( $(".page_widget_items .widget:visible").length>0 ){
-				$(".page_widget_items .delete_widget").click();
-				$(".page_widget_items .empty").show("blind");
+			if( $(this).parents("widget_slot").find(".page_widget_items .widget:visible").length>0 ){
+				$(this).parents("widget_slot").find(".page_widget_items .delete_widget").click();
+				$(this).parents("widget_slot").find(".page_widget_items .empty").show("blind");
 			}
 			return false;
 		},

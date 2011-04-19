@@ -30,7 +30,7 @@ class Page < ActiveRecord::Base
   attr_accessible :url, :page_type, :title, :abstract, :content, :starts_at, :ends_at, :parent_id, :enabled
   
   # Page widgets
-  accepts_nested_attributes_for :page_widgets
+  accepts_nested_attributes_for :page_widgets, :allow_destroy => true
   attr_accessible :page_widgets_attributes
   
   # Tree cache
@@ -82,6 +82,22 @@ class Page < ActiveRecord::Base
   
   def path
     ancestors.map{|a| a.to_param }
+  end
+  
+  def widgets_by_slot
+    groups = {}
+    Grundlebox::Config::WidgetSlots.keys.each do |slot|
+      groups[slot] = self.widgets_for_slot( slot.to_s )
+    end
+    return groups
+  end
+  
+  def widgets_for_slot( slot )
+    widgets = self.page_widgets.where(:slot => slot).order(:sort_order).all
+    if widgets.empty?
+      widgets = (parent ? parent.widgets_for_slot( slot ) : [])
+    end
+    return widgets
   end
 
   # Node caching to reduce queries
