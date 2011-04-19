@@ -12,7 +12,7 @@ module Grundlebox #:nodoc:
         def grundlebox_has_assets(options={})
           
           has_many :asset_links, :as => :item, :order => :sort_order, 
-                   :include => :asset, :dependent => :destroy
+                   :include => :asset, :dependent => :destroy, :inverse_of => :item
           
           has_many :assets, :through => :asset_links
           

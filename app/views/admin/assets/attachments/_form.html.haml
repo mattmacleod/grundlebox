@@ -9,7 +9,7 @@
 	.attachment_code
 		= new_asset_attachment_form( f )
 		
-	.empty{ :style => ("display: none" unless f.object.asset_links.empty?)}
+	.empty{ :style => ("display: none" unless f.object.asset_links.empty?) }
 		There are no assets attached
 	
 	%ul.asset_attachment_list
