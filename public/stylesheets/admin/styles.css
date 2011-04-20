@@ -432,6 +432,13 @@ body {
 #content_sidebar .box input, #content_sidebar .box select, #right_pane .box input, #right_pane .box select {
   margin-bottom: 1em;
 }
+#content_sidebar table.stats, #right_pane table.stats {
+  width: 100%;
+}
+#content_sidebar table.stats td, #right_pane table.stats td {
+  font-weight: bold;
+  text-align: right;
+}
 
 #footer_wrapper {
   background: #ddddee;

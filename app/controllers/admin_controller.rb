@@ -21,8 +21,13 @@ class AdminController < ApplicationController
   # General controller actions
   ############################################################################
 
+  helper "admin/articles"
+
   def index
-    @articles = (current_user.role.downcase.to_sym==:writer) ? (Article.recently_updated.where(:user_id=>current_user.id)) : (Article.recently_updated)
+        
+    @articles ||= current_user.role.downcase.to_sym==:writer ? Article.where(:user_id=>current_user.id).recently_updated : Article.recently_updated
+    @articles = @articles.order("articles.updated_at DESC").includes(:assets).includes(:drafts).includes(:lock).limit(20)
+    
   end
   
   def help
