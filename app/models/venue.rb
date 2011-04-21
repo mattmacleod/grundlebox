@@ -210,7 +210,7 @@ class Venue < ActiveRecord::Base
     max_factor = 0.945
     lat_dist = "abs(#{lat_dist})"
     lng_dist = "abs(#{lng_dist})"
-    sql = "(min(#{lat_dist},#{lng_dist})*0.415 + max(#{lat_dist},#{lng_dist})*0.945) AS distance"
+    sql = "(least(#{lat_dist},#{lng_dist})*0.415 + greatest(#{lat_dist},#{lng_dist})*0.945) AS distance"
   end
   
   def self.decode_flat_distance(lat)
