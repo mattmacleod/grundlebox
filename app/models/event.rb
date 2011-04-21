@@ -219,7 +219,7 @@ class Event < ActiveRecord::Base
         return "dates vary"
       end
       
-    else
+    elsif (start_dates.length>1)
       
       # Try to find "runs" of performances for calculating useful date info 
       start_date        = performances.upcoming.first.starts_at.midnight
@@ -284,7 +284,10 @@ class Event < ActiveRecord::Base
         performance_dates.last.strftime("%e %b").strip
       end
       
+    else
+      return "Unknown dates"
     end
+    
   end
   
   
